@@ -1,0 +1,96 @@
+# 竞争格局调研日志（03-competitive-landscape）
+
+抓取基准日：2026-09-18
+
+## 2026-09-18
+
+### 检索记录
+
+1. `Snyk Cyber Resilience Act CRA compliance solution 2025`
+   - 采纳：Snyk 官方博客两篇（CRA 解读 + CRA compliance 方案）、Snyk LP "What you need to know about CRA"（营销材料）。第三方：AppDevANGLE(YouTube)、Linux Foundation CRA 认知报告 PDF（可引用其行业认知数据）。
+   - 弃用：Microchip 硬件厂商 brochure（与本主题相关性低）、Aikido 第三方软文（仅作补充参考）。
+
+2. `Mend CRA SCA reachability 2025`
+   - 采纳：Mend.io 官方博客《EU CRA explained: requirements, timeline, and compliance》(2026-07-30 更新）、Mend 合规页（2026-09-04）、Mend docs 的 SCA Reachability 页、Endor Labs "Understanding the CRA"（厂商营销但内容详实）。
+   - 弃用：ioimalaysia（无关）、CSL Group IoT 文章（垂直行业）。
+
+3. `Snyk reachability function-level Evo agentic AI 2026 release`
+   - 采纳：Snyk 官方新闻稿三篇：Evo 首发（2025-10-22)、Evo Agentic Development Security(2026-06-23)、Evo Continuous Offensive Security(2026-08-04)；Snyk docs《Reachability analysis》（已抓取全文，含支持语言矩阵：Java/JS/Python GA、.NET EA）。
+   - 弃用：substack 二手解读（仅背景）、各类对比软文。
+
+4. `Black Duck SCA VEX SBOM CRA 2025 2026`
+   - 采纳：Black Duck 社区《Black Duck SCA 2026.7.0 is now available!》——确认 VEX Templates 功能（仿照 SBOM Templates）；herodevs 文章确认 CRA 报告义务 2026-09-11 生效时间点。
+   - 弃用：ipros、HuggingFace 数据集。
+
+5. `Sonatype Lifecycle CRA SBOM VEX release notes 2025`
+   - 采纳：Sonatype 官方 docs（SBOM 页、IQ Server 2025 release notes、IQ 2024 release notes 中"VEX annotations 可从旧 SBOM 复制到新 SBOM"一条）。
+   - 弃用：Safeguard 买家指南（第三方，仅交叉验证）。
+
+6. `JFrog Xray Curation SBOM VEX CRA 2025 2026`
+   - 采纳：JFrog 官方 solution sheet《Cyber Resilience Act (CRA) JFrog Platform Compliance Brief》（已抓取全文）；JFrog docs 关于 Xray 部分能力迁移至 Curation 的 deprecation 公告（2026-04-01 起分阶段）。
+   - 冲突/注意：JFrog 宣称"the CRA regulates the product you ship: the binary"——营销话术，需标注厂商声称。
+
+7. `GitHub Copilot Autofix Dependabot SBOM export reachability 2025 2026`
+   - 采纳：GitHub Docs（SBOM export 页、Autofix for code scanning 页）；druce.ai 汇编指出 2025 年 GHAS 拆分为 Secret Protection + Code Security 两个 SKU（第三方汇编，可信度中等）。
+   - 弃用：Heeler 对比软文（竞品视角）。
+
+8. `GitLab Duo vulnerability resolution SBOM dependency scanning reachability 2025 2026`
+   - 采纳：GitLab Docs 三篇（Dependency scanning、Static reachability 分析——已抓取全文，含支持语言矩阵 Beta: Python/JS-TS/Java；SBOM-based dependency scanning）。
+   - 关键事实：GitLab 的 static reachability 是 package 粒度（import 层面），非 function 粒度；文档明确写了 Java 动态加载/Spring DI 会导致假阴性。
+
+9. `Veracode SCA agentic fix package firewall SBOM 2025 2026`
+   - 采纳：BusinessWire/Help Net Security(2026-01-28)Veracode 平台增强新闻；Veracode docs SCA updates 页（2025-06-03 SCA agent 生成 SBOM；2026-07-07 Package Firewall 更新；Fix for SCA Limited Availability）。
+   - 注意：Veracode 2025-01 收购 Phylum（恶意包检测）——来自 Aikido 博客转述，需二次核实。
+
+10. `Checkmarx One SCA reachability AI remediation agent 2026`
+    - 采纳：Checkmarx 官方 SCA 页（"exploitable path analysis"）、官方 Triage & Remediation Assist 页（2025-04-23）、官方博客《Revolutionizing SCA With Agentic AI》(2025-11-19, Developer Assist)。
+    - 采纳（第三方）：pixee.ai 对比文章指出 Checkmarx/Snyk 均未公布 AI 修复合并率（merge rate)——可用于"agentic remediation 可信度"论点。
+
+11. `Endor Labs agentic AI remediation reachability call graph SBOM VEX 2026`
+    - 采纳：Endor Labs 官网多篇（reachability、best SCA、FedRAMP use case 页提到 SBOM/VEX）；Microsoft Learn 的 Endor Labs-Defender for Cloud 集成 FAQ（2026-06-16）确认 call graph 能力；F6S 条目确认 Endor Patches、Upgrade Impact Analysis。
+    - 弃用：ssojet、appsecsanta 评测（仅交叉验证 97% 降噪等厂商声称数字）。
+
+12. `Semgrep Assistant reachability Supply Chain 2025 2026`
+    - 采纳：Semgrep 官方：Spring 2025 release、官方博客（Assistant 承担 60% triage 工作，2025-09-10；zero-false-positive SAST 文章）、Product Updates 页（2025-06-24 PHP reachability 业界首个）。
+
+13. `Chainguard Libraries Containers CVE remediation SBOM CRA 2025 2026`
+    - 采纳：Chainguard 官方：Libraries for Java GA(2026-06-23，含 CVE remediation)、Libraries for Python GA(2025-10-22)、CRA 文章(2026-01-14)；The New Stack(2026-06-24)；The Hacker News(2026-01-08，"Critical CVE 平均 20 小时内修复"——厂商声称经媒体转述）。
+    - 采纳：Anchore 博客(2025-12-04)Anchore+Chainguard Libraries 集成——交叉验证 CVE 修复库的存在。
+
+14. `Anchore Enterprise VEX SBOM grype syft 2025`
+    - 采纳：Safeguard 两篇（Syft v1.20、CycloneDX 1.7/ECMA-424 认证 2025-12，含 Syft 1.18/Trivy 0.59/Grype 支持 1.7 的细节）、Minimus 买家指南（Grype 读 VEX 文档 `--vex-documents`）。
+    - 弃用：arXiv 论文（学术，仅背景）。
+
+15. `Aqua Security SCA reachability runtime context Trivy 2025 2026`
+    - 采纳：Aqua 官网 container vulnerability scanning 页（runtime context 降噪）；AppSec Santa 评测确认 Trivy 归属 Aqua。
+    - 信息缺口：Aqua 的 SCA 细节、CRA 专门材料未找到，待补。
+
+16. `Wiz Code SCA reachability runtime exploitability SBOM 2026`
+    - 采纳：Wiz Academy 多篇（SCA、reachability 定义页）；latio.tech(James Berthoty, 2024-10)评测指出 Wiz Code SCA 无静态 reachability、有 SBOM 生成——第三方评测，注意时间较早。
+    - 待核实：2025-2026 Wiz Code 是否已加 reachability。
+
+17. `Socket Arnica Oligo Apiiro agentic remediation AI SCA 2026`
+    - 采纳：Apiiro 官网与官方博客（AutoFix AI Agent, 2025-10-30）；The Hacker News 奖项页（Apiiro agentic ASPM）；Arnica 官方对比页（pipelineless 架构、Arnie AI）；CM-Alliance 文章。
+    - 信息缺口：Socket、Oligo 官方资料待专门检索。
+
+### 待补检索（第二轮执行结果）
+- Socket：已补。官方 docs/blog 确认 2025-04 收购 Coana、precomputed/static reachability；竞品指出其应用侧 call path 不完整（已标注竞品立场）。
+- Oligo：已补。官方博客《Proving Compliance at Runtime》(2026-05-28) 全文抓取：DAI、runtime SBOM & VEX、FedRAMP SLA 72h→180d 论据；**未见 CRA 专门映射**（聚焦 FedRAMP/PCI/SOC2）。
+- Black Duck CRA：未找到独立 CRA 产品页；找到 STMicroelectronics CRA 案例 PR（2025-03）、OSSRA 2026 提及 CRA、Signal（2025-12 发布/2026-03 GA）、2026.7.0 VEX Templates（官方 docs 确认）。Black Duck 社区页 JS 渲染无法抓取，改用 docs.blackduck.com 文档页佐证。
+- GitHub CRA：**确认无官方 CRA 页面**（搜索仅命中第三方仓库 zealience 等）——作为"平台内置基线不重视 CRA"的论据。
+- GitLab agentic：IR 新闻稿（2026-04-16）Agentic SAST Vulnerability Resolution GA；19.2（2026-07-16）governed agentic automation 修复依赖。
+- Mend reachability 语言：官网宣称 200+ 语言检测、reachability 降噪（营销页）；docs 有专门章节但抓取受限，报告中按"厂商声称+文档存在"处理。
+- Aqua/Wiz：Aqua SCA 非主战场（第三方一致），无 CRA 材料；Wiz Code 无静态 reachability（2024-10 与 2026-05 两个第三方来源一致）；Google $32B 收购 2026-03-11 交割（Reuters/PitchBook/多源）。
+- CRA 时间线：Mend/JFrog/Orbiq/herodevs 四源一致（2026-09-11 Article 14 生效；2027-12-11 全面适用）。
+- 新增阵营发现：**Finite State / ONEKEY**（产品安全/PSIRT/嵌入式二进制分析阵营）已占据"Product 对象+CRA 证据"位置，但技术栈是固件/二进制，与现代源码 SCA 阵营存在断层——B 分析关键证据。
+- 新增 OSS 基线：Dependency-Track（project/portfolio+VEX）；sbom-sentinel（个人项目拼 CRA 闭环）。
+- Checkmarx/Apiiro/Arnica/Semgrep/Veracode/Chainguard 均已补官方或准官方来源。
+
+### 弃用/降权记录
+- 所有竞品对比软文（pixee/heeler/aikido/appsecsanta 等）仅用于交叉验证，不单独作为事实来源；厂商自称数字（降噪 %、合并率、修复时长）一律标注"厂商声称"。
+- arXiv 论文、韩语/日语聚合博客仅作背景，未采纳为证据。
+
+### 收尾（2026-09-18）
+- 全部 22 条 source note 落盘于 sources/；最终报告写入 docs/research/03-competitive-landscape.md（含 15 主厂商 + 6 补充厂商分节、横向对比大表、A/B 分析、来源索引）。
+- 已知局限：Mend reachability 语言矩阵、Endor 语言清单、Checkmarx exploitable path 支持语言未能拿到文档级明细（营销页仅有声称），报告中已按"厂商声称"标注；Black Duck 社区页 JS 渲染无法抓取，以 docs.blackduck.com 文档页替代。
+

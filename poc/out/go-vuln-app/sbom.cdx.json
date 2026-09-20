@@ -1,0 +1,683 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
+  "bomFormat": "CycloneDX",
+  "components": [
+    {
+      "bom-ref": "pkg:golang/cra-research.dev/poc/go-vuln-app?package-id=7995f8e81d511167",
+      "cpe": "cpe:2.3:a:poc:go-vuln-app:*:*:*:*:*:*:*:*",
+      "name": "cra-research.dev/poc/go-vuln-app",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-binary-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-buildinfo-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:poc:go_vuln_app:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go-vuln-app"
+        },
+        {
+          "name": "syft:metadata:architecture",
+          "value": "amd64"
+        },
+        {
+          "name": "syft:metadata:goCompiledVersion",
+          "value": "go1.26.1"
+        },
+        {
+          "name": "syft:metadata:goCryptoSettings:0",
+          "value": "standard-crypto"
+        },
+        {
+          "name": "syft:metadata:mainModule",
+          "value": "cra-research.dev/poc/go-vuln-app"
+        }
+      ],
+      "purl": "pkg:golang/cra-research.dev/poc/go-vuln-app",
+      "type": "library",
+      "version": "UNKNOWN"
+    },
+    {
+      "bom-ref": "pkg:golang/cra-research.dev/poc/go-vuln-app?package-id=dd14a90ea145d8f3",
+      "cpe": "cpe:2.3:a:poc:go-vuln-app:*:*:*:*:*:*:*:*",
+      "name": "cra-research.dev/poc/go-vuln-app",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-source-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:poc:go_vuln_app:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:architecture",
+          "value": "amd64"
+        },
+        {
+          "name": "syft:metadata:cgoEnabled",
+          "value": "true"
+        },
+        {
+          "name": "syft:metadata:os",
+          "value": "linux"
+        }
+      ],
+      "purl": "pkg:golang/cra-research.dev/poc/go-vuln-app",
+      "type": "library",
+      "version": "UNKNOWN"
+    },
+    {
+      "bom-ref": "pkg:golang/golang.org/x/crypto@v0.16.0?package-id=e09027ca2bd14397",
+      "cpe": "cpe:2.3:a:golang:crypto:v0.16.0:*:*:*:*:go:*:*",
+      "name": "golang.org/x/crypto",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-binary-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-buildinfo-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:go:ssh:v0.16.0:*:*:*:*:go:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go-vuln-app"
+        },
+        {
+          "name": "syft:metadata:architecture",
+          "value": "amd64"
+        },
+        {
+          "name": "syft:metadata:goCompiledVersion",
+          "value": "go1.26.1"
+        },
+        {
+          "name": "syft:metadata:goCryptoSettings:0",
+          "value": "standard-crypto"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:mMMrFzRSCF0GvB7Ne27XVtVAaXLrPmgPC7/v0tkwHaY="
+        },
+        {
+          "name": "syft:metadata:mainModule",
+          "value": "cra-research.dev/poc/go-vuln-app"
+        }
+      ],
+      "purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "type": "library",
+      "version": "v0.16.0"
+    },
+    {
+      "bom-ref": "pkg:golang/golang.org/x/crypto@v0.16.0?package-id=843929e40f6f502a",
+      "cpe": "cpe:2.3:a:golang:crypto:v0.16.0:*:*:*:*:go:*:*",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "name": "golang.org/x/crypto",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-source-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:go:ssh:v0.16.0:*:*:*:*:go:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:architecture",
+          "value": "amd64"
+        },
+        {
+          "name": "syft:metadata:cgoEnabled",
+          "value": "true"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:mMMrFzRSCF0GvB7Ne27XVtVAaXLrPmgPC7/v0tkwHaY="
+        },
+        {
+          "name": "syft:metadata:os",
+          "value": "linux"
+        }
+      ],
+      "purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "type": "library",
+      "version": "v0.16.0"
+    },
+    {
+      "bom-ref": "pkg:golang/golang.org/x/net@v0.19.0?package-id=1f9b4a97c4fec857",
+      "cpe": "cpe:2.3:a:golang:networking:v0.19.0:*:*:*:*:go:*:*",
+      "name": "golang.org/x/net",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-binary-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-buildinfo-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:golang:net:v0.19.0:*:*:*:*:go:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go-vuln-app"
+        },
+        {
+          "name": "syft:metadata:architecture",
+          "value": "amd64"
+        },
+        {
+          "name": "syft:metadata:goCompiledVersion",
+          "value": "go1.26.1"
+        },
+        {
+          "name": "syft:metadata:goCryptoSettings:0",
+          "value": "standard-crypto"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:zTwKpTd2XuCqf8huc7Fo2iSy+4RHPd10s4KzeTnVr1c="
+        },
+        {
+          "name": "syft:metadata:mainModule",
+          "value": "cra-research.dev/poc/go-vuln-app"
+        }
+      ],
+      "purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "type": "library",
+      "version": "v0.19.0"
+    },
+    {
+      "bom-ref": "pkg:golang/golang.org/x/net@v0.19.0?package-id=4ffc4b37b9cf4e4c",
+      "cpe": "cpe:2.3:a:golang:networking:v0.19.0:*:*:*:*:go:*:*",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "name": "golang.org/x/net",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-source-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:golang:net:v0.19.0:*:*:*:*:go:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:architecture",
+          "value": "amd64"
+        },
+        {
+          "name": "syft:metadata:cgoEnabled",
+          "value": "true"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:zTwKpTd2XuCqf8huc7Fo2iSy+4RHPd10s4KzeTnVr1c="
+        },
+        {
+          "name": "syft:metadata:os",
+          "value": "linux"
+        }
+      ],
+      "purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "type": "library",
+      "version": "v0.19.0"
+    },
+    {
+      "bom-ref": "pkg:golang/golang.org/x/sys@v0.15.0?package-id=6d3048c14fc78b45",
+      "cpe": "cpe:2.3:a:golang:x\\/sys:v0.15.0:*:*:*:*:*:*:*",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "name": "golang.org/x/sys",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-source-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:architecture",
+          "value": "amd64"
+        },
+        {
+          "name": "syft:metadata:cgoEnabled",
+          "value": "true"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:h48lPFYpsTvQJZF4EKyI4aLHaev3CxivZmv7yZig9pc="
+        },
+        {
+          "name": "syft:metadata:os",
+          "value": "linux"
+        }
+      ],
+      "purl": "pkg:golang/golang.org/x/sys@v0.15.0",
+      "type": "library",
+      "version": "v0.15.0"
+    },
+    {
+      "bom-ref": "pkg:golang/golang.org/x/term@v0.15.0?package-id=5d5855bc871194b3",
+      "cpe": "cpe:2.3:a:golang:x\\/term:v0.15.0:*:*:*:*:*:*:*",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "name": "golang.org/x/term",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-source-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:architecture",
+          "value": "amd64"
+        },
+        {
+          "name": "syft:metadata:cgoEnabled",
+          "value": "true"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:y/Oo/a/q3IXu26lQgl04j/gjuBDOBlx7X6Om1j2CPW4="
+        },
+        {
+          "name": "syft:metadata:os",
+          "value": "linux"
+        }
+      ],
+      "purl": "pkg:golang/golang.org/x/term@v0.15.0",
+      "type": "library",
+      "version": "v0.15.0"
+    },
+    {
+      "bom-ref": "pkg:golang/golang.org/x/text@v0.14.0?package-id=c5b4c53564e7ddb9",
+      "cpe": "cpe:2.3:a:golang:text:v0.14.0:*:*:*:*:*:*:*",
+      "name": "golang.org/x/text",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-binary-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-buildinfo-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go-vuln-app"
+        },
+        {
+          "name": "syft:metadata:architecture",
+          "value": "amd64"
+        },
+        {
+          "name": "syft:metadata:goCompiledVersion",
+          "value": "go1.26.1"
+        },
+        {
+          "name": "syft:metadata:goCryptoSettings:0",
+          "value": "standard-crypto"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:ScX5w1eTa3QqT8oi6+ziP7dTV1S2+ALU0bI+0zXKWiQ="
+        },
+        {
+          "name": "syft:metadata:mainModule",
+          "value": "cra-research.dev/poc/go-vuln-app"
+        }
+      ],
+      "purl": "pkg:golang/golang.org/x/text@v0.14.0",
+      "type": "library",
+      "version": "v0.14.0"
+    },
+    {
+      "bom-ref": "pkg:golang/golang.org/x/text@v0.14.0?package-id=d7986cdf44b2dc00",
+      "cpe": "cpe:2.3:a:golang:text:v0.14.0:*:*:*:*:*:*:*",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "name": "golang.org/x/text",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-source-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:architecture",
+          "value": "amd64"
+        },
+        {
+          "name": "syft:metadata:cgoEnabled",
+          "value": "true"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:ScX5w1eTa3QqT8oi6+ziP7dTV1S2+ALU0bI+0zXKWiQ="
+        },
+        {
+          "name": "syft:metadata:os",
+          "value": "linux"
+        }
+      ],
+      "purl": "pkg:golang/golang.org/x/text@v0.14.0",
+      "type": "library",
+      "version": "v0.14.0"
+    },
+    {
+      "bom-ref": "pkg:golang/stdlib@1.26.1?package-id=64b97b523a89b915",
+      "cpe": "cpe:2.3:a:golang:go:1.26.1:-:*:*:*:*:*:*",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "name": "stdlib",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-binary-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-buildinfo-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go-vuln-app"
+        },
+        {
+          "name": "syft:metadata:goCompiledVersion",
+          "value": "go1.26.1"
+        }
+      ],
+      "purl": "pkg:golang/stdlib@1.26.1",
+      "type": "library",
+      "version": "go1.26.1"
+    },
+    {
+      "bom-ref": "490c8683d7d2deea",
+      "hashes": [
+        {
+          "alg": "SHA-1",
+          "content": "cecaf1e4dd062d9f460732df872ca79b29858a31"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+        }
+      ],
+      "name": "/home/atituiset/Projects/cra-research/poc/examples/go-vuln-app/go-vuln-app",
+      "type": "file"
+    },
+    {
+      "bom-ref": "3fc5a8d3d86e9790",
+      "hashes": [
+        {
+          "alg": "SHA-1",
+          "content": "55205d1462cb210c7aa0b48094b6f5deda987a0d"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5f835f44d33c626a9d10a54077a89751472ed4f502a340ff40655acc552a50d6"
+        }
+      ],
+      "name": "/home/atituiset/Projects/cra-research/poc/examples/go-vuln-app/go.mod",
+      "type": "file"
+    }
+  ],
+  "dependencies": [
+    {
+      "dependsOn": [
+        "pkg:golang/golang.org/x/crypto@v0.16.0?package-id=e09027ca2bd14397",
+        "pkg:golang/golang.org/x/net@v0.19.0?package-id=1f9b4a97c4fec857",
+        "pkg:golang/golang.org/x/text@v0.14.0?package-id=c5b4c53564e7ddb9",
+        "pkg:golang/stdlib@1.26.1?package-id=64b97b523a89b915"
+      ],
+      "ref": "pkg:golang/cra-research.dev/poc/go-vuln-app?package-id=7995f8e81d511167"
+    },
+    {
+      "dependsOn": [
+        "pkg:golang/golang.org/x/crypto@v0.16.0?package-id=843929e40f6f502a",
+        "pkg:golang/golang.org/x/net@v0.19.0?package-id=4ffc4b37b9cf4e4c"
+      ],
+      "ref": "pkg:golang/cra-research.dev/poc/go-vuln-app?package-id=dd14a90ea145d8f3"
+    },
+    {
+      "dependsOn": [
+        "pkg:golang/golang.org/x/term@v0.15.0?package-id=5d5855bc871194b3"
+      ],
+      "ref": "pkg:golang/golang.org/x/crypto@v0.16.0?package-id=843929e40f6f502a"
+    },
+    {
+      "dependsOn": [
+        "pkg:golang/golang.org/x/text@v0.14.0?package-id=d7986cdf44b2dc00"
+      ],
+      "ref": "pkg:golang/golang.org/x/net@v0.19.0?package-id=4ffc4b37b9cf4e4c"
+    },
+    {
+      "dependsOn": [
+        "pkg:golang/golang.org/x/sys@v0.15.0?package-id=6d3048c14fc78b45"
+      ],
+      "ref": "pkg:golang/golang.org/x/term@v0.15.0?package-id=5d5855bc871194b3"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "bom-ref": "3ed034211243a451",
+      "name": "examples/go-vuln-app",
+      "type": "file"
+    },
+    "properties": [
+      {
+        "name": "cra-research:product",
+        "value": "go-vuln-app"
+      },
+      {
+        "name": "cra-research:product-version",
+        "value": "0.1.0"
+      },
+      {
+        "name": "cra-research:artifact-sha256",
+        "value": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+      },
+      {
+        "name": "cra-research:artifact-path",
+        "value": "/home/atituiset/Projects/cra-research/poc/examples/go-vuln-app/go-vuln-app"
+      },
+      {
+        "name": "cra-research:extracted-at",
+        "value": "2026-09-18T16:52:43Z"
+      }
+    ],
+    "timestamp": "2026-09-19T00:52:43+08:00",
+    "tools": {
+      "components": [
+        {
+          "author": "anchore",
+          "name": "syft",
+          "type": "application",
+          "version": "1.52.0"
+        }
+      ]
+    }
+  },
+  "serialNumber": "urn:uuid:f460caaf-5568-4e18-83de-720d42c75577",
+  "specVersion": "1.7",
+  "version": 1
+}

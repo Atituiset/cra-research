@@ -1,0 +1,58 @@
+{
+  "compile_commands": "/home/atituiset/Projects/cra-research/poc/examples/c-vuln-app/build/compile_commands.json",
+  "curation": "/home/atituiset/Projects/cra-research/poc/curation/vuln-function-map.json",
+  "findings": [
+    {
+      "aliases": [],
+      "call_path": [
+        {
+          "called_at_line": null,
+          "called_in_file": null,
+          "defined_in": "main.c",
+          "defined_line": "37",
+          "function": "main"
+        },
+        {
+          "called_at_line": 58,
+          "called_in_file": "main.c",
+          "defined_in": "main.c",
+          "defined_line": "19",
+          "function": "gunzip_file"
+        },
+        {
+          "called_at_line": 32,
+          "called_in_file": "main.c",
+          "defined_in": "third_party/zlib/inflate.c",
+          "defined_line": "623",
+          "function": "inflate"
+        }
+      ],
+      "call_path_length": 3,
+      "justification": null,
+      "package": "zlib",
+      "reachable": true,
+      "status": "affected",
+      "vuln_id": "CVE-2022-37434",
+      "vulnerable_functions": [
+        {
+          "file": "third_party/zlib/inflate.c",
+          "name": "inflate",
+          "note": "EXTRA state: when the gzip header's extra field is longer than the space reserved by inflateGetHeader(), inflate() over-reads/over-writes heap memory. Reaching inflate() on a gzip stream with FEXTRA set exercises the vulnerable code path."
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-18T16:53:55Z",
+  "product": "c-vuln-app",
+  "raw_outputs": {
+    "cpg_dump": {
+      "path": "/home/atituiset/Projects/cra-research/poc/out/c-vuln-app/joern-cpg-dump.tsv",
+      "sha256": "9e21b9703ee64251a2c6af1a68f956185cf8f4638b7dbdf908331ca3e6ec99fa"
+    }
+  },
+  "tool": {
+    "command": "docker run ... joern-parse --language newc --output /out/cpg.bin /src; docker run ... joern --script callpath.sc --param cpgFile=/out/cpg.bin",
+    "name": "joern",
+    "version": "docker ghcr.io/joernio/joern:nightly"
+  }
+}

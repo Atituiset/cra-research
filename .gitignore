@@ -1,0 +1,13 @@
+# 构建中间产物（可由 poc/pipeline/run.sh 重新生成）
+poc/examples/c-vuln-app/build/
+*.bin
+
+# 编译出的可执行文件
+poc/examples/go-vuln-app/go-vuln-app
+
+# Python
+__pycache__/
+*.pyc
+
+# 系统文件
+.DS_Store

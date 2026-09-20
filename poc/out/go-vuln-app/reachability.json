@@ -1,0 +1,1054 @@
+{
+  "findings": [
+    {
+      "aliases": [
+        "CVE-2023-48795",
+        "GHSA-45x7-px36-x8w8"
+      ],
+      "call_trace": [
+        {
+          "function": "Dial",
+          "module": "golang.org/x/crypto",
+          "package": "golang.org/x/crypto/ssh",
+          "position": {
+            "column": 6,
+            "filename": "ssh/client.go",
+            "line": 176,
+            "offset": 5004
+          }
+        },
+        {
+          "function": "connectSSH",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 23,
+            "filename": "main.go",
+            "line": 29,
+            "offset": 1099
+          }
+        },
+        {
+          "function": "main",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 22,
+            "filename": "main.go",
+            "line": 45,
+            "offset": 1419
+          }
+        }
+      ],
+      "impact_statement": null,
+      "justification": null,
+      "status": "affected",
+      "vuln_id": "GO-2023-2402"
+    },
+    {
+      "aliases": [
+        "CVE-2023-45288",
+        "GHSA-4v7x-pqxf-cx7m"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2024-2687"
+    },
+    {
+      "aliases": [
+        "CVE-2024-45337",
+        "GHSA-v778-237x-gjrc"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2024-3321"
+    },
+    {
+      "aliases": [
+        "CVE-2024-45338",
+        "GHSA-w32m-9786-jp63"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2024-3333"
+    },
+    {
+      "aliases": [
+        "CVE-2025-22869"
+      ],
+      "call_trace": [
+        {
+          "function": "Dial",
+          "module": "golang.org/x/crypto",
+          "package": "golang.org/x/crypto/ssh",
+          "position": {
+            "column": 6,
+            "filename": "ssh/client.go",
+            "line": 176,
+            "offset": 5004
+          }
+        },
+        {
+          "function": "connectSSH",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 23,
+            "filename": "main.go",
+            "line": 29,
+            "offset": 1099
+          }
+        },
+        {
+          "function": "main",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 22,
+            "filename": "main.go",
+            "line": 45,
+            "offset": 1419
+          }
+        }
+      ],
+      "impact_statement": null,
+      "justification": null,
+      "status": "affected",
+      "vuln_id": "GO-2025-3487"
+    },
+    {
+      "aliases": [
+        "CVE-2025-22870",
+        "GHSA-qxp5-gwg8-xv66"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2025-3503"
+    },
+    {
+      "aliases": [
+        "CVE-2025-22872"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2025-3595"
+    },
+    {
+      "aliases": [
+        "CVE-2025-47913"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2025-4116"
+    },
+    {
+      "aliases": [
+        "CVE-2025-58181",
+        "GHSA-j5w8-q4qc-rx2x"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2025-4134"
+    },
+    {
+      "aliases": [
+        "CVE-2025-47914",
+        "GHSA-f6x5-jh6r-wrfv"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2025-4135"
+    },
+    {
+      "aliases": [
+        "CVE-2025-47911"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4440"
+    },
+    {
+      "aliases": [
+        "CVE-2025-58190"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4441"
+    },
+    {
+      "aliases": [
+        "CVE-2026-32282"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4864"
+    },
+    {
+      "aliases": [
+        "CVE-2026-32289"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4865"
+    },
+    {
+      "aliases": [
+        "CVE-2026-33810"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4866"
+    },
+    {
+      "aliases": [
+        "CVE-2026-32288"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4869"
+    },
+    {
+      "aliases": [
+        "CVE-2026-32283"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4870"
+    },
+    {
+      "aliases": [
+        "CVE-2026-33814"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4918"
+    },
+    {
+      "aliases": [
+        "CVE-2026-32281"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4946"
+    },
+    {
+      "aliases": [
+        "CVE-2026-32280"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4947"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39822"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4970"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39836"
+      ],
+      "call_trace": [
+        {
+          "function": "DialTimeout",
+          "module": "stdlib",
+          "package": "net",
+          "position": {
+            "column": 6,
+            "filename": "src/net/dial.go",
+            "line": 485,
+            "offset": 14800
+          }
+        },
+        {
+          "function": "Dial",
+          "module": "golang.org/x/crypto",
+          "package": "golang.org/x/crypto/ssh",
+          "position": {
+            "column": 30,
+            "filename": "ssh/client.go",
+            "line": 177,
+            "offset": 5101
+          }
+        },
+        {
+          "function": "connectSSH",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 23,
+            "filename": "main.go",
+            "line": 29,
+            "offset": 1099
+          }
+        },
+        {
+          "function": "main",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 22,
+            "filename": "main.go",
+            "line": 45,
+            "offset": 1419
+          }
+        }
+      ],
+      "impact_statement": null,
+      "justification": null,
+      "status": "affected",
+      "vuln_id": "GO-2026-4971"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39825"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4976"
+    },
+    {
+      "aliases": [
+        "CVE-2026-42499"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4977"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39826"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4980"
+    },
+    {
+      "aliases": [
+        "CVE-2026-33811"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4981"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39823"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4982"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39820"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-4986"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39833",
+        "GHSA-jppx-rxg9-jmrx"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5005"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39832",
+        "GHSA-f5wc-c3c7-36mc"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5006"
+    },
+    {
+      "aliases": [
+        "CVE-2026-46597"
+      ],
+      "call_trace": [
+        {
+          "function": "Dial",
+          "module": "golang.org/x/crypto",
+          "package": "golang.org/x/crypto/ssh",
+          "position": {
+            "column": 6,
+            "filename": "ssh/client.go",
+            "line": 176,
+            "offset": 5004
+          }
+        },
+        {
+          "function": "connectSSH",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 23,
+            "filename": "main.go",
+            "line": 29,
+            "offset": 1099
+          }
+        },
+        {
+          "function": "main",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 22,
+            "filename": "main.go",
+            "line": 45,
+            "offset": 1419
+          }
+        }
+      ],
+      "impact_statement": null,
+      "justification": null,
+      "status": "affected",
+      "vuln_id": "GO-2026-5013"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39828"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5014"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39835"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5015"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39827"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5016"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39830"
+      ],
+      "call_trace": [
+        {
+          "function": "Dial",
+          "module": "golang.org/x/crypto",
+          "package": "golang.org/x/crypto/ssh",
+          "position": {
+            "column": 6,
+            "filename": "ssh/client.go",
+            "line": 176,
+            "offset": 5004
+          }
+        },
+        {
+          "function": "connectSSH",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 23,
+            "filename": "main.go",
+            "line": 29,
+            "offset": 1099
+          }
+        },
+        {
+          "function": "main",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 22,
+            "filename": "main.go",
+            "line": 45,
+            "offset": 1419
+          }
+        }
+      ],
+      "impact_statement": null,
+      "justification": null,
+      "status": "affected",
+      "vuln_id": "GO-2026-5017"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39829"
+      ],
+      "call_trace": [
+        {
+          "function": "Dial",
+          "module": "golang.org/x/crypto",
+          "package": "golang.org/x/crypto/ssh",
+          "position": {
+            "column": 6,
+            "filename": "ssh/client.go",
+            "line": 176,
+            "offset": 5004
+          }
+        },
+        {
+          "function": "connectSSH",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 23,
+            "filename": "main.go",
+            "line": 29,
+            "offset": 1099
+          }
+        },
+        {
+          "function": "main",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 22,
+            "filename": "main.go",
+            "line": 45,
+            "offset": 1419
+          }
+        }
+      ],
+      "impact_statement": null,
+      "justification": null,
+      "status": "affected",
+      "vuln_id": "GO-2026-5018"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39831"
+      ],
+      "call_trace": [
+        {
+          "function": "Dial",
+          "module": "golang.org/x/crypto",
+          "package": "golang.org/x/crypto/ssh",
+          "position": {
+            "column": 6,
+            "filename": "ssh/client.go",
+            "line": 176,
+            "offset": 5004
+          }
+        },
+        {
+          "function": "connectSSH",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 23,
+            "filename": "main.go",
+            "line": 29,
+            "offset": 1099
+          }
+        },
+        {
+          "function": "main",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 22,
+            "filename": "main.go",
+            "line": 45,
+            "offset": 1419
+          }
+        }
+      ],
+      "impact_statement": null,
+      "justification": null,
+      "status": "affected",
+      "vuln_id": "GO-2026-5019"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39834"
+      ],
+      "call_trace": [
+        {
+          "function": "Dial",
+          "module": "golang.org/x/crypto",
+          "package": "golang.org/x/crypto/ssh",
+          "position": {
+            "column": 6,
+            "filename": "ssh/client.go",
+            "line": 176,
+            "offset": 5004
+          }
+        },
+        {
+          "function": "connectSSH",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 23,
+            "filename": "main.go",
+            "line": 29,
+            "offset": 1099
+          }
+        },
+        {
+          "function": "main",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 22,
+            "filename": "main.go",
+            "line": 45,
+            "offset": 1419
+          }
+        }
+      ],
+      "impact_statement": null,
+      "justification": null,
+      "status": "affected",
+      "vuln_id": "GO-2026-5020"
+    },
+    {
+      "aliases": [
+        "CVE-2026-42508",
+        "GHSA-5cgq-3rg8-m6cv"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5021"
+    },
+    {
+      "aliases": [
+        "CVE-2026-46595"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5023"
+    },
+    {
+      "aliases": [
+        "CVE-2026-42506"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5025"
+    },
+    {
+      "aliases": [
+        "CVE-2026-39821"
+      ],
+      "call_trace": [
+        {
+          "function": "ToASCII",
+          "module": "golang.org/x/net",
+          "package": "golang.org/x/net/idna",
+          "position": {
+            "column": 19,
+            "filename": "idna/idna10.0.0.go",
+            "line": 228,
+            "offset": 8245
+          }
+        },
+        {
+          "function": "main",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 35,
+            "filename": "main.go",
+            "line": 39,
+            "offset": 1319
+          }
+        }
+      ],
+      "impact_statement": null,
+      "justification": null,
+      "status": "affected",
+      "vuln_id": "GO-2026-5026"
+    },
+    {
+      "aliases": [
+        "CVE-2026-42502"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5027"
+    },
+    {
+      "aliases": [
+        "CVE-2026-25680"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5028"
+    },
+    {
+      "aliases": [
+        "CVE-2026-25681"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5029"
+    },
+    {
+      "aliases": [
+        "CVE-2026-27136"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5030"
+    },
+    {
+      "aliases": [
+        "CVE-2026-46598"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5033"
+    },
+    {
+      "aliases": [
+        "CVE-2026-27145"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5037"
+    },
+    {
+      "aliases": [
+        "CVE-2026-42504"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5038"
+    },
+    {
+      "aliases": [
+        "CVE-2026-42507"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5039"
+    },
+    {
+      "aliases": [
+        "CVE-2026-42505"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5856"
+    },
+    {
+      "aliases": [],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5932"
+    },
+    {
+      "aliases": [
+        "CVE-2026-46600"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5942"
+    },
+    {
+      "aliases": [
+        "CVE-2026-56852"
+      ],
+      "call_trace": [
+        {
+          "function": "IsNormalString",
+          "module": "golang.org/x/text",
+          "package": "golang.org/x/text/unicode/norm",
+          "position": {
+            "column": 15,
+            "filename": "unicode/norm/normalize.go",
+            "line": 112,
+            "offset": 2778
+          }
+        },
+        {
+          "function": "validateRegistration",
+          "module": "golang.org/x/net",
+          "package": "golang.org/x/net/idna",
+          "position": {
+            "column": 29,
+            "filename": "idna/idna10.0.0.go",
+            "line": 438,
+            "offset": 14203
+          }
+        },
+        {
+          "function": "process",
+          "module": "golang.org/x/net",
+          "package": "golang.org/x/net/idna",
+          "position": {
+            "column": 29,
+            "filename": "idna/idna10.0.0.go",
+            "line": 340,
+            "offset": 11460
+          }
+        },
+        {
+          "function": "ToASCII",
+          "module": "golang.org/x/net",
+          "package": "golang.org/x/net/idna",
+          "position": {
+            "column": 18,
+            "filename": "idna/idna10.0.0.go",
+            "line": 229,
+            "offset": 8298
+          }
+        },
+        {
+          "function": "main",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 35,
+            "filename": "main.go",
+            "line": 39,
+            "offset": 1319
+          }
+        }
+      ],
+      "impact_statement": null,
+      "justification": null,
+      "status": "affected",
+      "vuln_id": "GO-2026-5970"
+    },
+    {
+      "aliases": [
+        "CVE-2026-33818"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-5972"
+    },
+    {
+      "aliases": [
+        "CVE-2026-56859"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-6088"
+    },
+    {
+      "aliases": [
+        "CVE-2026-56853"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-6089"
+    },
+    {
+      "aliases": [
+        "CVE-2026-56862"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-6090"
+    },
+    {
+      "aliases": [
+        "CVE-2026-56858"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-6091"
+    },
+    {
+      "aliases": [
+        "CVE-2026-56860"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-6218"
+    },
+    {
+      "aliases": [
+        "CVE-2026-56854"
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "status": "not_affected",
+      "vuln_id": "GO-2026-6303"
+    },
+    {
+      "aliases": [
+        "CVE-2026-78662"
+      ],
+      "call_trace": [
+        {
+          "function": "Dial",
+          "module": "golang.org/x/crypto",
+          "package": "golang.org/x/crypto/ssh",
+          "position": {
+            "column": 6,
+            "filename": "ssh/client.go",
+            "line": 176,
+            "offset": 5004
+          }
+        },
+        {
+          "function": "connectSSH",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 23,
+            "filename": "main.go",
+            "line": 29,
+            "offset": 1099
+          }
+        },
+        {
+          "function": "main",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 22,
+            "filename": "main.go",
+            "line": 45,
+            "offset": 1419
+          }
+        }
+      ],
+      "impact_statement": null,
+      "justification": null,
+      "status": "affected",
+      "vuln_id": "GO-2026-6354"
+    },
+    {
+      "aliases": [
+        "CVE-2026-56855"
+      ],
+      "call_trace": [
+        {
+          "function": "Dial",
+          "module": "golang.org/x/crypto",
+          "package": "golang.org/x/crypto/ssh",
+          "position": {
+            "column": 6,
+            "filename": "ssh/client.go",
+            "line": 176,
+            "offset": 5004
+          }
+        },
+        {
+          "function": "connectSSH",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 23,
+            "filename": "main.go",
+            "line": 29,
+            "offset": 1099
+          }
+        },
+        {
+          "function": "main",
+          "module": "cra-research.dev/poc/go-vuln-app",
+          "package": "cra-research.dev/poc/go-vuln-app",
+          "position": {
+            "column": 22,
+            "filename": "main.go",
+            "line": 45,
+            "offset": 1419
+          }
+        }
+      ],
+      "impact_statement": null,
+      "justification": null,
+      "status": "affected",
+      "vuln_id": "GO-2026-6355"
+    }
+  ],
+  "fix_verification": {
+    "fixed_appdir": "examples/go-vuln-app-fixed",
+    "raw_outputs": {
+      "json": {
+        "path": "out/go-vuln-app/govulncheck-fixed.json",
+        "sha256": "0de178f8e94c26ebe414216237ced033c8fa02c1ee460bb20819675bc6653bdf"
+      },
+      "openvex": {
+        "path": "out/go-vuln-app/govulncheck-fixed.openvex.json",
+        "sha256": "ce7df23ea07aab2afad3ce755c4d15866a80639c55e5026fd61b228638efb133"
+      }
+    },
+    "vulns_still_present": [
+      "GO-2026-4971"
+    ]
+  },
+  "generated_at": "2026-09-18T16:53:16Z",
+  "product": "go-vuln-app",
+  "raw_outputs": {
+    "json": {
+      "path": "out/go-vuln-app/govulncheck.json",
+      "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3"
+    },
+    "openvex": {
+      "path": "out/go-vuln-app/govulncheck.openvex.json",
+      "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556"
+    }
+  },
+  "tool": {
+    "command": "govulncheck -format openvex ./... && govulncheck -format json ./...",
+    "name": "govulncheck",
+    "version": "govulncheck@v1.8.0"
+  }
+}

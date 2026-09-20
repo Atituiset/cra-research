@@ -1,0 +1,30 @@
+{
+  "conclusions": [
+    {
+      "attestation_sha256": "742cc0c764acd50123fbaaffc5fc212043dff66e53202f21710c4d3a9ccf8ac7",
+      "id": "287da101-b2bc-4382-956c-e970b1394b74",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "CVE-2022-37434"
+    },
+    {
+      "attestation_sha256": "f12214f901304f549234ca3def260fc024ffb12248539e5015fb221831344884",
+      "id": "0ea8e733-0f47-40d0-9c67-056b206dedf2",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "CVE-2022-37434"
+    }
+  ],
+  "exported_at": "2026-09-18T16:53:56Z",
+  "files": {
+    "attestations/reachability-CVE-2022-37434-742cc0c764ac.json": "69195ac5e10f87bd1270276db4f9d7c1b05c37dc3f5fc98b98ec72fcecb7f3dc",
+    "attestations/vex-CVE-2022-37434-f12214f90130.json": "42876b3a7997d405ca73985cb8eccf0b2e20804f898da06a8705d414e707eaf7",
+    "sbom.cdx.json": "6c9f4ed160eab6a73d2769c660764d7eac3e0b231f1c74d018899cca23449361",
+    "trace-report.md": "9d92910e781af2cee5a56d09c76a8d353143660fcdc847c3fcad75ce0aceabd8",
+    "vex.openvex.json": "755821371d8a931db3b6b58517f846fc3f9ce72b8ff9a991fe449ac55239cb24"
+  },
+  "product": "c-vuln-app",
+  "version": "0.1.0"
+}

@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "description": "Hand-curated vulnerability -> function mapping for the PoC. In production this curation is the acknowledged cost center (per research conclusion); here it is curated manually for the sample CVEs, which is a legitimate PoC practice. See README.md in this directory.",
+    "curated_at": "2026-09-18",
+    "curated_by": "cra-research phase-0 poc"
+  },
+  "mappings": [
+    {
+      "vuln_id": "CVE-2022-37434",
+      "aliases": [],
+      "package": "zlib",
+      "affected_versions": "<= 1.2.12",
+      "osv_entry": "https://api.osv.dev/v1/vulns/CVE-2022-37434",
+      "osv_range": {
+        "type": "GIT",
+        "repo": "https://github.com/madler/zlib",
+        "introduced": "0",
+        "fixed_commits": [
+          "1eb7682f845ac9e9bf9ae35bbfb3bad5dacbd91d",
+          "eff308af425b67093bab25f80f1ae950166bece1"
+        ]
+      },
+      "functions": [
+        {
+          "name": "inflate",
+          "file": "third_party/zlib/inflate.c",
+          "note": "EXTRA state: when the gzip header's extra field is longer than the space reserved by inflateGetHeader(), inflate() over-reads/over-writes heap memory. Reaching inflate() on a gzip stream with FEXTRA set exercises the vulnerable code path."
+        }
+      ],
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2022-37434",
+        "https://github.com/madler/zlib/commit/eff308af425b67093bab25f80f1ae950166bece1"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "@context": "https://openvex.dev/ns/v0.2.0",
+  "@id": "https://cra-research.dev/vex/c-vuln-app-0.1.0",
+  "author": "cra-research poc pipeline",
+  "statements": [
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "/home/atituiset/Projects/cra-research/poc/out/c-vuln-app/joern-cpg-dump.tsv",
+          "sha256": "9e21b9703ee64251a2c6af1a68f956185cf8f4638b7dbdf908331ca3e6ec99fa",
+          "tool": "joern"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "742cc0c764acd50123fbaaffc5fc212043dff66e53202f21710c4d3a9ccf8ac7"
+        },
+        {
+          "hops": [
+            {
+              "called_at_line": null,
+              "called_in_file": null,
+              "defined_in": "main.c",
+              "defined_line": "37",
+              "function": "main"
+            },
+            {
+              "called_at_line": 58,
+              "called_in_file": "main.c",
+              "defined_in": "main.c",
+              "defined_line": "19",
+              "function": "gunzip_file"
+            },
+            {
+              "called_at_line": 32,
+              "called_in_file": "main.c",
+              "defined_in": "third_party/zlib/inflate.c",
+              "defined_line": "623",
+              "function": "inflate"
+            }
+          ],
+          "kind": "call-path",
+          "path_length": 3
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/c-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "4332f06c17d5ef7e97061a8b0433331ad74ddd5d6474f89fd6fbe0f5d7ba82d7"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "CVE-2022-37434"
+      }
+    }
+  ],
+  "timestamp": "2026-09-18T16:53:56Z",
+  "version": 1
+}

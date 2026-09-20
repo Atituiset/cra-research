@@ -1,0 +1,66 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
+  "bomFormat": "CycloneDX",
+  "components": [
+    {
+      "bom-ref": "pkg:generic/zlib@1.2.12",
+      "name": "zlib",
+      "properties": [
+        {
+          "name": "cra-research:provenance",
+          "value": "vendored source: third_party/zlib = madler/zlib v1.2.12 (https://github.com/madler/zlib/releases/tag/v1.2.12)"
+        },
+        {
+          "name": "cra-research:note",
+          "value": "syft binary classifier does not detect statically-linked vendored zlib in the built binary (verified 2026-09-18); component declared via this augmentation fragment. C/C++ SBOM for vendored deps requires manifest-level declaration."
+        }
+      ],
+      "purl": "pkg:generic/zlib@1.2.12",
+      "type": "library",
+      "version": "1.2.12"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "bom-ref": "1ec0f3f33388e030",
+      "name": "examples/c-vuln-app",
+      "type": "file"
+    },
+    "properties": [
+      {
+        "name": "cra-research:product",
+        "value": "c-vuln-app"
+      },
+      {
+        "name": "cra-research:product-version",
+        "value": "0.1.0"
+      },
+      {
+        "name": "cra-research:artifact-sha256",
+        "value": "4332f06c17d5ef7e97061a8b0433331ad74ddd5d6474f89fd6fbe0f5d7ba82d7"
+      },
+      {
+        "name": "cra-research:artifact-path",
+        "value": "/home/atituiset/Projects/cra-research/poc/examples/c-vuln-app/build/c-vuln-app"
+      },
+      {
+        "name": "cra-research:extracted-at",
+        "value": "2026-09-18T16:52:46Z"
+      }
+    ],
+    "timestamp": "2026-09-19T00:52:46+08:00",
+    "tools": {
+      "components": [
+        {
+          "author": "anchore",
+          "name": "syft",
+          "type": "application",
+          "version": "1.52.0"
+        }
+      ]
+    }
+  },
+  "serialNumber": "urn:uuid:f3b8238c-182a-4cf1-9f16-69070c8b3c50",
+  "specVersion": "1.7",
+  "version": 1
+}

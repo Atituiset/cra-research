@@ -1,0 +1,3181 @@
+{
+  "@context": "https://openvex.dev/ns/v0.2.0",
+  "@id": "https://cra-research.dev/vex/go-vuln-app-0.1.0",
+  "author": "cra-research poc pipeline",
+  "statements": [
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-45gg-vh54-h5m9"
+      }
+    },
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "216d8e946c3610a7fe87cfae00f9b5fee1e86780e57cb50255127caf89a8d100"
+        },
+        {
+          "frames": [
+            {
+              "function": "Dial",
+              "module": "golang.org/x/crypto",
+              "package": "golang.org/x/crypto/ssh",
+              "position": {
+                "column": 6,
+                "filename": "ssh/client.go",
+                "line": 176,
+                "offset": 5004
+              }
+            },
+            {
+              "function": "connectSSH",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 23,
+                "filename": "main.go",
+                "line": 29,
+                "offset": 1099
+              }
+            },
+            {
+              "function": "main",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 22,
+                "filename": "main.go",
+                "line": 45,
+                "offset": 1419
+              }
+            }
+          ],
+          "kind": "call-trace"
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [
+          "GHSA-45x7-px36-x8w8"
+        ],
+        "name": "GO-2023-2402"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "f9121e81cd6042379a609a79b2fa5ca9a511668912afae244d22fe281e380249"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [
+          "GHSA-5cgq-3rg8-m6cv"
+        ],
+        "name": "GO-2026-5021"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-78mq-xcr3-xm33"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-89gr-r52h-f8rx"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-9m57-25v3-79x9"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "b10284782632539554c43dae9ec0a9bcf5a4c7f6fd47203bcfc22e7fe18519b5"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [
+          "GHSA-f5wc-c3c7-36mc"
+        ],
+        "name": "GO-2026-5006"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "82f236974ecf5c61bd621e999e7bfd3200e52a5f9546a8e833eb2a05e660fe3f"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [
+          "GHSA-f6x5-jh6r-wrfv"
+        ],
+        "name": "GO-2025-4135"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-hcg3-q754-cr77"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "81d282e92d8f422b9f1db76465a1b4910626f91f491bdadb0a422aa0584461fb"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [
+          "GHSA-j5w8-q4qc-rx2x"
+        ],
+        "name": "GO-2025-4134"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "9ea0385bd7cb96a8e02ec3f8b622bb9865ced99970bb962152682989af08f9f3"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [
+          "GHSA-jppx-rxg9-jmrx"
+        ],
+        "name": "GO-2026-5005"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-q4h4-gmj2-qvw2"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-qpw4-5x99-6vjp"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-rm3j-f69w-wqmq"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "ee1d19766b60342b6b64cf7d37f191abaa6ba5328e0f32d7d92053b6c536847d"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [
+          "GHSA-v778-237x-gjrc"
+        ],
+        "name": "GO-2024-3321"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-vgwf-h737-ff37"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-w879-237q-wc7r"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-x527-x647-q7gg"
+      }
+    },
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "c40fdd7a952f6b2bae84bd21d2f6159a46dd7b33cf3318024967576537661d4d"
+        },
+        {
+          "frames": [
+            {
+              "function": "Dial",
+              "module": "golang.org/x/crypto",
+              "package": "golang.org/x/crypto/ssh",
+              "position": {
+                "column": 6,
+                "filename": "ssh/client.go",
+                "line": 176,
+                "offset": 5004
+              }
+            },
+            {
+              "function": "connectSSH",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 23,
+                "filename": "main.go",
+                "line": 29,
+                "offset": 1099
+              }
+            },
+            {
+              "function": "main",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 22,
+                "filename": "main.go",
+                "line": 45,
+                "offset": 1419
+              }
+            }
+          ],
+          "kind": "call-trace"
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2025-3487"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "8abbfaf3d05be3ce8bbd0855c7404d7b4b3268f1fe200b10fed84423cec957ed"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2025-4116"
+      }
+    },
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "02b4538e99777a1c5b045dc75b76c636d2fea70cace99fb20dff70c66c2b0782"
+        },
+        {
+          "frames": [
+            {
+              "function": "Dial",
+              "module": "golang.org/x/crypto",
+              "package": "golang.org/x/crypto/ssh",
+              "position": {
+                "column": 6,
+                "filename": "ssh/client.go",
+                "line": 176,
+                "offset": 5004
+              }
+            },
+            {
+              "function": "connectSSH",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 23,
+                "filename": "main.go",
+                "line": 29,
+                "offset": 1099
+              }
+            },
+            {
+              "function": "main",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 22,
+                "filename": "main.go",
+                "line": 45,
+                "offset": 1419
+              }
+            }
+          ],
+          "kind": "call-trace"
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5013"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "94d59a6809fc0f43387698fd63fdc984b63048775abaadfd9316e90001023939"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5014"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "53e1ffb04824588f632fc1e2df7a1180e5ce7df3f83ede58641236d2ca755bcc"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5015"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "af95ad9a2ece351a57c09f2ff4bba0b24d38d830db0683a46c10990d49b0e180"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5016"
+      }
+    },
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "6d26c4bd9f623f81258f0f404fe8500cdf61303c3e1209389f83d6779d8d855a"
+        },
+        {
+          "frames": [
+            {
+              "function": "Dial",
+              "module": "golang.org/x/crypto",
+              "package": "golang.org/x/crypto/ssh",
+              "position": {
+                "column": 6,
+                "filename": "ssh/client.go",
+                "line": 176,
+                "offset": 5004
+              }
+            },
+            {
+              "function": "connectSSH",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 23,
+                "filename": "main.go",
+                "line": 29,
+                "offset": 1099
+              }
+            },
+            {
+              "function": "main",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 22,
+                "filename": "main.go",
+                "line": 45,
+                "offset": 1419
+              }
+            }
+          ],
+          "kind": "call-trace"
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5017"
+      }
+    },
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "e6d6e593ef39de9a311d4bd3bead3dfd095a9fc49c0077c93a9043f22b87507d"
+        },
+        {
+          "frames": [
+            {
+              "function": "Dial",
+              "module": "golang.org/x/crypto",
+              "package": "golang.org/x/crypto/ssh",
+              "position": {
+                "column": 6,
+                "filename": "ssh/client.go",
+                "line": 176,
+                "offset": 5004
+              }
+            },
+            {
+              "function": "connectSSH",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 23,
+                "filename": "main.go",
+                "line": 29,
+                "offset": 1099
+              }
+            },
+            {
+              "function": "main",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 22,
+                "filename": "main.go",
+                "line": 45,
+                "offset": 1419
+              }
+            }
+          ],
+          "kind": "call-trace"
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5018"
+      }
+    },
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "a57e27fbdfc9d203b98f13afdf9051a1ce7ae7b043511ae240796cab4f4ddce0"
+        },
+        {
+          "frames": [
+            {
+              "function": "Dial",
+              "module": "golang.org/x/crypto",
+              "package": "golang.org/x/crypto/ssh",
+              "position": {
+                "column": 6,
+                "filename": "ssh/client.go",
+                "line": 176,
+                "offset": 5004
+              }
+            },
+            {
+              "function": "connectSSH",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 23,
+                "filename": "main.go",
+                "line": 29,
+                "offset": 1099
+              }
+            },
+            {
+              "function": "main",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 22,
+                "filename": "main.go",
+                "line": 45,
+                "offset": 1419
+              }
+            }
+          ],
+          "kind": "call-trace"
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5019"
+      }
+    },
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "92521ea87517d47cf42604e6ed2ad6c689ac36d786a7438d6985007ebb52f348"
+        },
+        {
+          "frames": [
+            {
+              "function": "Dial",
+              "module": "golang.org/x/crypto",
+              "package": "golang.org/x/crypto/ssh",
+              "position": {
+                "column": 6,
+                "filename": "ssh/client.go",
+                "line": 176,
+                "offset": 5004
+              }
+            },
+            {
+              "function": "connectSSH",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 23,
+                "filename": "main.go",
+                "line": 29,
+                "offset": 1099
+              }
+            },
+            {
+              "function": "main",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 22,
+                "filename": "main.go",
+                "line": 45,
+                "offset": 1419
+              }
+            }
+          ],
+          "kind": "call-trace"
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5020"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "328bad3bfc57582e1e576c442643e2960b80ca8847a4e4d2060fea237c3b1918"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5023"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "e50ac5f35266e4d0a833c3c8a20010a6fface442d990cfd2a2cd47969a9e27ae"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5033"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "da441aa50beba92907d2b469ab948a973f507aafa87a8f9bcca9ee6055b92114"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5932"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "02e5b738b3ba0c1b074767ad3588579988c81323add51cdeabf83d34409b4626"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-6303"
+      }
+    },
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "f6e044be84f174c489cacd61a65af024c3a7f70251a2f3ca8f74a4e23dd634fd"
+        },
+        {
+          "frames": [
+            {
+              "function": "Dial",
+              "module": "golang.org/x/crypto",
+              "package": "golang.org/x/crypto/ssh",
+              "position": {
+                "column": 6,
+                "filename": "ssh/client.go",
+                "line": 176,
+                "offset": 5004
+              }
+            },
+            {
+              "function": "connectSSH",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 23,
+                "filename": "main.go",
+                "line": 29,
+                "offset": 1099
+              }
+            },
+            {
+              "function": "main",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 22,
+                "filename": "main.go",
+                "line": 45,
+                "offset": 1419
+              }
+            }
+          ],
+          "kind": "call-trace"
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-6354"
+      }
+    },
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "ada8a34f9433d5f37feda2f286b80ce56edc9efb455b71b44ae42472c0f5fff2"
+        },
+        {
+          "frames": [
+            {
+              "function": "Dial",
+              "module": "golang.org/x/crypto",
+              "package": "golang.org/x/crypto/ssh",
+              "position": {
+                "column": 6,
+                "filename": "ssh/client.go",
+                "line": 176,
+                "offset": 5004
+              }
+            },
+            {
+              "function": "connectSSH",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 23,
+                "filename": "main.go",
+                "line": 29,
+                "offset": 1099
+              }
+            },
+            {
+              "function": "main",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 22,
+                "filename": "main.go",
+                "line": 45,
+                "offset": 1419
+              }
+            }
+          ],
+          "kind": "call-trace"
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-6355"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "7715737404bea95d3c831d4b6cb7a189b218665a53d2b61bacc9b37d68a60aeb"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [
+          "GHSA-4v7x-pqxf-cx7m"
+        ],
+        "name": "GO-2024-2687"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-5cv4-jp36-h3mw"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "6f34e5b2ad01fd14e5c72179456fc6208f4d2639fb65362e667ee1c108421398"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [
+          "GHSA-qxp5-gwg8-xv66"
+        ],
+        "name": "GO-2025-3503"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GHSA-vvgc-356p-c3xw"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "820c5321d7774bf3f3c5466e24b4336f35fcb0d2b3e53533a4e7737a4f517cef"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2024-3333"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "8e8324c907d19667135e13bd409ebe55729f0bb8d81fc532f61b92d4c8726cd2"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2025-3595"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "3e64376f2c1db6a71238a19cf30e305caf60f203ed64afb665e662402f2c0293"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4440"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "6613ac4fee586ea5bb0532dc2c77aa824a5ef1aef2a81dfeba68f5ad9393f7e9"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4441"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "5bb8c51249cf5871858f6ba43585ede98a3edae8814c41f0d8729854223e2fbd"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4918"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "15cd8232945ee277e77bf70b45868071f3ccad34d7fc2a7f74fb700f1be52549"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5025"
+      }
+    },
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "e6452ac2c5f98f6e58b73c158a5176f9ba6c06d930370a7573dcfcb6eea9f446"
+        },
+        {
+          "frames": [
+            {
+              "function": "ToASCII",
+              "module": "golang.org/x/net",
+              "package": "golang.org/x/net/idna",
+              "position": {
+                "column": 19,
+                "filename": "idna/idna10.0.0.go",
+                "line": 228,
+                "offset": 8245
+              }
+            },
+            {
+              "function": "main",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 35,
+                "filename": "main.go",
+                "line": 39,
+                "offset": 1319
+              }
+            }
+          ],
+          "kind": "call-trace"
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5026"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "956185052fb860195e647588497fa843db642063b96f14c8695163c878c94176"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5027"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "040fd9d2b12630f57a1fa157a0726bd95603c71c872c0c4e74b495f2ca0b6c74"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5028"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "e5ebcb14dd11df5949210bc946314c62d95d009279aa76de70abd43bea525545"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5029"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "344b5bd56e0648fccaed76c8c676e20e86e3a7c517c4d1081dfe43b438efd11f"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5030"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "e3b1476809819ff425182a0c69735e1d7b68ab6c0665390607f4a833b651a7d0"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5942"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        }
+      ],
+      "impact_statement": "Associated via SBOM<->OSV but no reachability verdict was produced for this component.",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "under_investigation",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5024"
+      }
+    },
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "82be537a765888b814fccd00393f8dab15ef5536dcaf81ec00b7a5f30c5dccdb"
+        },
+        {
+          "frames": [
+            {
+              "function": "IsNormalString",
+              "module": "golang.org/x/text",
+              "package": "golang.org/x/text/unicode/norm",
+              "position": {
+                "column": 15,
+                "filename": "unicode/norm/normalize.go",
+                "line": 112,
+                "offset": 2778
+              }
+            },
+            {
+              "function": "validateRegistration",
+              "module": "golang.org/x/net",
+              "package": "golang.org/x/net/idna",
+              "position": {
+                "column": 29,
+                "filename": "idna/idna10.0.0.go",
+                "line": 438,
+                "offset": 14203
+              }
+            },
+            {
+              "function": "process",
+              "module": "golang.org/x/net",
+              "package": "golang.org/x/net/idna",
+              "position": {
+                "column": 29,
+                "filename": "idna/idna10.0.0.go",
+                "line": 340,
+                "offset": 11460
+              }
+            },
+            {
+              "function": "ToASCII",
+              "module": "golang.org/x/net",
+              "package": "golang.org/x/net/idna",
+              "position": {
+                "column": 18,
+                "filename": "idna/idna10.0.0.go",
+                "line": 229,
+                "offset": 8298
+              }
+            },
+            {
+              "function": "main",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 35,
+                "filename": "main.go",
+                "line": 39,
+                "offset": 1319
+              }
+            }
+          ],
+          "kind": "call-trace"
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5970"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "f8f4585afaebadc08cbd3e584a238b88ac89059c478aa1eb86d471960e06aa1b"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4864"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "a4b1080b8e656bbc7a81c21143e6b721c413dce0475077e1f05374f1e508859b"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4865"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "44a16279abb5acea34b3cd1f058a0cca14f501d2f9944f4310ff6a4974d9c224"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4866"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "9f1c57278a9434fb78b15173824dd7d908054793609aa2c0724428da712d4ac8"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4869"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "9d45d63f67f27a92d3936bde42588be864235810ef736b3e2d17f17d44267fea"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4870"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "d147b9441d219fccc6cb082c545eb9eb73f8f0939bb78ac335380f049072da0c"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4946"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "f87d8b71492c083eeae060d1bd629b9699717ce6d2a0bb2bb7b83f9480da40d8"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4947"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "d33330d91834a8e0d61f00ea306078810359a2d297d64a76a7e88375969e469f"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4970"
+      }
+    },
+    {
+      "action_statement": "Upgrade the affected dependency; see reachability evidence for the exposed call path.",
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "e4d6a4e9070a91604c49befad148563de9941693e1ff76675369f4cdefb0c7ff"
+        },
+        {
+          "frames": [
+            {
+              "function": "DialTimeout",
+              "module": "stdlib",
+              "package": "net",
+              "position": {
+                "column": 6,
+                "filename": "src/net/dial.go",
+                "line": 485,
+                "offset": 14800
+              }
+            },
+            {
+              "function": "Dial",
+              "module": "golang.org/x/crypto",
+              "package": "golang.org/x/crypto/ssh",
+              "position": {
+                "column": 30,
+                "filename": "ssh/client.go",
+                "line": 177,
+                "offset": 5101
+              }
+            },
+            {
+              "function": "connectSSH",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 23,
+                "filename": "main.go",
+                "line": 29,
+                "offset": 1099
+              }
+            },
+            {
+              "function": "main",
+              "module": "cra-research.dev/poc/go-vuln-app",
+              "package": "cra-research.dev/poc/go-vuln-app",
+              "position": {
+                "column": 22,
+                "filename": "main.go",
+                "line": 45,
+                "offset": 1419
+              }
+            }
+          ],
+          "kind": "call-trace"
+        }
+      ],
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4971"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "744d15b2a775eefc9f892e4e05abcdc3b957957a334e8ead5f3b790d81fc6a56"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4976"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "2a19d055f095b4b1e5b75bc99e20529dd0128cced555c228977526eb0ab3c743"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4977"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "680a4b242cf85dcaee2b67bdb9f32f998ee23cfc0e294a3f3585cb2529c10346"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4980"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "5d7bf3f93843e6ab05377d8f934cf56e944e336acbe352eab823651e330c3397"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4981"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "8d53e9dc908714292ae1315807308d68d7957a04817cbb43a761b6420a45f43b"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4982"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "e38d81356468cc0ecad5ea9698d5bda2917f54d78c9dfeb7a9dcf506b3da670a"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-4986"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "15ebdab878b02f6f609a9c2a573e6a80301052a4210034ff329cc525aeeb9445"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5037"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "eb6b9a58e3246ed0c1197e78f484614928c83b15b23091bdfde7d605ef811b00"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5038"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "d30b57c796d95da6889923c3581a59b88d411bcd37690974be7317ce09877c60"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5039"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "3fd9eb7ee7aa015143d2936a14899270253a14719f47d164fe7cdd898394c197"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5856"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "7870449eb9840e0d73577be3a0a20d85a037273b4cf94ad69d245918c8e77d75"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-5972"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "bab42719f70b7149da345eacb858be572379154fdccc75b84143dc575f8874c7"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-6088"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "0d04f2ec08adb3a71ce5f0227d54b7d0d04b7a11951cb739abe99535be01c519"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-6089"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "e413cfffcded61108ec01a70981a8d3f9613cc63364b7dbb0b2008e74a040f2d"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-6090"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "5a1246ead061633c721adab8b19fd703cc7bb12d5503fd0d0b3ab6990af028d8"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_present",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-6091"
+      }
+    },
+    {
+      "evidence_refs": [
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.json",
+          "sha256": "598bf24f6ecd130cc7c33f80cb5b13323a365a958093ebfd6fe0f8bdf6e14cd3",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "tool-output",
+          "path": "out/go-vuln-app/govulncheck.openvex.json",
+          "sha256": "fd7b676ef51a3b2b5a980d331e0ba2020d51e74de1a0036c7b97953aba65b556",
+          "tool": "govulncheck"
+        },
+        {
+          "kind": "attestation",
+          "predicateType": "https://cra-research.dev/attestation/conclusion/v0.1",
+          "sha256": "f1e77e4dd874a88430d8e13389199d7fc363649a411ce65af8cba07de9d2f994"
+        }
+      ],
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "products": [
+        {
+          "@id": "pkg:generic/go-vuln-app@0.1.0",
+          "identifiers": {
+            "sha256": "1719ae6a81ee6bd84d754e2183dce398864c161af570a60964db60a2da564e43"
+          }
+        }
+      ],
+      "status": "not_affected",
+      "vulnerability": {
+        "aliases": [],
+        "name": "GO-2026-6218"
+      }
+    }
+  ],
+  "timestamp": "2026-09-18T16:53:56Z",
+  "version": 1
+}

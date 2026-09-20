@@ -1,0 +1,1380 @@
+{
+  "conclusions": [
+    {
+      "attestation_sha256": "216d8e946c3610a7fe87cfae00f9b5fee1e86780e57cb50255127caf89a8d100",
+      "id": "b3ef9f33-82de-489b-a5eb-ad6b39195bf0",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "GO-2023-2402"
+    },
+    {
+      "attestation_sha256": "7715737404bea95d3c831d4b6cb7a189b218665a53d2b61bacc9b37d68a60aeb",
+      "id": "1186445c-794c-4a5f-93e6-3720aab40892",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2024-2687"
+    },
+    {
+      "attestation_sha256": "ee1d19766b60342b6b64cf7d37f191abaa6ba5328e0f32d7d92053b6c536847d",
+      "id": "7dab835d-f67e-4bfa-91f8-095b6887388a",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2024-3321"
+    },
+    {
+      "attestation_sha256": "820c5321d7774bf3f3c5466e24b4336f35fcb0d2b3e53533a4e7737a4f517cef",
+      "id": "43871ce2-ac8e-4803-8764-00cd8b9c76e0",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2024-3333"
+    },
+    {
+      "attestation_sha256": "c40fdd7a952f6b2bae84bd21d2f6159a46dd7b33cf3318024967576537661d4d",
+      "id": "843be6ed-b62a-4651-9a68-db358211aa67",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "GO-2025-3487"
+    },
+    {
+      "attestation_sha256": "6f34e5b2ad01fd14e5c72179456fc6208f4d2639fb65362e667ee1c108421398",
+      "id": "65766adb-c978-4a63-ae39-a40d2a28fc71",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2025-3503"
+    },
+    {
+      "attestation_sha256": "8e8324c907d19667135e13bd409ebe55729f0bb8d81fc532f61b92d4c8726cd2",
+      "id": "85856858-90e5-4c5f-9b1a-28fdf74f094c",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2025-3595"
+    },
+    {
+      "attestation_sha256": "8abbfaf3d05be3ce8bbd0855c7404d7b4b3268f1fe200b10fed84423cec957ed",
+      "id": "beceb76f-a4e2-4dde-8e04-c7f2591f0ae5",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2025-4116"
+    },
+    {
+      "attestation_sha256": "81d282e92d8f422b9f1db76465a1b4910626f91f491bdadb0a422aa0584461fb",
+      "id": "bb4cef23-4fff-489a-bcfe-d64dcee355ab",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2025-4134"
+    },
+    {
+      "attestation_sha256": "82f236974ecf5c61bd621e999e7bfd3200e52a5f9546a8e833eb2a05e660fe3f",
+      "id": "e516429e-90ff-4e19-a0a7-e2721fbb0d87",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2025-4135"
+    },
+    {
+      "attestation_sha256": "3e64376f2c1db6a71238a19cf30e305caf60f203ed64afb665e662402f2c0293",
+      "id": "4dbce262-20e0-4a73-ab7b-30989fa17a01",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4440"
+    },
+    {
+      "attestation_sha256": "6613ac4fee586ea5bb0532dc2c77aa824a5ef1aef2a81dfeba68f5ad9393f7e9",
+      "id": "df07480b-e70f-4114-9c3b-962c2ed13235",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4441"
+    },
+    {
+      "attestation_sha256": "f8f4585afaebadc08cbd3e584a238b88ac89059c478aa1eb86d471960e06aa1b",
+      "id": "f7c8031e-17dc-4e62-b6c7-d91a406ed57a",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4864"
+    },
+    {
+      "attestation_sha256": "a4b1080b8e656bbc7a81c21143e6b721c413dce0475077e1f05374f1e508859b",
+      "id": "0f349f52-ea9a-4ad9-a4eb-1ba7bab03e8a",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4865"
+    },
+    {
+      "attestation_sha256": "44a16279abb5acea34b3cd1f058a0cca14f501d2f9944f4310ff6a4974d9c224",
+      "id": "68d2c90a-bf74-4719-90d4-35f3335179a1",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4866"
+    },
+    {
+      "attestation_sha256": "9f1c57278a9434fb78b15173824dd7d908054793609aa2c0724428da712d4ac8",
+      "id": "7c7f3028-0a28-4d2b-857a-1734ec62eb8d",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4869"
+    },
+    {
+      "attestation_sha256": "9d45d63f67f27a92d3936bde42588be864235810ef736b3e2d17f17d44267fea",
+      "id": "f4f80e27-cf0d-44cc-881d-ab7e9f2abeea",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4870"
+    },
+    {
+      "attestation_sha256": "5bb8c51249cf5871858f6ba43585ede98a3edae8814c41f0d8729854223e2fbd",
+      "id": "03a02c64-979a-418e-99cd-c2d50e0a1c14",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4918"
+    },
+    {
+      "attestation_sha256": "d147b9441d219fccc6cb082c545eb9eb73f8f0939bb78ac335380f049072da0c",
+      "id": "216e928f-c944-426b-b8d5-233b7da4757b",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4946"
+    },
+    {
+      "attestation_sha256": "f87d8b71492c083eeae060d1bd629b9699717ce6d2a0bb2bb7b83f9480da40d8",
+      "id": "00e5ef7a-0928-40c9-990c-843903d44c0b",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4947"
+    },
+    {
+      "attestation_sha256": "d33330d91834a8e0d61f00ea306078810359a2d297d64a76a7e88375969e469f",
+      "id": "62672a75-62a8-4024-9cb7-7041c9868633",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4970"
+    },
+    {
+      "attestation_sha256": "e4d6a4e9070a91604c49befad148563de9941693e1ff76675369f4cdefb0c7ff",
+      "id": "d0c8e182-4c73-4bdb-bd4d-b4fc03c7cee7",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4971"
+    },
+    {
+      "attestation_sha256": "744d15b2a775eefc9f892e4e05abcdc3b957957a334e8ead5f3b790d81fc6a56",
+      "id": "6c2c08e2-068b-4769-a1a7-4550dbd73986",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4976"
+    },
+    {
+      "attestation_sha256": "2a19d055f095b4b1e5b75bc99e20529dd0128cced555c228977526eb0ab3c743",
+      "id": "b6d69e01-814b-40ee-920b-6d2e23767880",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4977"
+    },
+    {
+      "attestation_sha256": "680a4b242cf85dcaee2b67bdb9f32f998ee23cfc0e294a3f3585cb2529c10346",
+      "id": "26cbabfd-c28e-4a04-a788-532ba1ac78db",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4980"
+    },
+    {
+      "attestation_sha256": "5d7bf3f93843e6ab05377d8f934cf56e944e336acbe352eab823651e330c3397",
+      "id": "dede0b44-43fe-43e0-b791-f315dfc040af",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4981"
+    },
+    {
+      "attestation_sha256": "8d53e9dc908714292ae1315807308d68d7957a04817cbb43a761b6420a45f43b",
+      "id": "d527bba1-6e33-4718-8433-2cc2ea3c7f3f",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4982"
+    },
+    {
+      "attestation_sha256": "e38d81356468cc0ecad5ea9698d5bda2917f54d78c9dfeb7a9dcf506b3da670a",
+      "id": "873ff1c5-5654-4c33-91c0-50bd8fb04638",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-4986"
+    },
+    {
+      "attestation_sha256": "9ea0385bd7cb96a8e02ec3f8b622bb9865ced99970bb962152682989af08f9f3",
+      "id": "3159d91d-3f8b-43c2-bcbf-a08aaba0758d",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5005"
+    },
+    {
+      "attestation_sha256": "b10284782632539554c43dae9ec0a9bcf5a4c7f6fd47203bcfc22e7fe18519b5",
+      "id": "f9ab1e11-e079-435c-9fba-cbcd4fc71452",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5006"
+    },
+    {
+      "attestation_sha256": "02b4538e99777a1c5b045dc75b76c636d2fea70cace99fb20dff70c66c2b0782",
+      "id": "ef2b3dcd-a199-4588-bcb4-74ea22fd3c10",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5013"
+    },
+    {
+      "attestation_sha256": "94d59a6809fc0f43387698fd63fdc984b63048775abaadfd9316e90001023939",
+      "id": "5efb03b6-f06e-43dd-81f7-94ef1e217732",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5014"
+    },
+    {
+      "attestation_sha256": "53e1ffb04824588f632fc1e2df7a1180e5ce7df3f83ede58641236d2ca755bcc",
+      "id": "32d59263-ea98-4ce5-bf11-78f44d2cbdc0",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5015"
+    },
+    {
+      "attestation_sha256": "af95ad9a2ece351a57c09f2ff4bba0b24d38d830db0683a46c10990d49b0e180",
+      "id": "1c68b56d-85f1-4f07-9896-142771ecb3ee",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5016"
+    },
+    {
+      "attestation_sha256": "6d26c4bd9f623f81258f0f404fe8500cdf61303c3e1209389f83d6779d8d855a",
+      "id": "1919536c-f7bc-40c7-a170-507de7843a97",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5017"
+    },
+    {
+      "attestation_sha256": "e6d6e593ef39de9a311d4bd3bead3dfd095a9fc49c0077c93a9043f22b87507d",
+      "id": "4491b81d-181c-4f97-9bd5-fe55aefdd591",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5018"
+    },
+    {
+      "attestation_sha256": "a57e27fbdfc9d203b98f13afdf9051a1ce7ae7b043511ae240796cab4f4ddce0",
+      "id": "f546af1b-2214-471c-af0e-02eff5baf5e2",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5019"
+    },
+    {
+      "attestation_sha256": "92521ea87517d47cf42604e6ed2ad6c689ac36d786a7438d6985007ebb52f348",
+      "id": "65e46589-e940-4a62-a25b-337b47cad59d",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5020"
+    },
+    {
+      "attestation_sha256": "f9121e81cd6042379a609a79b2fa5ca9a511668912afae244d22fe281e380249",
+      "id": "b630da6f-fa59-4d1f-b216-46b915aeb9c6",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5021"
+    },
+    {
+      "attestation_sha256": "328bad3bfc57582e1e576c442643e2960b80ca8847a4e4d2060fea237c3b1918",
+      "id": "7b3e1c82-2006-48bc-97f3-eb1e2704e0c7",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5023"
+    },
+    {
+      "attestation_sha256": "15cd8232945ee277e77bf70b45868071f3ccad34d7fc2a7f74fb700f1be52549",
+      "id": "91f7ae10-8050-47e8-893b-5e1e51f2d7a4",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5025"
+    },
+    {
+      "attestation_sha256": "e6452ac2c5f98f6e58b73c158a5176f9ba6c06d930370a7573dcfcb6eea9f446",
+      "id": "c1aae4dc-6eb3-47af-90be-bc184975c2f0",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5026"
+    },
+    {
+      "attestation_sha256": "956185052fb860195e647588497fa843db642063b96f14c8695163c878c94176",
+      "id": "61c3122c-94ba-4edb-b860-3093fa8e7b15",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5027"
+    },
+    {
+      "attestation_sha256": "040fd9d2b12630f57a1fa157a0726bd95603c71c872c0c4e74b495f2ca0b6c74",
+      "id": "5a4cba94-ec86-4b65-af1f-7603387239aa",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5028"
+    },
+    {
+      "attestation_sha256": "e5ebcb14dd11df5949210bc946314c62d95d009279aa76de70abd43bea525545",
+      "id": "78f3013f-be5d-4702-8a1d-b5f7faf5eba4",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5029"
+    },
+    {
+      "attestation_sha256": "344b5bd56e0648fccaed76c8c676e20e86e3a7c517c4d1081dfe43b438efd11f",
+      "id": "4bdf3d36-0c3a-4375-8d40-90a046111233",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5030"
+    },
+    {
+      "attestation_sha256": "e50ac5f35266e4d0a833c3c8a20010a6fface442d990cfd2a2cd47969a9e27ae",
+      "id": "4d495907-45be-4e8d-92b1-b75de055e19e",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5033"
+    },
+    {
+      "attestation_sha256": "15ebdab878b02f6f609a9c2a573e6a80301052a4210034ff329cc525aeeb9445",
+      "id": "98de370c-cfaf-46dd-ad7f-61ec1efd6a92",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5037"
+    },
+    {
+      "attestation_sha256": "eb6b9a58e3246ed0c1197e78f484614928c83b15b23091bdfde7d605ef811b00",
+      "id": "4457c0ba-8c64-499f-a2e4-9492ba0beae6",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5038"
+    },
+    {
+      "attestation_sha256": "d30b57c796d95da6889923c3581a59b88d411bcd37690974be7317ce09877c60",
+      "id": "8534a89b-6e72-4c90-a293-5275ec669a73",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5039"
+    },
+    {
+      "attestation_sha256": "3fd9eb7ee7aa015143d2936a14899270253a14719f47d164fe7cdd898394c197",
+      "id": "a117a258-6f3a-499c-a491-385db5035ea9",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5856"
+    },
+    {
+      "attestation_sha256": "da441aa50beba92907d2b469ab948a973f507aafa87a8f9bcca9ee6055b92114",
+      "id": "b6197330-5ee2-4672-8cf5-9298ba7c77d9",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5932"
+    },
+    {
+      "attestation_sha256": "e3b1476809819ff425182a0c69735e1d7b68ab6c0665390607f4a833b651a7d0",
+      "id": "c34aadc0-ed3c-4e01-965d-baeceaae85f0",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5942"
+    },
+    {
+      "attestation_sha256": "82be537a765888b814fccd00393f8dab15ef5536dcaf81ec00b7a5f30c5dccdb",
+      "id": "0fe8a7f7-c2ce-4d1e-8fa2-c68ef0782ce2",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5970"
+    },
+    {
+      "attestation_sha256": "7870449eb9840e0d73577be3a0a20d85a037273b4cf94ad69d245918c8e77d75",
+      "id": "cb7b8056-f7ab-46a6-b8ca-7c72058b8451",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-5972"
+    },
+    {
+      "attestation_sha256": "bab42719f70b7149da345eacb858be572379154fdccc75b84143dc575f8874c7",
+      "id": "388e959f-ea6a-4253-8ca3-e3152adf024f",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-6088"
+    },
+    {
+      "attestation_sha256": "0d04f2ec08adb3a71ce5f0227d54b7d0d04b7a11951cb739abe99535be01c519",
+      "id": "f1ae9984-6500-4c78-bc31-6632408145c0",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-6089"
+    },
+    {
+      "attestation_sha256": "e413cfffcded61108ec01a70981a8d3f9613cc63364b7dbb0b2008e74a040f2d",
+      "id": "e7e54b3b-dc7c-4fd4-a2d8-1f3e88cda06d",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-6090"
+    },
+    {
+      "attestation_sha256": "5a1246ead061633c721adab8b19fd703cc7bb12d5503fd0d0b3ab6990af028d8",
+      "id": "8d9c6f3c-a1c9-4adf-85be-183f8fa3227a",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-6091"
+    },
+    {
+      "attestation_sha256": "f1e77e4dd874a88430d8e13389199d7fc363649a411ce65af8cba07de9d2f994",
+      "id": "1ca1f206-9184-4343-bc37-660a93e95be7",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-6218"
+    },
+    {
+      "attestation_sha256": "02e5b738b3ba0c1b074767ad3588579988c81323add51cdeabf83d34409b4626",
+      "id": "2f7a9ea0-8686-4e77-8c4d-ffb2487ba1fd",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "reachability",
+      "vuln": "GO-2026-6303"
+    },
+    {
+      "attestation_sha256": "f6e044be84f174c489cacd61a65af024c3a7f70251a2f3ca8f74a4e23dd634fd",
+      "id": "2ec70c5e-390d-44b7-b0e1-bf02d66101b0",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "GO-2026-6354"
+    },
+    {
+      "attestation_sha256": "ada8a34f9433d5f37feda2f286b80ce56edc9efb455b71b44ae42472c0f5fff2",
+      "id": "2d4dc044-efef-46b5-8671-74c545d47b06",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "reachability",
+      "vuln": "GO-2026-6355"
+    },
+    {
+      "attestation_sha256": "8fa8f6bba2da567bbbfad01c7e40b6e876839cb47122116c1e092ae9330d2c86",
+      "id": "75abc5c5-c261-42eb-b66e-bb01f4da483e",
+      "signature_verified": true,
+      "status": "fixed",
+      "type": "verification",
+      "vuln": "GO-2023-2402"
+    },
+    {
+      "attestation_sha256": "e2eb58ea77070778ce9eee39782b54be2e0f3ea733580f306870df175673ea25",
+      "id": "572913ba-ca12-4763-aea6-ba4d00ea9312",
+      "signature_verified": true,
+      "status": "fixed",
+      "type": "verification",
+      "vuln": "GO-2025-3487"
+    },
+    {
+      "attestation_sha256": "b655fa5f5a3726a63f066a52c0cbff9d7d8df0bcb1f718b025b33ea02685e743",
+      "id": "050fac08-f56e-4dda-b3b9-a86fe9f68c61",
+      "signature_verified": true,
+      "status": "still_present",
+      "type": "verification",
+      "vuln": "GO-2026-4971"
+    },
+    {
+      "attestation_sha256": "61af13391c168393b69f309f9a231d8f3b5bd52d463ac2e959ce90d91d941e7b",
+      "id": "f018f12b-7f51-4c49-9c0a-e53898580465",
+      "signature_verified": true,
+      "status": "fixed",
+      "type": "verification",
+      "vuln": "GO-2026-5013"
+    },
+    {
+      "attestation_sha256": "7df9a02f59ab1789f3a41d94eaae724135e222b46a3a22f684b6f4e2be390404",
+      "id": "32198bb6-609c-4fe8-979c-80b6e462ce30",
+      "signature_verified": true,
+      "status": "fixed",
+      "type": "verification",
+      "vuln": "GO-2026-5017"
+    },
+    {
+      "attestation_sha256": "5210510116b2544f708027178428a4818ff709ed3a4ea1ccef6bd3355d59da26",
+      "id": "154fbc23-e3ba-4a65-9758-f6994ffea322",
+      "signature_verified": true,
+      "status": "fixed",
+      "type": "verification",
+      "vuln": "GO-2026-5018"
+    },
+    {
+      "attestation_sha256": "825793c8bfc64f92b38bfdf1f88b44c543b65107f9c431404976304767a18136",
+      "id": "20784408-5af2-4ee9-918e-d2994375ceb1",
+      "signature_verified": true,
+      "status": "fixed",
+      "type": "verification",
+      "vuln": "GO-2026-5019"
+    },
+    {
+      "attestation_sha256": "d23596766488254820f981f60b31503e6ed1751068d0788d1657e521a384bbcf",
+      "id": "05a227c1-9006-4b38-b220-67deef3fe33d",
+      "signature_verified": true,
+      "status": "fixed",
+      "type": "verification",
+      "vuln": "GO-2026-5020"
+    },
+    {
+      "attestation_sha256": "a04651633d1b4996bc0c26fb837bf5362e4d2ef1289fcd5b6e7ace5de8405afa",
+      "id": "7ab44468-8ab5-4c4c-9d15-f048745a284f",
+      "signature_verified": true,
+      "status": "fixed",
+      "type": "verification",
+      "vuln": "GO-2026-5026"
+    },
+    {
+      "attestation_sha256": "2b2f75077a0d6afb9c76b5dc05e5d6c1d1c9e6d29c8ba08a691b352e68912c71",
+      "id": "7bb2f558-6e51-43ae-8678-3ef8961a5d1a",
+      "signature_verified": true,
+      "status": "fixed",
+      "type": "verification",
+      "vuln": "GO-2026-5970"
+    },
+    {
+      "attestation_sha256": "63339b6db39593477f413b30083c6a91f30cf293c0c68f94d60438cc1369f860",
+      "id": "95a6e120-181e-464f-a58c-08f289c5ca0d",
+      "signature_verified": true,
+      "status": "fixed",
+      "type": "verification",
+      "vuln": "GO-2026-6354"
+    },
+    {
+      "attestation_sha256": "5da2f9a8f0f2e6119ea6fa6baac891c2fa69a1607394932176ac09eddb286ea1",
+      "id": "cbebe032-1808-4bb6-aab8-df7022ddb53f",
+      "signature_verified": true,
+      "status": "fixed",
+      "type": "verification",
+      "vuln": "GO-2026-6355"
+    },
+    {
+      "attestation_sha256": "6d65bcdbb1e946fc313f19f8f1133911011f52f0562fcb80f76b97d25f7a77d2",
+      "id": "cddeb89d-4696-4349-bf45-e5304ec66ad5",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-45gg-vh54-h5m9"
+    },
+    {
+      "attestation_sha256": "64b6f99e2623146442326d754281623511a12895c583f699feb72a16bc797434",
+      "id": "19589882-901e-4171-8468-6a38e10bd424",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-5cv4-jp36-h3mw"
+    },
+    {
+      "attestation_sha256": "3227899ff53912d6acbf6e0c1eea9b3880146e5828b4639d6c916182ef992ea2",
+      "id": "9f9fc48a-60f3-4fc6-a665-3d31d4b420dd",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-78mq-xcr3-xm33"
+    },
+    {
+      "attestation_sha256": "1a2d1415ef2f16546d5ccf773037706cce2bd5319d5b85f00f30a9e442d86de7",
+      "id": "3dcc9ce2-022e-48e5-b889-7d0cfbfff8fe",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-89gr-r52h-f8rx"
+    },
+    {
+      "attestation_sha256": "8e5170a6ccbb1e9a631c7dde194643dbb6bc995095d260af0585998334e1e30d",
+      "id": "ef075b90-3f5d-4d0a-8a55-7ad6ae359055",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-9m57-25v3-79x9"
+    },
+    {
+      "attestation_sha256": "6104425a584214b24cd056fbaf44080e03f88aba7950921acecbe8db40e645af",
+      "id": "1c48b6fd-502a-400e-ab19-b3f166716b1c",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-hcg3-q754-cr77"
+    },
+    {
+      "attestation_sha256": "2e25d882bb0fa0258859ad58843b491c460f00eaffeea0052089d7d3ec34a21e",
+      "id": "d145a40e-346e-4ddb-8aa1-573fbe5706b6",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-q4h4-gmj2-qvw2"
+    },
+    {
+      "attestation_sha256": "afcae6c4877c4a6755209bb445f7b2c6c359ac585ad51cc60cf086203dbe17fe",
+      "id": "beeb648c-83e6-427d-8474-f74a69ba5773",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-qpw4-5x99-6vjp"
+    },
+    {
+      "attestation_sha256": "fb4ed10cfef722b0085266803c0e6c982350536a98c3605dcd892062cdefbf0f",
+      "id": "3c93596f-cbc4-4b6d-acc6-45f8bf5bef32",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-rm3j-f69w-wqmq"
+    },
+    {
+      "attestation_sha256": "9825a9042842ab28e7880dbc91433a66aa15c6163eb2fcc441c4f04845e14c3b",
+      "id": "e4d4d1eb-8b41-479b-bae5-001305f2bea1",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-vgwf-h737-ff37"
+    },
+    {
+      "attestation_sha256": "9a53cc173cba70b1493b7debaf874aa240586feeb9a2dc5ecc00a83030be12bd",
+      "id": "364d55f5-aba6-4083-acd5-df93cc45ad35",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-vvgc-356p-c3xw"
+    },
+    {
+      "attestation_sha256": "676cbaf2862d8fccf2ac0e293b07e67ec53309a86673bbb7731699e55668e35c",
+      "id": "e92dc144-f330-4181-8f5d-253cd5e4d058",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-w879-237q-wc7r"
+    },
+    {
+      "attestation_sha256": "a4bbce335a967fd33001417c5a502840e1188ef63ccf7e23bf99f21e68a350d2",
+      "id": "273297a5-094b-4b5b-8943-a1d7495c4187",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GHSA-x527-x647-q7gg"
+    },
+    {
+      "attestation_sha256": "54f839152f32d2548086931c258f2effd5bd34e325dd587b15bd2d3953fbac15",
+      "id": "4585f332-a41b-481b-9bb9-284f37ead5d3",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "GO-2023-2402"
+    },
+    {
+      "attestation_sha256": "4c4afe9f594338b789cc4f5061bd1e3982a1d765b07ff055082fb9a0d0ca8803",
+      "id": "6ed06149-0ad6-4bb5-a487-89f4b1cd5585",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2024-2687"
+    },
+    {
+      "attestation_sha256": "22232b49997a1cd0d061a1e8ac925cc28062fe19bf1aebbdf13902703be87b07",
+      "id": "934781a8-8963-4743-aeea-9662f9fc7dec",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2024-3321"
+    },
+    {
+      "attestation_sha256": "07a59484a47fd811e9669dc226c8d0452c5f52897724fc623537c2c0473246d6",
+      "id": "d8b27c40-92e2-46f9-b345-b4d36a7d4494",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2024-3333"
+    },
+    {
+      "attestation_sha256": "c7d91d46e812987a8463e43decd2c739b35e0adad3b2f0420b15439842068c38",
+      "id": "a29bbd1d-8d69-4f20-a1f5-03fcc6896738",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "GO-2025-3487"
+    },
+    {
+      "attestation_sha256": "621e79cce5777f313ae643e4e39ca08d561d36725ed0e2f76556a29e955e53e5",
+      "id": "79890b2c-6015-4127-a887-0ae22c5a29ce",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2025-3503"
+    },
+    {
+      "attestation_sha256": "eeb5d82fae72a30fc55d165739bb810904acc55bb6ef436a421d18df97d19cb7",
+      "id": "2839cc3a-8bdb-411b-9148-7e0bebbd7b1f",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2025-3595"
+    },
+    {
+      "attestation_sha256": "d222d1c7b36ccc2bab347117b317c7a27adf72c84d2170b1deafe7ee6addec35",
+      "id": "e75ade53-5f33-4d8c-8e35-83278b90f694",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2025-4116"
+    },
+    {
+      "attestation_sha256": "6745dc6acd13df2a8f2ce045429302e414dcf009b6558a23bc9a38d7a45718c4",
+      "id": "7062ea15-ff88-4493-b81b-96234b9193fd",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2025-4134"
+    },
+    {
+      "attestation_sha256": "14b928be0ebda5600034e3e55f7db8462e9f29afabe2dcb3bf91ef68d4bd121f",
+      "id": "c1e11659-11e3-4d3f-961f-043a03c47427",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2025-4135"
+    },
+    {
+      "attestation_sha256": "3007075d5ec5d0369bc93795927af6a8c1f6afe0a93f098cae8b01ffd41ad7e9",
+      "id": "8b7a7887-067c-4186-b730-1184e3301cc6",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4440"
+    },
+    {
+      "attestation_sha256": "e62c5ae31bc6271951731062a9b6a2ce2e39f1881558a375e2090254a2633be9",
+      "id": "ae03442d-7568-48da-a9b8-f0ac57ca1aba",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4441"
+    },
+    {
+      "attestation_sha256": "269fd008b191252f2116539857e6334a2d81ee87cb6d137f08fc1a3c55155422",
+      "id": "2575761c-9cdc-4e21-a8da-749907ed0733",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4864"
+    },
+    {
+      "attestation_sha256": "eb525159a7e30bf933a1ce02c6e98d91d3a668be5dc73b32859d5aedc34bf482",
+      "id": "471d50bd-6a27-4789-b657-259b7e5c20ff",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4865"
+    },
+    {
+      "attestation_sha256": "ecc604cca9cabc13fdd9d46955b158988ec5d897f690da9c55b44ca0a582f46b",
+      "id": "7d7f0672-c564-480b-86a1-722213d8b3c9",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4866"
+    },
+    {
+      "attestation_sha256": "430b7a9d99ce2c2df8883103358f00eef3b9986401bfd1151e78929fffa94008",
+      "id": "b2199415-5091-4b84-809c-b302882ffd76",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4869"
+    },
+    {
+      "attestation_sha256": "0d974ba5f48dfa0cda38776d979e8d184d51d581671d676bb078d21291820b16",
+      "id": "716ef79b-871e-48f6-9c1a-d152ca992248",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4870"
+    },
+    {
+      "attestation_sha256": "8640d5db538786121f7ae8d2f1f13d24092db0628ec613ce4edb462ff27ca3e2",
+      "id": "6afd9c39-19ed-4e8b-b5b5-5a3a63064258",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4918"
+    },
+    {
+      "attestation_sha256": "87320416a51902c31be4129be4a35a32ee1118b7606cef2767ffb333e4863206",
+      "id": "c39fea7a-94be-4459-9cdd-5a7906bb8ddf",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4946"
+    },
+    {
+      "attestation_sha256": "59a8b34cc5ad686f2c55fd0c46b167ef983bde099d549317c331bcf0f444d341",
+      "id": "c15b7de0-19c1-4170-81aa-cecc25785e74",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4947"
+    },
+    {
+      "attestation_sha256": "6cda62858d3903c1549575f00df5001359893bcd13a01acde65cd68fd35b18bd",
+      "id": "02275358-6360-4df5-9ee6-41a69c50baf3",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4970"
+    },
+    {
+      "attestation_sha256": "f5414c997fdb5cbe0091f96167929413f4584342d26f92dc4a426a0af18c7b73",
+      "id": "502ad458-1172-4420-b969-10922e610a31",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "GO-2026-4971"
+    },
+    {
+      "attestation_sha256": "1a1dfb0539c359a9bc428615decc8118118a1252039244e8153b5ca68da1ee28",
+      "id": "3ee386b4-681c-4ee4-94d9-6e302f7fc4f2",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4976"
+    },
+    {
+      "attestation_sha256": "808935de5d1d9de5e1c11b3281b377e8fdfba0e8e3f99e680378f06a7d53c9f4",
+      "id": "5ddc17bd-d1b9-46ec-b8d8-75de0c8e4797",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4977"
+    },
+    {
+      "attestation_sha256": "45f567cb804403f660d70eccde617bdeb88674972ed5f5323895ad2224af1fdb",
+      "id": "b7465364-d88c-4352-9641-a151d83bf67c",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4980"
+    },
+    {
+      "attestation_sha256": "dc4a5edfc1c3d248868e1e472914283bf1de1189f4544f8f654295c54ea0f3e2",
+      "id": "aea621fa-f563-472c-a96f-e5ef4e7f9649",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4981"
+    },
+    {
+      "attestation_sha256": "9cc4f17601c454ed1344c1420549d088ea6e537f34d032adb51071a37e879691",
+      "id": "39e2c10f-b431-48a9-935a-da33d59df3bd",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4982"
+    },
+    {
+      "attestation_sha256": "fb2ab4c096cbd58d0674356017b26ca1129079932656ff1ad6f1db87dc8e51c6",
+      "id": "628ee62b-7f1e-44b1-a613-0969815ef8f4",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-4986"
+    },
+    {
+      "attestation_sha256": "289b7ab0bef9588efffc4b04e6e03cf89ad79bc12c25dd17f462c3d5b48c4396",
+      "id": "b8702d27-0f1e-435d-a050-50cac3dda283",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5005"
+    },
+    {
+      "attestation_sha256": "8893bc41c217511526777bedf3c5fd44173d968f8968079a080e90e3bd1f97a7",
+      "id": "66de7c04-dd3e-4f07-8b63-a7c4080dbe90",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5006"
+    },
+    {
+      "attestation_sha256": "cc72284291a78a7258a9e3b96be940aee45fd090f8330a0eefe20b1a29bd27fd",
+      "id": "ac8bf1a7-827b-4e4f-bbb4-5beac36a1e77",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "GO-2026-5013"
+    },
+    {
+      "attestation_sha256": "9397e8cf6f649ee266b9c5ef88be37edba7da370800ed8e4c76fd7aae44e8d75",
+      "id": "1dd14a28-222f-44b3-aca5-4d29e50d1126",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5014"
+    },
+    {
+      "attestation_sha256": "df02ec3e24bc4b1f57c66b917b2d8175cbb6e358b704cec8e873d3d7fb550344",
+      "id": "cc600ac9-57fc-45c8-8ce9-b2e7f8904af4",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5015"
+    },
+    {
+      "attestation_sha256": "06ec5fe3dfee16b7a802937ab263ef21c84e6b29aeeef128fdd739f7c35e64cb",
+      "id": "06e4bc94-f469-4781-9df5-51024cf261ee",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5016"
+    },
+    {
+      "attestation_sha256": "470d57623f48605ead3a52ce1fad46857ee124945a64bc4e1a667860722f0bb3",
+      "id": "7fb2eb6d-1f38-49d3-9c1a-43ac5e264a59",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "GO-2026-5017"
+    },
+    {
+      "attestation_sha256": "94e54b9692e472ab89d6376ce6822bde1f8cb3135828e6479385b0a20886a7e8",
+      "id": "02d949a9-a3b2-4263-aacd-046b97032682",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "GO-2026-5018"
+    },
+    {
+      "attestation_sha256": "f31023d17a27377b2e191c0c33e47c838afbeafd1b3da27680ad9ee94ce5f808",
+      "id": "3261db35-a1a6-4c9d-a3a8-ab4f7aeced63",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "GO-2026-5019"
+    },
+    {
+      "attestation_sha256": "2be56a358066f06a78bcdfb097831f9e1d96b5e718c5a537047153360751a89e",
+      "id": "4f7f7500-fdea-40df-9a5c-406100cb3f67",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "GO-2026-5020"
+    },
+    {
+      "attestation_sha256": "6bd8f444653e9c4364ccf334316a2af81e43277f171446a8454bce9684ee4251",
+      "id": "c417d0f8-13cb-44a2-8f51-bed55d6f287e",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5021"
+    },
+    {
+      "attestation_sha256": "02ef59037a18a9ec2d9fb976b9a0179589bc19938ee74bcb40779ec9fda39b02",
+      "id": "5b5ccd33-9539-4d65-a790-1b3944900bfe",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5023"
+    },
+    {
+      "attestation_sha256": "e8f9d56e71235118431f1a302572aec53c7cf741d8f43a96049ac2fd6cd08af0",
+      "id": "9f7a18d7-f3ad-4e1c-a8ce-f5fcc555a62b",
+      "signature_verified": true,
+      "status": "under_investigation",
+      "type": "vex",
+      "vuln": "GO-2026-5024"
+    },
+    {
+      "attestation_sha256": "cce51f419e3b5289c58928a7a5b5290e3af80d4ef4764f25b65a3d14594967d4",
+      "id": "6269d603-dcf3-43d1-a2c9-c8ad2101e6db",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5025"
+    },
+    {
+      "attestation_sha256": "4c433dbb223c747a913264df3f620aa39572278a973fce0b4dbfd1b4132f38fe",
+      "id": "e250cff2-eae6-4d36-9ef2-f709450aae37",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "GO-2026-5026"
+    },
+    {
+      "attestation_sha256": "3f08cb6903d0ddb474be235d13f7f3fc1b5c1a5ae9d6a30a9441d13f5dc9ac7e",
+      "id": "73e448bd-1fbd-420c-8987-3bd4e3c8355c",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5027"
+    },
+    {
+      "attestation_sha256": "6df193db04095de987e6bdfc1fc825e7e714f47da825f7de3920c5bad2390e46",
+      "id": "dcf5d3a7-40ae-419b-ad03-852c4c33af31",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5028"
+    },
+    {
+      "attestation_sha256": "3a70db89ba5ec3a89e99138527a1a3198e28282cdd055acf17cf8f159ae54c7a",
+      "id": "6b7cfcad-d73f-438d-b99a-57218e0da5af",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5029"
+    },
+    {
+      "attestation_sha256": "2fd2066e5fd3dd3a6c4e91487f3ad6226f916c680450f6818e4ab8590e8480f9",
+      "id": "3e42af4f-645a-4348-98c7-83b30b6a523f",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5030"
+    },
+    {
+      "attestation_sha256": "bc41bab2eac5be6920c5ea5604e51997bc278a23114a2595b72cd168bd6d9be4",
+      "id": "79332e0f-2faf-4122-9287-7e0ce4ba38c1",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5033"
+    },
+    {
+      "attestation_sha256": "003a59ac90738b1b48b720ccaab9682061553cbb3569359783684b0044946231",
+      "id": "ae1a6ba6-4e40-4e09-a209-b99fb9ae0226",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5037"
+    },
+    {
+      "attestation_sha256": "c2d020028928640636cd532f36db34102bac916ded0fb0480edd03b795971f06",
+      "id": "edcb1d3c-7fa7-4c5f-bd3e-6857ecd946ec",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5038"
+    },
+    {
+      "attestation_sha256": "e87fe462711351417af6ec35873afd9edc8b51ae26415a3f2ea2805fc302ebca",
+      "id": "59b9e574-bc17-4c8b-a8be-7f02d2fc42b6",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5039"
+    },
+    {
+      "attestation_sha256": "429f1dd7ade61c01a78fc3c8824c113039227c3a055abc49d085b068d9e3bfe4",
+      "id": "2d0f5d33-4361-4ffa-be2d-1c0928c72a0c",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5856"
+    },
+    {
+      "attestation_sha256": "354d16ee57f58e5f34ab872ab52d4ed93a9f425968b08deda7f5a9a040fa6b79",
+      "id": "653c3c04-83a4-4134-8b95-2711ee6813a4",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5932"
+    },
+    {
+      "attestation_sha256": "ff8dd930c4d836a9463ab3d369b6c19115723e5757a2e7e6090e544dd208d9cb",
+      "id": "01ae32fb-4355-48d5-b850-222bbdb4c7a0",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5942"
+    },
+    {
+      "attestation_sha256": "c9e65b9e3a236041b32ff33adcfbe4301e6d452860e6d258df3839f46f43d2b7",
+      "id": "d1035e18-24f5-4ca2-96a6-0c0276d5b592",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "GO-2026-5970"
+    },
+    {
+      "attestation_sha256": "41d6e69adf9b016eb5be1816340e093795e8bb5340d0e36365ad669ed7c142bf",
+      "id": "454c7eec-609f-47c0-bd10-628798c4b831",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-5972"
+    },
+    {
+      "attestation_sha256": "f74078347bbf40349f74dd370fe18f140da070512df8eafe0902a4e4a0b33709",
+      "id": "faebcedd-ca2a-47ab-8e4c-6149d158b405",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-6088"
+    },
+    {
+      "attestation_sha256": "139aa934edf65393710ca7be2f8d7d46c53c67e7c5be673c35b37da2aa0cce71",
+      "id": "ff67cfd4-0829-44be-8246-79d4b4acd6d9",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-6089"
+    },
+    {
+      "attestation_sha256": "744c2cd8253ca67c6711882ed67fc6db969596ed6b3c5b84ab4eed2655e6ded6",
+      "id": "11598b27-2025-4bb0-9b83-7c4a60b7f7fc",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-6090"
+    },
+    {
+      "attestation_sha256": "c3a01d8fb4ae28e2a77605bc808ee90795c26ebd2a6abf60c8ed8c85de6693db",
+      "id": "b3ed41f7-1817-4941-a822-16194ee8c6e2",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-6091"
+    },
+    {
+      "attestation_sha256": "9c35f0d9107e63d1cfad99b471e64ad862418e9e1257c347daff6146a1a750fd",
+      "id": "a5c718c3-d6f7-4370-b3c8-1cfa94c4be78",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-6218"
+    },
+    {
+      "attestation_sha256": "2bf26ebd755e35d2cac618e0969726132a23e9af744017d6626248275423e1b7",
+      "id": "5e7ab755-509c-4b5e-b74a-ad2e84bae5a1",
+      "signature_verified": true,
+      "status": "not_affected",
+      "type": "vex",
+      "vuln": "GO-2026-6303"
+    },
+    {
+      "attestation_sha256": "a024aaf27a3c42d8a39cff0276676879592585516b0a92160cb565f01e73a329",
+      "id": "53f3426f-8cff-4898-927d-da8978831a48",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "GO-2026-6354"
+    },
+    {
+      "attestation_sha256": "4c447613678187f50f19abe189ec3f9a2330137c633a855f4a8f4eead205aaa3",
+      "id": "ff9f2849-f63e-48cf-9a1a-078b95da6118",
+      "signature_verified": true,
+      "status": "affected",
+      "type": "vex",
+      "vuln": "GO-2026-6355"
+    }
+  ],
+  "exported_at": "2026-09-18T16:53:56Z",
+  "files": {
+    "attestations/reachability-GO-2023-2402-216d8e946c36.json": "0394edd730f40c2dd60f8654992ee2a4eabbed09a80fc617f3f46a894279e86b",
+    "attestations/reachability-GO-2024-2687-7715737404be.json": "00f6739799e91e0369b4706631f498c27af27235fb3f7989a4283219e822a46d",
+    "attestations/reachability-GO-2024-3321-ee1d19766b60.json": "345c0ac54cce27ca64d09f44a6329f93b289673b4b450191dc2c83005ace0abc",
+    "attestations/reachability-GO-2024-3333-820c5321d777.json": "817c8813a98fb9999040da6b668b21315b95bfa25b28df85634f65bc83d865c1",
+    "attestations/reachability-GO-2025-3487-c40fdd7a952f.json": "9fe73138aa822e16e38adca1baa03f8de3342eabef414cc28feb7d851a8c632b",
+    "attestations/reachability-GO-2025-3503-6f34e5b2ad01.json": "3ccedf70a6f678f97cca30e5ecad0b8d696f635233cdbb8f8a3526317683fe0a",
+    "attestations/reachability-GO-2025-3595-8e8324c907d1.json": "e6132753b0179b7df061c0c8e1829e82c6478286f28d23ffe6cc199302f861f5",
+    "attestations/reachability-GO-2025-4116-8abbfaf3d05b.json": "9a3ebc10d9c51f295d3cf22f7b71694ef6d8210d16f97314e3c70bcf089bdb22",
+    "attestations/reachability-GO-2025-4134-81d282e92d8f.json": "4049a5d283e9063501340f29f45a99e9f9aa34c0be274e5d5c893e2e1fad01c6",
+    "attestations/reachability-GO-2025-4135-82f236974ecf.json": "07affda43e7a773d473f660e6d1d77049c7ddee60b91a3ec2f59164f11c27f6b",
+    "attestations/reachability-GO-2026-4440-3e64376f2c1d.json": "7d4e6a2bfbbbeda407226541bef94ba6aeb351f20c8be52428510ff4eb560a74",
+    "attestations/reachability-GO-2026-4441-6613ac4fee58.json": "1c540d611f25c2410b676af92958e94275557988f2894be082c23b61bbd6a7a8",
+    "attestations/reachability-GO-2026-4864-f8f4585afaeb.json": "0d814c4121c1dd6f8b929125f963d56d144ec6fc99b86cb57dd57720f6a0e887",
+    "attestations/reachability-GO-2026-4865-a4b1080b8e65.json": "aeeda945a3ce2c7221d92282d429b82b3070bd6fb5cdc214abd5e983cad27e10",
+    "attestations/reachability-GO-2026-4866-44a16279abb5.json": "ca4d5eabe85b0620100fb648770b36efe8ce6be722626bc86a30f09a0b1c92a8",
+    "attestations/reachability-GO-2026-4869-9f1c57278a94.json": "032bbaa5e81e884bce8e44a3f4e9b6adcd96b649ffb01c1e81167b38478de3f3",
+    "attestations/reachability-GO-2026-4870-9d45d63f67f2.json": "b618f4e9ac0c8d0350e3140fcbbeb7cf285fececf6f8f7d5154d66c72190ab04",
+    "attestations/reachability-GO-2026-4918-5bb8c51249cf.json": "b4acc910049d49acdb12fb67dda28716e08cee3a6e530f262014d7bdbda2eb12",
+    "attestations/reachability-GO-2026-4946-d147b9441d21.json": "e41dfb068a003a23739691d4ac3aee4a6455353d3fca97f19ccdfec51d8f993a",
+    "attestations/reachability-GO-2026-4947-f87d8b71492c.json": "36fc1d72793ff0f29c625a224327d51441d542515c9f1b4c5e8cc684f1b28c55",
+    "attestations/reachability-GO-2026-4970-d33330d91834.json": "5f9fbba4cd0c3f03631e86b4a7eedfc88a109e48877218c0720a0436fdfd93a5",
+    "attestations/reachability-GO-2026-4971-e4d6a4e9070a.json": "776933574a6b7e071f5e1fba557d9eeb950ceb92a221c02fc2696df6e80d066c",
+    "attestations/reachability-GO-2026-4976-744d15b2a775.json": "e62bb8f59a6483af22e296f5eeb735a17e70f3ffe931db824f5ce282b3b37209",
+    "attestations/reachability-GO-2026-4977-2a19d055f095.json": "da503b41922354f4942938edfb4817a4d41aeeb334a1731de6c0efbe82e13a88",
+    "attestations/reachability-GO-2026-4980-680a4b242cf8.json": "574e0efab8c6aa06739743bf63a457055047919e3aa51fc93c8f54b9df002916",
+    "attestations/reachability-GO-2026-4981-5d7bf3f93843.json": "f18516ce6f07e729be38958beeaf421c39a86db9be65efb2a2b3fc23758f4166",
+    "attestations/reachability-GO-2026-4982-8d53e9dc9087.json": "c131a0a31bda2c33cb280a8236f9bb0a87d0031279e5572985e44a8a9cc4a119",
+    "attestations/reachability-GO-2026-4986-e38d81356468.json": "326dccffa3329824a2ca3c2eba8e52b5134ecebcb879397c3bc3401bb5f50f51",
+    "attestations/reachability-GO-2026-5005-9ea0385bd7cb.json": "2ee8960cb0421e1e8c4f351df7cdece5e18e79011f0ecf0080975cf943469030",
+    "attestations/reachability-GO-2026-5006-b10284782632.json": "88265ed73837182714b55205a8026166baf623d426099e51651c00e8a11ee7a7",
+    "attestations/reachability-GO-2026-5013-02b4538e9977.json": "39a11142e6f9a26f0ba69e41aeaae487ab909d6ac848cb1fdc651103218ed859",
+    "attestations/reachability-GO-2026-5014-94d59a6809fc.json": "f7ce5d0216b80604926ee8b1e3ecda23c50dbaf3a43b08350508e48e4099f93b",
+    "attestations/reachability-GO-2026-5015-53e1ffb04824.json": "01d068866b28ee5636a30ac93fbb3d7510d9ee2fc2ce98fce6284e53486a44eb",
+    "attestations/reachability-GO-2026-5016-af95ad9a2ece.json": "ad10a3d7a7d3b0cf4d7d3a9ec52c9206c7494e2438b4510c90fdb08524033fba",
+    "attestations/reachability-GO-2026-5017-6d26c4bd9f62.json": "530a664e14d12eb78f8b0dedbc7c1f35c3e585356bb2d04b098fe2d4edd01180",
+    "attestations/reachability-GO-2026-5018-e6d6e593ef39.json": "1b0e7896f6f415b88a8ae24233bf2b1bdd4131680f939a1e94a0884e9399852c",
+    "attestations/reachability-GO-2026-5019-a57e27fbdfc9.json": "750caea27ad6a97de529c0e7b73f29050724d332d2aed82516f1cdd16ffdce95",
+    "attestations/reachability-GO-2026-5020-92521ea87517.json": "f6aaeb3ff340bfd477c9a8f64aac1ae329dd1b3041372452e49eb50d9edd50e8",
+    "attestations/reachability-GO-2026-5021-f9121e81cd60.json": "d6d147688e3e8031c845a04e251985e21d2f25cc5242500191b57cbf45c20c76",
+    "attestations/reachability-GO-2026-5023-328bad3bfc57.json": "130ebb4c6d357c981830edb484a203fc0b3aa47b15f159c129ba92b54725d4f6",
+    "attestations/reachability-GO-2026-5025-15cd8232945e.json": "3f26881c84edc562548cd140a309801cdc460da98a3df0e9f65ab3ed43d53345",
+    "attestations/reachability-GO-2026-5026-e6452ac2c5f9.json": "bb6338bf0811a8a51922df1844d9a6f632e2ef14f1b19981114cb704d4892d8e",
+    "attestations/reachability-GO-2026-5027-956185052fb8.json": "c519a9c804cd372ff4357ca9c7b98f60a2d38c4fd09cc03cb75601361757c526",
+    "attestations/reachability-GO-2026-5028-040fd9d2b126.json": "429b003b614c7590e275bfc8b0196e13a0a1bb7b873eeaa66056735a58c7d2a5",
+    "attestations/reachability-GO-2026-5029-e5ebcb14dd11.json": "431ed4cdd44d864b051bfa4fa76525d6af165edebd93afccfc49b081588a32c9",
+    "attestations/reachability-GO-2026-5030-344b5bd56e06.json": "94e30d452963826bf831d2c1bf54075d7bdc72a569abcd9a6090a8377c37544b",
+    "attestations/reachability-GO-2026-5033-e50ac5f35266.json": "413aa08040a1e70f9bff4b45144fdf26ddf01a2d5ddb90195d956fc14bd41eb7",
+    "attestations/reachability-GO-2026-5037-15ebdab878b0.json": "6b86691b41a62448b3280c132622b63ae255e685f097fd97482001e9467f9a95",
+    "attestations/reachability-GO-2026-5038-eb6b9a58e324.json": "de030cc45ed46c1e80fbe6698600c47fd1ea0a3c6c509b5d8d7cadcb81c9e7ed",
+    "attestations/reachability-GO-2026-5039-d30b57c796d9.json": "867aa3cf1f91a52c17b1a58ac2484d04d0130d016489deb336c104275a2eb930",
+    "attestations/reachability-GO-2026-5856-3fd9eb7ee7aa.json": "4908e3b122ec7be41533c7524a577295d6c4e2bec4afbb53e56ef26ea2e24552",
+    "attestations/reachability-GO-2026-5932-da441aa50beb.json": "5ae28c37d8d0d069637ffb4e02cf02607a2b6e9f384bfb5436724b73e40951f4",
+    "attestations/reachability-GO-2026-5942-e3b147680981.json": "4dc0940e5c53f39b5f326b7913e5244d914108f570ed0205786ad93c8a30c1ef",
+    "attestations/reachability-GO-2026-5970-82be537a7658.json": "9e3de9d53962c2de9cc0e456a1d3bc5433e4a093b427c9c78eec04ab5ceeb173",
+    "attestations/reachability-GO-2026-5972-7870449eb984.json": "b2ddcf9e3d4862e87116fd30adfa87f72f79a52175f25f1c495c70bb322a8ac1",
+    "attestations/reachability-GO-2026-6088-bab42719f70b.json": "d3b0f86f419c3cfbcd57ec76edd0b944f88abb260a16bb3133fcd6a979758c25",
+    "attestations/reachability-GO-2026-6089-0d04f2ec08ad.json": "449d03cf212ca9d9571c525df3d53ac9742b8321b6d941d8750713f4baf95a3d",
+    "attestations/reachability-GO-2026-6090-e413cfffcded.json": "f6d0e10bbeec6e92b3bdcef34e2e3fd3d65536f0990e41ad9098ba7c83b32bfe",
+    "attestations/reachability-GO-2026-6091-5a1246ead061.json": "4b11800799de7c56e82ced23b4acff8c80b2035198cffdc5e653112245ca30fc",
+    "attestations/reachability-GO-2026-6218-f1e77e4dd874.json": "a1f027aa15e66e015848937d27702150d35f5be8fb73f614bd56b66fb34f6209",
+    "attestations/reachability-GO-2026-6303-02e5b738b3ba.json": "e0a3667d61474c10e38bf2a94af9633e1c389ceaefc5f912274ba7bce27843c2",
+    "attestations/reachability-GO-2026-6354-f6e044be84f1.json": "3653a5d1521af0a78815f3ad758e6443f7c12316364cfbf79340548340ed20cc",
+    "attestations/reachability-GO-2026-6355-ada8a34f9433.json": "62a83bd01844c483149b02162ece3c90af74002b2cd9157f2258fc5a0d0e7991",
+    "attestations/verification-GO-2023-2402-8fa8f6bba2da.json": "8840a747c04ea3791a936f6afb320f22f6abfd5c9c2a88209f88292dc43a7a5a",
+    "attestations/verification-GO-2025-3487-e2eb58ea7707.json": "2ab05b44de1dc81bcfa7ff5678c62b88cdd3ce5d5199871ab7999bc63eeaefb4",
+    "attestations/verification-GO-2026-4971-b655fa5f5a37.json": "6357dcec51fe1b78bf22250d4d4b4067d4114654278f3eb9bde291468b4c393e",
+    "attestations/verification-GO-2026-5013-61af13391c16.json": "821d7e57db177139072668aa011bf222a0ee6890880d1ab8ff6696af1651c902",
+    "attestations/verification-GO-2026-5017-7df9a02f59ab.json": "47ab620c280fb83264ace746a3a102a617b6ad6cef563b4aab6a85155f596f69",
+    "attestations/verification-GO-2026-5018-5210510116b2.json": "49b721e13c1efc16f31b6b7d6b6ebcbd010f0799dee8f7a005ebbd2b4b37acd8",
+    "attestations/verification-GO-2026-5019-825793c8bfc6.json": "fc788f7183bcdc477cde3b8d437f723c944d03f1079d2e99ef14a5c22f045f35",
+    "attestations/verification-GO-2026-5020-d23596766488.json": "5f678966aa6dd1e830a257e6ae109d80e4f7dc924795bb3f57f48deb89db33c0",
+    "attestations/verification-GO-2026-5026-a04651633d1b.json": "c79ad219f419b6c57dc8ef537c0894234e274e792dc1f6167f92341600950148",
+    "attestations/verification-GO-2026-5970-2b2f75077a0d.json": "39e5640621002505a4d3002c34104a5b7b15999d53b7d7d40271a25adee8b329",
+    "attestations/verification-GO-2026-6354-63339b6db395.json": "3170b0c300c0812cddac69e26b43e6863e143d04808322180be82e0f4d6a5f00",
+    "attestations/verification-GO-2026-6355-5da2f9a8f0f2.json": "cd9f72b9409cc3fcb8d32128e33e78db84906f4c89f33670a9cfb4bad10da627",
+    "attestations/vex-GHSA-45gg-vh54-h5m9-6d65bcdbb1e9.json": "5f9b641d1c1686bf7762c394a3a59cea6538100233b5fdcf7df4422caa93deee",
+    "attestations/vex-GHSA-5cv4-jp36-h3mw-64b6f99e2623.json": "6cc7f3a1f78a04926af49df1071887cbde3be5ec0d56f333826081fb9941b716",
+    "attestations/vex-GHSA-78mq-xcr3-xm33-3227899ff539.json": "f6bea312817b721e05baa0806eff68de3ad50d5ceedf3294d2b6b3b1828c1459",
+    "attestations/vex-GHSA-89gr-r52h-f8rx-1a2d1415ef2f.json": "72f102c135f79eb5c7ab45736b6fd6d4993f0db55b6b79a36b7de9e716da6a94",
+    "attestations/vex-GHSA-9m57-25v3-79x9-8e5170a6ccbb.json": "29965b9bb0bcbc4aacf69d28e471e07d216ad1d75527e5876ee946c5577bfbb1",
+    "attestations/vex-GHSA-hcg3-q754-cr77-6104425a5842.json": "5b4985dd712e89db63a735abb30b693d682832530e0b82b32c6a40f80b469a34",
+    "attestations/vex-GHSA-q4h4-gmj2-qvw2-2e25d882bb0f.json": "72dc096ec22de51cd66b960fbf4ef1eab23da507e531e18b96e587d35751f92d",
+    "attestations/vex-GHSA-qpw4-5x99-6vjp-afcae6c4877c.json": "69618f78e5ebf8eedbbf53b755fdf730fe625169b85cc511e8b4a3c1df5b8f48",
+    "attestations/vex-GHSA-rm3j-f69w-wqmq-fb4ed10cfef7.json": "682d876f955d73fb7e391cb2f96baa9ec7289e02616b083f2c30353190e1c89f",
+    "attestations/vex-GHSA-vgwf-h737-ff37-9825a9042842.json": "d1b9eb0264a66b9f8898133ab48db60b560c4c28bfc94cecd722fb72f5a24269",
+    "attestations/vex-GHSA-vvgc-356p-c3xw-9a53cc173cba.json": "18b1ef390c2ff9c5a51b33143e17bc4e15689e4fab4b551fabe29a2a66818833",
+    "attestations/vex-GHSA-w879-237q-wc7r-676cbaf2862d.json": "1604c53394ea4674745cc15b64933644436e45a3ba8658276e98b8c1bcba3c98",
+    "attestations/vex-GHSA-x527-x647-q7gg-a4bbce335a96.json": "8d6b4f388cd143ef5b32798b0e43d3e21e63a335fb6e33c65b0a259498c3f99e",
+    "attestations/vex-GO-2023-2402-54f839152f32.json": "6259e0f9035e2d65abe7e63fbb6011a3feafc8fa48d480ec0bc10e7b5221f102",
+    "attestations/vex-GO-2024-2687-4c4afe9f5943.json": "c35624a38115bd7b4356c7249138ed069bf13cafb2e84a749c07bc797114b839",
+    "attestations/vex-GO-2024-3321-22232b49997a.json": "a85bbf86b715b5be9d82b3dfcaa1f95963400a7c44730f0c5a453ef2a2f39fa6",
+    "attestations/vex-GO-2024-3333-07a59484a47f.json": "0681bce43d433d6dcb8a6a5cba2530c264d9ff4e23898f6162a61326643efec9",
+    "attestations/vex-GO-2025-3487-c7d91d46e812.json": "707753b74865632f356750249a9d7954e82dea2e5ff8d71a5ab2a3002c856af0",
+    "attestations/vex-GO-2025-3503-621e79cce577.json": "5c77db44917e7fc168334af48c1729d092cfa68c522b74fc3e6bf6021af0bcea",
+    "attestations/vex-GO-2025-3595-eeb5d82fae72.json": "978c6d4e2587525ee4bd51efecab3a085e604e9cba293460654fd16bb9a3fb9b",
+    "attestations/vex-GO-2025-4116-d222d1c7b36c.json": "5f7a1624a808dbfedea08f83719093d287e08c38603c04bc9b831a7ea28373ee",
+    "attestations/vex-GO-2025-4134-6745dc6acd13.json": "1673c3d9324b963450dee827671dc696543f1783a010e2ce59b61b97d3294bee",
+    "attestations/vex-GO-2025-4135-14b928be0ebd.json": "1656631735ce58bad96dad03d4c81bc0834701d9b10609a5dac0db01063eec59",
+    "attestations/vex-GO-2026-4440-3007075d5ec5.json": "686dc015ac73e1e2a2a49adfa25e5a59170326c83a9207cd09af6e0a91c6ba45",
+    "attestations/vex-GO-2026-4441-e62c5ae31bc6.json": "3543373e8a71b599d08b56794e207dc91647acdfe02ddae78fd8068755190b91",
+    "attestations/vex-GO-2026-4864-269fd008b191.json": "b834014206137f3abbeb5c1c814ec3448a315581b94fb9ab03b9f0084aa4dbf2",
+    "attestations/vex-GO-2026-4865-eb525159a7e3.json": "3d78d0f62cedfd0b448749662d5d2cc26c343c021eaf13da736af4c8bbff7122",
+    "attestations/vex-GO-2026-4866-ecc604cca9ca.json": "e21689528f0a2a1c070286aec06dbab2f17f601b634585143f39d447aaecdd42",
+    "attestations/vex-GO-2026-4869-430b7a9d99ce.json": "d7cfa6fd3e20fa2f5a4422e06204fc41d224246ae96e223cce78a9fb78ad589b",
+    "attestations/vex-GO-2026-4870-0d974ba5f48d.json": "0dadbb904b5c9b19a878244508f2b68e5028a948e3be05bde4a423b0cbd022e7",
+    "attestations/vex-GO-2026-4918-8640d5db5387.json": "6669440040bf38c21157ea47f31d936da8a7d2f1bef4b043a9d6bb53d1dc75a0",
+    "attestations/vex-GO-2026-4946-87320416a519.json": "de309f7123829f0c6b55c2fc3dcad206db10dacebb5c48538e43bb00066ff29f",
+    "attestations/vex-GO-2026-4947-59a8b34cc5ad.json": "f6f7bd3cfc4d2224e8d5dcefe30dce10f175f955ecc3ca42c62fe41993b2b3c9",
+    "attestations/vex-GO-2026-4970-6cda62858d39.json": "1a92b6ef22fc561bd4dcfba656fd089724cf5ea90716b0cf574710c122f3d6ae",
+    "attestations/vex-GO-2026-4971-f5414c997fdb.json": "e50461dd15e680e25f72e130cb305e3a6cc00a5b3080b9f189097586a2dfdf9f",
+    "attestations/vex-GO-2026-4976-1a1dfb0539c3.json": "60ff92f87fb54ebb879ed16be4020799d791a8ac925c61226b21df54a019ffd8",
+    "attestations/vex-GO-2026-4977-808935de5d1d.json": "4af77b94017afbf130647eb243ae1f5d9e147d8cee35d8011535c4494c1fa934",
+    "attestations/vex-GO-2026-4980-45f567cb8044.json": "9caaf2dcb2e0d3204b06441d8509ac234521949c94f679b6b7cd16acf015510d",
+    "attestations/vex-GO-2026-4981-dc4a5edfc1c3.json": "61ef07fe9175982bdc389569c4b1ff0762fadc0955253fc3bb4a280c31db2589",
+    "attestations/vex-GO-2026-4982-9cc4f17601c4.json": "dde89ded0f27f4f48a84f985c1bb6780442fc69a13e7b42e26791e850dfe7b92",
+    "attestations/vex-GO-2026-4986-fb2ab4c096cb.json": "af522ee75650109dd06660ec2c45d1252ecd51fce3a50e0b160594d45287cfcc",
+    "attestations/vex-GO-2026-5005-289b7ab0bef9.json": "39a9a54ae38aadd84726ed283287aa05ac16a097e8e3cb6e43ac74f595427d5e",
+    "attestations/vex-GO-2026-5006-8893bc41c217.json": "486c39239e33b68436e03133c231b86e625e88f7b79459134e132923bcc16ff7",
+    "attestations/vex-GO-2026-5013-cc72284291a7.json": "92c0e7d746d24ffb542c20a870e53fec672d97909fd446d07f429c8ad1b1e527",
+    "attestations/vex-GO-2026-5014-9397e8cf6f64.json": "ad5a6952a19fe6af8c67eca294ea126ca1bd5f535b7109c970a985cef256654e",
+    "attestations/vex-GO-2026-5015-df02ec3e24bc.json": "011fe5164c08ed829cc93aa23a7b7a7fd19be5ce135c1e6fb4e93241a6e1d22d",
+    "attestations/vex-GO-2026-5016-06ec5fe3dfee.json": "cb617295a3deb2b511a86d387e6f4450082d202c4bc75229df31edbe6ba4fe22",
+    "attestations/vex-GO-2026-5017-470d57623f48.json": "cabdbde7adc962cbd35afbc94a4da6282a4543ca13a8867af208e56337937304",
+    "attestations/vex-GO-2026-5018-94e54b9692e4.json": "02392caa80a51fe4817334e0051ca0c680e4b4b97eed7de1ef7becea4f714ccb",
+    "attestations/vex-GO-2026-5019-f31023d17a27.json": "ddd21e4de42ae9c2284118b7f991acd2f53125af24ae4da40cf9d5b549a43457",
+    "attestations/vex-GO-2026-5020-2be56a358066.json": "23d9b6b69e3137664bde1b581ea74df644e7f6ae779e6b3926fc3b5e683c4df5",
+    "attestations/vex-GO-2026-5021-6bd8f444653e.json": "7e1621e9c696f2be64e524caad294870cabe66fea354f11539394cfcfd82700e",
+    "attestations/vex-GO-2026-5023-02ef59037a18.json": "17212f5e1ecba9c56e9bcca70e9c24c8bb477b3add9ce89763b780ed2b3708cc",
+    "attestations/vex-GO-2026-5024-e8f9d56e7123.json": "fc1c53dd298210193e83a43d5dafc6f17ae8351a916486b21ec1d23ffaff6f11",
+    "attestations/vex-GO-2026-5025-cce51f419e3b.json": "fae567f3872647e6ea43f803d781da1a8cd8caa52769a331663681461cd6c14e",
+    "attestations/vex-GO-2026-5026-4c433dbb223c.json": "2c78728d04dbd1f165193aaf62b1b3d4ede1ee99159ac4050a238c53dcc1a2f0",
+    "attestations/vex-GO-2026-5027-3f08cb6903d0.json": "3defc84b143bf0a2998ce0cf855e14a044d8364581b4ec6c67e149231cd9e54b",
+    "attestations/vex-GO-2026-5028-6df193db0409.json": "c8b604405ac5e9a570eddd296c2e76759fdc4e43152298e2eeb5e8b27af5d802",
+    "attestations/vex-GO-2026-5029-3a70db89ba5e.json": "08fb0cb9a9a8d4899228f915837f75e82bd24ade201f899e459a022f68524887",
+    "attestations/vex-GO-2026-5030-2fd2066e5fd3.json": "90a28b07bc50a330edff44aff007ff50b7822884b5b36db68da07eafae483ec4",
+    "attestations/vex-GO-2026-5033-bc41bab2eac5.json": "8231a2f5149b32112bddee7f6dcacb185d6402273a56432b6026e81b38f17b59",
+    "attestations/vex-GO-2026-5037-003a59ac9073.json": "57486cefaf2076aaaa00e091a567e340db3018eed3e4021c9d716b5c61194c77",
+    "attestations/vex-GO-2026-5038-c2d020028928.json": "6667328b773611f11710e80d8cfb89d9d23daef05df005d12c7567444bcd949b",
+    "attestations/vex-GO-2026-5039-e87fe4627113.json": "c0568c1407b9a8907ee6be1426598dc54752a140caac759dc7bbbbcd8c2fb9ad",
+    "attestations/vex-GO-2026-5856-429f1dd7ade6.json": "8fd27b89e694880ebe49e32da87cd9cf1bad3d86b0fa3ffe049be646126fa9bb",
+    "attestations/vex-GO-2026-5932-354d16ee57f5.json": "3a1ee034f77fee59eab30d32e4b7641575eadea252f04e35626c05704d5cadf1",
+    "attestations/vex-GO-2026-5942-ff8dd930c4d8.json": "f6de11e4e3b576df190fede64ae06a5b17d9af501570aad147328f47badef504",
+    "attestations/vex-GO-2026-5970-c9e65b9e3a23.json": "c65a13f1532ee18f1f7b06609ca8dde094db47421a5fe6ff5dd6af2b0fcae534",
+    "attestations/vex-GO-2026-5972-41d6e69adf9b.json": "148bd6906aa743af46e55885fcd9d2978c5b3dcf62cf37ec76fcef36bd4f6e8e",
+    "attestations/vex-GO-2026-6088-f74078347bbf.json": "99ef1d053338a0e81909869619d70ba6d1a2e74f4c8c45c967cddb0880f8848a",
+    "attestations/vex-GO-2026-6089-139aa934edf6.json": "449ff396b8b4f7a6f856e23252e4694e7ef6af7994a808afe2deaae59320c0b1",
+    "attestations/vex-GO-2026-6090-744c2cd8253c.json": "124194dfe44a8be85543cbe52badf92bfb2a38d2c4d792ec2c27d63249b6f5f1",
+    "attestations/vex-GO-2026-6091-c3a01d8fb4ae.json": "32acfb78aa90229f45005a11258b1aa845f3d26e7bae60873218b2df5293c1cc",
+    "attestations/vex-GO-2026-6218-9c35f0d9107e.json": "679100e607f468f59f7dba088247752619eac4c5f44481c261c590faec78fcf8",
+    "attestations/vex-GO-2026-6303-2bf26ebd755e.json": "c9a3169e8629072e250cac3e5971756acb7d9ee9c115c63b45a51c13048a9e15",
+    "attestations/vex-GO-2026-6354-a024aaf27a3c.json": "626168c182418e82ef9d93a073ff74e3e5f5ed5b0d9bc1e9e2a37bcaf78bd6cd",
+    "attestations/vex-GO-2026-6355-4c4476136781.json": "dabb864a4710719beb9f8225fefe874d4044b01788433c578eb5418fe3c642f2",
+    "sbom.cdx.json": "3e0e50dcc88c0fd60d6717a63b1756b5035d9b3e06bdf75186e1378397ad62b1",
+    "trace-report.md": "80a63803211e0049dfb57374b9bcc70b817bb7536c2ccdc984997c5d5d0749c3",
+    "vex.openvex.json": "b1bb9a421da54b268543c369826feb7f4847cb8fc1d3ff5d3b1d64c51620132a"
+  },
+  "product": "go-vuln-app",
+  "version": "0.1.0"
+}

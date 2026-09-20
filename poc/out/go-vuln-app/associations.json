@@ -1,0 +1,1200 @@
+{
+  "associations": [
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-45gg-vh54-h5m9"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-45x7-px36-x8w8"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-5cgq-3rg8-m6cv"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-78mq-xcr3-xm33"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-89gr-r52h-f8rx"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-9m57-25v3-79x9"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-f5wc-c3c7-36mc"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-f6x5-jh6r-wrfv"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-hcg3-q754-cr77"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-j5w8-q4qc-rx2x"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-jppx-rxg9-jmrx"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-q4h4-gmj2-qvw2"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-qpw4-5x99-6vjp"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-rm3j-f69w-wqmq"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-v778-237x-gjrc"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-vgwf-h737-ff37"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-w879-237q-wc7r"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-x527-x647-q7gg"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2023-2402"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2024-3321"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2025-3487"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2025-4116"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2025-4134"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2025-4135"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5005"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5006"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5013"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5014"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5015"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5016"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5017"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5018"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5019"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5020"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5021"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5023"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5033"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5932"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-6303"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-6354"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-6355"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-45gg-vh54-h5m9"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-45x7-px36-x8w8"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-5cgq-3rg8-m6cv"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-78mq-xcr3-xm33"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-89gr-r52h-f8rx"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-9m57-25v3-79x9"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-f5wc-c3c7-36mc"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-f6x5-jh6r-wrfv"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-hcg3-q754-cr77"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-j5w8-q4qc-rx2x"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-jppx-rxg9-jmrx"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-q4h4-gmj2-qvw2"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-qpw4-5x99-6vjp"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-rm3j-f69w-wqmq"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-v778-237x-gjrc"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-vgwf-h737-ff37"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-w879-237q-wc7r"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GHSA-x527-x647-q7gg"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2023-2402"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2024-3321"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2025-3487"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2025-4116"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2025-4134"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2025-4135"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5005"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5006"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5013"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5014"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5015"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5016"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5017"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5018"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5019"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5020"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5021"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5023"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5033"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-5932"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-6303"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-6354"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/crypto",
+      "package_purl": "pkg:golang/golang.org/x/crypto@v0.16.0",
+      "package_version": "v0.16.0",
+      "vuln_id": "GO-2026-6355"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GHSA-4v7x-pqxf-cx7m"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GHSA-5cv4-jp36-h3mw"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GHSA-qxp5-gwg8-xv66"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GHSA-vvgc-356p-c3xw"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2024-2687"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2024-3333"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2025-3503"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2025-3595"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-4440"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-4441"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-4918"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5025"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5026"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5027"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5028"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5029"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5030"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5942"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GHSA-4v7x-pqxf-cx7m"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GHSA-5cv4-jp36-h3mw"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GHSA-qxp5-gwg8-xv66"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GHSA-vvgc-356p-c3xw"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2024-2687"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2024-3333"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2025-3503"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2025-3595"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-4440"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-4441"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-4918"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5025"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5026"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5027"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5028"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5029"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5030"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/net",
+      "package_purl": "pkg:golang/golang.org/x/net@v0.19.0",
+      "package_version": "v0.19.0",
+      "vuln_id": "GO-2026-5942"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/sys",
+      "package_purl": "pkg:golang/golang.org/x/sys@v0.15.0",
+      "package_version": "v0.15.0",
+      "vuln_id": "GO-2026-5024"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/text",
+      "package_purl": "pkg:golang/golang.org/x/text@v0.14.0",
+      "package_version": "v0.14.0",
+      "vuln_id": "GO-2026-5970"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "golang.org/x/text",
+      "package_purl": "pkg:golang/golang.org/x/text@v0.14.0",
+      "package_version": "v0.14.0",
+      "vuln_id": "GO-2026-5970"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4864"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4865"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4866"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4869"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4870"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4918"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4946"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4947"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4970"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4971"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4976"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4977"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4980"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4981"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4982"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-4986"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-5026"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-5037"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-5038"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-5039"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-5856"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-5942"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-5972"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-6088"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-6089"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-6090"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-6091"
+    },
+    {
+      "aliases": [],
+      "match_source": "osv-purl-query",
+      "package_name": "stdlib",
+      "package_purl": "pkg:golang/stdlib@1.26.1",
+      "package_version": "go1.26.1",
+      "vuln_id": "GO-2026-6218"
+    }
+  ],
+  "generated_at": "2026-09-18T16:52:49Z",
+  "osv_api": "https://api.osv.dev/v1/querybatch",
+  "product": "go-vuln-app",
+  "purls_queried": 9
+}
