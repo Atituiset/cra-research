@@ -91,6 +91,40 @@
 - arXiv 论文、韩语/日语聚合博客仅作背景，未采纳为证据。
 
 ### 收尾（2026-09-18）
-- 全部 22 条 source note 落盘于 sources/；最终报告写入 docs/research/03-competitive-landscape.md（含 15 主厂商 + 6 补充厂商分节、横向对比大表、A/B 分析、来源索引）。
+- 全部 22 条 source note 落盘于 [sources/](sources/)；最终报告写入 [docs/research/03-competitive-landscape.md](../03-competitive-landscape.md)（含 15 主厂商 + 6 补充厂商分节、横向对比大表、A/B 分析、来源索引）。
 - 已知局限：Mend reachability 语言矩阵、Endor 语言清单、Checkmarx exploitable path 支持语言未能拿到文档级明细（营销页仅有声称），报告中已按"厂商声称"标注；Black Duck 社区页 JS 渲染无法抓取，以 docs.blackduck.com 文档页替代。
+
+## 2026-09-21（闭环视角补充核实，五家逐项）
+
+触发：一份二手分析（来源疑似 AI 生成，链接带 `utm_source=chatgpt.com`）对 Endor Labs/JFrog/Snyk/Sonatype/Black Duck 五家的"漏洞生命周期闭环"能力做出具体声明，逐条一手核实后入库（报告 §6）。
+
+### 检索记录
+
+18. `Endor Labs reachability / upgrade impact / SBOM VEX 官方文档`
+    - 采纳：docs.endorlabs.com 五页（reachability-analysis、call-graphs、upgrade-impact-analysis、automated-pull-requests、exporting-sboms）+ 官网 use-case/sca-with-reachability（营销页，排序因子组合标"厂商声称"）。
+    - 结论：声明 1 成立。call path 官方语言清单 9 个（Java/Python/Rust/JS/Go/.NET/Kotlin/Scala/Ruby）——修正 03 §1.10 "覆盖广（声称）"口径。
+    - 弃用：Safeguard 评测、thectoclub/xygeni 软文（仅交叉验证）；NIST NCCoE 附录中的 Endor 条目（厂商供稿性质）。
+
+19. `JFrog contextual analysis / smart remediation / interpret remediation in scan results`
+    - 采纳：docs.jfrog.com 三页（contextual-analysis-of-cves-1、smart-remediation、interpret-remediation-in-scan-results），全部拿到原文。
+    - 结论：声明 2 ①②③成立（②"Approximately one-third…deliberately don't rely on reachability"逐字命中）；④部分成立——Patched 状态仅限 Zero-Touch Remediation（Catalog patched rebuild/local patch）场景，非通用修复后重扫标注。
+    - 修正：03 §1.5 "非公开 call graph 粒度的 function 级证据"不准确——官方文档显示 Contextual Analysis 有 direct/transitive call chain 展示与证据复制；00 报告 §18.2 的"粒度不可验证"口径随之解决。
+
+20. `Snyk reachability call path Risk Score / snyk monitor`
+    - 采纳：docs.snyk.io 两页（reachable-vulnerabilities、monitor-your-projects-at-regular-intervals）。
+    - 结论：声明 3 成立。注意 monitor 的"状态变化"语义 = "patch/upgrade path 从无到有"；旧路径页语言矩阵（Java GA + JS/TS EA）落后于新路径页，以 snyk-reachability-docs.md 为准。
+
+21. `Sonatype SBOM VEX workflow`
+    - 采纳：help.sonatype.com/en/sbom-vex-workflow.html 全文。
+    - 结论：声明 4 部分成立——五步主干（Analyze→Review→Annotate→Share→Audit）属实，但 "Reachability" 不是编号步骤（二手声明把引言描述误植为产品步骤）；justification 为 "should" 建议性非强制；Share 的是 annotated SBOM。VEX 注释跨版本复制获官方文档直接确认（此前仅有 IQ release notes）。
+
+22. `Black Duck 2026.1 VEX 文档`
+    - 采纳：docs.blackduck.com 2026.1 两页（VEX、Remediating security vulnerabilities）。docs.blackduck.com 为 Fluid Topics JS 渲染，FetchURL 只拿到 shell；改用其公开 API（`/api/khub/maps`、`/api/khub/maps/{mapId}/topics/{topicId}/content`）抓取 2026.1 英文 map（WIl3UIBXQXtRO_8dfbLjxA = bd-hub-2026.1_en-US）正文。
+    - 采纳：abb.app.blackduck.com 2025.1.0 Release Notes（佐证 AFFECTED/NOT_AFFECTED/UNDER_INVESTIGATION 状态体系 2025.1.0 引入）。
+    - 结论：声明 5 成立；"SBOM 不变、VEX 按 project version 持续更新"为原文逐字；口径修正：状态体系引入时间是 2025.1.0 而非 2026.1。
+
+### 弃用记录（本轮）
+
+- **触发用的二手分析本身不采信为来源**：其五家声明经一手核实后入库，但该文中无法核实的表述一律弃用——包括各家"内部肯定有 Evidence Graph 类似东西"的推测、对厂商的星级评分、以及任何无官方出处的架构断言。该文仅作为待核实声明清单使用，不进入 sources/。
+- pixee/heeler/appsecsanta/dynamicbusiness 等对比软文：仅交叉验证，不作事实来源（沿用既有规则）。
 
