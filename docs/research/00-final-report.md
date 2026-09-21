@@ -56,7 +56,7 @@ CRA 把漏洞管理从"开发期的 repo 级告警"变成了"对**投放市场�
 
 ### 1.2 最重要的 5 个判断
 
-**判断 1：定位空白存在，但窗口约 12–18 个月。** "以 Product/Version 为核心对象、覆盖完整漏洞生命周期闭环、面向 CRA 证据"的现代化产品，目前没有厂商完整占据（Fact 级观察，见 [03 报告](03-competitive-landscape.md) §4）：AppSec 阵营（Snyk/Mend/Endor/GitLab 等）全部是 repo 对象模型；PSIRT 阵营（Finite State/ONEKEY）以产品为对象但技术栈停留在嵌入式二进制分析；JFrog（AppTrust 证据链 + CRA Compliance Brief）与 Black Duck（制造业案例 + VEX Templates + Project+Version 对象）是距离最近的两个占位者。若二者把对象模型升级为"产品线+版本+支持期"，空白将快速收窄（[03 报告](03-competitive-landscape.md) §4 风险提示）。
+**判断 1：定位空白存在，但窗口约 12–18 个月。** "以 Product/Version 为核心对象、覆盖完整漏洞生命周期闭环、面向 CRA 证据"的现代化产品，目前没有厂商完整占据（Fact 级观察，见 [03 报告](03-competitive-landscape.md) §4）：AppSec 阵营（Snyk/Mend/Endor/GitLab 等）全部是 repo 对象模型；PSIRT 阵营（Finite State/ONEKEY）以产品为对象但技术栈停留在嵌入式二进制分析；JFrog（AppTrust 证据链 + CRA Compliance Brief）与 Black Duck（制造业案例 + VEX Templates + Project+Version 对象）是距离最近的两个占位者。若二者把对象模型升级为"产品线+版本+支持期"，空白将快速收窄（[03 报告](03-competitive-landscape.md) §4 风险提示）。（2026-09-21 深挖更新：该风险已部分兑现——JFrog AppTrust 已把 application 做成一等实体（maturity_level 枚举含 `end_of_life`、version 三态、CRA policy templates 一键化），Black Duck 新增 LTS Project Version（已发布产品持续监控骨架）；两家均到"加字段"距离而非架构重写。窗口判断维持 12–18 个月但压力偏向下限，见 §9.6 与 [07 汇总](07-vendor-deep-dive/README.md) §5）
 
 **判断 2：CRA 义务的实质是"可辩护性（defensibility）"，不是"扫描覆盖率"。** 法规明确要求的是：SBOM 至少覆盖顶层依赖且**不要求公开**、上市时无**已知可利用**漏洞（不要求无所有漏洞）、按风险决定补救形式（不要求全修）、Art 14 知悉即报（**不强制主动威胁监控**）（Fact，见 [02 报告](02-cra-regulation.md) §4、§8、§15）。但每一项义务都要求**留痕**：技术文档与 EU DoC 保留 10 年或 support period（取长）、风险评估文档化、MSA 合理请求时必须能出示 SBOM 与证据（Art 31 + Annex VII）。违反 Annex I / Art 13 / Art 14 的罚款上限 €15M 或全球营业额 2.5%（Art 64(2)）。产品价值的核心是把"做了"变成"能证明"（Interpretation）。
 
@@ -424,7 +424,7 @@ CRA 要求技术文档留存 10 年、MSA 请求时出示 SBOM、Art 14 报告�
 - 纯 ① 天花板低且易被吞并；纯 ② 是红海且 CRA 只是话术；③④ 与巨头正面碰撞且不解决对象模型错配；
 - ⑤ 的价值主张不是"发现了多少 CVE"，而是"针对某个具体产品和版本，从漏洞发现到风险判断、修复、验证以及最终合规证据的完整闭环"——这恰好是 CRA 义务的镜像；
 - 路径依赖的现实约束：不要重建已有 SCA/SAST 引擎，而是把核心对象模型换成 Product/Version/Lifecycle，把引擎能力作为数据源接入（§8 架构）；
-- 窗口风险明示：JFrog 与 Black Duck 距离最近，窗口估计 12–18 个月（Hypothesis，基于 [03 §4](03-competitive-landscape.md) 反方提示）。
+- 窗口风险明示：JFrog 与 Black Duck 距离最近，窗口估计 12–18 个月（Hypothesis，基于 [03 §4](03-competitive-landscape.md) 反方提示）。（2026-09-21 深挖更新：五家深挖后维持该估计但压力偏向下限；JFrog application 对象跃迁与 Black Duck LTS 已在兑现该风险，领先指标见 §9.6）
 
 ---
 
@@ -683,6 +683,8 @@ SBOM（PURL + version + hash）
 | **Finite State / ONEKEY** | PSIRT 阵营（半个占位者） | 产品/build 为对象、CRA 原生、托管合规服务；但技术栈是嵌入式二进制分析，无现代开发者工作流 |
 | **Dependency-Track（OSS）** | 开源基线 | project/portfolio+VEX，开源世界最接近目标对象模型；无 reachability/修复/CRA 证据 |
 
+> 注（2026-09-21 深挖更新，表格原文保留不改）：JFrog 行"对象是'制品'"已过时——AppTrust 的 application/application version 一等实体把对象模型上移一层（maturity_level 含 `end_of_life`，仍无支持期日期语义）；Black Duck 行需补 LTS Project Version（"已发布产品持续监控"骨架，转换即出 SBOM，通知 Coming soon）；Sonatype 行"无 reachability"已过时（Lifecycle 有 method 级，但不进 SBOM Manager）；Endor 行需补"C/C++ 无 call graph（官方自认）"。逐条修正见 [03 §6.5](03-competitive-landscape.md) 与 [07 汇总](07-vendor-deep-dive/README.md)。
+
 ### 9.3 定位空白判断（引用 [03 报告](03-competitive-landscape.md) §4 结论）
 
 > **空白存在但正在收窄**——"以 Product/Version 为核心对象、覆盖完整漏洞生命周期闭环、面向 CRA 证据"的现代化产品定位，目前没有厂商完整占据；两端各有半个占位者（JFrog/Black Duck 从 AppSec 侧、Finite State/ONEKEY 从 PSIRT 侧），中间断层明显。
@@ -704,6 +706,18 @@ SBOM（PURL + version + hash）
 **核实结论（一句话/家）**：**Endor Labs**——声明的全链路各环节均有官方文档支撑，成立（仅排序因子组合为营销页口径）；**JFrog**——Contextual Analysis 多信号 scanner、"约三分之一 scanner 不依赖 reachability"、Smart Remediation 双路径逐字成立，"Patched 状态回扫"部分成立（限 Zero-Touch 场景）；**Snyk**——call path 入 Risk Score、monitor 对新 CVE/修复可用性重评估，成立；**Sonatype**——官方五步工作流成立但 Reachability 非产品步骤、justification 仅建议性，部分成立；**Black Duck**——NOT_AFFECTED 强制 justification、"SBOM 不变而 VEX 按 project version 持续更新"逐字成立（状态体系实为 2025.1.0 引入）。
 
 **Assessment-centric 判断**：五家全部仍是 Finding-centric，无一家把 Assessment（Claim+Evidence+Decision）建成可版本化、挂机器证据、可被新情报触发重估的一等对象；最接近者 Black Duck，其次 JFrog（唯一承诺逐结果机器 justification）。最大断裂带在"机器判定→正式 VEX 结论"的自动化——**§9.3 定位空白判断维持不变且更硬**；措辞修正：JFrog reachability 粒度升为"官方文档可验证"（§18.2 解决），Black Duck VEX 状态引入时间修正为 2025.1.0。
+
+### 9.6 第二轮厂商技术深挖摘要（2026-09-21）
+
+> 对五家闭环核实对象（Endor Labs / JFrog / Snyk / Sonatype / Black Duck）的技术实现级深挖。五家×八维对比表、逐条一手来源见 [07 汇总](07-vendor-deep-dive/README.md)；对 03 报告的口径修正索引见 [03 §6.5](03-competitive-landscape.md)。
+
+**五家一句话技术画像**：**Endor** = 自研确定性引擎（FASTEN/Steady 学术谱系）+ 服务端预计算调用图资产 + MCP 化 agentic 层（C/C++ 为隔离的哈希+embedding 路线，无 call graph）；**JFrog** = checksum 组件图（PostgreSQL）+ 人工策展 per-CVE 规则库（1,600+），五家中唯一把证据做成密码学对象（DSSE/in-toto Evidence）、唯一把对象模型推进到 application 一级（AppTrust）；**Snyk** = Human+AI 策展漏洞库（35k 专家修复样本）× DeepCode 引擎 × "generator≠validator"验证层三资产互喂；**Sonatype** = registry 代理位 × Fast-Track/Deep Dive 策展队列 × 策略引擎三件套，已有 method 级 reachability（03 旧口径已修正）；**Black Duck** = 9M+ 组件 KB + snippet 人工确认闸门 + C/C++/固件全行业最完整覆盖，LTS Project Version 是"已发布产品持续监控"的最接近实现。
+
+**共同收敛点**（Fact）：① "确定性引擎在下、LLM 编排在上"分层全员收敛，无一家让 LLM 独立产出判定（加固 §1.2 判断 5）；② MCP 化全员完成，JFrog/Snyk 已把治理动作（waiver 审批、evidence 创建）开放给 agent；③ reachability 保守度声明成为官方文档标配（偏好假阳性/假阴性自认/降级假设明示）；④ 情报策展全部转向"AI 扩面+人工终审"；⑤ 存储层无一家用专门图数据库（"图数据库是叙事"样本再扩大）。
+
+**共同空白（再确认，证据更硬）**：机器判定→VEX statement 自动化五家均无（断点在判定对象化层，不在格式层）；判定失效重估五家均无（Black Duck 官方自曝 BDSA↔CVE 标识符切换重置 remediation status、score 变化静默无审计）；product/version/支持期一等对象全员仍缺（但 JFrog/Black Duck 已到"加字段"距离）；纯二进制 reachability 全行业确认空白（加固 §1.2 判断 3 的 C/C++ 押注）；修复可信度绝对指标仍空白（Snyk"94% 更高合并率"仅为相对值）。
+
+**窗口判断更新**（Interpretation）：§1.2 判断 1 的 12–18 个月**维持不变，但压力偏向下限（12 个月侧）**——JFrog application 跃迁与 Black Duck LTS 说明 [03 §4](03-competitive-landscape.md) 风险①已在兑现（完成度约一半），但四条共同空白无一家有 roadmap 信号。建议以两个领先指标监控窗口关闭：① JFrog 给 application version 加支持期/EOL 日期字段；② Black Duck LTS 通知/告警 GA。详见 [07 汇总 §5](07-vendor-deep-dive/README.md)。
 
 ---
 
@@ -1030,7 +1044,7 @@ Vendor advisory（优先 CSAF 机器可读通道，01 §12）发布组件安全�
 **答：对漏洞预防环节是趋势，但本产品的主战场仍在 after/post-release——两面性。** 证据：during-coding 侧已有强占位者（Black Duck Signal 编码时 agent、Apiiro Guardian 在 prompt 层拦截、IDE 内 agentic 修复）（[03 §1.3/§1.16](03-competitive-landscape.md)）；而 CRA 义务的主体在上市门禁与上市后 support period（≥5 年）全周期（[02 §3/§7](02-cra-regulation.md)），这是"after coding"的法律固化；Agentic 修复 PR 工作流本身横跨两者。→ 本产品应通过 Integration/AI Coding 对接进入 during-coding 环节（修复动作落在开发者工作流），但对象模型与证据锚点保持在产品版本侧。（Interpretation）
 
 **Q10：CRA 是否可能成为 SCA → Product Security Platform → Agentic Security Platform 演进的商业切入口？**
-**答：是，当前证据支持；窗口 12–18 个月（估计）。** 证据：Art 14 已生效且覆盖存量产品（2026-09-11），制造了即时刚需（[02 §6/§11](02-cra-regulation.md)）；定位空白被四路独立证据确认（AppSec 阵营对象模型错配、PSIRT 阵营技术栈断层、运行时阵营未接 CRA、开源雏形无人产品化，[03 §4](03-competitive-landscape.md)）；CRA 原生初创已获融资（CRACI €1.4M 种子轮，2026-05）说明市场感知已到。反方风险：JFrog/Black Duck 升级对象模型、平台厂商自上而下重组、执法实践不确定（[03 §4](03-competitive-landscape.md) 风险提示）。→ 切入口成立，但"切入口"三个字意味着必须按 §14 路线图向平台演进，停在合规工具会被吞并。（Interpretation）
+**答：是，当前证据支持；窗口 12–18 个月（估计）。** 证据：Art 14 已生效且覆盖存量产品（2026-09-11），制造了即时刚需（[02 §6/§11](02-cra-regulation.md)）；定位空白被四路独立证据确认（AppSec 阵营对象模型错配、PSIRT 阵营技术栈断层、运行时阵营未接 CRA、开源雏形无人产品化，[03 §4](03-competitive-landscape.md)）；CRA 原生初创已获融资（CRACI €1.4M 种子轮，2026-05）说明市场感知已到。反方风险：JFrog/Black Duck 升级对象模型、平台厂商自上而下重组、执法实践不确定（[03 §4](03-competitive-landscape.md) 风险提示）。→ 切入口成立，但"切入口"三个字意味着必须按 §14 路线图向平台演进，停在合规工具会被吞并。（Interpretation）（2026-09-21 深挖更新：五家技术深挖后窗口判断维持 12–18 个月但偏向下限——JFrog 对象模型升级与 Black Duck LTS 已在进行中，"JFrog/Black Duck 升级对象模型"从假设变为进行态；建议以 JFrog application version 支持期字段、Black Duck LTS 通知 GA 为窗口关闭领先指标，见 §9.6 与 [07 汇总 §5](07-vendor-deep-dive/README.md)）
 
 ---
 
@@ -1176,6 +1190,7 @@ Agentic Product Security（结论级证据标准卡位、跨客户证据网络�
 | 04 技术深挖 | [docs/research/04-technology-deep-dive.md](04-technology-deep-dive.md) | [04-technology-deep-dive/sources/](04-technology-deep-dive/sources/)（23 条 notes）、[research-log.md](04-technology-deep-dive/research-log.md) |
 | 05 欧盟产品合规体系（2026-09-19 补充） | [docs/research/05-eu-compliance-landscape.md](05-eu-compliance-landscape.md) | [05-eu-compliance-landscape/sources/](05-eu-compliance-landscape/sources/)（9 条 notes，EUR-Lex 一手直连核实 EU 2026/339）、[research-log.md](05-eu-compliance-landscape/research-log.md) |
 | 06 产品形态与技术栈（2026-09-20 补充） | [docs/research/06-product-forms-and-tech-stacks.md](06-product-forms-and-tech-stacks.md) | [06-product-forms-and-tech-stacks/sources/](06-product-forms-and-tech-stacks/sources/)（28 条 notes）、[research-log.md](06-product-forms-and-tech-stacks/research-log.md) |
+| 07 厂商深度技术调研（2026-09-21 补充） | [docs/research/07-vendor-deep-dive/README.md](07-vendor-deep-dive/README.md) | [07-vendor-deep-dive/](07-vendor-deep-dive/)（五家主文档 + sources/ + 各厂商 research-log） |
 
 > 本报告所有 Fact 的最终出处以各分报告的 source notes 为准；本报告不重复列 URL。
 
@@ -1188,3 +1203,4 @@ Agentic Product Security（结论级证据标准卡位、跨客户证据网络�
 - **2026-09-20**：新增 §1.0"我们要做什么（一句话定位）"（"产品漏洞档案官"定义 + 输入/处理/输出 + 边界）；新增 §7.6"VEX 判定逻辑：证据强度分级的裁决流程"（四 status 的判定条件-证据-自动化程度表 + "无反证即 affected / 弱证据强制人签 / statement 版本化"三条原则）；新增 §7.7"VEX 判定数据流与技术栈"（Presence→Association→Reachability→Exploitability context→Fix & Verification→Statement 存证六节点数据流图 + 四个工程要点）；全文跨文件引用链接化（30 个文件约 660 处，另修复 [02 报告](02-cra-regulation.md) 11 个错误链接目标）。
 - **2026-09-20**：新增设计文档 [docs/design/vex-agent-architecture.md](../design/vex-agent-architecture.md)——基于 review-skills 架构的 VEX 判定平台 Agent 编排设计（架构映射、skills/vex/ 目录结构、六个 judgment-rule Skill、六类查询原语、工具带与许可证、四块 CRA 专用缺口、五步落地路径），是 §7.6/§7.7 的 Agent 化实现方案。
 - **2026-09-21**：新增 §9.5"闭环视角 Gap Analysis"（[03 报告](03-competitive-landscape.md) §6 摘要）——对一份疑似 AI 生成的二手分析中五家厂商（Endor Labs/JFrog/Snyk/Sonatype/Black Duck）闭环能力声明逐条一手核实：Endor/Snyk/Black Duck 成立、Sonatype 与 JFrog 部分成立；五家全部仍是 Finding-centric，最接近 Assessment-centric 的是 Black Duck 与 JFrog；§9.3/03 §4 定位空白判断维持不变。措辞修正：JFrog reachability 粒度升为"官方文档可验证"（§18.2 口径差异解决），Black Duck VEX 状态体系引入时间修正为 2025.1.0。其余章节未改动。
+- **2026-09-21**：新增 §9.6"第二轮厂商技术深挖摘要"（[07 汇总](07-vendor-deep-dive/README.md)摘要）——五家一句话技术画像、五个共同架构收敛点（确定性引擎+LLM 分层、MCP 化、reachability 保守度声明、策展 AI 扩面+人工终审、PostgreSQL 一统）、四条共同空白再确认（判定→VEX 自动化、失效重估、product/version/支持期对象、纯二进制 reachability）与窗口判断更新（维持 12–18 个月但偏向下限，附两个领先指标）。括注更新：§1.2 判断 1（JFrog/Black Duck 距离评估部分兑现）、§6.3（窗口估计偏下限）、§9.2（四家厂商行注记）、§15 Q10（窗口判断）。[03 报告](03-competitive-landscape.md)同步追加 §6.5 深挖修正索引（六条口径修正，原文保留）。其余章节未改动。

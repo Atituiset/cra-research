@@ -27,7 +27,7 @@ CRA（Regulation EU 2024/2847）2024-12-10 生效，分阶段适用：**2026-09-
 9. **Remediation**：自动升级 PR、Agent Fix（2026-09 GA 于 PR 工作流，第三方报道）；Evo Agentic AppSec 修复 agent（public preview，CLI/ADE 入口）。
 10. **AI/Agent**：**真 agent 编排**：Evo 四环（Discover/Remediate/Validate/Prevent），AI-SPM + 修复 agent + 持续攻击验证 + 预防 gate。非 chatbot。〔[sources/snyk-evo-cos-ga.md](03-competitive-landscape/sources/snyk-evo-cos-ga.md)〕
 11. **Compliance Evidence**：报告/审计能力一般；CRA 证据链无专门产品。
-12. **Product→Version 维度**：**无**。对象模型是 Project（repo/制品扫描目标）。
+12. **Product→Version 维度**：**无**。对象模型是 Project（repo/制品扫描目标）。（2026-09-21 深挖修正：字段级确认——Target=repo/K8s workload/可扫资源，Project=manifest 文件×扫描类型，无版本语义、无 product/产品线概念；"无"的结论获官方文档级加固而非推翻，见 [07 深挖](07-vendor-deep-dive/snyk.md) §6）
 
 ### 1.2 Mend
 
@@ -51,7 +51,7 @@ CRA（Regulation EU 2024/2847）2024-12-10 生效，分阶段适用：**2026-09-
 3. **SCA**：KnowledgeBase 400 万+ 组件（厂商数据），多因子检测（声明/二进制/代码片段/依赖），审计级准确性是核心卖点。
 4. **SBOM**：生成/导入/SPDX/CycloneDX 全支持，SBOM Templates 成熟；二进制分析（Black Duck Binary Analysis）覆盖无源码场景。
 5. **VEX**：**2026.7.0（2026-08）新增 VEX Templates**——模板化定义 VEX 文档字段，与 SBOM Templates 统一管理；VEX 为独立 license 模块。〔[sources/blackduck-vex-templates.md](03-competitive-landscape/sources/blackduck-vex-templates.md)〕
-6. **Reachability**：有（Coverity 引擎支撑的可利用路径分析），但非其营销重心，语言覆盖偏传统生态。
+6. **Reachability**：有（Coverity 引擎支撑的可利用路径分析），但非其营销重心，语言覆盖偏传统生态。（2026-09-21 深挖修正：本轮官方文档未印证"Coverity 引擎支撑"——实际路径为 Detect 生成 Java 调用图→SHA-1→KB Function Signature Match 比对 BDSA 携带的受影响方法名，仅 Java、仅对带方法名元数据的 BDSA 有效，见 [07 深挖](07-vendor-deep-dive/black-duck.md) §0/§12）
 7. **Exploitability**：BDSA（Black Duck Security Advisories）提供比 NVD 更快的策展情报；EPSS/KEV 级别信号集成。
 8. **Threat Intel**：BDSA 是其传统强项（CNA 身份）。
 9. **Remediation**：升级指导 + Signal 的 agentic 修复（"自动发现并修复、无假阳性"，厂商声称，2026-03 GA）。
@@ -66,11 +66,11 @@ CRA（Regulation EU 2024/2847）2024-12-10 生效，分阶段适用：**2026-09-
 3. **SCA**：自建漏洞情报（"proprietary vulnerability intelligence"，202.1 release notes）+ 组件健康度/恶意包（其年度 State of the Software Supply Chain 报告是行业引用源）。
 4. **SBOM**：**SBOM Manager（2023 起独立产品）**——SPDX/CycloneDX 生成/校验/存储/分发全生命周期，1000+ 组织（厂商声称）。〔[sources/aqua-anchore-sonatype.md](03-competitive-landscape/sources/aqua-anchore-sonatype.md)〕
 5. **VEX**：SBOM Manager 支持 VEX 文档与注释；**VEX 注释可从旧版本 SBOM 复制到新版本**（IQ 2024 release notes）——全行业极少数明确处理"版本间 VEX 延续"的功能。〔[sources/aqua-anchore-sonatype.md](03-competitive-landscape/sources/aqua-anchore-sonatype.md)〕
-6. **Reachability**：无 function 级 reachability（依赖维度的优先级与"component similarity"分析为主）。
+6. **Reachability**：无 function 级 reachability（依赖维度的优先级与"component similarity"分析为主）。（2026-09-21 深挖修正：此口径已过时——Lifecycle 现有 method 级 Reachability Analysis（"应用代码是否调用了含已知漏洞的具体方法"），支持 Java/JVM、JavaScript/Node.js、.NET（.NET 为 IQ 203，2026-05 新增），另有 Reachability Evidence（压缩调用路径，仅 Java）；但该证据不进入 SBOM Manager 视图，见 [07 深挖](07-vendor-deep-dive/sonatype.md) §0）
 7. **Exploitability**：EPSS/KEV 级别信号；Firewall 侧重恶意包前置阻断。
 8. **Threat Intel**：自建（其恶意包追踪数据被同行引用）。
 9. **Remediation**：升级建议 + 依赖健康管理；无 agentic 修复。
-10. **AI/Agent**：弱（策略自动化为主）。
+10. **AI/Agent**：弱（策略自动化为主）。（2026-09-21 深挖修正：需细化为"数据+策略驱动的自动化"——Sonatype Guide（MCP Server 接入 IDE）、Golden Pull Requests（仅 Maven）、Automated Waivers 已上线；方向不是 LLM agentic 修复闭环，见 [07 深挖](07-vendor-deep-dive/sonatype.md) §0/§7）
 11. **Compliance Evidence**：SBOM 存储/分发/审计是强项。
 12. **Product→Version 维度**：**部分**——SBOM Manager 以 SBOM（绑定 application 版本）为管理对象 + VEX 跨版本延续，方向最接近，但对象是"application/SBOM"而非 CRA 产品语义，且无 reachability/修复闭环。
 
@@ -87,7 +87,7 @@ CRA（Regulation EU 2024/2847）2024-12-10 生效，分阶段适用：**2026-09-
 9. **Remediation**：升级建议 + Curation 前置预防；无 agentic 修复发布。注意：部分 Xray 能力 2026-04 起分阶段迁移至 Curation（官方 deprecation 公告）。〔[research-log.md](03-competitive-landscape/research-log.md) #6〕
 10. **AI/Agent**：弱；MCP 生态集成在演进。
 11. **Compliance Evidence**：**AppTrust 是关键差异化**——不可变 release bundle 分级 promotion、证据与二进制加密绑定（chain of custody）、Policy as Code（OPA）合规 gate（厂商声称）。〔[sources/jfrog-cra-compliance-brief.md](03-competitive-landscape/sources/jfrog-cra-compliance-brief.md)〕
-12. **Product→Version 维度**：**部分偏强**——以 release/制品版本为对象做证据与 gate，最接近"产品版本生命周期"；但漏洞发现/关联/reachability 深度弱于 Snyk/Endor，且对象仍是"制品"而非带支持期语义的产品线。
+12. **Product→Version 维度**：**部分偏强**——以 release/制品版本为对象做证据与 gate，最接近"产品版本生命周期"；但漏洞发现/关联/reachability 深度弱于 Snyk/Endor，且对象仍是"制品"而非带支持期语义的产品线。（2026-09-21 深挖修正：对象模型已跃迁到 application 一级——AppTrust 引入 application 为一等实体（ownership、criticality、maturity_level 枚举含 `end_of_life`），application version 有 PRE_RELEASE/RELEASED/TRUSTED_RELEASE 三态，且 AppTrust 已有 pre-built CRA policy templates（厂商声称）；距"产品线+版本+支持期"只差加字段，§4 风险①正在兑现中，见 [07 深挖](07-vendor-deep-dive/jfrog.md) §5）
 
 ### 1.6 GitHub（Advanced Security / Dependabot）
 
@@ -156,7 +156,7 @@ CRA（Regulation EU 2024/2847）2024-12-10 生效，分阶段适用：**2026-09-
 3. **SCA**：自建漏洞数据库 + **CVE→受影响函数（跨版本）映射库**（程序分析自建，厂商声称）。〔[sources/endor-reachability-framework.md](03-competitive-landscape/sources/endor-reachability-framework.md)〕
 4. **SBOM**：生成 SBOM（SCA 一体化）；Microsoft Defender for Cloud 集成（2026-06）确认其 SBOM/call graph 能力被巨头生态采纳。〔[research-log.md](03-competitive-landscape/research-log.md) #11〕
 5. **VEX**：支持 SBOM & VEX 输出（FedRAMP 页）。〔[research-log.md](03-competitive-landscape/research-log.md) #11〕
-6. **Reachability**：**行业标杆叙事**——function 级 + 完整 call graph + 容器/OS 包使用分析 + 互联网暴露；每个可达判定附**可检查、可复现的 call chain 证据**；precomputed reachability 兜底（无完整 call graph 时）；客户报告降噪 80–99%（厂商声称）。〔[sources/endor-reachability-framework.md](03-competitive-landscape/sources/endor-reachability-framework.md)〕
+6. **Reachability**：**行业标杆叙事**——function 级 + 完整 call graph + 容器/OS 包使用分析 + 互联网暴露；每个可达判定附**可检查、可复现的 call chain 证据**；precomputed reachability 兜底（无完整 call graph 时）；客户报告降噪 80–99%（厂商声称）。〔[sources/endor-reachability-framework.md](03-competitive-landscape/sources/endor-reachability-framework.md)〕（2026-09-21 深挖修正：官方自认 "Reachability is not available for C/C++"——C/C++ 走文件/分段哈希+代码 embedding 相似度的 snippet 匹配路线，与 call graph 引擎完全隔离，且 `.so`/`.a` 纯二进制扫描不支持；语言口径另有 Ruby 在/不在两处官方清单不一致，见 [07 深挖](07-vendor-deep-dive/endor-labs.md) §4/§10）
 7. **Exploitability**：reachability + exploitability 上下文组合；强调"二元判定不够，要证据"。
 8. **Threat Intel**：自建漏洞/恶意包研究。
 9. **Remediation**：**Upgrade Impact Analysis（升级会不会 break 的预判）+ Endor Patches**（不升级的补丁路径）——修复环节差异化明显。〔[research-log.md](03-competitive-landscape/research-log.md) #11〕
@@ -279,6 +279,8 @@ CRA（Regulation EU 2024/2847）2024-12-10 生效，分阶段适用：**2026-09-
 | Finite State | ● 托管CRA服务 | 二进制分析 | ● 出货二进制SBOM | ● 生成 | ○(二进制函数识别有限) | 嵌入式/C/C++ | ◐ | ◐ | ○ | ● PSIRT工作流 | ● **产品/build为对象** |
 | ONEKEY | ● CRA专项(webinar/资源) | 二进制分析 | ● 二进制生成/导入 | ◐ | ○ | 嵌入式 | ◐ 威胁建模profile | ◐ | ○ | ● 产品生命周期监控 | ● **产品线为对象** |
 
+> 注（2026-09-21 深挖修正，表格原文保留不改，详见 §6.5）：① Sonatype 行"Reachability 粒度 ○"与"AI/Agent ○"已过时——Lifecycle 有 method 级 reachability（Java/JS/.NET），Guide/Golden PR/Automated Waivers 已上线；② Black Duck 行"◐ 有(Coverity引擎)"未获本轮官方文档印证，应修正为"Detect+KB 函数签名匹配（仅 Java）"；③ JFrog 行 Product→Version"◐ release/制品版本"已跃迁为 application 一等实体（AppTrust）；④ Snyk/Endor 行结论维持，获字段级/官方自认级加固。
+
 ---
 
 ## 3. 分析 A：能力商品化光谱
@@ -400,6 +402,8 @@ CRA（Regulation EU 2024/2847）2024-12-10 生效，分阶段适用：**2026-09-
 | 证据链 | ◐ call chain 可检查 | ● 逐结果 justification 列信号+AppTrust 证据绑定制品 | ◐ | ◐ | ● justification 强制文档化+审计级报告 |
 | Product→Version 对象模型 | ○ | ◐ release/制品版本 | ○ | ◐ SBOM 绑定 application 版本 | ◐ Project+Version，VEX per project version（官方文档级） |
 
+> 注（2026-09-21 深挖修正，矩阵原文保留不改，详见 §6.5）：Black Duck 列 Reachability"◐（Coverity 引擎支撑）"未获本轮官方文档印证，实为 Detect 调用图+KB 函数签名匹配（仅 Java）；Sonatype 列"○"已过时——Lifecycle 有 method 级 reachability，但证据不进 SBOM Manager 视图，故对本章 SBOM/VEX 闭环语境该格语义仍接近"○"；JFrog 列 Product→Version 已跃迁 application 一级（AppTrust），Black Duck 列另增 LTS Project Version（已发布产品持续监控骨架）——两家均比矩阵所示更接近 CRA 粒度。
+
 矩阵最关键的三个发现：
 
 1. **"判定→VEX 自动化"是全行业断裂点**。五家没有一家把 reachability/exploitability 的机器结论自动写成带 justification 的 VEX statement：Endor 有 call chain 证据但 VEX 只是导出动作；JFrog 有机器 justification 但不落到 VEX 对象（VEX 仅 SBOM 富化，厂商声称）；Black Duck/Sonatype 的 VEX 状态靠人工标注（Black Duck 强制 justification 但 justification 是枚举+文本，非机器证据引用）；Snyk 无 VEX 产品。机器判定与正式结论之间全部隔着人工搬运。
@@ -424,3 +428,16 @@ CRA（Regulation EU 2024/2847）2024-12-10 生效，分阶段适用：**2026-09-
 2. **Black Duck"次近占位者"地位补强**：2026.1 文档逐字确认"SBOM 静态 + VEX 按 project version 持续更新"——五家中唯一的官方文档级 Product-Version VEX 生命周期语义；§4 风险提示①（Black Duck 升级对象模型则空白收窄）的紧迫性上升。
 3. **措辞修正 1**（JFrog）：§1.5 与 00 报告 §18.2 的"粒度不可验证"口径作废——Contextual Analysis 的判定粒度与证据展示现有官方文档支撑；其"约 1/3 scanner 不用 reachability"的原文揭示了一个 §4 未覆盖的事实：** exploitability 证据的相当一部分本就不在代码里**（配置/CLI/主机属性），这对"Evidence Graph 必须能挂载非代码类证据"是正向论据。
 4. **措辞修正 2**（Black Duck VEX 时间线）：状态体系 2025.1.0 引入（非 2026.1），VEX Templates 仍是 2026.7.0——引用时分清两件事。
+
+### 6.5 第二轮深挖修正索引（2026-09-21）
+
+> 第二轮五家厂商技术深挖（汇总见 [07-vendor-deep-dive/README.md](07-vendor-deep-dive/README.md)）对本报告的口径修正索引。正文相关处一律以"（2026-09-21 深挖修正：…）"括注保留历史记录，本节汇总全部修正点。
+
+1. **Sonatype"无 function 级 reachability"已过时**（影响 §1.4 第 6 条、§2 大表、§6.2 矩阵）：Lifecycle 现有 method 级 Reachability Analysis，支持 Java/JVM、JavaScript/Node.js、.NET（.NET 为 IQ 203 新增），另有 Reachability Evidence（仅 Java）；但该证据不进入 SBOM Manager 视图，故 §6.1 第 4 条"Reachability 不是 SBOM Manager 编号步骤"的结论不受影响。见 [07 深挖 sonatype.md §0](07-vendor-deep-dive/sonatype.md)。
+2. **Snyk 对象模型字段级确认**（影响 §1.1 第 12 条）：Target=repo/K8s workload/其他可扫资源，Project=manifest 文件×扫描类型；无版本语义、无 product/产品线概念——"无 Product→Version"结论获官方文档级加固。见 [07 深挖 snyk.md §6](07-vendor-deep-dive/snyk.md)。
+3. **JFrog 对象模型已跃迁到 application 一级**（影响 §1.5 第 12 条、§4 风险①）：AppTrust 引入 application 一等实体（maturity_level 枚举含 `end_of_life`、criticality、owners）+ application version 三态（PRE_RELEASE/RELEASED/TRUSTED_RELEASE）+ pre-built CRA policy templates（厂商声称）；距"产品线+版本+支持期"只差加字段，§4 风险①正在兑现中。见 [07 深挖 jfrog.md §5](07-vendor-deep-dive/jfrog.md)。
+4. **Endor C/C++ 无 call graph**（影响 §1.10 第 6 条）：官方自认 "Reachability is not available for C/C++"；C/C++ 为文件/分段哈希+代码 embedding 相似度路线，与主引擎完全隔离；`.so`/`.a` 纯二进制扫描不支持。见 [07 深挖 endor-labs.md §4](07-vendor-deep-dive/endor-labs.md)。
+5. **Black Duck reachability 不是"Coverity 引擎支撑"**（影响 §1.3 第 6 条、§2 大表、§6.2 矩阵）：本轮官方文档只支持"Detect 生成 Java 调用图→SHA-1 哈希→KB Function Signature Match（仅 Java、仅带方法名元数据的 BDSA）"一条路径；Coverity 是否另有 OSS reachability 能力未获印证（Coverity 文档未全量翻检，不能排除，但不应作为默认口径）。VEX 状态体系 2025.1.0 引入的修正 §6.4 已改。见 [07 深挖 black-duck.md §0/§12](07-vendor-deep-dive/black-duck.md)。
+6. **（附带细化）Sonatype"AI/Agent 弱"**（影响 §1.4 第 10 条）：应细化为"数据+策略驱动的自动化"——Sonatype Guide（MCP）、Golden Pull Requests（仅 Maven）、Automated Waivers 已上线，但刻意不做 LLM agentic 修复闭环。见 [07 深挖 sonatype.md §0/§7](07-vendor-deep-dive/sonatype.md)。
+
+横向对比、共同收敛点/空白、威胁动向与窗口期判断更新，见 [07 汇总](07-vendor-deep-dive/README.md)。
