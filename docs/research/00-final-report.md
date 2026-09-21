@@ -4,16 +4,16 @@
 >
 > **分报告**（均为本报告的事实基础，本文引用时简写为"01/02/03/04 报告 §x"）：
 >
-> 1. `docs/research/01-domain-ontology.md` — 领域知识体系（CVE/CWE/NVD/OSV/GHSA/CVSS/EPSS/KEV/CPE/PURL/SBOM/VEX/CSAF/Reachability/Exploitability/修复/披露）
-> 2. `docs/research/02-cra-regulation.md` — CRA Regulation (EU) 2024/2847 法规研究（13 组必答问题 + 46 行义务映射表）
-> 3. `docs/research/03-competitive-landscape.md` — 21 家厂商竞争格局
-> 4. `docs/research/04-technology-deep-dive.md` — Reachability / Exploitability / Evidence Graph / Agentic 技术深挖
+> 1. [docs/research/01-domain-ontology.md](01-domain-ontology.md) — 领域知识体系（CVE/CWE/NVD/OSV/GHSA/CVSS/EPSS/KEV/CPE/PURL/SBOM/VEX/CSAF/Reachability/Exploitability/修复/披露）
+> 2. [docs/research/02-cra-regulation.md](02-cra-regulation.md) — CRA Regulation (EU) 2024/2847 法规研究（13 组必答问题 + 46 行义务映射表）
+> 3. [docs/research/03-competitive-landscape.md](03-competitive-landscape.md) — 21 家厂商竞争格局
+> 4. [docs/research/04-technology-deep-dive.md](04-technology-deep-dive.md) — Reachability / Exploitability / Evidence Graph / Agentic 技术深挖
 >
 > **关键时间背景**（Fact）：CRA **Article 14 漏洞/事件报告义务已于 2026-09-11（7 天前）起适用**，ENISA Single Reporting Platform（SRP）同日上线；主体义务（Annex I、Art 13 等）**2027-12-11** 全面适用。
 >
 > **标注约定**：**（Fact）**= 有一手来源支撑；**（Interpretation）**= 基于事实的推理；**（Hypothesis）**= 待验证假设；**（Recommendation）**= 行动建议。引用格式："见 0x 报告 §y"。
 >
-> **引用限制**：02 报告的法规全文取自 EUR-Lex 官方页面在 Wayback Machine 的 2025-01-18 英文存档（eur-lex.europa.eu 直连被 WAF 拦截）。条文编号与措辞以该存档为准，正式对外引用前建议在可访问 EUR-Lex 的网络下复核（见 02 报告 §阅读指南）。
+> **引用限制**：[02 报告](02-cra-regulation.md)的法规全文取自 EUR-Lex 官方页面在 Wayback Machine 的 2025-01-18 英文存档（eur-lex.europa.eu 直连被 WAF 拦截）。条文编号与措辞以该存档为准，正式对外引用前建议在可访问 EUR-Lex 的网络下复核（见 [02 报告](02-cra-regulation.md) §阅读指南）。
 
 ---
 
@@ -42,21 +42,29 @@
 
 ## 1. Executive Summary
 
+### 1.0 我们要做什么（一句话定位，2026-09-20 补充）
+
+> **给卖产品到欧盟的制造商做一个"产品漏洞档案官"：以产品版本为账本，持续记录"你产品里有什么漏洞、你怎么判定的、修没修"，并在漏洞被在野利用时替你掐着 24h/72h 的法定时钟跑完报告——全程留下能出示给监管机构的签名证据。**
+
+三句话版：**输入**是产品清单（Product/Version/支持期）+ 每个版本的 SBOM + 全球漏洞情报（NVD/OSV/GHSA/KEV）；**处理**是自动关联漏洞到具体产品版本 → 用 reachability/exploitability 把上千条告警裁决成几十个需要行动的判断 → 每个判断固化为带证据的 VEX statement → 驱动修复、验证、更新；**输出**是监管随时来都能给的三样东西——受影响版本矩阵、掐表生成的 Art 14 报告包、10 年可溯的签名证据链。
+
+**它不是什么**：不是又一个 SCA 扫描器（扫描器是传感器、回答"有什么"，本工具是账本、回答"你处置了什么、证明给我看"；传感器复用现成的）；不是 GRC 报表工具（证据是分析引擎跑出来的带签名机器结论，不是人工填表）；不是 ASPM（ASPM 聚合告警进工单，本工具管理产品版本的生命周期状态并锚定 CRA 法定义务）。
+
 ### 1.1 一句话结论
 
-CRA 把漏洞管理从"开发期的 repo 级告警"变成了"对**投放市场的产品版本**负法律责任的、带小时级时钟和十年留存期的全生命周期义务"。现有 AppSec/SCA 厂商的对象模型（repo/应用/工作负载）与监管提问的粒度（"哪个产品版本的哪个漏洞、判定了什么、修没修、证据在哪"）之间存在**结构性错配**，这是真实存在但正在收窄的产品定位空白（见 03 报告 §4）。对一家已有 SCA/SAST 能力的厂商，正确的战略不是"给 SCA 加一个 CRA 报表"，而是**以 CRA 为切入口，把核心对象从 Component/CVE 升级为 Product/Version/Lifecycle，并围绕 Evidence Graph 建立可辩护性壁垒**（Recommendation；支撑证据见 §5、§6、§10、§15）。
+CRA 把漏洞管理从"开发期的 repo 级告警"变成了"对**投放市场的产品版本**负法律责任的、带小时级时钟和十年留存期的全生命周期义务"。现有 AppSec/SCA 厂商的对象模型（repo/应用/工作负载）与监管提问的粒度（"哪个产品版本的哪个漏洞、判定了什么、修没修、证据在哪"）之间存在**结构性错配**，这是真实存在但正在收窄的产品定位空白（见 [03 报告](03-competitive-landscape.md) §4）。对一家已有 SCA/SAST 能力的厂商，正确的战略不是"给 SCA 加一个 CRA 报表"，而是**以 CRA 为切入口，把核心对象从 Component/CVE 升级为 Product/Version/Lifecycle，并围绕 Evidence Graph 建立可辩护性壁垒**（Recommendation；支撑证据见 §5、§6、§10、§15）。
 
 ### 1.2 最重要的 5 个判断
 
-**判断 1：定位空白存在，但窗口约 12–18 个月。** "以 Product/Version 为核心对象、覆盖完整漏洞生命周期闭环、面向 CRA 证据"的现代化产品，目前没有厂商完整占据（Fact 级观察，见 03 报告 §4）：AppSec 阵营（Snyk/Mend/Endor/GitLab 等）全部是 repo 对象模型；PSIRT 阵营（Finite State/ONEKEY）以产品为对象但技术栈停留在嵌入式二进制分析；JFrog（AppTrust 证据链 + CRA Compliance Brief）与 Black Duck（制造业案例 + VEX Templates + Project+Version 对象）是距离最近的两个占位者。若二者把对象模型升级为"产品线+版本+支持期"，空白将快速收窄（03 报告 §4 风险提示）。
+**判断 1：定位空白存在，但窗口约 12–18 个月。** "以 Product/Version 为核心对象、覆盖完整漏洞生命周期闭环、面向 CRA 证据"的现代化产品，目前没有厂商完整占据（Fact 级观察，见 [03 报告](03-competitive-landscape.md) §4）：AppSec 阵营（Snyk/Mend/Endor/GitLab 等）全部是 repo 对象模型；PSIRT 阵营（Finite State/ONEKEY）以产品为对象但技术栈停留在嵌入式二进制分析；JFrog（AppTrust 证据链 + CRA Compliance Brief）与 Black Duck（制造业案例 + VEX Templates + Project+Version 对象）是距离最近的两个占位者。若二者把对象模型升级为"产品线+版本+支持期"，空白将快速收窄（[03 报告](03-competitive-landscape.md) §4 风险提示）。
 
-**判断 2：CRA 义务的实质是"可辩护性（defensibility）"，不是"扫描覆盖率"。** 法规明确要求的是：SBOM 至少覆盖顶层依赖且**不要求公开**、上市时无**已知可利用**漏洞（不要求无所有漏洞）、按风险决定补救形式（不要求全修）、Art 14 知悉即报（**不强制主动威胁监控**）（Fact，见 02 报告 §4、§8、§15）。但每一项义务都要求**留痕**：技术文档与 EU DoC 保留 10 年或 support period（取长）、风险评估文档化、MSA 合理请求时必须能出示 SBOM 与证据（Art 31 + Annex VII）。违反 Annex I / Art 13 / Art 14 的罚款上限 €15M 或全球营业额 2.5%（Art 64(2)）。产品价值的核心是把"做了"变成"能证明"（Interpretation）。
+**判断 2：CRA 义务的实质是"可辩护性（defensibility）"，不是"扫描覆盖率"。** 法规明确要求的是：SBOM 至少覆盖顶层依赖且**不要求公开**、上市时无**已知可利用**漏洞（不要求无所有漏洞）、按风险决定补救形式（不要求全修）、Art 14 知悉即报（**不强制主动威胁监控**）（Fact，见 [02 报告](02-cra-regulation.md) §4、§8、§15）。但每一项义务都要求**留痕**：技术文档与 EU DoC 保留 10 年或 support period（取长）、风险评估文档化、MSA 合理请求时必须能出示 SBOM 与证据（Art 31 + Annex VII）。违反 Annex I / Art 13 / Art 14 的罚款上限 €15M 或全球营业额 2.5%（Art 64(2)）。产品价值的核心是把"做了"变成"能证明"（Interpretation）。
 
-**判断 3：Reachability 是工程壁垒而非技术壁垒，且其降噪叙事被高估——必须诚实定价。** 方法全部公开、govulncheck/CodeQL/Joern 等开源底座成熟，Snyk/Semgrep/Endor/GitLab 均已产品化（Fact，见 04 报告 §1、§6.1）。三条反面证据必须纳入决策：① "reachable" 是强证据但 "unreachable" 是弱证据（Snyk/govulncheck 官方承认静态分析无法证明不可达），因此 `not_affected + vulnerable_code_not_in_execute_path` 不能全自动签出；② Endor "降噪 92%" 等数字的分母是全部 findings，而 Datadog 用廉价得多的 runtime context（生产标记+互联网暴露）就把 82% 的 CVSS-critical 降级——reachability 的增量价值须与 context 过滤对比衡量而非与"什么都不做"对比（Fact，04 报告 §5）；③ package 级 reachability 已商品化，function 级正在快速商品化（03 报告 §3）。差异化机会在 **C/C++/嵌入式**（CRA 主战场语言、产品化最薄弱、无官方免费工具）（Interpretation，04 报告 §6.1）。
+**判断 3：Reachability 是工程壁垒而非技术壁垒，且其降噪叙事被高估——必须诚实定价。** 方法全部公开、govulncheck/CodeQL/Joern 等开源底座成熟，Snyk/Semgrep/Endor/GitLab 均已产品化（Fact，见 [04 报告](04-technology-deep-dive.md) §1、§6.1）。三条反面证据必须纳入决策：① "reachable" 是强证据但 "unreachable" 是弱证据（Snyk/govulncheck 官方承认静态分析无法证明不可达），因此 `not_affected + vulnerable_code_not_in_execute_path` 不能全自动签出；② Endor "降噪 92%" 等数字的分母是全部 findings，而 Datadog 用廉价得多的 runtime context（生产标记+互联网暴露）就把 82% 的 CVSS-critical 降级——reachability 的增量价值须与 context 过滤对比衡量而非与"什么都不做"对比（Fact，[04 报告](04-technology-deep-dive.md) §5）；③ package 级 reachability 已商品化，function 级正在快速商品化（[03 报告](03-competitive-landscape.md) §3）。差异化机会在 **C/C++/嵌入式**（CRA 主战场语言、产品化最薄弱、无官方免费工具）（Interpretation，[04 报告](04-technology-deep-dive.md) §6.1）。
 
-**判断 4：Evidence Graph 是三个候选方向中唯一的"真壁垒"候选，但它是 Hypothesis 而非 Fact。** in-toto/SLSA/GUAC 证明了 attestation 范式与图模型的可行性，但没有人在"安全结论级证据链"（reachability 判定、VEX status、修复验证）上建立标准（Fact + Hypothesis，见 04 报告 §4.3、§6.3）。壁垒来源是数据模型卡位 + 证据数据积累 + 信任位，不是任何单点技术。风险：若 CRA 执法强度与审计需求不及预期，它退化为"不错的平台架构"而非商业壁垒（04 报告 §6.3 明示）。同时注意：GUAC 的生产后端是 PostgreSQL/KV 而非 Neo4j——**"图数据库"是叙事，图数据模型+实体解析+证据链才是实质**（Fact，04 报告 §5.2）。
+**判断 4：Evidence Graph 是三个候选方向中唯一的"真壁垒"候选，但它是 Hypothesis 而非 Fact。** in-toto/SLSA/GUAC 证明了 attestation 范式与图模型的可行性，但没有人在"安全结论级证据链"（reachability 判定、VEX status、修复验证）上建立标准（Fact + Hypothesis，见 [04 报告](04-technology-deep-dive.md) §4.3、§6.3）。壁垒来源是数据模型卡位 + 证据数据积累 + 信任位，不是任何单点技术。风险：若 CRA 执法强度与审计需求不及预期，它退化为"不错的平台架构"而非商业壁垒（[04 报告](04-technology-deep-dive.md) §6.3 明示）。同时注意：GUAC 的生产后端是 PostgreSQL/KV 而非 Neo4j——**"图数据库"是叙事，图数据模型+实体解析+证据链才是实质**（Fact，[04 报告](04-technology-deep-dive.md) §5.2）。
 
-**判断 5：Agentic Vulnerability Management 可行，但唯一诚实的形态是"LLM 编排 + 确定性引擎出证据 + 人工签核"。** DARPA AIxCC 已实证该模式（冠军 ATLANTIS：确定性工具层产代码事实 → LLM agent 层做推理编排）；GitHub（CCR = "LLM intelligence + deterministic precision"）、Snyk（Agent Fix + SAST pre-screening）收敛到同一架构（Fact，04 报告 §3）。裸 LLM 安全 triage 准确率仅 61–67%（Simbian benchmark，厂商来源），没有任何严肃厂商让 LLM 结论未经确定性校验直接落地（Fact，04 报告 §5.3）。在 CRA 制造商担责的场景下，"全自动修复"短期不成立；卖点应是"agent 产出带证据的修复建议 + 确定性验证 + 人工一键签核"（Recommendation）。
+**判断 5：Agentic Vulnerability Management 可行，但唯一诚实的形态是"LLM 编排 + 确定性引擎出证据 + 人工签核"。** DARPA AIxCC 已实证该模式（冠军 ATLANTIS：确定性工具层产代码事实 → LLM agent 层做推理编排）；GitHub（CCR = "LLM intelligence + deterministic precision"）、Snyk（Agent Fix + SAST pre-screening）收敛到同一架构（Fact，[04 报告](04-technology-deep-dive.md) §3）。裸 LLM 安全 triage 准确率仅 61–67%（Simbian benchmark，厂商来源），没有任何严肃厂商让 LLM 结论未经确定性校验直接落地（Fact，[04 报告](04-technology-deep-dive.md) §5.3）。在 CRA 制造商担责的场景下，"全自动修复"短期不成立；卖点应是"agent 产出带证据的修复建议 + 确定性验证 + 人工一键签核"（Recommendation）。
 
 ### 1.3 核心结论速览
 
@@ -74,11 +82,11 @@ CRA 把漏洞管理从"开发期的 repo 级告警"变成了"对**投放市场�
 
 ## 2. 领域知识地图（Know the Domain）
 
-> 本节为 01 报告（848 行、18 章）的浓缩。完整概念释义、真实 API 数据拆解（CVE-2021-44228 等）与逐条来源索引见 01 报告；此处只保留建立 mental model 所必需的骨架。
+> 本节为 [01 报告](01-domain-ontology.md)（848 行、18 章）的浓缩。完整概念释义、真实 API 数据拆解（CVE-2021-44228 等）与逐条来源索引见 [01 报告](01-domain-ontology.md)；此处只保留建立 mental model 所必需的骨架。
 
 ### 2.1 分层概念图：先分清层次，再谈概念
 
-初学者最易犯的错是把 CVE、NVD、CVSS、SBOM、VEX 当作同类并列记忆。它们处在**完全不同的抽象层次**（01 报告 §1）：
+初学者最易犯的错是把 CVE、NVD、CVSS、SBOM、VEX 当作同类并列记忆。它们处在**完全不同的抽象层次**（[01 报告](01-domain-ontology.md) §1）：
 
 | 层次 | 回答的问题 | 代表概念 |
 |---|---|---|
@@ -93,7 +101,7 @@ CRA 把漏洞管理从"开发期的 repo 级告警"变成了"对**投放市场�
 | Analysis Result（分析结论） | 对我的产品意味着什么？ | Vulnerability Association、Reachability、Exploitability、VEX statement |
 | Compliance Artifact（合规工件） | 拿什么证明/通报？ | SBOM、VEX 文档、CSAF advisory、CRA 报告、Evidence/Audit Trail |
 
-同一名字可能跨层：VEX 既是判断模型（Analysis Result）又有三种文件格式实现（CycloneDX VEX / CSAF VEX Profile / OpenVEX）；SBOM 既是 Compliance Artifact，其载体 SPDX/CycloneDX 又是 Data Format/Standard。读任何材料先问"它此刻指哪一层"（01 报告 §1）。
+同一名字可能跨层：VEX 既是判断模型（Analysis Result）又有三种文件格式实现（CycloneDX VEX / CSAF VEX Profile / OpenVEX）；SBOM 既是 Compliance Artifact，其载体 SPDX/CycloneDX 又是 Data Format/Standard。读任何材料先问"它此刻指哪一层"（[01 报告](01-domain-ontology.md) §1）。
 
 ### 2.2 领域关系图（从资产到合规的流向）
 
@@ -124,19 +132,19 @@ Remediation / Verification（修 + 证明修好了）
 Security Advisory（CSAF）→ CRA Evidence / Reporting（合规闭环）
 ```
 
-### 2.3 关键事实卡（每张卡一句话，详见 01 报告对应章节）
+### 2.3 关键事实卡（每张卡一句话，详见 [01 报告](01-domain-ontology.md)对应章节）
 
-- **CVE ≠ NVD**（01 §2/§4）：CVE 是标识编目系统（MITRE 秘书处 + CISA 资助 + 517 家 CNA 联邦签发），不打分；NVD 是 NIST 在 CVE 之上的增强库（追加 CVSS/CPE/CWE/references）。著名的 Log4Shell "CVSS 10.0" 实际来自 CISA-ADP 的 Vulnrichment 追加容器，不是 Apache CNA 给的。
-- **NVD 2026 政策转向**（01 §4，Fact）：CVE 提交量 2020→2025 增长 263%，NVD 积压无法清空；**2026-04-15 起 NVD 放弃全量 enrichment**，只对 KEV/联邦软件/critical software 即时处理，2026-03-01 前积压整体转 "Not Scheduled"。→ 只靠 NVD 的 SCA 会在最危险的窗口期失明；"多源融合"已从最佳实践变成生存必需。
-- **OSV/GHSA 是开源匹配的主轨道**（01 §5/§6）：OSV 以 ecosystem+name+PURL+版本区间事件序列建模，与 SCA 输入（lockfile 坐标）形状一致，匹配近乎无损；GHSA 的 GitHub-reviewed 层人工策展、patched versions 为一等字段。Vendor advisory 掌握 backport 真相（版本号老≠没修），是版本范围的最终裁决者（01 §7）。
-- **三个信号回答三个问题**（01 §8）：CVSS=severity（且 CVSS-B 明确"环境化是消费方责任"）、EPSS=未来 30 天利用概率（ML 预测，每日更新）、KEV=已观测利用的事实（1713 条，截至 2026-09）。加上两个私有信号 Reachability/Exploitability，构成从公共知识到私有结论的漏斗。
-- **PURL vs CPE 双轨身份**（01 §9）：PURL（2025-12 成为 ECMA-427）对齐包管理器坐标，匹配是精确比较；CPE 是 NVD 的产品字典，包名→CPE 靠猜测映射，是误报/漏报最大来源。正确架构是双轨 + 显式映射关系，而非强行翻译。
-- **SBOM ≠ SCA**（01 §10）：SBOM 是"记录"，SCA 是"分析"；SBOM 生成已商品化，差异化在准确性/新鲜度/可信度。
-- **VEX 是判断结果而非文件格式**（01 §11）：statement = product + vulnerability + status + timestamp；四 status（affected/not_affected/fixed/under_investigation）；not_affected 必须带五种机器可读 justification 之一。产品应把 VEX statement 当数据库一等对象（可版本化、可追溯、可签名），导出格式只是适配层。
-- **Reachable ≠ Exploitable**（01 §13/§14）：可达只说"代码能走到"，不说"攻击者能控制输入"。完全自动的 Exploitability 判定在多数语言下仍是研究级难题，诚实定位是"证据聚合 + 半自动裁决"。
-- **Fix 的链条每环都可能断裂**（01 §15）：Fixed upstream ≠ Fixed in dependency ≠ Fixed in my product ≠ Fix verified。CRA 语境下"修好了吗"需要可出示的证据（新 SBOM、重扫记录、VEX status→fixed），不是 CI 绿灯。
+- **CVE ≠ NVD**（[01 §2/§4](01-domain-ontology.md)）：CVE 是标识编目系统（MITRE 秘书处 + CISA 资助 + 517 家 CNA 联邦签发），不打分；NVD 是 NIST 在 CVE 之上的增强库（追加 CVSS/CPE/CWE/references）。著名的 Log4Shell "CVSS 10.0" 实际来自 CISA-ADP 的 Vulnrichment 追加容器，不是 Apache CNA 给的。
+- **NVD 2026 政策转向**（[01 §4](01-domain-ontology.md)，Fact）：CVE 提交量 2020→2025 增长 263%，NVD 积压无法清空；**2026-04-15 起 NVD 放弃全量 enrichment**，只对 KEV/联邦软件/critical software 即时处理，2026-03-01 前积压整体转 "Not Scheduled"。→ 只靠 NVD 的 SCA 会在最危险的窗口期失明；"多源融合"已从最佳实践变成生存必需。
+- **OSV/GHSA 是开源匹配的主轨道**（[01 §5/§6](01-domain-ontology.md)）：OSV 以 ecosystem+name+PURL+版本区间事件序列建模，与 SCA 输入（lockfile 坐标）形状一致，匹配近乎无损；GHSA 的 GitHub-reviewed 层人工策展、patched versions 为一等字段。Vendor advisory 掌握 backport 真相（版本号老≠没修），是版本范围的最终裁决者（[01 §7](01-domain-ontology.md)）。
+- **三个信号回答三个问题**（[01 §8](01-domain-ontology.md)）：CVSS=severity（且 CVSS-B 明确"环境化是消费方责任"）、EPSS=未来 30 天利用概率（ML 预测，每日更新）、KEV=已观测利用的事实（1713 条，截至 2026-09）。加上两个私有信号 Reachability/Exploitability，构成从公共知识到私有结论的漏斗。
+- **PURL vs CPE 双轨身份**（[01 §9](01-domain-ontology.md)）：PURL（2025-12 成为 ECMA-427）对齐包管理器坐标，匹配是精确比较；CPE 是 NVD 的产品字典，包名→CPE 靠猜测映射，是误报/漏报最大来源。正确架构是双轨 + 显式映射关系，而非强行翻译。
+- **SBOM ≠ SCA**（[01 §10](01-domain-ontology.md)）：SBOM 是"记录"，SCA 是"分析"；SBOM 生成已商品化，差异化在准确性/新鲜度/可信度。
+- **VEX 是判断结果而非文件格式**（[01 §11](01-domain-ontology.md)）：statement = product + vulnerability + status + timestamp；四 status（affected/not_affected/fixed/under_investigation）；not_affected 必须带五种机器可读 justification 之一。产品应把 VEX statement 当数据库一等对象（可版本化、可追溯、可签名），导出格式只是适配层。
+- **Reachable ≠ Exploitable**（[01 §13/§14](01-domain-ontology.md)）：可达只说"代码能走到"，不说"攻击者能控制输入"。完全自动的 Exploitability 判定在多数语言下仍是研究级难题，诚实定位是"证据聚合 + 半自动裁决"。
+- **Fix 的链条每环都可能断裂**（[01 §15](01-domain-ontology.md)）：Fixed upstream ≠ Fixed in dependency ≠ Fixed in my product ≠ Fix verified。CRA 语境下"修好了吗"需要可出示的证据（新 SBOM、重扫记录、VEX status→fixed），不是 CI 绿灯。
 
-### 2.4 14 步 Mental Model 故事线（01 报告 §18 浓缩版）
+### 2.4 14 步 Mental Model 故事线（[01 报告](01-domain-ontology.md) §18 浓缩版）
 
 ```text
  1. 我有什么软件？        → Product Inventory（产品注册，Product/Version 管理）
@@ -155,17 +163,17 @@ Security Advisory（CSAF）→ CRA Evidence / Reporting（合规闭环）
 14. 怎么证明整个过程？    → Evidence / Audit Trail（VEX 版本史 + SBOM 存档 + 签名 attestation）
 ```
 
-**三句话总结**（01 报告 §18，Interpretation）：① 领域数据流本质是"公共知识 × 私有上下文 → 私有结论 → 公共输出"；② 传统 SCA 只做到第 7 步，第 8–10 步是当前竞争主战场，第 12–14 步是 CRA 把"做了"变成"证明了"之后的新刚需；③ 任何单一数据源都不可靠，**多源融合 + 证据链是立身之本**。
+**三句话总结**（[01 报告](01-domain-ontology.md) §18，Interpretation）：① 领域数据流本质是"公共知识 × 私有上下文 → 私有结论 → 公共输出"；② 传统 SCA 只做到第 7 步，第 8–10 步是当前竞争主战场，第 12–14 步是 CRA 把"做了"变成"证明了"之后的新刚需；③ 任何单一数据源都不可靠，**多源融合 + 证据链是立身之本**。
 
 ---
 
 ## 3. CRA 法规要求（Know the Regulation）
 
-> 本节为 02 报告（387 行）的浓缩。完整条文引用、FAQ 细节与来源清单见 02 报告。02 报告采用四层标注：【法规】（条文原文，有强制力）/【官方解释】（Commission/ENISA 页面与 FAQ，权威但无法律强制力）/【标准·实践】/【厂商实现】。本节保留这一区分——**不要把最佳实践描述成法律强制要求**。
+> 本节为 [02 报告](02-cra-regulation.md)（387 行）的浓缩。完整条文引用、FAQ 细节与来源清单见 [02 报告](02-cra-regulation.md)。[02 报告](02-cra-regulation.md)采用四层标注：【法规】（条文原文，有强制力）/【官方解释】（Commission/ENISA 页面与 FAQ，权威但无法律强制力）/【标准·实践】/【厂商实现】。本节保留这一区分——**不要把最佳实践描述成法律强制要求**。
 >
-> ⚠️ 条文引用基于 EUR-Lex 的 Wayback 存档快照（2025-01-18），正式引用前需复核（见 02 报告 §阅读指南）。
+> ⚠️ 条文引用基于 EUR-Lex 的 Wayback 存档快照（2025-01-18），正式引用前需复核（见 [02 报告](02-cra-regulation.md) §阅读指南）。
 
-### 3.1 适用范围与核心定义（【法规】Fact，02 报告 §1）
+### 3.1 适用范围与核心定义（【法规】Fact，[02 报告](02-cra-regulation.md) §1）
 
 - **Art 3(1)**："product with digital elements" = 软件或硬件产品**及其 remote data processing solutions**（缺了它产品功能就残缺的厂商自有云后端随产品落入范围），含单独上市的软/硬件组件。
 - **Art 2(1)** 范围闸门：投放市场 + intended purpose / 合理可预见用途包含**直接或间接数据连接**。
@@ -176,7 +184,7 @@ Security Advisory（CSAF）→ CRA Evidence / Reporting（合规闭环）
   - 被集成的 FOSS 组件本身不适用，但**集成它的制造商对整体负全责**（Art 13(5) due diligence）；
   - 免费开源豁免边界不在"是否开源"，而在"**是否在商业活动中供应/被 monetise**"（捐赠、厂商参与、定期发版本身都不构成商业性）。
 
-### 3.2 四类角色（02 报告 §2，【法规】Fact）
+### 3.2 四类角色（[02 报告](02-cra-regulation.md) §2，【法规】Fact）
 
 | 角色 | 核心义务 | 关键点 |
 |---|---|---|
@@ -185,7 +193,7 @@ Security Advisory（CSAF）→ CRA Evidence / Reporting（合规闭环）
 | **Distributor**（Art 20） | due care；核实 CE；漏洞通知制造商 | — |
 | **OSS Steward**（Art 24） | 轻量定制义务：可验证文档化的 cybersecurity policy + 配合监管；**不贴 CE、不受任何罚款**（Art 64(10)(b)）；Art 14 报告义务仅在其参与开发范围内且 **2027-12-11 才起算**（目前无报告义务） | 典型如开源基金会 |
 
-### 3.3 Annex I 义务（【法规】Fact，02 报告 §3）
+### 3.3 Annex I 义务（【法规】Fact，[02 报告](02-cra-regulation.md) §3）
 
 **Part I — 产品属性要求（13 项）**，与漏洞生命周期最相关的：
 
@@ -204,7 +212,7 @@ Security Advisory（CSAF）→ CRA Evidence / Reporting（合规闭环）
 7. 安全分发更新的机制；
 8. 安全更新**无延迟、免费**分发，附 advisory messages。
 
-### 3.4 SBOM 的精确要求（02 报告 §4.1）
+### 3.4 SBOM 的精确要求（[02 报告](02-cra-regulation.md) §4.1）
 
 | 问题 | 答案 |
 |---|---|
@@ -212,7 +220,7 @@ Security Advisory（CSAF）→ CRA Evidence / Reporting（合规闭环）
 | **是否要求公开？** | ❌ **明确不要求公开**（Recital："Manufacturers should not be obliged to make the SBOM public"）；对用户公开是可选项（Annex II 9） |
 | 谁有权获取？ | 技术文档包含；**MSA 合理请求且核查必需时必须提供**（Annex VII 8）；ADCO 依赖评估时可要求（匿名聚合） |
 
-### 3.5 Art 14 报告机制（已于 2026-09-11 生效，【法规】Fact +【官方解释】，02 报告 §6）
+### 3.5 Art 14 报告机制（已于 2026-09-11 生效，【法规】Fact +【官方解释】，[02 报告](02-cra-regulation.md) §6）
 
 两条报告线，经 ENISA SRP 一次提交即同时报送协调 CSIRT 与 ENISA：
 
@@ -231,23 +239,23 @@ Security Advisory（CSAF）→ CRA Evidence / Reporting（合规闭环）
 - **零日 ≠ 须报告**：只有已被恶意利用才触发；
 - **第三方组件中的 AEV**：集成商须报；若组件漏洞在本产品不可利用则无需强制报告（→ Exploitability 结论直接决定报告义务）；
 - 小微企业豁免 24h 时限罚款（义务仍在）；报告本身不加重责任（Art 17(4)）；
-- ⚠️ 边界：Commission FAQ 5.1 明确 **CRA 不强制主动威胁监控**（遥测/蜜罐/暗网只是"可能的知悉渠道"）——"CRA 要求 7×24 威胁监控"是过度解读。但【厂商实现】层，监听 KEV/EUVD/vendor advisory 并在命中时触发报告时钟评估，是合理的最佳实践（01 报告 §16，Interpretation）。
+- ⚠️ 边界：Commission FAQ 5.1 明确 **CRA 不强制主动威胁监控**（遥测/蜜罐/暗网只是"可能的知悉渠道"）——"CRA 要求 7×24 威胁监控"是过度解读。但【厂商实现】层，监听 KEV/EUVD/vendor advisory 并在命中时触发报告时钟评估，是合理的最佳实践（[01 报告](01-domain-ontology.md) §16，Interpretation）。
 
-### 3.6 Support Period 与上市后义务（02 报告 §7/§8/§9，【法规】Fact）
+### 3.6 Support Period 与上市后义务（[02 报告](02-cra-regulation.md) §7/§8/§9，【法规】Fact）
 
 - Support period **至少 5 年**（Art 13(8)）；预期使用更长则相应更长；结束日期须在购买时标明并到期通知（Art 13(19)）；
 - Art 13(7)：**系统性记录**产品网络安全信息（含知悉的漏洞及第三方通报）并更新风险评估；
 - 安全更新发布后**保持可用至少 10 年或剩余支持期（取长）**（Art 13(9)）；免费、无延迟、可行时与功能更新分离；
 - Art 13(6)：发现集成组件（含开源）漏洞须**上报组件维护者**，自研补丁须共享。
 
-### 3.7 技术文档、时间线与罚则（02 报告 §10/§11/§12）
+### 3.7 技术文档、时间线与罚则（[02 报告](02-cra-regulation.md) §10/§11/§12）
 
 - **技术文档**（Art 31 + Annex VII）：产品描述、设计开发与漏洞处理过程（含 SBOM、CVD policy、联系地址证据、更新分发方案）、风险评估、support period 依据、测试报告、EU DoC；**保留至少 10 年或 support period（取长）**，support period 内持续更新。
 - **时间线**：2024-12-10 生效 → 2026-06-11 notified body 体系适用 → **2026-09-11 Art 14 + SRP 上线（当前）** → **2027-12-11 主体义务全面适用**（存量产品原则上不适用，但 Art 14 例外覆盖存量，Art 69(3)）→ 2030-12-11 首次全面评估。Presumption of conformity 现状：截至 2026-07 **无任何 CRA 协调标准获 OJ 引用**（二手来源，（不确定）），Class I 产品实务上当前也须走第三方评估。
 - **罚则**（Art 64）：违反 Annex I / Art 13 / Art 14 → **€15M 或全球营业额 2.5%（取高）**；技术文档/DoC/CE 等 → €10M 或 2%；误导性信息 → €5M 或 1%。另有非罚款风险：召回/撤回/禁售（Art 52–58）、集体诉讼（Art 65 + Directive 2020/1828）。
-- **产品分类**（Art 7/8 + Annex III/IV）：Important Class I（19 类，含操作系统、杀毒、SIEM、VPN、密码管理器）、Class II（4 类：hypervisor/容器运行时、防火墙/IDS/IPS 等，**永远须第三方评估**）、Critical（3 类）。**安全产品本身就在 Annex III 里**——安全厂商自身首先是合规对象（Interpretation，02 报告 §13.2）。
+- **产品分类**（Art 7/8 + Annex III/IV）：Important Class I（19 类，含操作系统、杀毒、SIEM、VPN、密码管理器）、Class II（4 类：hypervisor/容器运行时、防火墙/IDS/IPS 等，**永远须第三方评估**）、Critical（3 类）。**安全产品本身就在 Annex III 里**——安全厂商自身首先是合规对象（Interpretation，[02 报告](02-cra-regulation.md) §13.2）。
 
-### 3.8 与大众理解有出入的关键发现（02 报告 §15，浓缩）
+### 3.8 与大众理解有出入的关键发现（[02 报告](02-cra-regulation.md) §15，浓缩）
 
 1. SaaS 基本不适用 CRA；
 2. SBOM 不要求公开；
@@ -256,7 +264,7 @@ Security Advisory（CSAF）→ CRA Evidence / Reporting（合规闭环）
 5. 不要求修补所有漏洞、不要求产品无漏洞——"CRA = 所有 CVE 必须打补丁"是过度解读；
 6. Class II 安全产品永远需要第三方评估。
 
-### 3.9 与既有欧盟产品合规体系的关系(05 报告,2026-09-19 补充)
+### 3.9 与既有欧盟产品合规体系的关系([05 报告](05-eu-compliance-landscape.md),2026-09-19 补充)
 
 CRA 不是孤立的网络安全立法,而是欧盟 New Legislative Framework(NLF)产品法家族的第 29 部对齐立法:CE marking 是制造商声明产品满足所有适用协调法规的标志(非政府批文),NLF 三件套(Regulation 765/2008、Decision 768/2008/EC、Regulation 2019/1020)提供横向工具箱,CRA 沿用标准路径:技术文档(Art 31/Annex VII)→ 合格评定(Art 32,默认 Module A 自评;Annex III/IV 强制第三方)→ EU DoC(Art 28)→ CE(Art 29/30)→ 上市后义务 → MSA 市场监督(Art 52/53)。
 
@@ -274,7 +282,7 @@ CRA 没有中央"CRA 局"做定期审计,执法是三条独立的线:① **MSA(�
 
 ## 4. CRA → Product Capability Mapping
 
-> 基于 02 报告 §14 的 46 行"Article/Annex → Obligation → Security Activity → Product Capability"映射表提炼。46 行原表见 02 报告；此处重组为能力地图（Capability Map）。Product Capability 列属【厂商实现】层推论，非法律要求。
+> 基于 [02 报告](02-cra-regulation.md) §14 的 46 行"Article/Annex → Obligation → Security Activity → Product Capability"映射表提炼。46 行原表见 [02 报告](02-cra-regulation.md)；此处重组为能力地图（Capability Map）。Product Capability 列属【厂商实现】层推论，非法律要求。
 
 ### 4.1 CRA Vulnerability Lifecycle Capability Map（六大能力域）
 
@@ -303,7 +311,7 @@ CRA 没有中央"CRA 局"做定期审计,执法是三条独立的线:① **MSA(�
 
 | 能力 | CRA 依据 | 说明 |
 |---|---|---|
-| 多源漏洞情报管道（NVD+OSV+GHSA+vendor CSAF+KEV/EPSS） | Annex I Part II(1), Art 13(7) | NVD 盲区弥补是卖点（01 报告 §4） |
+| 多源漏洞情报管道（NVD+OSV+GHSA+vendor CSAF+KEV/EPSS） | Annex I Part II(1), Art 13(7) | NVD 盲区弥补是卖点（[01 报告](01-domain-ontology.md) §4） |
 | 漏洞知识库（产品维度台账）+ 风险登记册联动 | Art 13(7) | 系统性记录已知漏洞与第三方通报 |
 | 发布门禁（release gate） | Annex I Part I(2)(a) | SCA 扫描 + KEV/EPSS/reachability 可利用性分级 |
 | AEV 判定辅助（威胁情报集成） | Art 3(42), Recital 68 | KEV/EUVD/厂商情报辅助"actively exploited"判定 |
@@ -354,28 +362,28 @@ CRA 没有中央"CRA 局"做定期审计,执法是三条独立的线:① **MSA(�
 
 ## 5. 核心问题：为什么传统 "Component→CVE" SCA 不足以应对 CRA（Know the Problem）
 
-传统 SCA 的模式是：扫描 lockfile/制品 → 得到组件清单 → `组件+版本 → CVE` 匹配 → 告警列表。CRA 时代这个模式在五个环节系统性失效（综合 01/02/04 报告）：
+传统 SCA 的模式是：扫描 lockfile/制品 → 得到组件清单 → `组件+版本 → CVE` 匹配 → 告警列表。CRA 时代这个模式在五个环节系统性失效（综合 [01](01-domain-ontology.md)/[02](02-cra-regulation.md)/[04](04-technology-deep-dive.md) 报告）：
 
-### 5.1 情报层：NVD 失明窗口（Fact，01 报告 §4）
+### 5.1 情报层：NVD 失明窗口（Fact，[01 报告](01-domain-ontology.md) §4）
 
 NVD 2026-04-15 起放弃全量 enrichment：一个 CVE 可能已公开、已有 exploit、已进 KEV，但在 NVD 里仍是 "Awaiting Analysis"/"Not Scheduled"，没有 CPE 和 CVSS。只挂 NVD 的 SCA 在最危险的窗口期（漏洞公开后到 enrichment 前）完全失明。而 CRA Art 14 的 24h 时钟从"知悉"起算——**失明窗口直接转化为合规风险敞口**。
 
-### 5.2 关联层：身份错配与 backport 误报（Fact，01 报告 §7/§9）
+### 5.2 关联层：身份错配与 backport 误报（Fact，[01 报告](01-domain-ontology.md) §7/§9）
 
 - CPE 字典与包管理器坐标无系统对应，"包名→CPE"猜测映射直接产出误报/漏报；
 - RHEL/Debian 等把安全补丁 backport 到老版本，版本号不变但漏洞已修——按上游版本号匹配必然误报，**只有 vendor advisory 知道真相**；
 - 反向也成立：换名 fork 包（同代码不同坐标）在 CPE 模型里几乎无法表达，OSV 的显式建模才能覆盖。
 
-### 5.3 判断层：成分级告警 ≠ 产品级结论（Fact，01 报告 §11/§13/§14）
+### 5.3 判断层：成分级告警 ≠ 产品级结论（Fact，[01 报告](01-domain-ontology.md) §11/§13/§14）
 
 SBOM 说"产品含 log4j-core 2.14.1"、NVD 说"该版本受影响"，但"产品是否真的受影响"需要 Reachability（漏洞代码可达吗）+ Exploitability（在我的部署上下文可利用吗）两级私有判断。OpenVEX 规范自述动机：SBOM 带来的极致透明会**增加**成分级误报，"Hence VEX"。CRA Annex I Part I(2)(a) 的上市门禁恰好是"已知+**可利用**"漏洞——**可利用性判定是法规概念的直接对应物**，传统 SCA 完全没有这一层。
 
 ### 5.4 降噪层：告警量与监管问题粒度双重错配（Fact + Interpretation）
 
-- 告警量：reachability 厂商声称降噪 80–99%（03 报告 §1.10），但 04 报告 §5.1 的反面证据表明该数字被高估——"unreachable" 是弱证据（静态不可达不可证明），且 Datadog 数据显示仅靠 runtime context 就能把 82% 的 CVSS-critical 降级。真实结论：**降噪需要 reachability + runtime context + exploitability 裁决的组合**，单靠任何一层都不够。
-- 粒度：监管问的是"哪个产品版本的哪个漏洞、判定了什么、修没修、证据在哪"，传统 SCA 答的是"这个 repo 有多少 CVE"（03 报告 §4.5 的"结构性错配"）。
+- 告警量：reachability 厂商声称降噪 80–99%（[03 报告](03-competitive-landscape.md) §1.10），但 [04 报告](04-technology-deep-dive.md) §5.1 的反面证据表明该数字被高估——"unreachable" 是弱证据（静态不可达不可证明），且 Datadog 数据显示仅靠 runtime context 就能把 82% 的 CVSS-critical 降级。真实结论：**降噪需要 reachability + runtime context + exploitability 裁决的组合**，单靠任何一层都不够。
+- 粒度：监管问的是"哪个产品版本的哪个漏洞、判定了什么、修没修、证据在哪"，传统 SCA 答的是"这个 repo 有多少 CVE"（[03 报告](03-competitive-landscape.md) §4.5 的"结构性错配"）。
 
-### 5.5 证据层：修了 ≠ 能证明修了（Fact，01 报告 §15；02 报告 §10）
+### 5.5 证据层：修了 ≠ 能证明修了（Fact，[01 报告](01-domain-ontology.md) §15；[02 报告](02-cra-regulation.md) §10）
 
 CRA 要求技术文档留存 10 年、MSA 请求时出示 SBOM、Art 14 报告带 awareness 时间戳。"Fixed upstream ≠ Fixed in dependency ≠ Fixed in my product ≠ Fix verified"——每一环都需要可出示的证据（新 SBOM、重扫记录、VEX status 流转）。传统 SCA 的告警列表没有证据对象模型，审计时无法重建"当时为什么这么判断"。
 
@@ -387,7 +395,7 @@ CRA 要求技术文档留存 10 年、MSA 请求时出示 SBOM、Art 14 报告�
 
 ## 6. 产品定位分析
 
-> 五种定位的对比基于 03 报告（厂商现状）与 02 报告（义务结构）。结论见 6.3。
+> 五种定位的对比基于 [03 报告](03-competitive-landscape.md)（厂商现状）与 [02 报告](02-cra-regulation.md)（义务结构）。结论见 6.3。
 
 ### 6.1 五种定位对比
 
@@ -398,11 +406,11 @@ CRA 要求技术文档留存 10 年、MSA 请求时出示 SBOM、Art 14 报告�
 | **核心价值** | "帮我满足 CRA 条文" | "更准的告警 + 修复建议" | "统一漏洞台账与 SLA" | "多引擎关联与治理" | "对某个产品版本，从发现到证据的完整闭环 + 可辩护性" |
 | **产品边界** | 文档、报告、流程 | 代码/依赖扫描 | 漏洞聚合与工单 | 应用安全全域 | 产品清单→SBOM→漏洞→判定→修复→证据→报告 |
 | **技术边界** | 浅（不碰分析引擎） | 深（引擎为核心） | 中（聚合为主） | 深而广 | 深（引擎）+ 广（生命周期）+ 新（证据模型） |
-| **商业优势** | 需求刚性、卖点清晰、销售周期短 | 复用现有资产、进入市场快 | 概念成熟、 buyer 现成 | 平台客单价高 | 空白定位（03 §4）、法规护城河、证据数据粘性 |
-| **商业风险** | 天花板低、易被平台厂商"一个模块"吃掉；CRA 执法不及预期则需求萎缩 | 红海（21 家厂商）、商品化严重（03 §3）、CRA 只是营销话术（Snyk/Mend 现状） | 与现有 VM/ASPM 正面竞争（Wiz/Checkmarx） | 对象模型错配未解决，只是更大而不是更对 | 建设周期长；证据粒度监管期望未定型（03 §4 风险②）；需同时说服工程与合规两条线 |
+| **商业优势** | 需求刚性、卖点清晰、销售周期短 | 复用现有资产、进入市场快 | 概念成熟、 buyer 现成 | 平台客单价高 | 空白定位（[03 §4](03-competitive-landscape.md)）、法规护城河、证据数据粘性 |
+| **商业风险** | 天花板低、易被平台厂商"一个模块"吃掉；CRA 执法不及预期则需求萎缩 | 红海（21 家厂商）、商品化严重（[03 §3](03-competitive-landscape.md)）、CRA 只是营销话术（Snyk/Mend 现状） | 与现有 VM/ASPM 正面竞争（Wiz/Checkmarx） | 对象模型错配未解决，只是更大而不是更对 | 建设周期长；证据粒度监管期望未定型（[03 §4](03-competitive-landscape.md) 风险②）；需同时说服工程与合规两条线 |
 | **与现有 SCA/SAST 关系** | 消费其输出 | 就是其升级 | 并列集成 | 包含之 | **以其为数据源之一，在其上重建对象模型** |
 
-### 6.2 定位空白证据（03 报告 §4，Fact 级观察）
+### 6.2 定位空白证据（[03 报告](03-competitive-landscape.md) §4，Fact 级观察）
 
 1. AppSec/SCA 阵营（Snyk、Mend、Endor、Checkmarx、GitLab、GitHub、Veracode、Semgrep、Socket、Arnica、Apiiro、Aqua、Wiz）**全部是 repo/应用/工作负载对象模型**；21 家对比表中 Product→Version 维度仅 Black Duck（Project+Version）、Sonatype（SBOM 绑版本 + VEX 跨版本延续）、JFrog（release 制品证据链）达到"部分"，且三家都缺 CRA 的产品线/支持期/监管报告语义；
 2. 产品安全/PSIRT 阵营（Finite State、ONEKEY）以产品/build 为对象且 CRA 原生，但技术栈是嵌入式二进制分析，无 function reachability/agentic 修复/开发者工作流——现代软件厂商不会买；
@@ -416,7 +424,7 @@ CRA 要求技术文档留存 10 年、MSA 请求时出示 SBOM、Art 14 报告�
 - 纯 ① 天花板低且易被吞并；纯 ② 是红海且 CRA 只是话术；③④ 与巨头正面碰撞且不解决对象模型错配；
 - ⑤ 的价值主张不是"发现了多少 CVE"，而是"针对某个具体产品和版本，从漏洞发现到风险判断、修复、验证以及最终合规证据的完整闭环"——这恰好是 CRA 义务的镜像；
 - 路径依赖的现实约束：不要重建已有 SCA/SAST 引擎，而是把核心对象模型换成 Product/Version/Lifecycle，把引擎能力作为数据源接入（§8 架构）；
-- 窗口风险明示：JFrog 与 Black Duck 距离最近，窗口估计 12–18 个月（Hypothesis，基于 03 §4 反方提示）。
+- 窗口风险明示：JFrog 与 Black Duck 距离最近，窗口估计 12–18 个月（Hypothesis，基于 [03 §4](03-competitive-landscape.md) 反方提示）。
 
 ---
 
@@ -486,11 +494,83 @@ CVE/GHSA/OSV 聚合视图（多源字段对照：NVD vs OSV vs vendor advisory �
 
 Dashboard 回答"哪个产品有问题"，Workbench 回答"这个漏洞怎么办"，Compliance Center 回答"如何向监管证明"。三者是同一 Evidence Graph 的三个投影——**这是该设计与"SCA + 报表模块"的本质区别**：报表不是事后生成物，而是证据图的一个查询视图。
 
+### 7.6 VEX 判定逻辑：证据强度分级的裁决流程（2026-09-20 补充）
+
+四个 VEX status 不是平级选项，而是**一条证据阶梯——走到哪一级证据就签哪个状态**（依据 [01 报告](01-domain-ontology.md) §11、[04 报告](04-technology-deep-dive.md) §2，PoC 已实测）：
+
+| Status | 判定条件 | 支撑证据 | 自动化程度 |
+|---|---|---|---|
+| **under_investigation** | 默认态：关联上了但证据不足（版本区间不确定、无 reachability 数据、情报源冲突） | 关联记录本身 | 全自动（兜底，不静默丢弃） |
+| **affected** | 版本落在受影响区间内且无反证；有 call path 则为强确认 | SBOM 匹配 + 版本区间 +（可选）reachability call path | 全自动（保守原则：无反证即 affected） |
+| **not_affected** | 有反证，按 justification 分档：① `component_not_present` ② `vulnerable_code_not_present`（如只用子模块）③ `vulnerable_code_not_in_execute_path`（静态不可达）④ `vulnerable_code_cannot_be_controlled_by_adversary` ⑤ `inline_mitigations_already_exist` | ①② 是机器可证的强证据；③④⑤ 是弱证据 | **①② 可自动；③④⑤ 必须人工签核** |
+| **fixed** | 升级/补丁后重新验证通过：新 SBOM 重扫不再命中 + 构建测试通过 | 修复前后 SBOM diff + 重扫记录 | 全自动（确定性验证） |
+
+三个设计原则：① **"无反证即 affected"**——"unreachable"是弱证据（[04 报告](04-technology-deep-dive.md) §5.1 核心反面证据），`not_affected + not_in_execute_path` 永远不能全自动签出，机器出证据、人签核；② **VEX statement 是带版本的一等数据对象**，状态可演进（`under_investigation → affected → fixed`），每次变迁生成新 attestation 挂证据；③ **判定输入是 SSVC 式决策树**（presence → version range → reachability → context → 修复验证），每个节点产机器证据，LLM 只做证据的阅读与呈现、不做事实断言（§11 架构约束）。
+
+### 7.7 VEX 判定数据流与技术栈（2026-09-20 补充）
+
+§7.6 的判定原则落到工程上，是六个节点组成的数据流（单漏洞 × 单产品版本）：
+
+```text
+SBOM（PURL + version + hash）
+   │
+   ▼ ① Presence：组件到底在不在产物里？
+   ├─ 技术：manifest/lockfile 解析（Syft/cdxgen/Trivy fanal）、二进制指纹匹配、
+   │        构建依赖图（go mod graph / compile_commands.json）
+   ├─ 输出：present? + 证据（SBOM 条目 sha256）
+   └─ 不在 → not_affected / component_not_present【强证据，可自动】
+   │
+   ▼ ② Association：组件 ↔ 漏洞库条目、版本在不在受影响区间？
+   ├─ 技术：PURL 归一化（ECMA-427）→ OSV ecosystem 映射（主轨道）；CPE 匹配（仅 fallback）；
+   │        版本区间求值（OSV events: introduced/fixed/last_affected + 各生态版本比较器）；
+   │        发行版 backport feed（Debian tracker / Red Hat CSAF）纠正"版本号老=有漏洞"
+   ├─ 数据：OSV API / GHSA / NVD API 2.0 / vendor CSAF
+   ├─ 输出：候选漏洞集 + 区间命中判定
+   └─ 版本不在区间（含 backport 已修）→ not_affected【强证据，可自动】
+   │
+   ▼ ③ Reachability：漏洞代码走不走得到？
+   ├─ 技术：vuln→function 映射（策展：解析 fix commit diff 得变更函数集）；
+   │        call graph（Go: govulncheck 符号级 / Java: Soot·WALA /
+   │        C/C++: Joern CPG + compilation database / JS: tree-sitter）；
+   │        从 entrypoint BFS 到 vulnerable symbol
+   ├─ 输出：reachable? + call path 证据
+   ├─ 有路径 → affected【强确认，自动】
+   ├─ 无路径 → not_affected / vulnerable_code_not_in_execute_path
+   │           【弱证据⚠️ 强制人工签核——静态分析证明不了"不可达"】
+   └─ 无映射数据 → under_investigation【兜底】
+   │
+   ▼ ④ Exploitability context：在我的环境里好不好利用？
+   ├─ 技术：部署上下文采集（K8s labels、云 metadata、Ingress/LB 暴露面）；
+   │        配置/feature flag 静态扫描；SSVC 决策树（CISA 发布的 JSON 决策点）；
+   │        外部信号：CISA KEV feed、FIRST EPSS API（每日更新）
+   ├─ 输出：context 因子集 → 优先级 + justification 候选
+   │        （cannot_be_controlled_by_adversary / inline_mitigations_already_exist）
+   └─ 【均为弱证据⚠️ 人工签核；KEV 命中反向升级——直接触发 Art 14 时钟评估】
+   │
+   ▼ ⑤ Fix & Verification：修了没有、修好没有？
+   ├─ 技术：fix version 解析（OSV fixed events）→ 升级 PR（Renovate 模式）→
+   │        CI 重扫（同一管道重跑）→ SBOM diff（CycloneDX 版本比较）
+   ├─ 输出：fixed? + 验证证据（重扫记录 + build/test 通过）
+   └─ 通过 → fixed【确定性验证，自动】
+   │
+   ▼ ⑥ Statement 生成与存证
+      技术：OpenVEX 序列化；in-toto Statement v1 + DSSE + ed25519 签名；
+      PostgreSQL/SQLite 证据库；状态机（under_investigation→affected→fixed，
+      新情报触发旧 statement 失效重估）
+```
+
+四个工程要点：
+
+1. **①②是"查询问题"、③④是"分析问题"、⑤是"闭环问题"**——技术难度和价值往后移。①②已商品化（Trivy/Grype 免费，[06 报告](06-product-forms-and-tech-stacks.md)）；③是工程壁垒（PoC 已用 Joern 验证）；④的难点在 context 数据采集而非决策树；⑤的修复可信度遥测是全行业空档（[03 报告](03-competitive-landscape.md) §3.2）。
+2. **vuln→function 映射是③的燃料，也是真正的成本中心**（[04 报告](04-technology-deep-dive.md) §1.5）：主要来源是解析 fix commit diff 提取变更函数；可用 LLM 辅助策展（读 patch + advisory 提候选），但入库前必须确定性校验（函数确实存在于该版本代码中）+ 人工确认。
+3. **每个节点的"输出证据"不是日志，是可签名对象**：工具 + 版本 + 命令 + 输入输出 hash + 时间戳（PoC 的 154 条 attestation 即按此 schema 存储，导出逐条可验签）。
+4. **人在环上的位置被压到最小但最重的点**：①②⑤全自动，③的"不可达"与④的所有判定走 Workbench 人签——机器把 call path、context 因子、建议 justification 摆好，人一键签核，签名记录为"人 + 系统"双主体。PoC 实测：77 个关联漏洞中仅 1 条落入弱证据人签场景、14 条落 under_investigation 兜底——**需要人判的比例很小，但那一小撮恰是法律责任最重的**。
+
 ---
 
 ## 8. 技术架构参考
 
-> 17 层架构，标注每层与已有 SCA/SAST 资产的关系：**【复用】**= 现有能力直接接入；**【改造】**= 现有能力需包装/扩展；**【新建】**= 需从零建设。依据：01 报告（数据流）、03 报告（业界实现现状）、04 报告（技术可行性）。
+> 17 层架构，标注每层与已有 SCA/SAST 资产的关系：**【复用】**= 现有能力直接接入；**【改造】**= 现有能力需包装/扩展；**【新建】**= 需从零建设。依据：[01 报告](01-domain-ontology.md)（数据流）、[03 报告](03-competitive-landscape.md)（业界实现现状）、[04 报告](04-technology-deep-dive.md)（技术可行性）。
 
 ```text
 ┌─────────────────────────────────────────────────────────────────┐
@@ -531,22 +611,22 @@ Dashboard 回答"哪个产品有问题"，Workbench 回答"这个漏洞怎么办
 
 | 层 | 要点 | 复用判断 |
 |---|---|---|
-| **Data Ingestion** | NVD API 2.0 + change history 驱动增量（01 §4 工程实践）；OSV/GHSA feed；vendor CSAF 聚合；KEV/EPSS 每日同步 | 【改造】feed 框架可复用，多源实体对齐逻辑新建 |
-| **SCA Engine** | 组件识别（声明/二进制/代码片段）、PURL/CPE 双轨归一化 | 【复用】现有 SCA 核心；补双轨身份映射表（01 §9） |
+| **Data Ingestion** | NVD API 2.0 + change history 驱动增量（[01 §4](01-domain-ontology.md) 工程实践）；OSV/GHSA feed；vendor CSAF 聚合；KEV/EPSS 每日同步 | 【改造】feed 框架可复用，多源实体对齐逻辑新建 |
+| **SCA Engine** | 组件识别（声明/二进制/代码片段）、PURL/CPE 双轨归一化 | 【复用】现有 SCA 核心；补双轨身份映射表（[01 §9](01-domain-ontology.md)） |
 | **SBOM Engine** | 生成已是商品（Syft/cdxgen 事实标准）；差异化在准确性（传递依赖/二进制/重打包）与**版本化存档** | 【复用+改造】生成复用，存档/diff/新鲜度策略新建 |
-| **Vulnerability Intelligence** | CVE ID 为 join key 的实体对齐；vuln→function 映射策展（reachability 的成本中心，04 §1.5）；fix commit↔fix version↔backport 映射表（01 §15） | 【新建】这是数据资产层，无现成资产 |
+| **Vulnerability Intelligence** | CVE ID 为 join key 的实体对齐；vuln→function 映射策展（reachability 的成本中心，[04 §1.5](04-technology-deep-dive.md)）；fix commit↔fix version↔backport 映射表（[01 §15](01-domain-ontology.md)） | 【新建】这是数据资产层，无现成资产 |
 | **Product Inventory** | Product/Version/Release 注册 + support period 状态机；与 CMDB/制品库/CI 对接 | 【新建】对象模型是本产品的根基（§5） |
 | **Evidence Graph / Evidence Store** | 见 §12；关系库即可起步（GUAC 先例：PostgreSQL/KV，勿押注图数据库） | 【新建】核心差异化资产 |
 | **Static Analysis** | SAST 复用；为 reachability 提供 call graph 底座（CodeQL/Joern） | 【复用】 |
-| **Reachability** | 分语言分粒度建设；Go/Java 有开源底座，C/C++ 是差异化方向（04 §1.3/§6.1）；必须输出证据对象而非布尔值 | 【新建】工程壁垒所在 |
+| **Reachability** | 分语言分粒度建设；Go/Java 有开源底座，C/C++ 是差异化方向（[04 §1.3/§6.1](04-technology-deep-dive.md)）；必须输出证据对象而非布尔值 | 【新建】工程壁垒所在 |
 | **Exploitability** | SSVC 决策树（周级实现）+ context 数据采集（部署拓扑/暴露面/feature flag）；定位为"证据聚合+半自动裁决" | 【新建】框架无壁垒，集成工程是工作量 |
-| **Risk Engine** | KEV 命中→立即行动+AEV 时钟评估；EPSS 高+CVSS 高→本周期修复；reachability/exploitability 降级路径；**不融合成单一分数**（FIRST 官方建议组合使用，04 §2.2） | 【新建】 |
-| **Agent Runtime** | MCP tool 封装（SCA/reachability/SAST/CI）；Skill 资产（SSVC 树、CRA 条款映射、修复 playbook）；**每次运行的 tool call 序列 + 输入输出 hash 落 Evidence Store**（04 §3.3） | 【新建】 |
-| **Remediation** | 升级 PR（Dependabot/Renovate 模式商品化）；差异化在 breaking change 预判（04 §3.1 L2 工具链）与 backport（Endor Patches 模式 L3） | 【改造】 |
+| **Risk Engine** | KEV 命中→立即行动+AEV 时钟评估；EPSS 高+CVSS 高→本周期修复；reachability/exploitability 降级路径；**不融合成单一分数**（FIRST 官方建议组合使用，[04 §2.2](04-technology-deep-dive.md)） | 【新建】 |
+| **Agent Runtime** | MCP tool 封装（SCA/reachability/SAST/CI）；Skill 资产（SSVC 树、CRA 条款映射、修复 playbook）；**每次运行的 tool call 序列 + 输入输出 hash 落 Evidence Store**（[04 §3.3](04-technology-deep-dive.md)） | 【新建】 |
+| **Remediation** | 升级 PR（Dependabot/Renovate 模式商品化）；差异化在 breaking change 预判（[04 §3.1](04-technology-deep-dive.md) L2 工具链）与 backport（Endor Patches 模式 L3） | 【改造】 |
 | **Workflow** | SLA 计时、多级签核（not_affected/对外 advisory 强制人工） | 【改造】 |
 | **CRA Compliance** | §7.4 工作台的后端：义务映射表（§4 的 46 行数据化）、Art 14 时钟状态机、Annex VII 文档组装 | 【新建】 |
 | **Evidence Store** | 10 年留存策略、不可变存储、签名 attestation | 【新建】 |
-| **Reporting** | CSAF VEX Profile / OpenVEX / CycloneDX VEX 三格式导出（01 §11 三种实现）；SRP 手工提交辅助 | 【新建】 |
+| **Reporting** | CSAF VEX Profile / OpenVEX / CycloneDX VEX 三格式导出（[01 §11](01-domain-ontology.md) 三种实现）；SRP 手工提交辅助 | 【新建】 |
 | **Integration** | 研发工具链双向集成；对外暴露 MCP tool 供客户 AI 生态调用 | 【改造】 |
 
 ### 8.2 架构判断（Interpretation）
@@ -559,9 +639,9 @@ Dashboard 回答"哪个产品有问题"，Workbench 回答"这个漏洞怎么办
 
 ## 9. 竞争格局浓缩
 
-> 完整 21 家厂商分节与 12 维对比表见 03 报告；本节只保留决策所需的商品化判断与定位空白证据。
+> 完整 21 家厂商分节与 12 维对比表见 [03 报告](03-competitive-landscape.md)；本节只保留决策所需的商品化判断与定位空白证据。
 
-### 9.1 能力商品化光谱（03 报告 §3）
+### 9.1 能力商品化光谱（[03 报告](03-competitive-landscape.md) §3）
 
 **已高度商品化**（2026 年做成不再是差异化）：
 
@@ -590,7 +670,7 @@ Dashboard 回答"哪个产品有问题"，Workbench 回答"这个漏洞怎么办
 
 ### 9.2 关键厂商态势速览（决策相关者）
 
-| 厂商 | 与本产品定位的关系 | 要点（详见 03 报告对应节） |
+| 厂商 | 与本产品定位的关系 | 要点（详见 [03 报告](03-competitive-landscape.md)对应节） |
 |---|---|---|
 | **JFrog** | **最接近的占位者，窗口收窄主风险** | 唯一有专门 CRA Compliance Brief；AppTrust 证据链（不可变 release bundle+OPA gate）最接近 Evidence Graph 思想；但对象是"制品"非"带支持期语义的产品线"，reachability/修复深度弱 |
 | **Black Duck** | 次近占位者 | 制造业 CRA 真实案例（STMicro）；Project+Version 对象模型 + 2026.7 VEX Templates + 审计级证据是行业最强档；缺 reachability 深度与 agentic 闭环 |
@@ -603,27 +683,35 @@ Dashboard 回答"哪个产品有问题"，Workbench 回答"这个漏洞怎么办
 | **Finite State / ONEKEY** | PSIRT 阵营（半个占位者） | 产品/build 为对象、CRA 原生、托管合规服务；但技术栈是嵌入式二进制分析，无现代开发者工作流 |
 | **Dependency-Track（OSS）** | 开源基线 | project/portfolio+VEX，开源世界最接近目标对象模型；无 reachability/修复/CRA 证据 |
 
-### 9.3 定位空白判断（引用 03 报告 §4 结论）
+### 9.3 定位空白判断（引用 [03 报告](03-competitive-landscape.md) §4 结论）
 
 > **空白存在但正在收窄**——"以 Product/Version 为核心对象、覆盖完整漏洞生命周期闭环、面向 CRA 证据"的现代化产品定位，目前没有厂商完整占据；两端各有半个占位者（JFrog/Black Duck 从 AppSec 侧、Finite State/ONEKEY 从 PSIRT 侧），中间断层明显。
 
-反方风险（03 §4 明示，必须纳入决策）：① JFrog/Black Duck 升级对象模型则空白快速收窄；② CRA 执法实践未定型，证据粒度的监管期望有不确定性；③ GitHub/GitLab 若以 release 为轴重组 SBOM/漏洞数据，可从下往上吃掉该空间。
+反方风险（[03 §4](03-competitive-landscape.md) 明示，必须纳入决策）：① JFrog/Black Duck 升级对象模型则空白快速收窄；② CRA 执法实践未定型，证据粒度的监管期望有不确定性；③ GitHub/GitLab 若以 release 为轴重组 SBOM/漏洞数据，可从下往上吃掉该空间。
 
-### 9.4 业内产品形态与技术栈格局（06 报告，2026-09-20 补充）
+### 9.4 业内产品形态与技术栈格局（[06 报告](06-product-forms-and-tech-stacks.md)，2026-09-20 补充）
 
-> 03 是"厂商×功能"视角；06 补齐形态分类学与技术栈两层。**供给收敛为十个物种，计费单位即物种指纹**：开发者平台型（Snyk/Endor，per dev）、运行时型（Wiz，per workload）、制品仓库型（JFrog/Sonatype，per server，air-gapped 齐备）与新子物种重建发行商（Chainguard，镜像目录订阅+CVE SLA）、企业 SCA 套件（Black Duck 有 air-gapped KB）、二进制固件型（ONEKEY 等，per image）、ASPM 聚合层（ArmorCode 明示"不自产扫描器"）、CLI 开源核心+商业 SaaS（Trivy/Semgrep）、漏洞情报供应（VulnDB 纯数据订阅）、CRA 原生初创（CRACI，pre-seed 体量）、开源自建派（Dependency-Track/GUAC 压价基线）。
+> [03](03-competitive-landscape.md) 是"厂商×功能"视角；[06](06-product-forms-and-tech-stacks.md) 补齐形态分类学与技术栈两层。**供给收敛为十个物种，计费单位即物种指纹**：开发者平台型（Snyk/Endor，per dev）、运行时型（Wiz，per workload）、制品仓库型（JFrog/Sonatype，per server，air-gapped 齐备）与新子物种重建发行商（Chainguard，镜像目录订阅+CVE SLA）、企业 SCA 套件（Black Duck 有 air-gapped KB）、二进制固件型（ONEKEY 等，per image）、ASPM 聚合层（ArmorCode 明示"不自产扫描器"）、CLI 开源核心+商业 SaaS（Trivy/Semgrep）、漏洞情报供应（VulnDB 纯数据订阅）、CRA 原生初创（CRACI，pre-seed 体量）、开源自建派（Dependency-Track/GUAC 压价基线）。
 
 **形态学二次确认 §9.3 空白**：以 Product→Version 为对象的生命周期平台在十个物种中无对应物——企业套件有对象模型无现代闭环，固件型有产品对象无开发者闭环；且新物种几乎全 SaaS-only，而 CRA 高相关行业（军工/汽车/医疗）要求 on-prem/air-gapped。
 
-**技术栈五要点**：① 识别/匹配/SBOM/PR bot/runtime 探针五层已开源商品化（Trivy fanal、GrypeDB 离线库、Semgrep/OpenGrep 的 tree-sitter 路线、Tracee/Falco），自研=浪费；② 存储层 PostgreSQL 一统（Dependency-Track 生产实证），"图数据库是叙事"样本扩大（印证 §10.2 反叙事 2）；③ 漏洞策展收敛为"AI 加速+人类终审+风险优先队列"（GitHub 官方承认纯人工撑不住），backport 误报上限=发行版 feed 覆盖率而非算法；④ AI 修复架构趋同"确定性校验+LLM"，MCP tool 化（Snyk 模式）成为安全能力接入 agent 的标准接口；⑤ 自研差异化只在三处：产品/版本对象模型与证据链数据模型、垂直薄策展与 backport 数据质量、C/C++/二进制 reachability 证据化（详见 06 Part C）。
+**技术栈五要点**：① 识别/匹配/SBOM/PR bot/runtime 探针五层已开源商品化（Trivy fanal、GrypeDB 离线库、Semgrep/OpenGrep 的 tree-sitter 路线、Tracee/Falco），自研=浪费；② 存储层 PostgreSQL 一统（Dependency-Track 生产实证），"图数据库是叙事"样本扩大（印证 §10.2 反叙事 2）；③ 漏洞策展收敛为"AI 加速+人类终审+风险优先队列"（GitHub 官方承认纯人工撑不住），backport 误报上限=发行版 feed 覆盖率而非算法；④ AI 修复架构趋同"确定性校验+LLM"，MCP tool 化（Snyk 模式）成为安全能力接入 agent 的标准接口；⑤ 自研差异化只在三处：产品/版本对象模型与证据链数据模型、垂直薄策展与 backport 数据质量、C/C++/二进制 reachability 证据化（详见 [06 Part C](06-product-forms-and-tech-stacks.md)）。
+
+### 9.5 闭环视角 Gap Analysis（2026-09-21 补充）
+
+> 对一份二手分析（疑似 AI 生成，本身不采信）的五家厂商"闭环能力"声明逐条一手核实，全文见 [03 报告](03-competitive-landscape.md) §6。
+
+**核实结论（一句话/家）**：**Endor Labs**——声明的全链路各环节均有官方文档支撑，成立（仅排序因子组合为营销页口径）；**JFrog**——Contextual Analysis 多信号 scanner、"约三分之一 scanner 不依赖 reachability"、Smart Remediation 双路径逐字成立，"Patched 状态回扫"部分成立（限 Zero-Touch 场景）；**Snyk**——call path 入 Risk Score、monitor 对新 CVE/修复可用性重评估，成立；**Sonatype**——官方五步工作流成立但 Reachability 非产品步骤、justification 仅建议性，部分成立；**Black Duck**——NOT_AFFECTED 强制 justification、"SBOM 不变而 VEX 按 project version 持续更新"逐字成立（状态体系实为 2025.1.0 引入）。
+
+**Assessment-centric 判断**：五家全部仍是 Finding-centric，无一家把 Assessment（Claim+Evidence+Decision）建成可版本化、挂机器证据、可被新情报触发重估的一等对象；最接近者 Black Duck，其次 JFrog（唯一承诺逐结果机器 justification）。最大断裂带在"机器判定→正式 VEX 结论"的自动化——**§9.3 定位空白判断维持不变且更硬**；措辞修正：JFrog reachability 粒度升为"官方文档可验证"（§18.2 解决），Black Duck VEX 状态引入时间修正为 2025.1.0。
 
 ---
 
 ## 10. 技术壁垒判断（Find the Moat）
 
-> 完整论证见 04 报告（TL;DR 表 + 第六章）。本节浓缩三个方向的壁垒定性 + 三条反叙事证据 + PoC 建议。这是本研究中"反面证据最集中"的一章，结论刻意保守。
+> 完整论证见 [04 报告](04-technology-deep-dive.md)（TL;DR 表 + 第六章）。本节浓缩三个方向的壁垒定性 + 三条反叙事证据 + PoC 建议。这是本研究中"反面证据最集中"的一章，结论刻意保守。
 
-### 10.1 三个方向的壁垒定性（04 报告 §6，Interpretation）
+### 10.1 三个方向的壁垒定性（[04 报告](04-technology-deep-dive.md) §6，Interpretation）
 
 | 方向 | 壁垒判断 | 依据（浓缩） |
 |---|---|---|
@@ -631,7 +719,7 @@ Dashboard 回答"哪个产品有问题"，Workbench 回答"这个漏洞怎么办
 | **Exploitability** | **仅产品功能（框架层）；其中"证据化 VEX"含工程壁垒成分** | SSVC/EPSS/KEV/CVSS 全公开，决策树实现以周计→零壁垒。有价值的成分：① 组织侧 context 数据采集治理（集成工程）；② not_affected justification 的机器证据链（deterministic 部分可自动，execute_path 类必须保守+人工）；③ 决策过程固化为可审计记录（与 Evidence Graph 合流）。**应作为 Evidence Graph 上的杀手级应用，而非独立技术方向** |
 | **Evidence Graph + Agentic** | **Evidence Graph 是潜在真壁垒候选；Agentic 编排是工程壁垒且窗口期短** | 见 §12 与 §11。Agentic 修复模式已被 GitHub/Snyk/AIxCC 公开验证、追赶者众，壁垒成分=修复验证闭环工程化+失败率数据积累；"纯套 MCP 编排 LLM"无壁垒 |
 
-### 10.2 三条反叙事证据（04 报告 §5，必须如实纳入结论）
+### 10.2 三条反叙事证据（[04 报告](04-technology-deep-dive.md) §5，必须如实纳入结论）
 
 **反叙事 1："Reachability 降噪 90%+"被高估。** Endor "up to 92%"的分母是全部 findings；且 unreachable 判定官方承认 unsound（Snyk："NO PATH FOUND ≠ 不可达"；govulncheck 列举 reflect/unsafe 漏报）。真正的对照基线：Datadog 基于数万应用遥测，仅 18% 的 CVSS-critical 依赖漏洞在叠加 runtime context（生产/互联网暴露）后仍为 critical——**廉价的 context 过滤拿走了大部分降噪价值，reachability 的增量须与之对比衡量**（Fact + Interpretation）。→ 产品含义：reachability 的定位是"VEX 证据源 + 精准排序"，不是"降噪神器"；优先级排序上 context（exposure/生产标记）应先于 call graph。
 
@@ -641,20 +729,20 @@ Dashboard 回答"哪个产品有问题"，Workbench 回答"这个漏洞怎么办
 
 ### 10.3 建议 PoC（详见 §14.3）
 
-1. **C/C++ function-level reachability 精度验证**（04 §6.1 Hypothesis）：Joern/CodeQL + compilation database，测精度上限与假阴性率；
-2. **结论级 in-toto attestation Evidence Graph 原型**（04 §3.3/§4.3 Hypothesis）：把 reachability 判定/VEX status 做成签名 attestation 入图。
+1. **C/C++ function-level reachability 精度验证**（[04 §6.1](04-technology-deep-dive.md) Hypothesis）：Joern/CodeQL + compilation database，测精度上限与假阴性率；
+2. **结论级 in-toto attestation Evidence Graph 原型**（[04 §3.3/§4.3](04-technology-deep-dive.md) Hypothesis）：把 reachability 判定/VEX status 做成签名 attestation 入图。
 
 ---
 
 ## 11. AI/Agent 角色：Agentic Vulnerability Management 的可行性
 
-> 依据 04 报告 §3。核心判断：可行，但只有唯一诚实的架构形态。
+> 依据 [04 报告](04-technology-deep-dive.md) §3。核心判断：可行，但只有唯一诚实的架构形态。
 
 ### 11.1 可行性已被实证（Fact）
 
 DARPA AIxCC（2025 决赛）是最大规模实证：7 支队伍的全自动 Cyber Reasoning System 在 >5400 万行真实开源代码上发现+修复漏洞，冠军 ATLANTIS 的架构正是"**确定性工具层产出精确代码事实 → LLM agent 层做推理与编排**"。业界一线收敛到同一模式：GitHub CCR = "LLM intelligence + deterministic precision"（CodeQL/ESLint 兜底）；Snyk Agent Fix = 前沿模型 + 专家修复样本 few-shot + SAST re-scan pre-screening。**没有任何严肃厂商让 LLM 结论未经确定性校验直接落地。**
 
-### 11.2 分工架构（Interpretation，04 报告 §3.2/§3.3）
+### 11.2 分工架构（Interpretation，[04 报告](04-technology-deep-dive.md) §3.2/§3.3）
 
 ```text
 ┌──────────────────────────────────────────────┐
@@ -680,7 +768,7 @@ DARPA AIxCC（2025 决赛）是最大规模实证：7 支队伍的全自动 Cybe
 └──────────────────────────────────────────────┘
 ```
 
-依据：裸 LLM triage 61–67% 不满足"事实产出"要求；Agent 是调度员与分析师，不是测量仪器（04 §3.3）。
+依据：裸 LLM triage 61–67% 不满足"事实产出"要求；Agent 是调度员与分析师，不是测量仪器（[04 §3.3](04-technology-deep-dive.md)）。
 
 ### 11.3 六类 Agent 的组织方式（Recommendation）
 
@@ -693,21 +781,21 @@ DARPA AIxCC（2025 决赛）是最大规模实证：7 支队伍的全自动 Cybe
 | **Verification Agent** | 修复后验证编排（重扫、回归、利用复现）、SBOM/VEX 联动更新建议 | 验证证据对象 | status→fixed 流转人签 |
 | **Compliance Agent** | Art 14 时钟监控、报告表单预填（SRP 字段映射）、技术文档组装 | 义务映射数据、Evidence Store | 报告提交必须人签 |
 
-工具组织（Fact/Interpretation，04 §3.3）：MCP 已成 2025–2026 事实标准接口；SCA/reachability/SAST/CI 各封装为 MCP tool；领域知识（SSVC 决策树、CRA 条款映射、修复 playbook）编码为 Skill/prompt 资产；学术侧已有 Joern CPG 封装为 MCP server 的先例（codebadger）。
+工具组织（Fact/Interpretation，[04 §3.3](04-technology-deep-dive.md)）：MCP 已成 2025–2026 事实标准接口；SCA/reachability/SAST/CI 各封装为 MCP tool；领域知识（SSVC 决策树、CRA 条款映射、修复 playbook）编码为 Skill/prompt 资产；学术侧已有 Joern CPG 封装为 MCP server 的先例（codebadger）。
 
-### 11.4 幻觉防控三层机制（Interpretation，有先例支撑，04 §3.3）
+### 11.4 幻觉防控三层机制（Interpretation，有先例支撑，[04 §3.3](04-technology-deep-dive.md)）
 
 1. **Evidence-based agent**：agent 的每个结论必须携带 tool call 产物引用（AIxCC 的 PoV、Snyk 的 pre-screening 为先例）；
 2. **Machine-verifiable evidence**：结论以结构化证据对象（调用栈、测试日志、SARIF）而非自然语言陈述存储；
 3. **Human-in-the-loop 位置**：not_affected 断言、豁免、对外 VEX/CSAF、监管报告必须人工签核（与 CISA VEX justification 的"可辩护性"要求对齐）。
 
-外加一条架构性要求：**每次 agent 运行记录为 attestation 风格的 trace**（步骤、工具版本、输入输出 hash、模型版本、时间戳）落 Evidence Store——使 AI 参与的安全决策具备 CRA 审计所需的可辩护性（Hypothesis，04 §3.3：目前未见厂商公开实现，是差异化点）。
+外加一条架构性要求：**每次 agent 运行记录为 attestation 风格的 trace**（步骤、工具版本、输入输出 hash、模型版本、时间戳）落 Evidence Store——使 AI 参与的安全决策具备 CRA 审计所需的可辩护性（Hypothesis，[04 §3.3](04-technology-deep-dive.md)：目前未见厂商公开实现，是差异化点）。
 
 ---
 
 ## 12. Evidence Graph 数据底座
 
-> 依据 04 报告 §4。本节回答：为什么它是数据底座、为什么比 Knowledge Graph 更适合合规、壁垒何在、风险何在。
+> 依据 [04 报告](04-technology-deep-dive.md) §4。本节回答：为什么它是数据底座、为什么比 Knowledge Graph 更适合合规、壁垒何在、风险何在。
 
 ### 12.1 节点/关系模型
 
@@ -720,7 +808,7 @@ DARPA AIxCC（2025 决赛）是最大规模实证：7 支队伍的全自动 Cybe
      fixed_by · verified_by · reported_by · satisfies · evidenced_by · decided_by
 ```
 
-可行性（Fact，04 §4.1）：该本体与 GUAC 高度同构——GUAC 已证明能统一 SPDX/CycloneDX/SLSA/in-toto/CSAF VEX/OpenVEX/OSV/deps.dev。但 GUAC 的诚实声明同样关键：实体标识符不总是可得，须靠启发式链接——**图的最大工程难点不是存储而是实体解析（identity resolution）**。这与 01 报告 §9 的"PURL↔CPE 显式映射 + 置信度"判断一致。
+可行性（Fact，[04 §4.1](04-technology-deep-dive.md)）：该本体与 GUAC 高度同构——GUAC 已证明能统一 SPDX/CycloneDX/SLSA/in-toto/CSAF VEX/OpenVEX/OSV/deps.dev。但 GUAC 的诚实声明同样关键：实体标识符不总是可得，须靠启发式链接——**图的最大工程难点不是存储而是实体解析（identity resolution）**。这与 [01 报告](01-domain-ontology.md) §9 的"PURL↔CPE 显式映射 + 置信度"判断一致。
 
 ### 12.2 追溯链：结论→证据→工具→工件→时间戳→决策者
 
@@ -735,19 +823,19 @@ Conclusion（如 VEX statement: Product X v2.3 × CVE-2026-YYYY = not_affected�
           → Decision（决策者：人/Agent；签核记录；理由）
 ```
 
-### 12.3 先例（Fact，04 §4.3）
+### 12.3 先例（Fact，[04 §4.3](04-technology-deep-dive.md)）
 
 - **in-toto**（CNCF graduated）："make it transparent what steps were performed, by whom and in what order"——供应链每步签名 attestation + 验证；
 - **SLSA provenance**：以 in-toto attestation 为载体记录构建出处；
 - **GUAC**：直接消费 in-toto ITE6/CSAF VEX/OpenVEX，证明"证据文档→图"管线可行。
 
-**但现有先例的证据链覆盖的是构建过程；没有人把 attestation 范式系统性应用到安全结论**（reachability 判定、VEX status、修复验证）。Evidence Graph = in-toto 思想 × 漏洞生命周期（Hypothesis，04 §4.3：在 CRA 强制审计留痕背景下是真实空白点）。
+**但现有先例的证据链覆盖的是构建过程；没有人把 attestation 范式系统性应用到安全结论**（reachability 判定、VEX status、修复验证）。Evidence Graph = in-toto 思想 × 漏洞生命周期（Hypothesis，[04 §4.3](04-technology-deep-dive.md)：在 CRA 强制审计留痕背景下是真实空白点）。
 
-### 12.4 为什么比纯 Knowledge Graph 更适合合规场景（Interpretation，04 §4.3）
+### 12.4 为什么比纯 Knowledge Graph 更适合合规场景（Interpretation，[04 §4.3](04-technology-deep-dive.md)）
 
 - Knowledge Graph 回答"什么与什么相关"；**Evidence Graph 回答"这个结论凭什么成立"**；
 - CRA 场景下买方（制造商）面对的是监管调取（MSA 合理请求须出示）、10 年留存义务、€15M/2.5% 罚款风险——需要的是**可辩护性（defensibility）**，纯关联图不携带证明力；
-- 技术实现上不需要图数据库（GUAC 先例：PostgreSQL/KV 即可，见 §10.2 反叙事 2）——壁垒在**数据模型标准卡位 + 证据数据积累 + 信任位**（客户敢把合规证据托管给你），这恰是"真壁垒"的构造方式（04 §6.3）；
+- 技术实现上不需要图数据库（GUAC 先例：PostgreSQL/KV 即可，见 §10.2 反叙事 2）——壁垒在**数据模型标准卡位 + 证据数据积累 + 信任位**（客户敢把合规证据托管给你），这恰是"真壁垒"的构造方式（[04 §6.3](04-technology-deep-dive.md)）；
 - 风险提示（Hypothesis）：壁垒依赖 CRA 执法强度与客户审计需求的实际兑现；若不及预期，退化为"不错的平台架构"。
 
 ---
@@ -777,7 +865,7 @@ T+5d   Verification 通过 → SBOM 重新生成存档 → VEX status 流转 fix
 
 ### Journey 2：Actively Exploited Vulnerability → CRA 24h/72h/14d 报告工作流
 
-法规依据：Art 14(1)(2)(8)，02 报告 §6。触发说明：CRA 不强制主动监控（02 §8），但监听 KEV/EUVD/TI 是合理最佳实践（01 §16）。
+法规依据：Art 14(1)(2)(8)，[02 报告](02-cra-regulation.md) §6。触发说明：CRA 不强制主动监控（[02 §8](02-cra-regulation.md)），但监听 KEV/EUVD/TI 是合理最佳实践（[01 §16](01-domain-ontology.md)）。
 
 ```text
 T+0    KEV 收录命中 / 内部发现恶意利用证据 / 外部研究者报告（漏洞收件箱）
@@ -817,7 +905,7 @@ Release 候选构建完成
 
 ### Journey 4：老版本 Support Period 监控
 
-法规依据：Art 13(8)(9)(19)、Art 13(7)，02 报告 §7/§8。
+法规依据：Art 13(8)(9)(19)、Art 13(7)，[02 报告](02-cra-regulation.md) §7/§8。
 
 ```text
 持续后台流程：
@@ -858,11 +946,11 @@ Vendor advisory（优先 CSAF 机器可读通道，01 §12）发布组件安全�
 
 | # | 假设 | 验证方式 | 判据 |
 |---|---|---|---|
-| H1 | C/C++ function-level reachability 精度可支撑产品化（04 §6.1 Hypothesis） | PoC-1（§14.3） | 在已知 CVE 测试集上 P/R 达到可用水位（目标值 PoC 设计时定） |
-| H2 | 结论级 attestation Evidence Graph 可统一承载 reachability/VEX/修复验证证据（04 §4.3 Hypothesis） | PoC-2 | 三种结论类型可建模、可签名、可查询追溯 |
-| H3 | 多源情报融合的实体对齐准确率足够高（01 §4/§7） | PoC-3 | NVD 盲区命中率可度量；PURL 匹配误报率 < 现有 SCA 基线 |
-| H4 | SSVC+context 的 exploitability 裁决能显著降噪且可辩护（04 §2.2） | PoC-4 | 样本数据上复现 Datadog 式降级效果，且每条结论可溯源 |
-| H5 | 目标客户（EU 市场制造商）对"Product→Version+证据"定位有付费意愿（03 §4 的空白判断是市场假设） | 5–10 家设计伙伴访谈 | ≥3 家愿意参与 Phase 1 试点 |
+| H1 | C/C++ function-level reachability 精度可支撑产品化（[04 §6.1](04-technology-deep-dive.md) Hypothesis） | PoC-1（§14.3） | 在已知 CVE 测试集上 P/R 达到可用水位（目标值 PoC 设计时定） |
+| H2 | 结论级 attestation Evidence Graph 可统一承载 reachability/VEX/修复验证证据（[04 §4.3](04-technology-deep-dive.md) Hypothesis） | PoC-2 | 三种结论类型可建模、可签名、可查询追溯 |
+| H3 | 多源情报融合的实体对齐准确率足够高（[01 §4/§7](01-domain-ontology.md)） | PoC-3 | NVD 盲区命中率可度量；PURL 匹配误报率 < 现有 SCA 基线 |
+| H4 | SSVC+context 的 exploitability 裁决能显著降噪且可辩护（[04 §2.2](04-technology-deep-dive.md)） | PoC-4 | 样本数据上复现 Datadog 式降级效果，且每条结论可溯源 |
+| H5 | 目标客户（EU 市场制造商）对"Product→Version+证据"定位有付费意愿（[03 §4](03-competitive-landscape.md) 的空白判断是市场假设） | 5–10 家设计伙伴访谈 | ≥3 家愿意参与 Phase 1 试点 |
 
 **Risk**：H5 是商业假设，PoC 无法纯技术验证；H1 若证伪，Phase 2 降级为 context-first 降噪。
 
@@ -880,18 +968,18 @@ Vendor advisory（优先 CSAF 机器可读通道，01 §12）发布组件安全�
 - **Goal**：Reachability + Exploitability + SSVC 风险裁决 + 证据化 VEX。
 - **User Story**："作为安全分析师，每个漏洞告警自带可达性证据与上下文裁决建议，我签核的不是'感觉'而是证据链；not_affected 自动带 justification 与证据引用。"
 - **Feature**：Reachability Engine（按 H1 结果定语言优先级：若 C/C++ 可行则主打差异化，否则 Java/Go/Python 跟随）；Exploitability context 聚合（暴露面/生产标记/feature flag）；Risk Engine（SSVC 决策树，不融合单一分数）；VEX Workbench（四 status + justification + 证据强制挂接 + 跨版本延续）；Agent Runtime v1（Triage/Exploitability Agent）。
-- **Dependency**：vuln→function 映射数据策展启动（这是持续投入，04 §1.5 成本中心）；客户 context 数据接入（部署标记）。
+- **Dependency**：vuln→function 映射数据策展启动（这是持续投入，[04 §1.5](04-technology-deep-dive.md) 成本中心）；客户 context 数据接入（部署标记）。
 - **Success Metric**：告警降噪率（与"context-only 基线"对比报告，诚实呈现，见 §10.2）；VEX statement 证据挂接率 100%；分析师单漏洞裁决时间下降 ≥50%。
-- **Risk**：reachability 商品化速度（03 §3）——若 12 个月内主流语言全部沦为标配，差异化仅剩 C/C++ 与证据化；unreachable 弱证据引发的误判风险（缓解：execute_path 类 justification 强制人工签核）。
+- **Risk**：reachability 商品化速度（[03 §3](03-competitive-landscape.md)）——若 12 个月内主流语言全部沦为标配，差异化仅剩 C/C++ 与证据化；unreachable 弱证据引发的误判风险（缓解：execute_path 类 justification 强制人工签核）。
 
 ### 14.4 Phase 3 — Agentic Remediation（约 2 个季度）
 
 - **Goal**：修复闭环——升级/backport/AI 补丁 + 确定性验证 + 证据留存。
 - **User Story**："作为开发者，修复 PR 自动开好且带验证证据（构建通过、测试通过、漏洞不再触发的 re-scan 记录），我只需评审合入；升级会不会 break 有预判。"
-- **Feature**：Remediation Engine（升级 PR + breaking change 预判 + backport 评估）；Remediation/Verification Agent（补丁起草、冲突消解、验证编排）；修复可信度遥测（合并率/回归率——**全行业缺失的指标，先建先赢**，03 §3.2）；验证通过后 SBOM/VEX 自动联动。
+- **Feature**：Remediation Engine（升级 PR + breaking change 预判 + backport 评估）；Remediation/Verification Agent（补丁起草、冲突消解、验证编排）；修复可信度遥测（合并率/回归率——**全行业缺失的指标，先建先赢**，[03 §3.2](03-competitive-landscape.md)）；验证通过后 SBOM/VEX 自动联动。
 - **Dependency**：CI/CD 集成深度；AI Coding 工具链对接（Copilot/Cursor 生态或自建）。
 - **Success Metric**：修复 PR 合并率与回归率遥测上线并对外公布（信任差异化）；median time-to-remediate（KEV 命中）显著低于客户基线。
-- **Risk**：全自动修复叙事过度承诺（04 §5.3）——营销口径必须锁定"带证据的建议+确定性验证+人工签核"；修复质量问题损害信任位（Evidence Graph 壁垒的根基）。
+- **Risk**：全自动修复叙事过度承诺（[04 §5.3](04-technology-deep-dive.md)）——营销口径必须锁定"带证据的建议+确定性验证+人工签核"；修复质量问题损害信任位（Evidence Graph 壁垒的根基）。
 
 ### 14.5 Phase 4 — Product Security Platform（持续）
 
@@ -902,10 +990,10 @@ Vendor advisory（优先 CSAF 机器可读通道，01 §12）发布组件安全�
 
 ### 14.6 未来 1–2 个月最值得做的 3–5 个技术 PoC（Recommendation）
 
-1. **C/C++ function-level reachability 精度验证**（04 §6.1 建议）：Joern/CodeQL + compilation database，选 20–30 个有明确 fix commit 的 C/C++ CVE，测 vuln→function 标注 + call graph 可达性的精度/召回/假阴性率；含"不可构建项目 fallback"与二进制场景抽样。**目的**：决定 Phase 2 的差异化押注是否成立（H1）。
-2. **结论级 in-toto attestation Evidence Graph 原型**（04 §3.3/§4.3 建议）：PostgreSQL 后端（勿用图数据库，§10.2），把一条 reachability 判定 + 一条 VEX statement + 一条修复验证做成签名 attestation，实现"结论→证据→工具→工件 hash→时间戳→决策者"全链查询与导出。**目的**：验证统一承载力与审计演示价值（H2），这是最接近真壁垒方向的低成本试探。
-3. **多源情报融合管道 + NVD 盲区度量**（01 §4/§7）：NVD+OSV+GHSA+KEV 每日同步，以 CVE ID/alias 实体对齐；抽 100 个近期 CVE 度量"NVD 未 enrichment 但 OSV/GHSA 已可匹配"的盲区比例与时长。**目的**：H3 + 为 Phase 1 情报层奠基，盲区数据本身即营销素材。
-4. **SSVC + context exploitability 裁决原型**（04 §2.2）：决策树实现（周级）+ 两个 context 因子（生产标记、互联网暴露），在样本漏洞集上对比"CVSS-only 排序"与"SSVC+context 排序"的降噪与可解释性。**目的**：H4，验证廉价 context 的真实杠杆（Datadog 数据的内部复现）。
+1. **C/C++ function-level reachability 精度验证**（[04 §6.1](04-technology-deep-dive.md) 建议）：Joern/CodeQL + compilation database，选 20–30 个有明确 fix commit 的 C/C++ CVE，测 vuln→function 标注 + call graph 可达性的精度/召回/假阴性率；含"不可构建项目 fallback"与二进制场景抽样。**目的**：决定 Phase 2 的差异化押注是否成立（H1）。
+2. **结论级 in-toto attestation Evidence Graph 原型**（[04 §3.3/§4.3](04-technology-deep-dive.md) 建议）：PostgreSQL 后端（勿用图数据库，§10.2），把一条 reachability 判定 + 一条 VEX statement + 一条修复验证做成签名 attestation，实现"结论→证据→工具→工件 hash→时间戳→决策者"全链查询与导出。**目的**：验证统一承载力与审计演示价值（H2），这是最接近真壁垒方向的低成本试探。
+3. **多源情报融合管道 + NVD 盲区度量**（[01 §4/§7](01-domain-ontology.md)）：NVD+OSV+GHSA+KEV 每日同步，以 CVE ID/alias 实体对齐；抽 100 个近期 CVE 度量"NVD 未 enrichment 但 OSV/GHSA 已可匹配"的盲区比例与时长。**目的**：H3 + 为 Phase 1 情报层奠基，盲区数据本身即营销素材。
+4. **SSVC + context exploitability 裁决原型**（[04 §2.2](04-technology-deep-dive.md)）：决策树实现（周级）+ 两个 context 因子（生产标记、互联网暴露），在样本漏洞集上对比"CVSS-only 排序"与"SSVC+context 排序"的降噪与可解释性。**目的**：H4，验证廉价 context 的真实杠杆（Datadog 数据的内部复现）。
 5. （可选）**Art 14 报告工作流纸上演练**：与 1–2 家设计伙伴用真实历史 AEV（如某 KEV 条目）走一遍 24h/72h 表单填写，验证 SRP 字段映射与 evidence 需求。**目的**：Phase 1 需求校准（非技术 PoC，H5 的组成部分）。
 
 ---
@@ -915,34 +1003,34 @@ Vendor advisory（优先 CSAF 机器可读通道，01 §12）发布组件安全�
 > 每题给出基于证据的回答；证据不足或有两面性时如实说明。详细证据散见前述各章，此处标注出处。
 
 **Q1：CRA 是一个单独 Compliance Feature，还是重新定义 SCA 产品的机会？**
-**答：两面皆有，但战略上应按后者下注、战术上按前者交付。** 证据：46 项义务映射中约 2/3 是流程+证据类（§4.2），超出任何"SCA 加一个报表"能覆盖的范围；主流厂商（Snyk/Mend）当前确实只做了"现有能力映射"的内容营销（03 §1.1/§1.2），说明"当 feature 做"是行业默认——这正是空白存在的原因（03 §4）。但按后者下注的风险是 CRA 执法不及预期（03 §4 风险②）。→ 以 CRA 义务为骨架重建对象模型，但第一阶段交付物必须是能独立卖的最小合规闭环（Phase 1），而非只有叙事。（Recommendation）
+**答：两面皆有，但战略上应按后者下注、战术上按前者交付。** 证据：46 项义务映射中约 2/3 是流程+证据类（§4.2），超出任何"SCA 加一个报表"能覆盖的范围；主流厂商（Snyk/Mend）当前确实只做了"现有能力映射"的内容营销（[03 §1.1/§1.2](03-competitive-landscape.md)），说明"当 feature 做"是行业默认——这正是空白存在的原因（[03 §4](03-competitive-landscape.md)）。但按后者下注的风险是 CRA 执法不及预期（[03 §4](03-competitive-landscape.md) 风险②）。→ 以 CRA 义务为骨架重建对象模型，但第一阶段交付物必须是能独立卖的最小合规闭环（Phase 1），而非只有叙事。（Recommendation）
 
 **Q2：核心对象应该是 Component/CVE 还是 Product/Version/Lifecycle？**
-**答：Product/Version/Lifecycle。** 证据：CRA 的监管对象是"投放市场的产品"而非代码仓库（03 §0）；监管提问粒度是"哪个产品版本、判定了什么、修没修、证据在哪"（03 §4.5）；21 家厂商中无一家以该对象模型完整实现（03 §2 对比表第 12 列）；开源 Dependency-Track 与 sbom-sentinel 证明对象模型可行（03 §4.4）。注意：Component/CVE 仍是**分析的原子单位**——Product/Version 是组织与责任维度，二者不互斥，是投影关系（§7.1）。（Interpretation，证据充分）
+**答：Product/Version/Lifecycle。** 证据：CRA 的监管对象是"投放市场的产品"而非代码仓库（[03 §0](03-competitive-landscape.md)）；监管提问粒度是"哪个产品版本、判定了什么、修没修、证据在哪"（[03 §4.5](03-competitive-landscape.md)）；21 家厂商中无一家以该对象模型完整实现（[03 §2](03-competitive-landscape.md) 对比表第 12 列）；开源 Dependency-Track 与 sbom-sentinel 证明对象模型可行（[03 §4.4](03-competitive-landscape.md)）。注意：Component/CVE 仍是**分析的原子单位**——Product/Version 是组织与责任维度，二者不互斥，是投影关系（§7.1）。（Interpretation，证据充分）
 
 **Q3：Reachability 是否值得成为核心技术壁垒？**
-**答：不值得作为唯一壁垒；值得作为工程壁垒组合的一部分，差异化押注在 C/C++/嵌入式。** 证据：方法公开、开源底座成熟、多家已产品化，且 package 级已商品化、function 级快速商品化（03 §3）；Go 有官方免费工具说明可被生态国有化（04 §6.1）；"unreachable" 是弱证据限制了其合规断言用途（04 §5.1）；真正的成本中心是 vuln→function 数据策展而非引擎（04 §1.5）。C/C++ 方向是 Hypothesis 级机会（CRA 主战场语言+产品化最薄弱），须 PoC-1 验证后再下注。（04 §6.1）
+**答：不值得作为唯一壁垒；值得作为工程壁垒组合的一部分，差异化押注在 C/C++/嵌入式。** 证据：方法公开、开源底座成熟、多家已产品化，且 package 级已商品化、function 级快速商品化（[03 §3](03-competitive-landscape.md)）；Go 有官方免费工具说明可被生态国有化（[04 §6.1](04-technology-deep-dive.md)）；"unreachable" 是弱证据限制了其合规断言用途（[04 §5.1](04-technology-deep-dive.md)）；真正的成本中心是 vuln→function 数据策展而非引擎（[04 §1.5](04-technology-deep-dive.md)）。C/C++ 方向是 Hypothesis 级机会（CRA 主战场语言+产品化最薄弱），须 PoC-1 验证后再下注。（[04 §6.1](04-technology-deep-dive.md)）
 
 **Q4：Exploitability 能否显著解决告警噪声？**
-**答：能显著降噪，但"全自动 exploitability 判定"不成立；且廉价 context 过滤拿走大部分价值，reachability 增量须诚实定价。** 证据：Datadog 数据——仅 runtime context 就把 82% 的 CVSS-critical 降级（04 §2.2）；判定链越靠右自动化越低，无单一引擎能走完（04 §2.1）；SSVC 式"决策点+人工校准"比端到端 AI 判定现实（04 §2.2）；完全自动判定是研究级难题（01 §14）。→ 产品形态应为"证据聚合+半自动裁决+可审计决策记录"。（Fact + Interpretation）
+**答：能显著降噪，但"全自动 exploitability 判定"不成立；且廉价 context 过滤拿走大部分价值，reachability 增量须诚实定价。** 证据：Datadog 数据——仅 runtime context 就把 82% 的 CVSS-critical 降级（[04 §2.2](04-technology-deep-dive.md)）；判定链越靠右自动化越低，无单一引擎能走完（[04 §2.1](04-technology-deep-dive.md)）；SSVC 式"决策点+人工校准"比端到端 AI 判定现实（[04 §2.2](04-technology-deep-dive.md)）；完全自动判定是研究级难题（[01 §14](01-domain-ontology.md)）。→ 产品形态应为"证据聚合+半自动裁决+可审计决策记录"。（Fact + Interpretation）
 
 **Q5：VEX 应该只是输出格式，还是 vulnerability decision 的正式结果？**
-**答：是决策结果的语义模型，格式只是承载。** 证据：VEX 本质是 CISA 工作组定义的 statement 模型（product+vulnerability+status+timestamp），有三种序列化实现且语义同源、可互转（01 §11）；statement 可版本化演进（under_investigation→affected→fixed）；not_affected 必须带 justification，而 justification 与 reachability/exploitability 证据一一对应（01 §11）。→ 产品应把 VEX statement 当数据库一等对象（可版本化、可追溯、可签名），导出格式是适配层（01 §11 的产品建议）。"新情报触发 VEX 失效重估"的自动化无人做（03 §3.3.6），是产品化空间。（Interpretation，规范依据充分）
+**答：是决策结果的语义模型，格式只是承载。** 证据：VEX 本质是 CISA 工作组定义的 statement 模型（product+vulnerability+status+timestamp），有三种序列化实现且语义同源、可互转（[01 §11](01-domain-ontology.md)）；statement 可版本化演进（under_investigation→affected→fixed）；not_affected 必须带 justification，而 justification 与 reachability/exploitability 证据一一对应（[01 §11](01-domain-ontology.md)）。→ 产品应把 VEX statement 当数据库一等对象（可版本化、可追溯、可签名），导出格式是适配层（[01 §11](01-domain-ontology.md) 的产品建议）。"新情报触发 VEX 失效重估"的自动化无人做（[03 §3.3.6](03-competitive-landscape.md)），是产品化空间。（Interpretation，规范依据充分）
 
 **Q6：Evidence Graph 是否值得成为底层核心数据模型？**
-**答：值得，是三个候选方向中唯一的真壁垒候选——但这是 Hypothesis，且壁垒兑现依赖 CRA 执法强度。** 证据：in-toto/SLSA/GUAC 先例证明可行（04 §4.3）；无人把 attestation 范式应用于安全结论（空白）；CRA 的 10 年留存/MSA 调取/Art 14 时钟使可辩护性成为买方刚需（02 §10/§12）；它天然统一其余所有能力的产出（§4.2 结论 2）。反方：GUAC 后端是 PostgreSQL 而非图数据库——数据模型是实质、图数据库是叙事（04 §5.2）；若 CRA 市场不及预期则退化为平台架构（04 §6.3）。→ 以 PoC-2 低成本验证，架构上从现在起按"结论+证据"建模，但不对外承诺壁垒叙事。（Hypothesis + Recommendation）
+**答：值得，是三个候选方向中唯一的真壁垒候选——但这是 Hypothesis，且壁垒兑现依赖 CRA 执法强度。** 证据：in-toto/SLSA/GUAC 先例证明可行（[04 §4.3](04-technology-deep-dive.md)）；无人把 attestation 范式应用于安全结论（空白）；CRA 的 10 年留存/MSA 调取/Art 14 时钟使可辩护性成为买方刚需（[02 §10/§12](02-cra-regulation.md)）；它天然统一其余所有能力的产出（§4.2 结论 2）。反方：GUAC 后端是 PostgreSQL 而非图数据库——数据模型是实质、图数据库是叙事（[04 §5.2](04-technology-deep-dive.md)）；若 CRA 市场不及预期则退化为平台架构（[04 §6.3](04-technology-deep-dive.md)）。→ 以 PoC-2 低成本验证，架构上从现在起按"结论+证据"建模，但不对外承诺壁垒叙事。（Hypothesis + Recommendation）
 
 **Q7：Agent 应该是 UI Copilot，还是整个 Vulnerability Lifecycle 的执行与编排层？**
-**答：编排层，但带两个硬约束：事实产出委托确定性引擎，对外结论人工签核。** 证据：AIxCC/GitHub/Snyk 的严肃实现全部是"LLM 编排+确定性工具出证据"（04 §3.2/§3.3）；裸 LLM triage 61–67% 不配独立产出结论（04 §5.3）；纯 copilot 形态（GitHub Copilot Autofix、Mend）已商品化且无壁垒（03 §3.1.6）；Snyk Evo 四环证明编排层是头部厂商的演进方向（03 §1.1）。→ Agent = 调度员与分析师，不是测量仪器（04 §3.3）。（Interpretation，实证充分）
+**答：编排层，但带两个硬约束：事实产出委托确定性引擎，对外结论人工签核。** 证据：AIxCC/GitHub/Snyk 的严肃实现全部是"LLM 编排+确定性工具出证据"（[04 §3.2/§3.3](04-technology-deep-dive.md)）；裸 LLM triage 61–67% 不配独立产出结论（[04 §5.3](04-technology-deep-dive.md)）；纯 copilot 形态（GitHub Copilot Autofix、Mend）已商品化且无壁垒（[03 §3.1.6](03-competitive-landscape.md)）；Snyk Evo 四环证明编排层是头部厂商的演进方向（[03 §1.1](03-competitive-landscape.md)）。→ Agent = 调度员与分析师，不是测量仪器（[04 §3.3](04-technology-deep-dive.md)）。（Interpretation，实证充分）
 
 **Q8：Remediation 是否应该进入 AI Coding workflow？**
-**答：应该，行业已在 GA，但进入方式必须是"确定性闸门后的落地"，且可信度遥测是差异化空档。** 证据：GitLab 18.11（2026-04）、Snyk Agent Fix（2026-09）、Checkmarx Developer Assist、Black Duck Signal 全部 GA（03 §3.2）；GitHub Copilot Autofix 是 CodeQL+LLM+coding agent 的确定性联动（04 §3.1 L4）；**无一家公布 AI 修复合并率/回归率**（03 §3.2）——先建可信度基础设施者建立信任差异化。（Fact + Recommendation）
+**答：应该，行业已在 GA，但进入方式必须是"确定性闸门后的落地"，且可信度遥测是差异化空档。** 证据：GitLab 18.11（2026-04）、Snyk Agent Fix（2026-09）、Checkmarx Developer Assist、Black Duck Signal 全部 GA（[03 §3.2](03-competitive-landscape.md)）；GitHub Copilot Autofix 是 CodeQL+LLM+coding agent 的确定性联动（[04 §3.1](04-technology-deep-dive.md) L4）；**无一家公布 AI 修复合并率/回归率**（[03 §3.2](03-competitive-landscape.md)）——先建可信度基础设施者建立信任差异化。（Fact + Recommendation）
 
 **Q9：安全能力是否应从 Security after Coding 演进为 Security during Coding？**
-**答：对漏洞预防环节是趋势，但本产品的主战场仍在 after/post-release——两面性。** 证据：during-coding 侧已有强占位者（Black Duck Signal 编码时 agent、Apiiro Guardian 在 prompt 层拦截、IDE 内 agentic 修复）（03 §1.3/§1.16）；而 CRA 义务的主体在上市门禁与上市后 support period（≥5 年）全周期（02 §3/§7），这是"after coding"的法律固化；Agentic 修复 PR 工作流本身横跨两者。→ 本产品应通过 Integration/AI Coding 对接进入 during-coding 环节（修复动作落在开发者工作流），但对象模型与证据锚点保持在产品版本侧。（Interpretation）
+**答：对漏洞预防环节是趋势，但本产品的主战场仍在 after/post-release——两面性。** 证据：during-coding 侧已有强占位者（Black Duck Signal 编码时 agent、Apiiro Guardian 在 prompt 层拦截、IDE 内 agentic 修复）（[03 §1.3/§1.16](03-competitive-landscape.md)）；而 CRA 义务的主体在上市门禁与上市后 support period（≥5 年）全周期（[02 §3/§7](02-cra-regulation.md)），这是"after coding"的法律固化；Agentic 修复 PR 工作流本身横跨两者。→ 本产品应通过 Integration/AI Coding 对接进入 during-coding 环节（修复动作落在开发者工作流），但对象模型与证据锚点保持在产品版本侧。（Interpretation）
 
 **Q10：CRA 是否可能成为 SCA → Product Security Platform → Agentic Security Platform 演进的商业切入口？**
-**答：是，当前证据支持；窗口 12–18 个月（估计）。** 证据：Art 14 已生效且覆盖存量产品（2026-09-11），制造了即时刚需（02 §6/§11）；定位空白被四路独立证据确认（AppSec 阵营对象模型错配、PSIRT 阵营技术栈断层、运行时阵营未接 CRA、开源雏形无人产品化，03 §4）；CRA 原生初创已获融资（CRACI €1.4M 种子轮，2026-05）说明市场感知已到。反方风险：JFrog/Black Duck 升级对象模型、平台厂商自上而下重组、执法实践不确定（03 §4 风险提示）。→ 切入口成立，但"切入口"三个字意味着必须按 §14 路线图向平台演进，停在合规工具会被吞并。（Interpretation）
+**答：是，当前证据支持；窗口 12–18 个月（估计）。** 证据：Art 14 已生效且覆盖存量产品（2026-09-11），制造了即时刚需（[02 §6/§11](02-cra-regulation.md)）；定位空白被四路独立证据确认（AppSec 阵营对象模型错配、PSIRT 阵营技术栈断层、运行时阵营未接 CRA、开源雏形无人产品化，[03 §4](03-competitive-landscape.md)）；CRA 原生初创已获融资（CRACI €1.4M 种子轮，2026-05）说明市场感知已到。反方风险：JFrog/Black Duck 升级对象模型、平台厂商自上而下重组、执法实践不确定（[03 §4](03-competitive-landscape.md) 风险提示）。→ 切入口成立，但"切入口"三个字意味着必须按 §14 路线图向平台演进，停在合规工具会被吞并。（Interpretation）
 
 ---
 
@@ -952,26 +1040,26 @@ Vendor advisory（优先 CSAF 机器可读通道，01 §12）发布组件安全�
 
 | # | 风险 | 等级 | 依据与缓解 |
 |---|---|---|---|
-| R1 | **Reachability 商品化 + "unreachable" 弱证据**限制差异化与合规用途 | 高 | 04 §5.1/§6.1；缓解：证据强度分级、execute_path 类强制人签、押注 C/C++（待 PoC-1） |
-| R2 | **实体解析质量**（PURL↔CPE 映射、fork/重打包识别）决定关联准确率，而它是误差的第一发源地 | 高 | 01 §9、04 §4.1（GUAC 诚实声明）；缓解：建测试集与回归基准，关联准确率作为第一质量指标 |
-| R3 | **vuln→function 数据策展是持续成本中心**，无捷径 | 中高 | 04 §1.5；缓解：优先覆盖客户语言栈 + KEV/高 EPSS CVE 优先策展 |
-| R4 | **Evidence Graph 壁垒依赖 CRA 执法兑现**，若市场不及预期退化为架构优点 | 中高 | 04 §6.3；缓解：PostgreSQL 低成本实现、不押注图数据库、PoC-2 先行 |
-| R5 | **AI 修复质量事故损害信任位**（Evidence Graph 壁垒的根基） | 中 | 04 §5.3；缓解：确定性闸门 + 人签 + 遥测公开 |
-| R6 | **SRP 无 API**（初期仅英文网页手工提交）限制报告自动化体验 | 低 | 02 §6.2；缓解：结构化粘贴辅助，跟踪 ENISA API 计划 |
-| R7 | **C/C++ reachability 精度可能不达标**（预处理/函数指针/剥离二进制） | 中 | 04 §1.3；缓解：PoC-1 证伪机制，备选 context-first 路线 |
-| R8 | **VEX 工具链判定不一致**（arXiv 2503.14388 实证）损害机器生成 VEX 的公信力 | 中 | 04 §2.3/§5.4；缓解：本产品内部一致性 + 证据挂接本身就是差异化 |
+| R1 | **Reachability 商品化 + "unreachable" 弱证据**限制差异化与合规用途 | 高 | [04 §5.1/§6.1](04-technology-deep-dive.md)；缓解：证据强度分级、execute_path 类强制人签、押注 C/C++（待 PoC-1） |
+| R2 | **实体解析质量**（PURL↔CPE 映射、fork/重打包识别）决定关联准确率，而它是误差的第一发源地 | 高 | [01 §9](01-domain-ontology.md)、[04 §4.1](04-technology-deep-dive.md)（GUAC 诚实声明）；缓解：建测试集与回归基准，关联准确率作为第一质量指标 |
+| R3 | **vuln→function 数据策展是持续成本中心**，无捷径 | 中高 | [04 §1.5](04-technology-deep-dive.md)；缓解：优先覆盖客户语言栈 + KEV/高 EPSS CVE 优先策展 |
+| R4 | **Evidence Graph 壁垒依赖 CRA 执法兑现**，若市场不及预期退化为架构优点 | 中高 | [04 §6.3](04-technology-deep-dive.md)；缓解：PostgreSQL 低成本实现、不押注图数据库、PoC-2 先行 |
+| R5 | **AI 修复质量事故损害信任位**（Evidence Graph 壁垒的根基） | 中 | [04 §5.3](04-technology-deep-dive.md)；缓解：确定性闸门 + 人签 + 遥测公开 |
+| R6 | **SRP 无 API**（初期仅英文网页手工提交）限制报告自动化体验 | 低 | [02 §6.2](02-cra-regulation.md)；缓解：结构化粘贴辅助，跟踪 ENISA API 计划 |
+| R7 | **C/C++ reachability 精度可能不达标**（预处理/函数指针/剥离二进制） | 中 | [04 §1.3](04-technology-deep-dive.md)；缓解：PoC-1 证伪机制，备选 context-first 路线 |
+| R8 | **VEX 工具链判定不一致**（arXiv 2503.14388 实证）损害机器生成 VEX 的公信力 | 中 | [04 §2.3/§5.4](04-technology-deep-dive.md)；缓解：本产品内部一致性 + 证据挂接本身就是差异化 |
 
 ### 16.2 Open Questions
 
-1. **SBOM 格式 implementing act**（Art 13(24)）何时发布、要素细则是什么？——影响 SBOM 引擎合规校验器设计（02 §4.1）。
-2. **协调标准 OJ 引用时间表**：M/606 原定 2026-08/10 交付已传顺延（二手，（不确定））；presumption of conformity 通道何时真正可用？（02 §11）
-3. **监管对"证据粒度"的期望**：MSA 核查时 accept 什么粒度的 reachability/exploitability 证据？执法实践定型前 Evidence Graph 的深度设计存在不确定性（03 §4 风险②）。
+1. **SBOM 格式 implementing act**（Art 13(24)）何时发布、要素细则是什么？——影响 SBOM 引擎合规校验器设计（[02 §4.1](02-cra-regulation.md)）。
+2. **协调标准 OJ 引用时间表**：M/606 原定 2026-08/10 交付已传顺延（二手，（不确定））；presumption of conformity 通道何时真正可用？（[02 §11](02-cra-regulation.md)）
+3. **监管对"证据粒度"的期望**：MSA 核查时 accept 什么粒度的 reachability/exploitability 证据？执法实践定型前 Evidence Graph 的深度设计存在不确定性（[03 §4](03-competitive-landscape.md) 风险②）。
 4. **EUVD 的演进**（Art 17(5)）：欧洲漏洞库与 CVE/GHSA 生态的实体对齐规则。
 5. **C/C++ reachability 的精度上限**（PoC-1 待回答）。
-6. **结论级 attestation 的标准化机会**：是否存在或应否发起"安全结论 attestation"的开放规范（in-toto 扩展？OpenVEX 扩展？）（Hypothesis，04 §4.3 延伸）。
-7. **存量产品的实质修改判定**（Art 69(2)(3)）边界在执法中如何解释——影响 Journey 4 的台账逻辑（02 §15.4）。
-8. **买方预算归属**：PSIRT/合规/工程三条线谁为主 buyer，影响定价与 GTM（03 §4 未覆盖的商业问题，（不确定））。
-9. **Agent trace 的监管可接受性**：AI 参与的安全决策在 CRA 审计中如何被看待，无先例（04 §3.3 Hypothesis）。
+6. **结论级 attestation 的标准化机会**：是否存在或应否发起"安全结论 attestation"的开放规范（in-toto 扩展？OpenVEX 扩展？）（Hypothesis，[04 §4.3](04-technology-deep-dive.md) 延伸）。
+7. **存量产品的实质修改判定**（Art 69(2)(3)）边界在执法中如何解释——影响 Journey 4 的台账逻辑（[02 §15.4](02-cra-regulation.md)）。
+8. **买方预算归属**：PSIRT/合规/工程三条线谁为主 buyer，影响定价与 GTM（[03 §4](03-competitive-landscape.md) 未覆盖的商业问题，（不确定））。
+9. **Agent trace 的监管可接受性**：AI 参与的安全决策在 CRA 审计中如何被看待，无先例（[04 §3.3](04-technology-deep-dive.md) Hypothesis）。
 
 ---
 
@@ -1043,38 +1131,38 @@ Agentic Product Security（结论级证据标准卡位、跨客户证据网络�
 
 > 对四份分报告做了相互比对。大部分事实一致；以下为发现的口径差异与矛盾点，按严重度排列。
 
-### 18.1 实质矛盾：Art 14 终报时限表述不一致（03 vs 02/01）⚠️ 需以 02 为准
+### 18.1 实质矛盾：Art 14 终报时限表述不一致（[03](03-competitive-landscape.md) vs [02](02-cra-regulation.md)/[01](01-domain-ontology.md)）⚠️ 需以 [02](02-cra-regulation.md) 为准
 
-- **03 报告 §0** 写："2026-09-11 Article 14 漏洞/事件强制报告义务已生效（24h 预警 / 72h 通知 / **1 个月终报**）"。
-- **02 报告 §6.1**（有条文依据）：**漏洞线（AEV）终报 = 纠正/缓解措施可用后 14 天内**；**事件线（severe incident）终报 = 72h 通知后 1 个月内**。01 报告 §16 的表述（"14 天（漏洞）/1 个月（事件）"）与 02 一致。
-- 结论：03 的"1 个月终报"对 severe incident 正确、对 actively exploited vulnerability **不正确**（应为 14 天）。本报告 §3.5 采用 02 的双线表。03 报告该处属概括性压缩导致的失真，建议回改 03 §0 加双时限。
+- **[03 报告](03-competitive-landscape.md) §0** 写："2026-09-11 Article 14 漏洞/事件强制报告义务已生效（24h 预警 / 72h 通知 / **1 个月终报**）"。
+- **[02 报告](02-cra-regulation.md) §6.1**（有条文依据）：**漏洞线（AEV）终报 = 纠正/缓解措施可用后 14 天内**；**事件线（severe incident）终报 = 72h 通知后 1 个月内**。[01 报告](01-domain-ontology.md) §16 的表述（"14 天（漏洞）/1 个月（事件）"）与 02 一致。
+- 结论：[03](03-competitive-landscape.md) 的"1 个月终报"对 severe incident 正确、对 actively exploited vulnerability **不正确**（应为 14 天）。本报告 §3.5 采用 [02](02-cra-regulation.md) 的双线表。[03 报告](03-competitive-landscape.md)该处属概括性压缩导致的失真，建议回改 [03 §0](03-competitive-landscape.md) 加双时限。
 
-### 18.2 口径差异：JFrog reachability 能力描述（03 vs 04）
+### 18.2 口径差异：JFrog reachability 能力描述（[03](03-competitive-landscape.md) vs [04](04-technology-deep-dive.md)）
 
-- **03 报告 §1.5**：JFrog Contextual Analysis"判断 CVE 在制品/代码上下文中是否真正可利用（厂商声称）；非公开 call graph 粒度的 function 级证据"，对比表标 ◐。
-- **04 报告 §1.4**："Mend/JFrog：均有 reachability 功能宣称（**本次未核实到官方技术细节，不确定粒度**）"。
-- 结论：不矛盾但口径不同——03 依据的是 JFrog CRA Compliance Brief 的营销表述，04 承认未核实。两报告共同点是"粒度不可验证"。本报告采用"厂商声称、粒度未验证"口径。
+- **[03 报告](03-competitive-landscape.md) §1.5**：JFrog Contextual Analysis"判断 CVE 在制品/代码上下文中是否真正可利用（厂商声称）；非公开 call graph 粒度的 function 级证据"，对比表标 ◐。
+- **[04 报告](04-technology-deep-dive.md) §1.4**："Mend/JFrog：均有 reachability 功能宣称（**本次未核实到官方技术细节，不确定粒度**）"。
+- 结论：不矛盾但口径不同——[03](03-competitive-landscape.md) 依据的是 JFrog CRA Compliance Brief 的营销表述，[04](04-technology-deep-dive.md) 承认未核实。两报告共同点是"粒度不可验证"。本报告采用"厂商声称、粒度未验证"口径。
 
-### 18.3 口径差异：Wiz 收购时间点（03 vs 04，实为互补）
+### 18.3 口径差异：Wiz 收购时间点（[03](03-competitive-landscape.md) vs [04](04-technology-deep-dive.md)，实为互补）
 
-- **03 报告 §1.15**："2026-03-11 被 Google 以 $32B **完成收购**（EU 批准后交割）"。
-- **04 报告 §4.2**："Google 以约 320 亿美元收购 Wiz（**2025-03 宣布**）"。
+- **[03 报告](03-competitive-landscape.md) §1.15**："2026-03-11 被 Google 以 $32B **完成收购**（EU 批准后交割）"。
+- **[04 报告](04-technology-deep-dive.md) §4.2**："Google 以约 320 亿美元收购 Wiz（**2025-03 宣布**）"。
 - 结论：二者互补（2025-03 宣布、2026-03 交割），非矛盾。引用时注意区分"宣布"与"交割"。
 
-### 18.4 粒度差异：Snyk reachability 语言支持（03 vs 04，互补）
+### 18.4 粒度差异：Snyk reachability 语言支持（[03](03-competitive-landscape.md) vs [04](04-technology-deep-dive.md)，互补）
 
-- 03 §1.1：GA 支持 Java/JS/Python，.NET Early Access；04 §1.3 单独确认 Python GA。无矛盾；04 未覆盖 .NET 状态。
+- [03 §1.1](03-competitive-landscape.md)：GA 支持 Java/JS/Python，.NET Early Access；[04 §1.3](04-technology-deep-dive.md) 单独确认 Python GA。无矛盾；[04](04-technology-deep-dive.md) 未覆盖 .NET 状态。
 
 ### 18.5 潜在张力（非矛盾，但叙事权重不同）：reachability 价值评估
 
-- **01 报告 §13** 称 reachability 是"把 SCA 告警量降一到两个数量级的最现实杠杆"；**03 报告 §1.10** 引厂商声称降噪 80–99%；**04 报告 §5.1** 则系统性质疑该数字（分母问题 + unreachable unsound + Datadog context 基线对比）。
-- 结论：01/03 反映行业主流叙事，04 是刻意的反叙事校验。本报告采用 04 的保守口径（§10.2 反叙事 1），并把"降噪数字"类产品声明一律标注"厂商声称"。三份报告无须修改——它们是"叙事 vs 校验"关系，但读者（尤其是做产品定价与营销口径的人）必须以 04 为准。
+- **[01 报告](01-domain-ontology.md) §13** 称 reachability 是"把 SCA 告警量降一到两个数量级的最现实杠杆"；**[03 报告](03-competitive-landscape.md) §1.10** 引厂商声称降噪 80–99%；**[04 报告](04-technology-deep-dive.md) §5.1** 则系统性质疑该数字（分母问题 + unreachable unsound + Datadog context 基线对比）。
+- 结论：[01](01-domain-ontology.md)/[03](03-competitive-landscape.md) 反映行业主流叙事，[04](04-technology-deep-dive.md) 是刻意的反叙事校验。本报告采用 [04](04-technology-deep-dive.md) 的保守口径（§10.2 反叙事 1），并把"降噪数字"类产品声明一律标注"厂商声称"。三份报告无须修改——它们是"叙事 vs 校验"关系，但读者（尤其是做产品定价与营销口径的人）必须以 [04](04-technology-deep-dive.md) 为准。
 
 ### 18.6 其余一致性确认
 
-- KEV 条目数（01 §8：1713 条，2026-09）、CVE 增长 263%（01 §4）、CNA 数量 517 家（01 §2）、EPSS v4 发布时间（04 §2.2：2025-03）等关键数字在各报告间无冲突；
-- SBOM"不要求公开"、Art 14 覆盖存量产品、steward 2027-12-11 起算等法规事实在 01/02/03 中一致；
-- Black Duck VEX Templates（2026.7.0）、Sonatype VEX 跨版本延续、GitLab package 级 reachability Beta 等厂商事实仅在 03 出现，无交叉冲突。
+- KEV 条目数（[01 §8](01-domain-ontology.md)：1713 条，2026-09）、CVE 增长 263%（[01 §4](01-domain-ontology.md)）、CNA 数量 517 家（[01 §2](01-domain-ontology.md)）、EPSS v4 发布时间（[04 §2.2](04-technology-deep-dive.md)：2025-03）等关键数字在各报告间无冲突；
+- SBOM"不要求公开"、Art 14 覆盖存量产品、steward 2027-12-11 起算等法规事实在 [01](01-domain-ontology.md)/[02](02-cra-regulation.md)/[03](03-competitive-landscape.md) 中一致；
+- Black Duck VEX Templates（2026.7.0）、Sonatype VEX 跨版本延续、GitLab package 级 reachability Beta 等厂商事实仅在 [03](03-competitive-landscape.md) 出现，无交叉冲突。
 
 ---
 
@@ -1082,18 +1170,21 @@ Agentic Product Security（结论级证据标准卡位、跨客户证据网络�
 
 | 分报告 | 路径 | 过程材料 |
 |---|---|---|
-| 01 领域知识体系 | `docs/research/01-domain-ontology.md` | `01-domain-ontology/sources/`（20+ source notes）、`research-log.md` |
-| 02 CRA 法规 | `docs/research/02-cra-regulation.md` | `02-cra-regulation/sources/`（含 EUR-Lex Wayback 全文存档）、`research-log.md` |
-| 03 竞争格局 | `docs/research/03-competitive-landscape.md` | `03-competitive-landscape/sources/`（22 条 notes）、`research-log.md` |
-| 04 技术深挖 | `docs/research/04-technology-deep-dive.md` | `04-technology-deep-dive/sources/`（23 条 notes）、`research-log.md` |
-| 05 欧盟产品合规体系（2026-09-19 补充） | `docs/research/05-eu-compliance-landscape.md` | `05-eu-compliance-landscape/sources/`（9 条 notes，EUR-Lex 一手直连核实 EU 2026/339）、`research-log.md` |
-| 06 产品形态与技术栈（2026-09-20 补充） | `docs/research/06-product-forms-and-tech-stacks.md` | `06-product-forms-and-tech-stacks/sources/`（28 条 notes）、`research-log.md` |
+| 01 领域知识体系 | [docs/research/01-domain-ontology.md](01-domain-ontology.md) | [01-domain-ontology/sources/](01-domain-ontology/sources/)（20+ source notes）、[research-log.md](01-domain-ontology/research-log.md) |
+| 02 CRA 法规 | [docs/research/02-cra-regulation.md](02-cra-regulation.md) | [02-cra-regulation/sources/](02-cra-regulation/sources/)（含 EUR-Lex Wayback 全文存档）、[research-log.md](02-cra-regulation/research-log.md) |
+| 03 竞争格局 | [docs/research/03-competitive-landscape.md](03-competitive-landscape.md) | [03-competitive-landscape/sources/](03-competitive-landscape/sources/)（22 条 notes）、[research-log.md](03-competitive-landscape/research-log.md) |
+| 04 技术深挖 | [docs/research/04-technology-deep-dive.md](04-technology-deep-dive.md) | [04-technology-deep-dive/sources/](04-technology-deep-dive/sources/)（23 条 notes）、[research-log.md](04-technology-deep-dive/research-log.md) |
+| 05 欧盟产品合规体系（2026-09-19 补充） | [docs/research/05-eu-compliance-landscape.md](05-eu-compliance-landscape.md) | [05-eu-compliance-landscape/sources/](05-eu-compliance-landscape/sources/)（9 条 notes，EUR-Lex 一手直连核实 EU 2026/339）、[research-log.md](05-eu-compliance-landscape/research-log.md) |
+| 06 产品形态与技术栈（2026-09-20 补充） | [docs/research/06-product-forms-and-tech-stacks.md](06-product-forms-and-tech-stacks.md) | [06-product-forms-and-tech-stacks/sources/](06-product-forms-and-tech-stacks/sources/)（28 条 notes）、[research-log.md](06-product-forms-and-tech-stacks/research-log.md) |
 
 > 本报告所有 Fact 的最终出处以各分报告的 source notes 为准；本报告不重复列 URL。
 
 ### 修订记录
 
-- **2026-09-19**：新增 §3.9"与既有欧盟产品合规体系的关系"（05 报告摘要），附录索引增补 05 报告。核心增量：一手核实 Commission Delegated Regulation (EU) 2026/339 成立（2027-12-11 起废止 RED 网络安全授权法规 EU 2022/30）；CRA 的 NLF 产品法定位；CRA 与 NIS2/MR/RED 的边界条文。其余章节未改动。
-- **2026-09-19**：新增 §3.10"CIA 三性在 CRA 中的体现"（摘要），02 报告新增 §3.3 完整分析。核心论点：CRA 不以 CIA 为组织框架，CIA 被拆散为 Annex I Part I 产品属性条款（C→(2)(e)/(2)(d)/(2)(g)，I→(2)(f)/Part II(7)，A→(2)(h)/(2)(i)/Art 13(9)），经 Art 13(2) 风险评估决定适用性；对产品设计的含义是 Risk Engine 的 impact 侧建模与 SBOM 分级披露/证据链完整性/更新归档三项平台能力。
-- **2026-09-19**：新增 §3.11"执法架构：谁来'审计'"（摘要），02 报告新增 §12.1 完整分析。核心论点：CRA 无中央审计机构，执法为三线结构——MSA（成员国、被动触发、可调证罚款召回）、Notified Body（仅 Annex III/IV 上市前合格评定、厂商自聘、非委托审计）、ENISA/CSIRT（只收 Art 14 报告不审计）；CRA 罚的不是能力弱而是出事后无可辩护流程证据；平台需同时服务 notified body 上市前举证与 MSA 上市后调证两种形态。
-- **2026-09-20**：新增 §9.4"业内产品形态与技术栈格局"（06 报告摘要），附录索引增补 06 报告。核心增量：十物种产品形态分类学（计费单位即物种指纹）；形态学二次确认 Product→Version 定位空白；技术栈入场底线（识别/匹配/SBOM/PR bot/runtime 五层复用开源，PostgreSQL 存储一统）与三处自研差异化（产品对象模型与证据链、垂直薄策展与 backport 数据质量、C/C++/二进制 reachability 证据化）。其余章节未改动。
+- **2026-09-19**：新增 §3.9"与既有欧盟产品合规体系的关系"（[05 报告](05-eu-compliance-landscape.md)摘要），附录索引增补 [05 报告](05-eu-compliance-landscape.md)。核心增量：一手核实 Commission Delegated Regulation (EU) 2026/339 成立（2027-12-11 起废止 RED 网络安全授权法规 EU 2022/30）；CRA 的 NLF 产品法定位；CRA 与 NIS2/MR/RED 的边界条文。其余章节未改动。
+- **2026-09-19**：新增 §3.10"CIA 三性在 CRA 中的体现"（摘要），[02 报告](02-cra-regulation.md)新增 §3.3 完整分析。核心论点：CRA 不以 CIA 为组织框架，CIA 被拆散为 Annex I Part I 产品属性条款（C→(2)(e)/(2)(d)/(2)(g)，I→(2)(f)/Part II(7)，A→(2)(h)/(2)(i)/Art 13(9)），经 Art 13(2) 风险评估决定适用性；对产品设计的含义是 Risk Engine 的 impact 侧建模与 SBOM 分级披露/证据链完整性/更新归档三项平台能力。
+- **2026-09-19**：新增 §3.11"执法架构：谁来'审计'"（摘要），[02 报告](02-cra-regulation.md)新增 §12.1 完整分析。核心论点：CRA 无中央审计机构，执法为三线结构——MSA（成员国、被动触发、可调证罚款召回）、Notified Body（仅 Annex III/IV 上市前合格评定、厂商自聘、非委托审计）、ENISA/CSIRT（只收 Art 14 报告不审计）；CRA 罚的不是能力弱而是出事后无可辩护流程证据；平台需同时服务 notified body 上市前举证与 MSA 上市后调证两种形态。
+- **2026-09-20**：新增 §9.4"业内产品形态与技术栈格局"（[06 报告](06-product-forms-and-tech-stacks.md)摘要），附录索引增补 [06 报告](06-product-forms-and-tech-stacks.md)。核心增量：十物种产品形态分类学（计费单位即物种指纹）；形态学二次确认 Product→Version 定位空白；技术栈入场底线（识别/匹配/SBOM/PR bot/runtime 五层复用开源，PostgreSQL 存储一统）与三处自研差异化（产品对象模型与证据链、垂直薄策展与 backport 数据质量、C/C++/二进制 reachability 证据化）。其余章节未改动。
+- **2026-09-20**：新增 §1.0"我们要做什么（一句话定位）"（"产品漏洞档案官"定义 + 输入/处理/输出 + 边界）；新增 §7.6"VEX 判定逻辑：证据强度分级的裁决流程"（四 status 的判定条件-证据-自动化程度表 + "无反证即 affected / 弱证据强制人签 / statement 版本化"三条原则）；新增 §7.7"VEX 判定数据流与技术栈"（Presence→Association→Reachability→Exploitability context→Fix & Verification→Statement 存证六节点数据流图 + 四个工程要点）；全文跨文件引用链接化（30 个文件约 660 处，另修复 [02 报告](02-cra-regulation.md) 11 个错误链接目标）。
+- **2026-09-20**：新增设计文档 [docs/design/vex-agent-architecture.md](../design/vex-agent-architecture.md)——基于 review-skills 架构的 VEX 判定平台 Agent 编排设计（架构映射、skills/vex/ 目录结构、六个 judgment-rule Skill、六类查询原语、工具带与许可证、四块 CRA 专用缺口、五步落地路径），是 §7.6/§7.7 的 Agent 化实现方案。
+- **2026-09-21**：新增 §9.5"闭环视角 Gap Analysis"（[03 报告](03-competitive-landscape.md) §6 摘要）——对一份疑似 AI 生成的二手分析中五家厂商（Endor Labs/JFrog/Snyk/Sonatype/Black Duck）闭环能力声明逐条一手核实：Endor/Snyk/Black Duck 成立、Sonatype 与 JFrog 部分成立；五家全部仍是 Finding-centric，最接近 Assessment-centric 的是 Black Duck 与 JFrog；§9.3/03 §4 定位空白判断维持不变。措辞修正：JFrog reachability 粒度升为"官方文档可验证"（§18.2 口径差异解决），Black Duck VEX 状态体系引入时间修正为 2025.1.0。其余章节未改动。
