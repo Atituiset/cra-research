@@ -10,7 +10,7 @@
 
 - 抓取文本 **Article 54(Entry into force and application)** 印刷为:"It shall apply from **14 January 2027**"。
 - **但此为 OJ 勘误对象**:corrigendum(OJ L 169, 4.7.2023, p. 35)将适用日更正为 **20 January 2027**。多个独立来源一致确认:ce-copilot.de(2026-08-30,"Article 54, as corrected in the Official Journal")、codestra(2026-08-24,"14 January 2027; corrected to 20 January 2027 by corrigendum")、CSIDIA(2026-07-23,明确引 corrigendum 出处并自我更正)、particula.tech(2026-08-24)。
-- 官方佐证:Commission NLF 页面称 Directive 2006/42/EC "still applicable until **20/1/2027**"(见 commission-nlf-page.md)。
+- 官方佐证:Commission NLF 页面称 Directive 2006/42/EC "still applicable until **20/1/2027**"(见 [commission-nlf-page.md](commission-nlf-page.md))。
 
 ## 教训记录
 

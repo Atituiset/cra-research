@@ -18,4 +18,4 @@
 - cybercertlabs(2026-09-07):首批标准预期 2026 下半年交付,"Official Journal citation to follow on a timetable the Commission has not yet [公布]"。
 
 ## 支撑的报告结论
-§2.3(CRA 协调标准截至 2026-08 下旬无 OJ 引用、ETSI 17 标准批准程序新进展;对 02 报告 §11 的更新与确认);§5(遗留不确定项 1)。
+§2.3(CRA 协调标准截至 2026-08 下旬无 OJ 引用、ETSI 17 标准批准程序新进展;对 [02 报告](../../02-cra-regulation.md) §11 的更新与确认);§5(遗留不确定项 1)。

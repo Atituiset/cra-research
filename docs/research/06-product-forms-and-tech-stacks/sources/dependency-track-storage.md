@@ -15,4 +15,4 @@
 
 ## 支撑报告结论
 
-- 业界存储底座判断的关键证据：连"供应链安全平台"中最接近图语义的 Dependency-Track 也跑在 PostgreSQL 上——与 04 报告 GUAC 用 Postgres 的发现互证，"图数据模型 ≠ 图数据库"在业界是普遍现实。
+- 业界存储底座判断的关键证据：连"供应链安全平台"中最接近图语义的 Dependency-Track 也跑在 PostgreSQL 上——与 [04 报告](../../04-technology-deep-dive.md) GUAC 用 Postgres 的发现互证，"图数据模型 ≠ 图数据库"在业界是普遍现实。

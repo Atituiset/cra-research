@@ -1,6 +1,6 @@
 # Source Note: CRA(Regulation (EU) 2024/2847)Art 2 / Art 27 / 相关 Recitals(本地存档复核)
 
-- **URL**: 正式 ELI http://data.europa.eu/eli/reg/2024/2847/oj;本次使用 02 报告留存的全文存档 `docs/research/02-cra-regulation/sources/raw/reg-2024-2847-en.txt`(EUR-Lex 官方文本的 Wayback 2025-01-18 快照,见 02 报告 sources/eur-lex-reg-2024-2847-fulltext.md)
+- **URL**: 正式 ELI http://data.europa.eu/eli/reg/2024/2847/oj;本次使用 [02 报告](../../02-cra-regulation.md) 留存的全文存档 [docs/research/02-cra-regulation/sources/raw/reg-2024-2847-en.txt](../../02-cra-regulation/sources/raw/reg-2024-2847-en.txt)(EUR-Lex 官方文本的 Wayback 2025-01-18 快照,见 [02 报告](../../02-cra-regulation.md) [sources/eur-lex-reg-2024-2847-fulltext.md](../../02-cra-regulation/sources/eur-lex-reg-2024-2847-fulltext.md))
 - **标题**: Regulation (EU) 2024/2847 (Cyber Resilience Act)
 - **发布方**: European Parliament and Council
 - **抓取日期**: 2026-09-19 本地复核(条文编号与措辞以该存档为准)

@@ -2,7 +2,7 @@
 
 > 研究日期:2026-09-18 | 研究者:法规调研子任务
 > **重要时间背景**:CRA Art 14 漏洞/事件报告义务已于 **2026-09-11(7 天前)开始适用**;ENISA Single Reporting Platform(SRP)同日上线。主体义务(Annex I、Art 13 等)2027-12-11 才适用。
-> 配套材料:每条重要结论对应 `sources/` 下一条 source note;检索过程见 `research-log.md`。
+> 配套材料:每条重要结论对应 [sources/](02-cra-regulation/sources/) 下一条 source note;检索过程见 [research-log.md](02-cra-regulation/research-log.md)。
 
 ## 阅读指南:四层标注体系
 
@@ -10,14 +10,14 @@
 
 | 标签 | 含义 | 主要来源 |
 |---|---|---|
-| **【法规】** | Regulation (EU) 2024/2847 条文/Annex/Recital 原文要求(有法律强制力) | [sources/eur-lex-reg-2024-2847-fulltext.md](sources/eur-lex-reg-2024-2847-fulltext.md)(EUR-Lex 官方文本的 Wayback 存档快照,2025-01-18 抓取件) |
-| **【官方解释】** | 欧盟委员会 / ENISA 官方页面、FAQ、guidance(有权威性但**无法律强制力**,Commission FAQ 自称 working document) | [sources/commission-faqs-cra-implementation.md](sources/commission-faqs-cra-implementation.md)、[sources/enisa-cra-srp-faq.md](sources/enisa-cra-srp-faq.md)、[sources/commission-cra-page.md](sources/commission-cra-page.md)、[sources/commission-cra-standardisation.md](sources/commission-cra-standardisation.md) |
+| **【法规】** | Regulation (EU) 2024/2847 条文/Annex/Recital 原文要求(有法律强制力) | [sources/eur-lex-reg-2024-2847-fulltext.md](02-cra-regulation/sources/eur-lex-reg-2024-2847-fulltext.md)(EUR-Lex 官方文本的 Wayback 存档快照,2025-01-18 抓取件) |
+| **【官方解释】** | 欧盟委员会 / ENISA 官方页面、FAQ、guidance(有权威性但**无法律强制力**,Commission FAQ 自称 working document) | [sources/commission-faqs-cra-implementation.md](02-cra-regulation/sources/commission-faqs-cra-implementation.md)、[sources/enisa-cra-srp-faq.md](02-cra-regulation/sources/enisa-cra-srp-faq.md)、[sources/commission-cra-page.md](02-cra-regulation/sources/commission-cra-page.md)、[sources/commission-cra-standardisation.md](02-cra-regulation/sources/commission-cra-standardisation.md) |
 | **【标准/实践】** | 协调标准(harmonised standards)、行业最佳实践 | M/606 标准化体系;目前**无任何 CRA 协调标准在 OJ 获得引用** |
 | **【厂商实现】** | 安全厂商/工具商的产品化方式 | 本报告末尾映射表的"Product Capability"列属此类推论 |
 
 事实确定性标注:**Fact**(条文/官方页直接载明)/**Interpretation**(基于文本的合理推论)/ **Hypothesis**(假设,需进一步核实)/ **(不确定)**。
 
-⚠️ 抓取限制说明:eur-lex.europa.eu 直连被 AWS WAF 拦截,法规文本取自 EUR-Lex 官方页面在 Wayback Machine 的 2025-01-18 英文全文存档(见 research-log)。条文编号与措辞以该文本为准;正式引用时建议在可访问 EUR-Lex 的网络下复核。
+⚠️ 抓取限制说明:eur-lex.europa.eu 直连被 AWS WAF 拦截,法规文本取自 EUR-Lex 官方页面在 Wayback Machine 的 2025-01-18 英文全文存档(见 [research-log](02-cra-regulation/research-log.md))。条文编号与措辞以该文本为准;正式引用时建议在可访问 EUR-Lex 的网络下复核。
 
 ---
 
@@ -147,7 +147,7 @@ CRA 全文不使用 "CIA"(Confidentiality/Integrity/Availability)框架——**C
 
 注意:Part I 全部 13 项均为 "where applicable",由 Art 13(2) 风险评估决定适用性并写入 Annex VII 技术文档——CIA 在 CRA 下的法律形态是"经风险评估论证的适用属性",不是一刀切清单(【法规】Fact)。
 
-旁证:RED 2022/30 的三类要求(网络保护/隐私/防欺诈)本质是 CIA 切片;EU 2026/339 Recital (3) 确认 CRA Annex I "includes all the elements"——废止 RED 授权法规的法律依据正是这个覆盖关系(见 05 报告)。
+旁证:RED 2022/30 的三类要求(网络保护/隐私/防欺诈)本质是 CIA 切片;EU 2026/339 Recital (3) 确认 CRA Annex I "includes all the elements"——废止 RED 授权法规的法律依据正是这个覆盖关系(见 [05 报告](05-eu-compliance-landscape.md))。
 
 **② 评估层:CIA 是漏洞影响(impact)维度(Interpretation)**
 
@@ -156,7 +156,7 @@ CRA 全文不使用 "CIA"(Confidentiality/Integrity/Availability)框架——**C
 **③ 产品能力层:CIA 对平台设计的要求(Recommendation)**
 
 - **C**:SBOM 本身是敏感资产——MSA 向 ADCO 提交时须匿名聚合以保护 SBOM 机密性(Recital,raw line 223);平台的证据导出需考虑 SBOM 分级披露。
-- **I**:证据链本身是完整性机制——结论级 attestation 签名 + 工件 sha256 锚定,用密码学完整性证明合规证据未被篡改(已在 PoC 中验证篡改拒绝,见 poc/);10 年留存期(Art 31)下这是证据可信度根基。
+- **I**:证据链本身是完整性机制——结论级 attestation 签名 + 工件 sha256 锚定,用密码学完整性证明合规证据未被篡改(已在 PoC 中验证篡改拒绝,见 [poc/](../../poc/));10 年留存期(Art 31)下这是证据可信度根基。
 - **A**:Art 13(9)"更新 10 年可用"与 Part II(8)"免费无延迟分发"意味着客户需要更新归档与分发基础设施——已纳入 §13 映射表第 28 行(更新归档库与可用性监控),是纯 SCA 视角容易漏掉的能力。
 
 ---
@@ -292,7 +292,7 @@ CRA 全文不使用 "CIA"(Confidentiality/Integrity/Availability)框架——**C
 | 2028-09-11 前 | Commission 评估 SRP 有效性报告 | Art 70(2) |
 | 2030-12-11 | 首次全面评估审查报告 | Art 70(1) |
 
-**Presumption of conformity 现状**:Art 27 机制本身已在,但【标准/实践】截至 2026-07 无任何 CRA harmonised standard 获 OJ 引用, presumption 通道实际不可用(二手,见 sources/secondary-standards-status.md,(不确定但以官方 OJ 公告为准前按此理解))。
+**Presumption of conformity 现状**:Art 27 机制本身已在,但【标准/实践】截至 2026-07 无任何 CRA harmonised standard 获 OJ 引用, presumption 通道实际不可用(二手,见 [sources/secondary-standards-status.md](02-cra-regulation/sources/secondary-standards-status.md),(不确定但以官方 OJ 公告为准前按此理解))。
 
 ---
 
@@ -330,7 +330,7 @@ CRA 是 NLF 产品法,**没有中央"CRA 局"做定期审计**,执法由三条�
 事件通报:ENISA SRP + CSIRT —— Art 14 报告(已生效) + 投诉/抽查/ADCO
 ```
 
-**推论:"能力弱 → 审计预警"的理解需要修正(Interpretation)。** CRA 的义务结构是流程义务 + 事件触发,没有"能力考试":Part II(3) 的"定期有效的安全测试"是相对企业自身风险评估的要求(Art 13(2)),不是绝对能力标准;Part I(2)(a) 只要求无"**已知**"可利用漏洞。真实风险链条是:工具/团队能力弱(本身不违法)→ 漏洞发现不了/处理没记录/修复没验证 → 漏洞被在野利用或被公开 → Art 14 的 24h 时钟启动 + MSA 调证 → **"拿不出流程在运行的证据"才是罚款落点**。CRA 罚的不是能力弱,是出事后无可辩护的流程证据——这正是"可辩护性优先于扫描覆盖率"产品定位的法规依据(见 00-final-report §1.2)。
+**推论:"能力弱 → 审计预警"的理解需要修正(Interpretation)。** CRA 的义务结构是流程义务 + 事件触发,没有"能力考试":Part II(3) 的"定期有效的安全测试"是相对企业自身风险评估的要求(Art 13(2)),不是绝对能力标准;Part I(2)(a) 只要求无"**已知**"可利用漏洞。真实风险链条是:工具/团队能力弱(本身不违法)→ 漏洞发现不了/处理没记录/修复没验证 → 漏洞被在野利用或被公开 → Art 14 的 24h 时钟启动 + MSA 调证 → **"拿不出流程在运行的证据"才是罚款落点**。CRA 罚的不是能力弱,是出事后无可辩护的流程证据——这正是"可辩护性优先于扫描覆盖率"产品定位的法规依据(见 [00-final-report](00-final-report.md) §1.2)。
 
 **对产品的含义(Recommendation):** 平台要服务两种形态截然不同的"审计场景":① 上市前向 notified body 举证(Annex III/IV 客户,一次性大考,重文档完整性);② 上市后随时应对 MSA 调证(所有客户,10 年留存期,重证据可追溯与快速导出)。Evidence Graph 的导出形态需同时覆盖两者。
 
@@ -426,15 +426,15 @@ CRA 是 NLF 产品法,**没有中央"CRA 局"做定期审计**,执法由三条�
 
 ---
 
-## 附:来源清单(对应 sources/ 目录)
+## 附:来源清单(对应 [sources/](02-cra-regulation/sources/) 目录)
 
 | Note | 层级 | 支撑章节 |
 |---|---|---|
-| [eur-lex-reg-2024-2847-fulltext.md](sources/eur-lex-reg-2024-2847-fulltext.md) | 法规原文 | §1–§13 全部 |
-| [commission-faqs-cra-implementation.md](sources/commission-faqs-cra-implementation.md) | 官方解释 | §1、§3–§9、§11、§13、§15 |
-| [enisa-cra-srp-faq.md](sources/enisa-cra-srp-faq.md) | 官方解释 | §2、§6、§11 |
-| [commission-cra-page.md](sources/commission-cra-page.md) | 官方解释 | §1、§11 |
-| [commission-cra-standardisation.md](sources/commission-cra-standardisation.md) | 官方解释/标准组织 | §11、§13 |
-| [secondary-standards-status.md](sources/secondary-standards-status.md) | 二手解读 ⚠️ | §11、§13、§15(均已标注) |
+| [eur-lex-reg-2024-2847-fulltext.md](02-cra-regulation/sources/eur-lex-reg-2024-2847-fulltext.md) | 法规原文 | §1–§13 全部 |
+| [commission-faqs-cra-implementation.md](02-cra-regulation/sources/commission-faqs-cra-implementation.md) | 官方解释 | §1、§3–§9、§11、§13、§15 |
+| [enisa-cra-srp-faq.md](02-cra-regulation/sources/enisa-cra-srp-faq.md) | 官方解释 | §2、§6、§11 |
+| [commission-cra-page.md](02-cra-regulation/sources/commission-cra-page.md) | 官方解释 | §1、§11 |
+| [commission-cra-standardisation.md](02-cra-regulation/sources/commission-cra-standardisation.md) | 官方解释/标准组织 | §11、§13 |
+| [secondary-standards-status.md](02-cra-regulation/sources/secondary-standards-status.md) | 二手解读 ⚠️ | §11、§13、§15(均已标注) |
 
-原始抓取件:`sources/raw/`(EUR-Lex 英文全文 txt/html、Commission FAQ md/pdf)。
+原始抓取件:[sources/raw/](02-cra-regulation/sources/raw/)(EUR-Lex 英文全文 txt/html、Commission FAQ md/pdf)。

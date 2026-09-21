@@ -27,36 +27,36 @@ querybatch 均返回空；直接 `GET /v1/vulns/CVE-2022-37434` 有条目（madl
 GIT range，last_affected 1.2.12，fix commits 1eb7682f / eff308af）。选
 **zlib 1.2.12 + CVE-2022-37434**（漏洞点在 `inflate()` 的 gzip EXTRA 字段处理）。
 示例 app 用 `inflateInit2(47)` + `inflate()` 解一个带 FEXTRA 头的 gzip 样本
-（gen_sample.py 程序化生成，避免手编字节出错），运行时确实走 EXTRA 状态。
+（[gen_sample.py](examples/c-vuln-app/gen_sample.py) 程序化生成，避免手编字节出错），运行时确实走 EXTRA 状态。
 
 ## 3. 关键决策与坑
 
 1. **syft 检不出静态链接的 vendored zlib**：binary 里明明有
    `inflate 1.2.12 Copyright…` 字符串，`--override-default-catalogers
    binary-classifier-cataloger` 也试过了，0 组件。→ C 侧 SBOM 用
-   `sbom-augment.cdx.json` 片段增补，如实记录（C/C++ vendored 依赖的 SBOM
+   [sbom-augment.cdx.json](examples/c-vuln-app/sbom-augment.cdx.json) 片段增补，如实记录（C/C++ vendored 依赖的 SBOM
    本来就应走 manifest 声明）。
 2. **OSV 对 C 库无包生态条目**：CVE-2022-37434 只有裸 GIT range，PURL 查询
-   必然为空 → associate.py 加 curation-crosscheck 回退，关联结果标注
+   必然为空 → [associate.py](pipeline/associate.py) 加 curation-crosscheck 回退，关联结果标注
    `match_source: curation-crosscheck`。这是 H3 在 C 侧的实证结论。
 3. **govulncheck openvex 输出**：`-format openvex` 直接产出 affected /
    not_affected + justification，含 63 条 statement（vuln DB 截至 2026-09-16，
    因此有一大批 2026 新条目）。`-format json` 的同一 OSV 有多条 finding 消息，
    第一条常只有 module 帧——提取 call trace 时要跳过无 function 帧的 finding
-   （reach_go.py first_trace 的 fallback 逻辑）。
+   （[reach_go.py](pipeline/reach_go.py) first_trace 的 fallback 逻辑）。
 4. **OSV/GHSA 与 GO-id 双条目去重**：querybatch 对同一问题同时返回 GHSA-* 和
-   GO-* 条目，vex.py 按 govulncheck finding 的 aliases 归并，canonical id 一个
+   GO-* 条目，[vex.py](pipeline/vex.py) 按 govulncheck finding 的 aliases 归并，canonical id 一个
    漏洞只出一条 statement；归并不了的（14 条）置 `under_investigation`，
    不静默丢弃——OSV 与 Go vuln DB 的覆盖差如实暴露。
 5. **in-toto python 库（3.1.0）没有现成 Statement 模型**：自行构造 Statement v1
    JSON，用 `in_toto.models.metadata.Envelope` 做 DSSE 信封 + `CryptoSigner`
    ed25519 签名。坑：`SSlibKey.from_dict(keyid, dict)` 是双参（公钥 json 里
    要自存 keyid）；私钥 URI 格式是 `file2:`（PKCS8 PEM），不是 `file:`；
-   **`Envelope.from_dict` 会原地 pop 掉传入 dict 的字段**——export.py 最初把
+   **`Envelope.from_dict` 会原地 pop 掉传入 dict 的字段**——[export.py](pipeline/export.py) 最初把
    验签后的同一个 dict 写盘，导致导出的 attestation 签名变 `[{}]`（DB 原件
    完好），深拷贝后修复。这类"验签通过但落盘损坏"的问题靠带外抽查
    （篡改 payload / 换错公钥应拒绝）抓出来。
-6. **验证（verification）类结论的来源**：复制 go-vuln-app → go-vuln-app-fixed。
+6. **验证（verification）类结论的来源**：复制 [go-vuln-app](examples/go-vuln-app) → [go-vuln-app-fixed](examples/go-vuln-app-fixed)。
    第一版只升到 x/crypto v0.31.0：Terrapin 消失但 11 条 2025/2026 新漏洞仍
    affected——结论本身没错但演示效果差；改升到 latest（x/crypto v0.57.0 /
    x/net v0.59.0）后 12 条原 affected 中 11 条 fixed，剩下 1 条 GO-2026-4971
@@ -64,7 +64,7 @@ GIT range，last_affected 1.2.12，fix commits 1eb7682f / eff308af）。选
    这是比"全部修好"更有信息量的结果，如实保留。
 7. **attestation 内容寻址**：DSSE 信封 canonical JSON 的 sha256 作为 attestation
    id，VEX statement 的 `evidence_refs` 回填 **reachability** attestation 的 hash
-   （run.sh 里 vex.py 跑两遍，第二遍带 --attestation-map；attest.py 里
+   （[run.sh](pipeline/run.sh) 里 [vex.py](pipeline/vex.py) 跑两遍，第二遍带 --attestation-map；[attest.py](pipeline/attest.py) 里
    attestation_map 只记录 reachability 类，避免被同漏洞的 vex attestation 覆盖）。
 8. **Joern docker 内运行**：需 `--user $(id -u):$(id -g)`（否则 /out 落下 root
    文件）+ `-e HOME=/tmp -w /tmp`（非 root 时默认 workspace `/app/workspace`
@@ -74,7 +74,7 @@ GIT range，last_affected 1.2.12，fix commits 1eb7682f / eff308af）。选
 
 ## 4. 实测数字
 
-见 README.md「成功判据与实测结果」。原始输出全部在 `out/`。
+见 [README.md](README.md)「成功判据与实测结果」。原始输出全部在 [out/](out/)。
 
 ## 5. 已知未解
 
@@ -83,6 +83,6 @@ GIT range，last_affected 1.2.12，fix commits 1eb7682f / eff308af）。选
   固定 digest 的镜像到内网 registry。
 - syft 对静态链接 C 库的 binary classification 覆盖不足（上游已知问题类别）。
 - govulncheck 版本行解析：`-version` 输出多行，Scanner 行才是工具版本
-  （reach_go.py 已处理）。
+  （[reach_go.py](pipeline/reach_go.py) 已处理）。
 - go-vuln-app-fixed 里剩下的 GO-2026-4971 是标准库漏洞，需要升级 Go toolchain
   才能闭环——超出了本 PoC 的"依赖升级"演示范围。

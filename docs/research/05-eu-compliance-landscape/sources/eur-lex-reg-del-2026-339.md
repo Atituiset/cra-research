@@ -4,7 +4,7 @@
 - **标题**: Commission Delegated Regulation (EU) 2026/339 of 16 February 2026 repealing Delegated Regulation (EU) 2022/30
 - **发布方**: European Commission(Official Journal of the European Union, L series)
 - **日期**: 通过 2026-02-16;OJ 公布 2026-04-29;生效 2026-05-19(公布后第 20 日)
-- **抓取日期**: 2026-09-19,EUR-Lex **直连成功**(未被 AWS WAF 拦截,与 02 报告时不同);同时获 EFTA EEA-Lex factsheet、TÜV、Omnilex、ANACOM 多方独立佐证
+- **抓取日期**: 2026-09-19,EUR-Lex **直连成功**(未被 AWS WAF 拦截,与 [02 报告](../../02-cra-regulation.md) 时不同);同时获 EFTA EEA-Lex factsheet、TÜV、Omnilex、ANACOM 多方独立佐证
 - **来源层级**: 一手法规文本(有法律强制力)
 
 ## 关键摘录

@@ -85,5 +85,5 @@
 
 ## 与既有报告的边界执行
 
-- 04 已覆盖的理论方法（govulncheck/Joern/CPG/GUAC Postgres/Wiz graph/AIxCC/Agent Fix/CCR 架构）一律引用，未重新取证（见 sources/internal-cross-references.md）；
-- 03 的厂商×能力明细未重抄，06 只取"形态/交付/定价/栈"四维度。
+- [04](../04-technology-deep-dive.md) 已覆盖的理论方法（govulncheck/Joern/CPG/GUAC Postgres/Wiz graph/AIxCC/Agent Fix/CCR 架构）一律引用，未重新取证（见 [sources/internal-cross-references.md](sources/internal-cross-references.md)）；
+- [03](../03-competitive-landscape.md) 的厂商×能力明细未重抄，[06](../06-product-forms-and-tech-stacks.md) 只取"形态/交付/定价/栈"四维度。

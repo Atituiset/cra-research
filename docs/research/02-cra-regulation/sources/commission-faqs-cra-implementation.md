@@ -4,7 +4,7 @@
 - **标题**: FAQs on the CRA Implementation(Version 1.0)
 - **发布方**: European Commission services(官方工作文件)
 - **发布日期**: 2025-12-03
-- **抓取日期**: 2026-09-18;原始件存 `raw/commission-faqs-cra-implementation-v1.md` 与 `.pdf`
+- **抓取日期**: 2026-09-18;原始件存 [raw/commission-faqs-cra-implementation-v1.md](raw/commission-faqs-cra-implementation-v1.md) 与 [.pdf](raw/commission-faqs-cra-implementation-v1.pdf)
 - **来源层级**: 官方解释(Commission services 工作文件,非立法;FAQ 自称 preliminary、供实施参考)
 
 ## 关键摘录/要点

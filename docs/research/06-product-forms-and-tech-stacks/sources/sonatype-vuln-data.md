@@ -10,7 +10,7 @@
 
 - 官方原文："Sonatype creates data using a **proprietary, automated vulnerability detection system** that monitors, aggregates, correlates, and incorporates machine learning from publicly available information. The Sonatype Data Research team **does not just aggregate public security feeds — we create the precise data we use**."
 - 输入源：NVD、邮件列表、网站安全公告、GitHub events、博客、OWASP、OSS Index、客户报告、社交媒体等；自动化系统 + 人工研究团队双轨。
-- Sonatype 身份特殊性：Maven Central 运营方，对 Java 生态组件数据有源头优势（行业共识，03 报告已述）。
+- Sonatype 身份特殊性：Maven Central 运营方，对 Java 生态组件数据有源头优势（行业共识，[03 报告](../../03-competitive-landscape.md) 已述）。
 
 ## 支撑报告结论
 

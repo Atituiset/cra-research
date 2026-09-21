@@ -43,11 +43,11 @@ examples/go-vuln-app     examples/c-vuln-app
 **刻意的技术选择**（来自研究结论）：证据存储用 SQLite（Python 3.12 标准库），README
 注明生产目标是 PostgreSQL；**刻意不用任何图数据库**——壁垒在数据模型不在图存储。
 **不自研 SBOM 工具**（已商品化），用 syft。vuln→function 映射是公认成本中心，示例 CVE
-的映射在 `curation/` 手工策展（合法做法，见 curation/README.md）。
+的映射在 [curation/](curation/) 手工策展（合法做法，见 [curation/README.md](curation/README.md)）。
 
 ## 如何运行
 
-前置：go、gcc+cmake、python3.12+pip、docker、网络。工具安装见 BUILD-LOG.md
+前置：go、gcc+cmake、python3.12+pip、docker、网络。工具安装见 [BUILD-LOG.md](BUILD-LOG.md)
 （syft → `~/bin`，govulncheck → `~/go/bin`，`pip3 install in-toto securesystemslib`，
 Joern 用 docker 镜像 `ghcr.io/joernio/joern:nightly`）。
 
@@ -57,8 +57,8 @@ bash pipeline/run.sh          # 一键端到端
 python3 pipeline/store.py --stats
 ```
 
-产物在 `poc/out/`：`evidence-pack-go-vuln-app-0.1.0/` 与
-`evidence-pack-c-vuln-app-0.1.0/`，每个包含 sbom / vex / 签名 attestations /
+产物在 [poc/out/](out/)：[evidence-pack-go-vuln-app-0.1.0/](out/evidence-pack-go-vuln-app-0.1.0/) 与
+[evidence-pack-c-vuln-app-0.1.0/](out/evidence-pack-c-vuln-app-0.1.0/)，每个包含 sbom / vex / 签名 attestations /
 manifest（全文件 sha256 索引）/ 人类可读追溯报告。
 
 ## 成功判据与实测结果
@@ -70,7 +70,7 @@ manifest（全文件 sha256 索引）/ 人类可读追溯报告。
 | 每条结论都有 ed25519 签名的 in-toto Statement v1，导出时验签 | ✅ 全部 `signature verified ✓` |
 | not_affected 带机器可读 justification + 证据引用 | ✅ |
 
-实测数字（2026-09-18 跑出，原始数据在 out/）：
+实测数字（2026-09-18 跑出，原始数据在 [out/](out/)）：
 
 - **go-vuln-app 0.1.0**：SBOM 13 个组件 / 7 个 PURL；OSV 关联 149 条（去重按
   规范 ID 归并后 77 个规范漏洞）；govulncheck 判定 **12 affected / 51 not_affected**，
@@ -81,7 +81,7 @@ manifest（全文件 sha256 索引）/ 人类可读追溯报告。
   justification `vulnerable_code_not_present`；GO-2024-3321（serverAuthenticate，
   包在二进制中但未被调用）= **not_affected**，
   justification `vulnerable_code_not_in_execute_path`。
-  修复验证：go-vuln-app-fixed 升级到 x/crypto v0.57.0 / x/net v0.59.0 后重扫，
+  修复验证：[go-vuln-app-fixed](examples/go-vuln-app-fixed) 升级到 x/crypto v0.57.0 / x/net v0.59.0 后重扫，
   12 条原 affected 中 **11 条消失（verification/fixed）**，剩 1 条 GO-2026-4971
   是 Go 1.26.1 标准库自身的漏洞，升依赖修不掉（verification/still_present）——
   如实记录。
@@ -119,7 +119,7 @@ manifest（全文件 sha256 索引）/ 人类可读追溯报告。
   zlib——2026-09-18 实测）；生产上应走包管理 manifest（conan/vcpkg）。
 - OSV 与 Go vuln DB 存在覆盖差（14 条 under_investigation），关联层需要冲突裁决策略，
   本 PoC 只记录不裁决。
-- 签名密钥是随仓库提交的开发密钥（keys/README.md）；生产需 KMS/HSM 与密钥轮换。
+- 签名密钥是随仓库提交的开发密钥（[keys/README.md](keys/README.md)）；生产需 KMS/HSM 与密钥轮换。
 - 证据存储是单文件 SQLite；生产目标 PostgreSQL，同 schema 平移。
 - Rust 本次砍掉：cargo 生态无成熟 function-level reachability 工具，第一批只验证管道。
 

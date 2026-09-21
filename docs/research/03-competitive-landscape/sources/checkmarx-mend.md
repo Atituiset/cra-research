@@ -25,5 +25,5 @@
   - Reachability 为 Mend 传统强项（业内最早一批做 SCA reachability 的厂商；文档有专门章节）。
   - 合规页覆盖 EU AI Act/NIST/CRA + AI-BOM + red teaming（代码层+AI 层双层合规叙事）。
   - Renovate（开源依赖更新工具）归属 Mend——自动升级 PR 生态位。
-  - 未找到 Mend 官方 CRA 产品模块；CRA 指南见 mend-cra-guide.md。
+  - 未找到 Mend 官方 CRA 产品模块；CRA 指南见 [mend-cra-guide.md](mend-cra-guide.md)。
 - 支撑结论: Mend = "SCA 老牌 + reachability + Renovate + AI-BOM"组合；CRA 靠内容营销映射。

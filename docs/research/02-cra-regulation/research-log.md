@@ -7,14 +7,14 @@
 
 ### 2026-09-18
 
-1. **建立目录** `docs/research/02-cra-regulation/sources/`(及 `raw/` 子目录存原始抓取件)。
+1. **建立目录** [docs/research/02-cra-regulation/sources/](sources/)(及 [raw/](sources/raw/) 子目录存原始抓取件)。
 2. **直连 EUR-Lex 失败**:`curl` 请求 `eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202402847` 返回 HTTP 202 + `x-amzn-waf-action: challenge`(AWS WAF 人机验证);FetchURL 报"may require JavaScript"。**决策**:不硬磕,改走 Wayback Machine 存档。
 3. **Cellar 试探**:`publications.europa.eu/resource/celex/32024R2847` 返回 RDF 元数据(可达),但未找到直接 HTML 全文端点(`.eng` 404)。弃用此路径。
 4. **Wayback CDX 查询** `eur-lex.europa.eu/eli/reg/2024/2847/oj` 有多个 200 快照。下载 `20241122090643id_` 快照 → 1MB,但为**法语版**。改下 `20250118003947id_` 快照 → 973KB,**英文全文版**(标题 "Regulation - 2024/2847 - EN - EUR-Lex")。✅ 采纳。
    - 注意:archive.org 期间多次返回 "Temporarily Offline",重试后成功。
-5. **文本提取**:pip 装 bs4 失败(PyPI 镜像 403),改用 Python 标准库 html.parser 提取纯文本 → `raw/reg-2024-2847-en.txt`(353,962 字符,71 条 Article + Annex I–VIII + recitals 齐全,grep 验证)。
+5. **文本提取**:pip 装 bs4 失败(PyPI 镜像 403),改用 Python 标准库 html.parser 提取纯文本 → [raw/reg-2024-2847-en.txt](sources/raw/reg-2024-2847-en.txt)(353,962 字符,71 条 Article + Annex I–VIII + recitals 齐全,grep 验证)。
 6. **精读条文**:Art 1–3(范围与定义)、Art 13(制造商义务 25 款)、Art 14–17(报告机制)、Art 18–25(importer/distributor/steward/attestation)、Art 26–32(guidance、presumption of conformity、符合性评估)、Art 64(罚则)、Art 69–71(过渡与生效)、Annex I/II/III/IV/VII、以及关键 recitals(SaaS 分工、FOSS 商业性边界、SBOM 不强制公开、support period 细则)。逐段核对行号。
-7. 写 source note `eur-lex-reg-2024-2847-fulltext.md`(法规原文层)。
+7. 写 source note [eur-lex-reg-2024-2847-fulltext.md](sources/eur-lex-reg-2024-2847-fulltext.md)(法规原文层)。
 
 ## 来源采纳/弃用记录
 
@@ -25,12 +25,12 @@
 | Cellar RDF 端点 | 弃用 | 只拿到元数据,无便捷全文 HTML |
 | Wayback 2024-11-22 快照 | 弃用(语言) | 法语版;改用 2025-01-18 英文版 |
 
-8. **Commission 官方页**:`digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act`(FetchURL 成功)——确认时间线官方口径、2026-07-27 guidance 发布。写 note `commission-cra-page.md`。
-9. **ENISA SRP FAQ**(WebSearch 发现,FetchURL 成功):SRP 已于 2026-09-11 上线、无 API、steward 报告义务 2027-12-11 起、PEC delegated act 2025-12-11 通过、不追溯规则等。写 note `enisa-cra-srp-faq.md`。✅ 高价值采纳。
-10. **Commission "FAQs on the CRA Implementation" v1.0**(2025-12-03):library 页 FetchURL 只给 "Download" 文字,用 curl 抓页面 HTML 找到 newsroom 文档 ID(122331=PDF,123307=Markdown),下载成功并存入 `raw/`。全文通读 Scope / Annex I / 漏洞处理 / support period / 报告 / 标准章节。写 note `commission-faqs-cra-implementation.md`。✅ 最高价值官方解释来源。
-11. **标准化状态**:Commission `cra-standardisation` 页(FetchURL)确认 M/606=C(2025)618(2025-02-03)、41 个标准、2025-04-03 ESO 接受。写 note `commission-cra-standardisation.md`。
-12. **二手对照**:Regara / cyberresilienceact.eu / disclose.io / spilma(WebSearch 摘要,未全文抓取)——"截至 2026-07 无任何 CRA 协调标准获 OJ 引用"、"M/606 期限拟顺延 2 个月"。合并写 note `secondary-standards-status.md`,全部标二手。
-13. **撰写最终报告** `docs/research/02-cra-regulation.md`(13 个问题 + 时限表 + 46 行映射表 + 关键发现)。✅ 完成。
+8. **Commission 官方页**:`digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act`(FetchURL 成功)——确认时间线官方口径、2026-07-27 guidance 发布。写 note [commission-cra-page.md](sources/commission-cra-page.md)。
+9. **ENISA SRP FAQ**(WebSearch 发现,FetchURL 成功):SRP 已于 2026-09-11 上线、无 API、steward 报告义务 2027-12-11 起、PEC delegated act 2025-12-11 通过、不追溯规则等。写 note [enisa-cra-srp-faq.md](sources/enisa-cra-srp-faq.md)。✅ 高价值采纳。
+10. **Commission "FAQs on the CRA Implementation" v1.0**(2025-12-03):library 页 FetchURL 只给 "Download" 文字,用 curl 抓页面 HTML 找到 newsroom 文档 ID(122331=PDF,123307=Markdown),下载成功并存入 [raw/](sources/raw/)。全文通读 Scope / Annex I / 漏洞处理 / support period / 报告 / 标准章节。写 note [commission-faqs-cra-implementation.md](sources/commission-faqs-cra-implementation.md)。✅ 最高价值官方解释来源。
+11. **标准化状态**:Commission `cra-standardisation` 页(FetchURL)确认 M/606=C(2025)618(2025-02-03)、41 个标准、2025-04-03 ESO 接受。写 note [commission-cra-standardisation.md](sources/commission-cra-standardisation.md)。
+12. **二手对照**:Regara / cyberresilienceact.eu / disclose.io / spilma(WebSearch 摘要,未全文抓取)——"截至 2026-07 无任何 CRA 协调标准获 OJ 引用"、"M/606 期限拟顺延 2 个月"。合并写 note [secondary-standards-status.md](sources/secondary-standards-status.md),全部标二手。
+13. **撰写最终报告** [docs/research/02-cra-regulation.md](../02-cra-regulation.md)(13 个问题 + 时限表 + 46 行映射表 + 关键发现)。✅ 完成。
 
 ## 来源间冲突记录
 

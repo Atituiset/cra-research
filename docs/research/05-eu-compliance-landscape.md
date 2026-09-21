@@ -1,10 +1,10 @@
 # 05 — CRA 与既有欧盟产品合规体系的关系:CE/NLF 全景、RED 衔接与法规边界
 
 > 研究日期:2026-09-19 | 研究者:补充调研子任务
-> 配套材料:每条重要结论对应 `05-eu-compliance-landscape/sources/` 下一条 source note;检索过程见 `05-eu-compliance-landscape/research-log.md`。
-> 标注体系沿用 02 报告:**Fact**(条文/官方页直接载明)/**Interpretation**(基于文本的合理推论)/**Hypothesis**(假设,需进一步核实)。
+> 配套材料:每条重要结论对应 [05-eu-compliance-landscape/sources/](05-eu-compliance-landscape/sources/) 下一条 source note;检索过程见 [05-eu-compliance-landscape/research-log.md](05-eu-compliance-landscape/research-log.md)。
+> 标注体系沿用 [02 报告](02-cra-regulation.md):**Fact**(条文/官方页直接载明)/**Interpretation**(基于文本的合理推论)/**Hypothesis**(假设,需进一步核实)。
 >
-> ⚠️ 抓取说明:与 02 报告不同,本次 eur-lex.europa.eu 直连**未被 AWS WAF 拦截**,所有 EUR-Lex 法规文本均为 2026-09-19 直连一手抓取,不再需要 Wayback 存档。此前"带 utm_source=chatgpt.com 的 EUR-Lex 链接疑似 AI 转述"的存疑点,已通过官方一手来源逐条核实(见 §1)。
+> ⚠️ 抓取说明:与 [02 报告](02-cra-regulation.md)不同,本次 eur-lex.europa.eu 直连**未被 AWS WAF 拦截**,所有 EUR-Lex 法规文本均为 2026-09-19 直连一手抓取,不再需要 Wayback 存档。此前"带 utm_source=chatgpt.com 的 EUR-Lex 链接疑似 AI 转述"的存疑点,已通过官方一手来源逐条核实(见 §1)。
 
 ---
 
@@ -76,9 +76,9 @@ Commission 官方 NLF 对齐立法清单共 31 部,**RED(2014/53/EU)为第 14 �
 
 NLF 机制的核心激励:制造商不必自己证明符合 essential requirements,只需遵循已在 OJ 引用(harmonised)的标准,即获得 **presumption of conformity**(CRA **Art 27**;一般机制由 Regulation (EU) No 1025/2012 第 10 条支撑:Commission 向 CEN/CENELEC/ETSI 发出标准化请求,ESO 制定标准,Commission 评估后在 OJ 公布引用方生效)。
 
-CRA 下的进展(更新 02 报告 §11,截至 2026-09):
+CRA 下的进展(更新 [02 报告](02-cra-regulation.md) §11,截至 2026-09):
 
-- M/606(C(2025)618,2025-02-03)41 个标准,ESO 已于 2025-04 接受(02 报告已述);
+- M/606(C(2025)618,2025-02-03)41 个标准,ESO 已于 2025-04 接受([02 报告](02-cra-regulation.md)已述);
 - **截至 2026-08 下旬,仍无任何 CRA 协调标准在 OJ 获得引用**,presumption of conformity 对所有产品类别暂不可用(多个独立二手来源一致);
 - 新进展:ETSI 于 **2026-08-13 对 17 个 vertical 标准启动批准程序**(enquiry,2026-09 中至 11 月中截止);首批标准交付预期 2026 下半年,OJ 引用时间表 Commission 仍未公布。
 - 对照 RED:2022/30 也因标准延迟被迫延期一年(见 §1.1),EN 18031 在适用前 6 个月才获 OJ 引用——**CRA 极可能重演"义务先行、标准后到"的窗口期**(Interpretation)。
@@ -93,9 +93,9 @@ NLF 家族产品的标准路径:**识别适用法规与 essential requirements �
 
 ## 3. CRA 与其他 EU 法规的边界(Art 2 及 recitals)
 
-### 3.1 CRA vs NIS2:SaaS/云的分工(【法规】Fact,补充 02 报告 §1.2 的条文依据)
+### 3.1 CRA vs NIS2:SaaS/云的分工(【法规】Fact,补充 [02 报告](02-cra-regulation.md) §1.2 的条文依据)
 
-CRA Recital 12(即 02 报告已引)明确:"Directive (EU) 2022/2555 applies to cloud computing services and cloud service models, such as **SaaS, PaaS or IaaS**"。接口规则:
+CRA Recital 12(即 [02 报告](02-cra-regulation.md)已引)明确:"Directive (EU) 2022/2555 applies to cloud computing services and cloud service models, such as **SaaS, PaaS or IaaS**"。接口规则:
 
 - 独立 SaaS/云服务 → **NIS2**(中型及以上实体);
 - 只有构成产品功能的 **remote data processing**(CRA Art 3(2),如智能家居厂商的远程控制云)才随产品落入 CRA;
@@ -118,7 +118,7 @@ CRA Recital 12(即 02 报告已引)明确:"Directive (EU) 2022/2555 applies to c
 ### 3.3 Machinery Regulation (EU) 2023/1230:不排除,而是叠加(【法规】Fact)
 
 - MR **2027-01-20 全面适用**(原 OJ 文本误印 2027-01-14,经 2023-07-04 OJ L 169 corrigendum 更正),同日废止 Directive 2006/42/EC,无过渡期(已在市场上的存量不受影响)。
-- **同时落入 MR 与 CRA 的机械产品须同时符合两法**(CRA recital,见 sources):MR Annex III 1.1.9(防控制系统篡改/protection against corruption)与 1.2.1(控制系统安全可靠)与 CRA Annex I 可能覆盖相似网络安全风险;CRA 合规可**facilitate** MR 合规,但协同须由制造商举证(如借助协调标准),并须分别走完两法的合格评定程序。Commission 承诺发布专项 guidance。
+- **同时落入 MR 与 CRA 的机械产品须同时符合两法**(CRA recital,见 [sources](05-eu-compliance-landscape/sources/)):MR Annex III 1.1.9(防控制系统篡改/protection against corruption)与 1.2.1(控制系统安全可靠)与 CRA Annex I 可能覆盖相似网络安全风险;CRA 合规可**facilitate** MR 合规,但协同须由制造商举证(如借助协调标准),并须分别走完两法的合格评定程序。Commission 承诺发布专项 guidance。
 - 交叠处理(Interpretation):2027 年出现一个紧凑窗口——MR 2027-01-20 适用,CRA 2027-12-11 全面适用,期间上市的联网机械产品先满足 MR 网络安全相关条款,年底再叠加 CRA 全套义务;两法标准化进程被要求相互对齐。
 
 来源:[sources/eur-lex-machinery-reg-2023-1230.md](05-eu-compliance-landscape/sources/eur-lex-machinery-reg-2023-1230.md)、[sources/cra-art2-art27-recitals.md](05-eu-compliance-landscape/sources/cra-art2-art27-recitals.md)
@@ -168,7 +168,7 @@ technical documentation (Art 31, Annex VII:产品描述/设计开发/SBOM/漏洞
 3. **CE 加贴与市场监督应对的决定权**:均在制造商;
 4. ** presumption of conformity 的取得**:取决于 OJ 引用标准(截至 2026-09 尚无),平台不能以"用了我们的工具"暗示合规推定。
 
-**结构性判断**:RED→CRA 的演进把竞争点从"帮助通过一次性评估"移向"支撑持续义务的证据基础设施";平台价值与 support period(≥5 年)同生命周期,天然订阅制。这与 04 报告对证据层壁垒的判断一致(见 00 报告 §5.5)。
+**结构性判断**:RED→CRA 的演进把竞争点从"帮助通过一次性评估"移向"支撑持续义务的证据基础设施";平台价值与 support period(≥5 年)同生命周期,天然订阅制。这与 [04 报告](04-technology-deep-dive.md)对证据层壁垒的判断一致(见 [00 报告](00-final-report.md) §5.5)。
 
 ---
 

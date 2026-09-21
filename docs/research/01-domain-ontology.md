@@ -4,7 +4,7 @@
 >
 > **写作约定**：中文为主，技术术语保留英文。每个概念按统一线索展开：**是什么 → 为什么产生 → 解决什么问题 → 谁维护 → 数据长什么样 → 在漏洞生命周期哪个阶段使用 → 与其他概念的关系 → 对 SCA/合规产品的意义**。
 >
-> **证据规范**：文中标记 **（Fact）** 表示有一手来源支撑，标记 **（Interpretation）** 表示本文作者的推理与归纳，无法核实的标记 **（不确定）**。每条一手来源在 `docs/research/01-domain-ontology/sources/` 下有对应 source note，研究过程见 `research-log.md`。
+> **证据规范**：文中标记 **（Fact）** 表示有一手来源支撑，标记 **（Interpretation）** 表示本文作者的推理与归纳，无法核实的标记 **（不确定）**。每条一手来源在 [docs/research/01-domain-ontology/sources/](01-domain-ontology/sources/) 下有对应 source note，研究过程见 [research-log.md](01-domain-ontology/research-log.md)。
 >
 > 调研执行日：2026-09-18。需要特别注意的时代背景：**欧盟 CRA（Regulation (EU) 2024/2847）Article 14 漏洞报告义务已于 2026-09-11 起适用**（24h/72h 报告时钟已开始走动），其余主体义务 2027-12-11 全面适用（Fact，见 [sources/cra-regulation-2024-2847.md](01-domain-ontology/sources/cra-regulation-2024-2847.md)）。这不是遥远的合规议题，而是正在发生的事实。
 
@@ -168,7 +168,7 @@ CWE 是**类别（class）**，CVE 是**实例（instance）**。一个 CWE 类�
 
 ### 是什么 / 谁维护 / 与 CVE Program 的关系
 
-NVD（National Vulnerability Database）由 **NIST**（美国国家标准与技术研究院）运营，1999 年起以某种形式存在。它**不创建 CVE**——CVE 由 CVE Program 的 CNA 体系发布；NVD 是 CVE 数据的**下游消费者 + 增强者**：把所有 CVE Record 拉进来，由分析师追加结构化信息后再发布（Fact，综合 [NVD API 数据](https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2021-44228) 与 [NIST 公告](https://www.nist.gov/news-events/news/2026/04/nist-updates-nvd-operations-address-record-cve-growth)，见 sources/nvd-api-20-cve-2021-44228.md、sources/nist-nvd-operations-2026.md）。
+NVD（National Vulnerability Database）由 **NIST**（美国国家标准与技术研究院）运营，1999 年起以某种形式存在。它**不创建 CVE**——CVE 由 CVE Program 的 CNA 体系发布；NVD 是 CVE 数据的**下游消费者 + 增强者**：把所有 CVE Record 拉进来，由分析师追加结构化信息后再发布（Fact，综合 [NVD API 数据](https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2021-44228) 与 [NIST 公告](https://www.nist.gov/news-events/news/2026/04/nist-updates-nvd-operations-address-record-cve-growth)，见 [sources/nvd-api-20-cve-2021-44228.md](01-domain-ontology/sources/nvd-api-20-cve-2021-44228.md)、[sources/nist-nvd-operations-2026.md](01-domain-ontology/sources/nist-nvd-operations-2026.md)）。
 
 理想化流程（现实常不严格遵守，见下文）：
 
@@ -180,7 +180,7 @@ NVD（National Vulnerability Database）由 **NIST**（美国国家标准与技�
 
 ### NVD 在 CVE 之上 enrichment 了什么
 
-用 CVE-2021-44228 的 NVD API 2.0 响应实测对比（Fact，见 sources/nvd-api-20-cve-2021-44228.md）：
+用 CVE-2021-44228 的 NVD API 2.0 响应实测对比（Fact，见 [sources/nvd-api-20-cve-2021-44228.md](01-domain-ontology/sources/nvd-api-20-cve-2021-44228.md)）：
 
 | 字段 | CVE Record（CNA 层） | NVD 视图（enrichment 后） |
 |---|---|---|
@@ -194,7 +194,7 @@ NVD（National Vulnerability Database）由 **NIST**（美国国家标准与技�
 
 ### API 2.0 / Data Feed 使用方式
 
-（Fact，[nvd.nist.gov/developers/vulnerabilities](https://nvd.nist.gov/developers/vulnerabilities)，见 sources/nvd-api-developers.md）
+（Fact，[nvd.nist.gov/developers/vulnerabilities](https://nvd.nist.gov/developers/vulnerabilities)，见 [sources/nvd-api-developers.md](01-domain-ontology/sources/nvd-api-developers.md)）
 
 - **CVE API**：`https://services.nvd.nist.gov/rest/json/cves/2.0`，按 CVE ID 或条件检索，offset 分页（`startIndex`/`resultsPerPage`）。
 - **CVE Change History API**：`.../cvehistory/2.0`，追踪记录何时因何被改——对增量同步至关重要。
@@ -203,7 +203,7 @@ NVD（National Vulnerability Database）由 **NIST**（美国国家标准与技�
 
 ### 数据延迟与质量问题：2024 slowdown → 2026 政策转向
 
-这是整个领域近年最重要的事件，必须知道（Fact，[NIST 2026-04-15 官方公告](https://www.nist.gov/news-events/news/2026/04/nist-updates-nvd-operations-address-record-cve-growth)，见 sources/nist-nvd-operations-2026.md）：
+这是整个领域近年最重要的事件，必须知道（Fact，[NIST 2026-04-15 官方公告](https://www.nist.gov/news-events/news/2026/04/nist-updates-nvd-operations-address-record-cve-growth)，见 [sources/nist-nvd-operations-2026.md](01-domain-ontology/sources/nist-nvd-operations-2026.md)）：
 
 - **2024 年初起**（社区观察到 2024-02-12 速率骤降），NVD 形成大量未 enrichment 的 CVE 积压；NIST 官方承认"unable to clear that backlog"。
 - 背景：CVE 提交量 2020→2025 增长 **263%**；NVD 2025 年 enrich 了约 42,000 条（创纪录）仍跟不上；2026 Q1 提交量又同比高约 1/3。
@@ -225,13 +225,13 @@ NVD（National Vulnerability Database）由 **NIST**（美国国家标准与技�
 
 ### 为什么 Google 建 OSV
 
-OSV（Open Source Vulnerabilities）由 Google 发起（2021），规范现由 OpenSSF 托管，作者为 Google 的 Oliver Chang 和 Russ Cox。规范开篇写明动机："define a standard interchange format for describing vulnerabilities in open source packages … enable **automated, accurate, and distributed** management of vulnerabilities in open source dependencies"（Fact，[OSV Schema 1.9.0](https://ossf.github.io/osv-schema/)，见 sources/osv-schema-spec.md）。
+OSV（Open Source Vulnerabilities）由 Google 发起（2021），规范现由 OpenSSF 托管，作者为 Google 的 Oliver Chang 和 Russ Cox。规范开篇写明动机："define a standard interchange format for describing vulnerabilities in open source packages … enable **automated, accurate, and distributed** management of vulnerabilities in open source dependencies"（Fact，[OSV Schema 1.9.0](https://ossf.github.io/osv-schema/)，见 [sources/osv-schema-spec.md](01-domain-ontology/sources/osv-schema-spec.md)）。
 
 要理解动机，先看 NVD/CPE 模型在开源世界的痛点（Interpretation）：开源组件的身份是**生态坐标**（Maven 的 `groupId:artifactId:version`、npm 的 `name@version`），不是 CPE 的 vendor/product；开源漏洞的受影响范围是**版本区间**，与具体 commit 强相关。OSV 把这两点变成一等公民。
 
 ### OSV Schema 拆解与真实条目
 
-OSV 条目顶层字段：`id`（`<DB>-<ENTRYID>` 格式，如 `GHSA-jfh8-c2jp-5v3q`）、`aliases`（如指向 CVE-2021-44228）、`affected[]`、`severity[]`、`references[]` 等。核心是 `affected`（Fact，以下取自 [GHSA-jfh8-c2jp-5v3q 的真实 OSV 条目](https://api.osv.dev/v1/vulns/GHSA-jfh8-c2jp-5v3q)，见 sources/osv-api-ghsa-log4shell.md）：
+OSV 条目顶层字段：`id`（`<DB>-<ENTRYID>` 格式，如 `GHSA-jfh8-c2jp-5v3q`）、`aliases`（如指向 CVE-2021-44228）、`affected[]`、`severity[]`、`references[]` 等。核心是 `affected`（Fact，以下取自 [GHSA-jfh8-c2jp-5v3q 的真实 OSV 条目](https://api.osv.dev/v1/vulns/GHSA-jfh8-c2jp-5v3q)，见 [sources/osv-api-ghsa-log4shell.md](01-domain-ontology/sources/osv-api-ghsa-log4shell.md)）：
 
 ```json
 "affected": [{
@@ -275,7 +275,7 @@ OSV 条目顶层字段：`id`（`<DB>-<ENTRYID>` 格式，如 `GHSA-jfh8-c2jp-5v
 
 ### 是什么 / 谁维护
 
-GHSA（GitHub Security Advisory）ID 是 GitHub Advisory Database 中每条 advisory 的唯一标识，格式 `GHSA-xxxx-xxxx-xxxx`（字符集去掉了易混淆字符，可用 `/GHSA(-[23456789cfghjmpqrvwx]{4}){3}/` 校验）（Fact，[GitHub Docs](https://docs.github.com/en/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-the-github-advisory-database)，见 sources/github-advisory-database.md）。
+GHSA（GitHub Security Advisory）ID 是 GitHub Advisory Database 中每条 advisory 的唯一标识，格式 `GHSA-xxxx-xxxx-xxxx`（字符集去掉了易混淆字符，可用 `/GHSA(-[23456789cfghjmpqrvwx]{4}){3}/` 校验）（Fact，[GitHub Docs](https://docs.github.com/en/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-the-github-advisory-database)，见 [sources/github-advisory-database.md](01-domain-ontology/sources/github-advisory-database.md)）。
 
 ### GHSA 与 CVE 的关系：GHSA 不一定有 CVE
 
@@ -334,7 +334,7 @@ Vendor Advisory（Microsoft MSRC、Red Hat RHSA、Debian DSA、Ubuntu USN、Apac
 
 ### CVSS：度量 severity，不是概率
 
-CVSS（Common Vulnerability Scoring System）由 **FIRST** 拥有和管理，官方定位是 "an open framework for communicating the **characteristics and severity** of software vulnerabilities"（Fact，[CVSS v4.0 规范](https://www.first.org/cvss/v4-0/specification-document)，见 sources/first-cvss-v40-spec.md）。
+CVSS（Common Vulnerability Scoring System）由 **FIRST** 拥有和管理，官方定位是 "an open framework for communicating the **characteristics and severity** of software vulnerabilities"（Fact，[CVSS v4.0 规范](https://www.first.org/cvss/v4-0/specification-document)，见 [sources/first-cvss-v40-spec.md](01-domain-ontology/sources/first-cvss-v40-spec.md)）。
 
 **v3.1 vs v4.0**（Fact）：
 
@@ -355,15 +355,15 @@ Base/Temporal(Threat)/Environmental 的思想：Base 是漏洞固有属性（跨
 
 ### EPSS：度量未来 30 天的利用概率
 
-EPSS（Exploit Prediction Scoring System）由 FIRST 旗下 EPSS SIG 维护，分数由 Empirical Security 生成并免费发布。官方定义："a data-driven **machine-learning model** that estimates the **probability** that a published CVE will be exploited in the wild in the **next 30 days**"（Fact，[first.org/epss](https://www.first.org/epss/)，见 sources/first-epss.md）。每日为每个已发布 CVE 产出 0–1 概率值 + percentile（"比百分之多少的 CVE 更可能被利用"），CSV/API 开放。数据合作方包括 VulnCheck KEV、Shadow Server、LevelBlue 等利用观测源。
+EPSS（Exploit Prediction Scoring System）由 FIRST 旗下 EPSS SIG 维护，分数由 Empirical Security 生成并免费发布。官方定义："a data-driven **machine-learning model** that estimates the **probability** that a published CVE will be exploited in the wild in the **next 30 days**"（Fact，[first.org/epss](https://www.first.org/epss/)，见 [sources/first-epss.md](01-domain-ontology/sources/first-epss.md)）。每日为每个已发布 CVE 产出 0–1 概率值 + percentile（"比百分之多少的 CVE 更可能被利用"），CSV/API 开放。数据合作方包括 VulnCheck KEV、Shadow Server、LevelBlue 等利用观测源。
 
 **与 CVSS 的本质区别**：CVSS 是**确定性的特征度量公式**（输入向量属性，输出分数，可手工计算）；EPSS 是**经验性的统计预测**（输入全网利用观测、漏洞特征，输出概率，每天会变）。一个回答"最坏能多坏"，一个回答"多可能真的发生"。GitHub Advisory Database 已内嵌 EPSS 分数及 percentile 并每日同步（Fact，GitHub Docs）。
 
 ### CISA KEV：已被观测到真实利用的目录
 
-KEV（Known Exploited Vulnerabilities Catalog）由 CISA 维护，截至 2026-09 收录 1713 条。入录门槛：已分配 CVE、**有可靠证据表明在野外被积极利用**、存在明确补救措施。条目含 Date Added、**Due Date**、Required Action、"Known To Be Used in Ransomware Campaigns?"等字段；2026 年起条目行动要求引用 BOD 26-04（早期为 BOD 22-01），对联邦机构是具有约束力的修复期限指令（Fact，[cisa.gov KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)，见 sources/cisa-kev-catalog.md）。
+KEV（Known Exploited Vulnerabilities Catalog）由 CISA 维护，截至 2026-09 收录 1713 条。入录门槛：已分配 CVE、**有可靠证据表明在野外被积极利用**、存在明确补救措施。条目含 Date Added、**Due Date**、Required Action、"Known To Be Used in Ransomware Campaigns?"等字段；2026 年起条目行动要求引用 BOD 26-04（早期为 BOD 22-01），对联邦机构是具有约束力的修复期限指令（Fact，[cisa.gov KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)，见 [sources/cisa-kev-catalog.md](01-domain-ontology/sources/cisa-kev-catalog.md)）。
 
-**KEV 与"存在 PoC"的区别**（关键认知）：GitHub 上有 PoC 只说明"理论上可利用、代码公开了"；KEV 要求"**真实攻击者已经在真实目标上用了**"。前者是能力信号，后者是**事实信号**。Log4Shell 在 CVE 发布**当天**（2021-12-10）即入录 KEV，Due Date 2021-12-24——这种速度是 KEV 作为最高优先级信号的直观体现（Fact，见 sources/nvd-api-20-cve-2021-44228.md 的 cisaExploitAdd 字段）。
+**KEV 与"存在 PoC"的区别**（关键认知）：GitHub 上有 PoC 只说明"理论上可利用、代码公开了"；KEV 要求"**真实攻击者已经在真实目标上用了**"。前者是能力信号，后者是**事实信号**。Log4Shell 在 CVE 发布**当天**（2021-12-10）即入录 KEV，Due Date 2021-12-24——这种速度是 KEV 作为最高优先级信号的直观体现（Fact，见 [sources/nvd-api-20-cve-2021-44228.md](01-domain-ontology/sources/nvd-api-20-cve-2021-44228.md) 的 cisaExploitAdd 字段）。
 
 ### 信号链：五种信号回答五个不同的问题
 
@@ -405,7 +405,7 @@ NVD 用 CPE 的原因：它需要一个**跨越所有软件种类的统一产品
 
 ### PURL：为"包"设计的 URL
 
-PURL（Package URL）是生态无关的包标识语法："a standard URL-based syntax to identify software packages, **independent from their ecosystem or distribution channel**"（Fact，[packageurl.org](https://www.packageurl.org/docs/purl/introduction)，见 sources/purl-intro.md）。2025-12-10 获批为 **ECMA-427** 国际标准，正走 ISO 快速通道（Fact）。
+PURL（Package URL）是生态无关的包标识语法："a standard URL-based syntax to identify software packages, **independent from their ecosystem or distribution channel**"（Fact，[packageurl.org](https://www.packageurl.org/docs/purl/introduction)，见 [sources/purl-intro.md](01-domain-ontology/sources/purl-intro.md)）。2025-12-10 获批为 **ECMA-427** 国际标准，正走 ISO 快速通道（Fact）。
 
 ```text
 pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1?type=jar
@@ -435,7 +435,7 @@ pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1?type=jar
 
 ### 为什么出现
 
-SBOM 的政策引爆点是美国 **EO 14028**（2021-05-12）：其 Section 4 指令商务部/NTIA 发布 SBOM 的"minimum elements"，NIST 牵头制定供应链安全标准并约束联邦采购（Fact，[NIST EO 14028 页](https://www.nist.gov/itl/executive-order-14028-improving-nations-cybersecurity)，见 sources/nist-eo-14028.md）。NTIA 于 2021-07-12 发布报告，定义 SBOM 为 "a **formal record** containing the details and **supply chain relationships** of various components used in building software"（Fact，[NTIA](https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom)，见 sources/ntia-sbom-minimum-elements.md）。深层动因是 SolarWinds（2020）与 Log4Shell（2021）暴露的现实：**大多数组织答不上"我的软件里到底有什么"**——Log4Shell 应急响应的第一周，大量企业的时间花在找 log4j 而不是修 log4j。欧盟 CRA 随后把 SBOM 纳入 Annex I 基本安全要求体系（2027-12-11 全面适用）（Fact，见 sources/cra-regulation-2024-2847.md）。
+SBOM 的政策引爆点是美国 **EO 14028**（2021-05-12）：其 Section 4 指令商务部/NTIA 发布 SBOM 的"minimum elements"，NIST 牵头制定供应链安全标准并约束联邦采购（Fact，[NIST EO 14028 页](https://www.nist.gov/itl/executive-order-14028-improving-nations-cybersecurity)，见 [sources/nist-eo-14028.md](01-domain-ontology/sources/nist-eo-14028.md)）。NTIA 于 2021-07-12 发布报告，定义 SBOM 为 "a **formal record** containing the details and **supply chain relationships** of various components used in building software"（Fact，[NTIA](https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom)，见 [sources/ntia-sbom-minimum-elements.md](01-domain-ontology/sources/ntia-sbom-minimum-elements.md)）。深层动因是 SolarWinds（2020）与 Log4Shell（2021）暴露的现实：**大多数组织答不上"我的软件里到底有什么"**——Log4Shell 应急响应的第一周，大量企业的时间花在找 log4j 而不是修 log4j。欧盟 CRA 随后把 SBOM 纳入 Annex I 基本安全要求体系（2027-12-11 全面适用）（Fact，见 [sources/cra-regulation-2024-2847.md](01-domain-ontology/sources/cra-regulation-2024-2847.md)）。
 
 ### 一个 SBOM 到底包含什么
 
@@ -506,7 +506,7 @@ NVD 说：log4j-core 2.14.1 受 CVE-2021-44228 影响
 问题：Product A 真的受这个漏洞影响吗？
 ```
 
-SBOM 本身回答不了——它只说成分，不说可达性与可利用性。于是扫描器产生海量"成分级"告警，其中大量是误报（组件已打补丁、漏洞代码不存在、不可执行、不可被攻击者控制）。OpenVEX 规范原文直陈动机："software is not necessarily affected as signaled by security scanners … The extreme transparency brought by SBOMs will most likely increase the number of these kind of false positives, requiring an automated solution … **Hence VEX**"（Fact，[OpenVEX spec](https://raw.githubusercontent.com/openvex/spec/main/OPENVEX-SPEC.md)，见 sources/openvex-spec-v020.md）。
+SBOM 本身回答不了——它只说成分，不说可达性与可利用性。于是扫描器产生海量"成分级"告警，其中大量是误报（组件已打补丁、漏洞代码不存在、不可执行、不可被攻击者控制）。OpenVEX 规范原文直陈动机："software is not necessarily affected as signaled by security scanners … The extreme transparency brought by SBOMs will most likely increase the number of these kind of false positives, requiring an automated solution … **Hence VEX**"（Fact，[OpenVEX spec](https://raw.githubusercontent.com/openvex/spec/main/OPENVEX-SPEC.md)，见 [sources/openvex-spec-v020.md](01-domain-ontology/sources/openvex-spec-v020.md)）。
 
 VEX（Vulnerability Exploitability eXchange）的官方定义："a vulnerability document designed to **complement a SBOM** that informs users of a software product about the **applicability** of one or more vulnerability findings"（Fact，OpenVEX spec 引 CISA VEX 工作组定义）。最小要素由 CISA《Minimum Requirements for VEX》（2023-04）定义。
 
@@ -584,7 +584,7 @@ VEX statement（附证据引用：call graph、配置快照、测试记录）
 
 ### 是什么 / 谁维护
 
-CSAF（Common Security Advisory Framework）2.0 是 **OASIS** 标准（2022-11-18 批准，TC 主席来自 Cisco，编辑来自 Red Hat、德国 BSI），取代 XML 时代的 CVRF 1.2。官方定位："the definitive reference for the language which supports creation, update, and interoperable exchange of **security advisories as structured information** on products, vulnerabilities and the status of impact and remediation"（Fact，[OASIS CSAF 2.0](https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html)，见 sources/csaf-v20-oasis-standard.md）。
+CSAF（Common Security Advisory Framework）2.0 是 **OASIS** 标准（2022-11-18 批准，TC 主席来自 Cisco，编辑来自 Red Hat、德国 BSI），取代 XML 时代的 CVRF 1.2。官方定位："the definitive reference for the language which supports creation, update, and interoperable exchange of **security advisories as structured information** on products, vulnerabilities and the status of impact and remediation"（Fact，[OASIS CSAF 2.0](https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html)，见 [sources/csaf-v20-oasis-standard.md](01-domain-ontology/sources/csaf-v20-oasis-standard.md)）。
 
 ### 为什么需要机器可读 / 与 PDF 公告的区别
 
@@ -825,24 +825,24 @@ CRA 要求我承担什么责任？→ 以上每一环的闭环与留痕。
 
 ## 附录：来源索引
 
-所有一手来源的详细摘录见 `docs/research/01-domain-ontology/sources/`：
+所有一手来源的详细摘录见 [docs/research/01-domain-ontology/sources/](01-domain-ontology/sources/)：
 
 | Source Note | 支撑章节 |
 |---|---|
-| cve-record-api-cve-2021-44228.md | §2, §4, §8, §16 |
-| cve-program-overview.md / cve-program-cna.md | §2, §16 |
-| cwe-about.md | §3 |
-| nvd-api-20-cve-2021-44228.md / nvd-api-developers.md | §4, §9 |
-| nist-nvd-operations-2026.md | §4 |
-| osv-schema-spec.md / osv-api-ghsa-log4shell.md | §5, §15 |
-| github-advisory-database.md | §6 |
-| first-cvss-v40-spec.md / first-epss.md / cisa-kev-catalog.md | §8 |
-| purl-intro.md / purl-spec-location.md | §9 |
-| ntia-sbom-minimum-elements.md / nist-eo-14028.md | §10 |
-| spdx-overview.md / cyclonedx-overview.md | §10, §11 |
-| openvex-spec.md / openvex-spec-v020.md | §11, §13 |
-| csaf-v20-oasis-standard.md | §11, §12 |
-| cra-regulation-2024-2847.md | §0, §10, §12, §16 |
-| ssdf-sp800-218.md / slsa-dev.md | §17 |
+| [cve-record-api-cve-2021-44228.md](01-domain-ontology/sources/cve-record-api-cve-2021-44228.md) | §2, §4, §8, §16 |
+| [cve-program-overview.md](01-domain-ontology/sources/cve-program-overview.md) / [cve-program-cna.md](01-domain-ontology/sources/cve-program-cna.md) | §2, §16 |
+| [cwe-about.md](01-domain-ontology/sources/cwe-about.md) | §3 |
+| [nvd-api-20-cve-2021-44228.md](01-domain-ontology/sources/nvd-api-20-cve-2021-44228.md) / [nvd-api-developers.md](01-domain-ontology/sources/nvd-api-developers.md) | §4, §9 |
+| [nist-nvd-operations-2026.md](01-domain-ontology/sources/nist-nvd-operations-2026.md) | §4 |
+| [osv-schema-spec.md](01-domain-ontology/sources/osv-schema-spec.md) / [osv-api-ghsa-log4shell.md](01-domain-ontology/sources/osv-api-ghsa-log4shell.md) | §5, §15 |
+| [github-advisory-database.md](01-domain-ontology/sources/github-advisory-database.md) | §6 |
+| [first-cvss-v40-spec.md](01-domain-ontology/sources/first-cvss-v40-spec.md) / [first-epss.md](01-domain-ontology/sources/first-epss.md) / [cisa-kev-catalog.md](01-domain-ontology/sources/cisa-kev-catalog.md) | §8 |
+| [purl-intro.md](01-domain-ontology/sources/purl-intro.md) / [purl-spec-location.md](01-domain-ontology/sources/purl-spec-location.md) | §9 |
+| [ntia-sbom-minimum-elements.md](01-domain-ontology/sources/ntia-sbom-minimum-elements.md) / [nist-eo-14028.md](01-domain-ontology/sources/nist-eo-14028.md) | §10 |
+| [spdx-overview.md](01-domain-ontology/sources/spdx-overview.md) / [cyclonedx-overview.md](01-domain-ontology/sources/cyclonedx-overview.md) | §10, §11 |
+| [openvex-spec.md](01-domain-ontology/sources/openvex-spec.md) / [openvex-spec-v020.md](01-domain-ontology/sources/openvex-spec-v020.md) | §11, §13 |
+| [csaf-v20-oasis-standard.md](01-domain-ontology/sources/csaf-v20-oasis-standard.md) | §11, §12 |
+| [cra-regulation-2024-2847.md](01-domain-ontology/sources/cra-regulation-2024-2847.md) | §0, §10, §12, §16 |
+| [ssdf-sp800-218.md](01-domain-ontology/sources/ssdf-sp800-218.md) / [slsa-dev.md](01-domain-ontology/sources/slsa-dev.md) | §17 |
 
-研究过程记录：`docs/research/01-domain-ontology/research-log.md`（含弃用来源与来源间冲突说明）。
+研究过程记录：[docs/research/01-domain-ontology/research-log.md](01-domain-ontology/research-log.md)（含弃用来源与来源间冲突说明）。

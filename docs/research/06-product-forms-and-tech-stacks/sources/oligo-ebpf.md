@@ -10,7 +10,7 @@
 ## 关键事实点
 
 - Oligo 的 eBPF 探针不是只做 syscall/网络流式遥测，而是**把内核信号回溯到具体的函数/库粒度**（"traces each kernel signal back to the exact function, library"）——按库画像（library-level profiling）观测应用实际加载/执行了哪些库函数。
-- 借此实现"证明哪些漏洞真实"：观测到 vulnerable function 被执行 ≠ reachability 推断，而是运行时实证（厂商叙事，04 报告已标注其合规声明为厂商声称）。
+- 借此实现"证明哪些漏洞真实"：观测到 vulnerable function 被执行 ≠ reachability 推断，而是运行时实证（厂商叙事，[04 报告](../../04-technology-deep-dive.md) 已标注其合规声明为厂商声称）。
 - 传感器为 eBPF-based engine，面向 Linux workload，强调 kernel-safe 与低开销（厂商声称）。
 
 ## 支撑报告结论

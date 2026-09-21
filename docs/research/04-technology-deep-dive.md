@@ -1,7 +1,7 @@
 # 04 — 技术路线深挖：Reachability / Exploitability / Agentic Remediation / Evidence Graph
 
 > 调研日期：2026-09-18。标注约定：**[Fact]** 有一手来源支撑；**[Interpretation]** 基于事实的推断；**[Hypothesis]** 待验证假设；不确定处显式标注"（不确定）"。
-> 每个重要引用对应 `04-technology-deep-dive/sources/` 下一条 source note；调研过程见 `research-log.md`。
+> 每个重要引用对应 [04-technology-deep-dive/sources/](04-technology-deep-dive/sources/) 下一条 source note；调研过程见 [research-log.md](04-technology-deep-dive/research-log.md)。
 
 ## TL;DR：三个方向的壁垒判断（详细论证见第六章）
 
@@ -221,31 +221,31 @@ Present（SBOM/SCA 可判定，deterministic）
 
 ## 七、来源索引
 
-所有来源 note 位于 `docs/research/04-technology-deep-dive/sources/`：
+所有来源 note 位于 [docs/research/04-technology-deep-dive/sources/](04-technology-deep-dive/sources/)：
 
 | Note | 来源 | 层级 |
 |---|---|---|
-| endor-labs-reachability-docs.md | docs.endorlabs.com | 厂商官方文档 |
-| snyk-reachability-docs.md | docs.snyk.io | 厂商官方文档 |
-| endor-js-reachability-blog.md | endorlabs.com/learn | 厂商工程博客 |
-| govulncheck-docs.md | pkg.go.dev | 官方文档 |
-| github-dependabot-vulnerable-function-calls.md | github.blog | 官方 changelog |
-| joern-cpg.md | github.com/joernio | 开源项目 |
-| semgrep-reachability-whitepaper.md | semgrep.dev | 厂商白皮书（立场性） |
-| cognixshield-savant-arxiv.md | arXiv 2506.17798 | 学术论文（预印本） |
-| cisa-ssvc.md | cisa.gov | 政府/标准 |
-| first-epss.md | first.org | 标准组织 |
-| cisa-vex-minimum-requirements.md | cisa.gov PDF + Anchore/SPDX 印证 | 政府/标准 |
-| datadog-state-of-devsecops-2025.md | datadoghq.com | 厂商研究（一手数据） |
-| oligo-runtime-reachability.md | oligo.security | 厂商工程博客 |
-| breaking-change-tools.md | docs.renovatebot.com + GitHub | 官方文档/开源 |
-| endor-patches.md | github.com/endorlabs | 开源 + 厂商博客 |
-| snyk-agent-fix.md | snyk.io | 厂商官方（数据自述） |
-| github-copilot-code-review-agentic.md | github.blog | 官方 changelog |
-| darpa-aixcc.md | arXiv 2602.07666 + GitHub | 学术/政府 |
-| simbian-ai-soc-benchmark.md | simbian.ai | 厂商（立场性） |
-| openssf-guac-readme.md | github.com/guacsec | 开源项目 |
-| in-toto-framework.md | in-toto.io | 标准/开源 |
-| wiz-security-graph.md | wiz.io + 第三方佐证 | 厂商官方 + 新闻 |
+| [endor-labs-reachability-docs.md](04-technology-deep-dive/sources/endor-labs-reachability-docs.md) | docs.endorlabs.com | 厂商官方文档 |
+| [snyk-reachability-docs.md](04-technology-deep-dive/sources/snyk-reachability-docs.md) | docs.snyk.io | 厂商官方文档 |
+| [endor-js-reachability-blog.md](04-technology-deep-dive/sources/endor-js-reachability-blog.md) | endorlabs.com/learn | 厂商工程博客 |
+| [govulncheck-docs.md](04-technology-deep-dive/sources/govulncheck-docs.md) | pkg.go.dev | 官方文档 |
+| [github-dependabot-vulnerable-function-calls.md](04-technology-deep-dive/sources/github-dependabot-vulnerable-function-calls.md) | github.blog | 官方 changelog |
+| [joern-cpg.md](04-technology-deep-dive/sources/joern-cpg.md) | github.com/joernio | 开源项目 |
+| [semgrep-reachability-whitepaper.md](04-technology-deep-dive/sources/semgrep-reachability-whitepaper.md) | semgrep.dev | 厂商白皮书（立场性） |
+| [cognixshield-savant-arxiv.md](04-technology-deep-dive/sources/cognixshield-savant-arxiv.md) | arXiv 2506.17798 | 学术论文（预印本） |
+| [cisa-ssvc.md](04-technology-deep-dive/sources/cisa-ssvc.md) | cisa.gov | 政府/标准 |
+| [first-epss.md](04-technology-deep-dive/sources/first-epss.md) | first.org | 标准组织 |
+| [cisa-vex-minimum-requirements.md](04-technology-deep-dive/sources/cisa-vex-minimum-requirements.md) | cisa.gov PDF + Anchore/SPDX 印证 | 政府/标准 |
+| [datadog-state-of-devsecops-2025.md](04-technology-deep-dive/sources/datadog-state-of-devsecops-2025.md) | datadoghq.com | 厂商研究（一手数据） |
+| [oligo-runtime-reachability.md](04-technology-deep-dive/sources/oligo-runtime-reachability.md) | oligo.security | 厂商工程博客 |
+| [breaking-change-tools.md](04-technology-deep-dive/sources/breaking-change-tools.md) | docs.renovatebot.com + GitHub | 官方文档/开源 |
+| [endor-patches.md](04-technology-deep-dive/sources/endor-patches.md) | github.com/endorlabs | 开源 + 厂商博客 |
+| [snyk-agent-fix.md](04-technology-deep-dive/sources/snyk-agent-fix.md) | snyk.io | 厂商官方（数据自述） |
+| [github-copilot-code-review-agentic.md](04-technology-deep-dive/sources/github-copilot-code-review-agentic.md) | github.blog | 官方 changelog |
+| [darpa-aixcc.md](04-technology-deep-dive/sources/darpa-aixcc.md) | arXiv 2602.07666 + GitHub | 学术/政府 |
+| [simbian-ai-soc-benchmark.md](04-technology-deep-dive/sources/simbian-ai-soc-benchmark.md) | simbian.ai | 厂商（立场性） |
+| [openssf-guac-readme.md](04-technology-deep-dive/sources/openssf-guac-readme.md) | github.com/guacsec | 开源项目 |
+| [in-toto-framework.md](04-technology-deep-dive/sources/in-toto-framework.md) | in-toto.io | 标准/开源 |
+| [wiz-security-graph.md](04-technology-deep-dive/sources/wiz-security-graph.md) | wiz.io + 第三方佐证 | 厂商官方 + 新闻 |
 
-调研过程与来源冲突记录见 `docs/research/04-technology-deep-dive/research-log.md`。
+调研过程与来源冲突记录见 [docs/research/04-technology-deep-dive/research-log.md](04-technology-deep-dive/research-log.md)。
