@@ -240,8 +240,12 @@ def main():
                         figure.savefig(data, format='png', dpi=160)
                         figure_index += 1
                         (figure_dir / f'{figure_index:02d}.png').write_bytes(data.getvalue())
+                        # Keep full-resolution standalone figures; embed a smaller
+                        # rendering to reduce the notebook preview payload.
+                        preview = io.BytesIO()
+                        figure.savefig(preview, format='png', dpi=110)
                         images.append({'output_type': 'display_data', 'metadata': {}, 'data': {
-                            'image/png': base64.b64encode(data.getvalue()).decode(),
+                            'image/png': base64.b64encode(preview.getvalue()).decode(),
                             'text/plain': f'CRA figure {figure_index}'}})
                         plt.close(figure)
                 with contextlib.redirect_stdout(output), patch.object(plt, 'show', capture_figures):
