@@ -1,5 +1,9 @@
 # 04 — 技术路线深挖：Reachability / Exploitability / Agentic Remediation / Evidence Graph
 
+> **2026-09-23 许可口径修正：** CodeQL 的查询与库开源，不等于 CLI 分析引擎开源或可无条件用于私有代码。见 [CodeQL 官方仓库](https://github.com/github/codeql) 与 [CLI 使用条件](https://docs.github.com/en/code-security/concepts/code-scanning/codeql/codeql-cli)。
+
+> **开源选型专题已独立成篇：** [08 — 开源生态与集成选型](08-open-source-ecosystem.md)。按当前评估引擎架构查看项目能力、输入输出、许可边界与本仓库验证状态；本文保留方法分析及原研究背景。
+
 > 调研日期：2026-09-18。标注约定：**[Fact]** 有一手来源支撑；**[Interpretation]** 基于事实的推断；**[Hypothesis]** 待验证假设；不确定处显式标注"（不确定）"。
 > 每个重要引用对应 [04-technology-deep-dive/sources/](04-technology-deep-dive/sources/) 下一条 source note；调研过程见 [research-log.md](04-technology-deep-dive/research-log.md)。
 
@@ -7,7 +11,7 @@
 
 | 方向 | 壁垒判断 | 一句话依据 |
 |---|---|---|
-| Reachability | **工程壁垒（非技术壁垒）** | 方法全部公开、工具链成熟（govulncheck 官方免费、CodeQL/Joern 开源），Endor/Snyk/GitHub/Semgrep 均已产品化；难在每语言 2–3 人年的引擎工程与漏洞→函数映射数据策展，不在算法新颖性 |
+| Reachability | **工程壁垒（非技术壁垒）** | 方法全部公开、工具链成熟（govulncheck、Joern 提供开源底座；CodeQL CLI 有独立授权条件），Endor/Snyk/GitHub/Semgrep 均已产品化；难在每语言 2–3 人年的引擎工程与漏洞→函数映射数据策展，不在算法新颖性 |
 | Exploitability | **仅产品功能（决策框架层），但其中"证据化 VEX"有工程壁垒成分** | SSVC/EPSS/KEV/CVSS 全是公开框架与开放数据；真正的难点是 context 数据的获取与可信度，而非决策模型本身 |
 | Evidence Graph + Agentic Remediation | **Evidence Graph 是潜在真壁垒（数据资产+信任位），Agentic 编排是工程壁垒** | GUAC/in-toto/SLSA 证明了模型可行但没有人在"安全结论级证据链"上建立标准；CRA 合规场景下"可审计证据"是买方的付费点。Agent 本身（AIxCC、Copilot、Snyk Agent Fix 已验证模式）会被快速追平 |
 
@@ -196,7 +200,7 @@ Present（SBOM/SCA 可判定，deterministic）
 
 ### 6.1 Reachability —— 工程壁垒 [Interpretation]
 
-- 方法（call graph/CFG/taint/binary）全部公开，每语言有开源底座（govulncheck/CodeQL/Joern/Soot），Endor/Snyk/GitHub/Semgrep 已产品化 → **不构成技术（算法）壁垒**。
+- 方法（call graph/CFG/taint/binary）全部公开，不同语言有可复用工具（govulncheck/Joern/Soot；CodeQL CLI 须另核授权），Endor/Snyk/GitHub/Semgrep 已产品化 → **不构成技术（算法）壁垒**。
 - 真正的护城河成分是：(a) 多语言引擎的持续工程投入（每语言 2–3 人年量级，估计）；(b) **vulnerability→function/symbol 的标注数据集**（Snyk/Endor/Go 团队都在策展，这是数据资产）；(c) 不可构建项目的 fallback 工程。
 - 对一家已有 SCA/SAST 的厂商：自建 Java/Go/Python 的 function-level reachability 是 1–2 年可追平的工程；**差异化机会在 C/C++/嵌入式（CRA 主战场、产品化最薄弱）与二进制 reachability**——那里竞争最少、客户最痛。[Hypothesis：值得做 PoC 验证 C/C++ 可达性精度上限]
 - 风险：Go 官方免费工具的存在说明单语言 reachability 可被生态"国有化"，长期商品化压力大。

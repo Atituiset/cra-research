@@ -72,6 +72,7 @@ SCA / 漏洞关联 → Assessment Target
 | [欧盟合规全景](docs/research/05-eu-compliance-landscape.md) | CRA 与相关合规体系的关系 |
 | [产品形态与技术栈](docs/research/06-product-forms-and-tech-stacks.md) | 部署方式、开源复用与自研边界 |
 | [厂商深挖](docs/research/07-vendor-deep-dive/README.md) | Snyk、Endor、Black Duck、Sonatype、JFrog 的专题分析 |
+| [开源生态与集成选型](docs/research/08-open-source-ecosystem.md) | 按评估引擎分层梳理工具、输入输出、许可边界与本仓库验证情况 |
 
 按角色阅读、来源追溯及历史材料说明见 [完整阅读指南](docs/README.md)。
 

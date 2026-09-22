@@ -1,5 +1,7 @@
 # 06 — 业内产品形态分类学与各能力层实际技术栈
 
+> **开源选型专题已独立成篇：** [08 — 开源生态与集成选型](08-open-source-ecosystem.md)。按当前评估引擎架构查看项目能力、输入输出、许可边界与本仓库验证状态；本文保留方法分析及原研究背景。
+
 > 研究日期：2026-09-20 | 研究者：补充调研子任务
 > 配套材料：每条重要结论对应 [06-product-forms-and-tech-stacks/sources/](06-product-forms-and-tech-stacks/sources/) 下一条 source note；检索过程见 [06-product-forms-and-tech-stacks/research-log.md](06-product-forms-and-tech-stacks/research-log.md)。
 > 标注体系沿用 [02](02-cra-regulation.md)–[05](05-eu-compliance-landscape.md) 报告：**Fact**（一手来源直接载明）/**Interpretation**（基于事实的合理推论）/**Hypothesis**（假设，需进一步核实）。厂商营销口径一律标注"（厂商声称）"。
@@ -13,7 +15,7 @@
 2. **技术栈层面的"公共底座"已经形成**：识别层 = Trivy(fanal)/Syft/Semgrep CE(OpenGrep)/govulncheck 开源四件套；运行时层 = eBPF（Tracee/Falco/Tetragon）；数据层 = NVD+OSV/GHSA 免费聚合 + 商业策展库；修复层 = PR bot（Dependabot/Renovate）+ "确定性校验 + LLM 生成"修复架构；存储层 = **PostgreSQL 关系库一统天下**（Dependency-Track、GUAC、Backbase 生产实证），图数据库仍是叙事。
 3. **三层趋同**：漏洞策展收敛到"AI 加速 + 人类终审 + 风险优先队列"（GitHub 官方承认纯人工已撑不住）；AI 修复收敛到"LLM 生成 + 确定性校验兜底"（见 [04](04-technology-deep-dive.md)）；AI 接入收敛到 MCP tool 化（Snyk 等把扫描器封装成 MCP server 供编码 agent 调用）。
 4. **形态红海**：开发者平台型 SSCS、ASPM 聚合层、CLI 扫描器。**结构性机会**（结合 [03](03-competitive-landscape.md) 的 Product→Version 空白）：CRA 语境下"以产品/版本为对象的生命周期平台"在物种分类学上尚无对应物——它介于企业 SCA 套件（有对象模型、无现代工作流）与二进制固件型（有产品对象、无开发者闭环）之间；air-gapped/on-prem 交付是 CRA 覆盖的军工/汽车/医疗客户的硬门槛，恰好是新物种普遍放弃、老物种守着的能力。
-5. **入场底线**：识别、匹配、SBOM、PR bot、runtime 探针五层必须复用成熟开源（自研=浪费）；自研差异化只在三处——**产品/版本对象模型与证据链数据模型、策展数据与 backport 处理的质量、C/C++/二进制侧的 reachability**（见 [04](04-technology-deep-dive.md) 壁垒判断）。
+5. **入场底线**：识别、匹配、SBOM、PR bot、runtime 探针五层优先评估复用成熟开源，并按覆盖率、许可与接入成本验证；本项目拟优先投入的差异化在三处——**产品/版本对象模型与证据链数据模型、策展数据与 backport 处理的质量、C/C++/二进制侧的 reachability**（见 [04](04-technology-deep-dive.md) 壁垒判断）。
 
 ---
 
@@ -124,7 +126,7 @@
 | CPE 匹配 | Dependency-Track、各扫描器在发行版 feed 缺失时的 fallback；公认误报源（见 B.3） | Fact，[anchore-grype-matching](06-product-forms-and-tech-stacks/sources/anchore-grype-matching.md) |
 | PURL 归一化 | 全行业事实标准标识符（[01](01-domain-ontology.md) 已覆盖 spec）；各平台内部实体解析的统一键 | Fact，见 [01](01-domain-ontology.md) |
 
-**Interpretation**：识别层是"三条范式并存"——声明解析（源码侧）、哈希/指纹（二进制侧）、行为刻画（恶意包侧）。三条都有成熟开源或寡头供应商，**自研价值为零**；值得做的是三条范式结果的**实体解析归一**（同一个 log4j 在 manifest、二进制指纹、SBOM 里认作同一组件）——这恰是 Evidence Graph 的地基（与 [04 §4](04-technology-deep-dive.md) 合流）。
+**Interpretation**：识别层是"三条范式并存"——声明解析（源码侧）、哈希/指纹（二进制侧）、行为刻画（恶意包侧）。三条都有成熟开源或寡头供应商，**本项目优先验证复用，特定生态或制品的覆盖缺口再决定是否自研补充**；值得做的是三条范式结果的**实体解析归一**（同一个 log4j 在 manifest、二进制指纹、SBOM 里认作同一组件）——这恰是 Evidence Graph 的地基（与 [04 §4](04-technology-deep-dive.md) 合流）。
 
 ### B.2 漏洞数据管道
 
@@ -155,7 +157,7 @@
 | 自研程序分析 + 策展函数映射库 | Snyk（reachability GA 三语言）、Endor（CVE→函数映射库） | Fact，见 [03](03-competitive-landscape.md)/[04](04-technology-deep-dive.md)；**真正的成本中心是标注数据集不是引擎**（[04](04-technology-deep-dive.md) 已判） |
 | Semgrep 引擎寄生 | GitLab SAST analyzer 基于 Semgrep（其 static reachability 为 package 级，见 [03](03-competitive-landscape.md)） | Fact，见 [03](03-competitive-landscape.md) |
 
-**Interpretation**：底座引擎开源充足（tree-sitter 路线已被 Semgrep 验证为最经济的语言扩展方式）；各家差异在引擎之上的**规则/数据集/降噪工程**。新入场者若做 reachability，站在 OpenGrep/CodeQL/Joern 上、把投入集中在 C/C++ 与 CVE→函数数据集（[04 §6.1](04-technology-deep-dive.md) 结论的技术栈翻译）。
+**Interpretation**：存在多种可复用底座（需区分开源引擎、规则许可与商业工具；语言扩展成本仍需实测）；各家差异在引擎之上的**规则/数据集/降噪工程**。新入场者若做 reachability，站在 OpenGrep/CodeQL/Joern 上、把投入集中在 C/C++ 与 CVE→函数数据集（[04 §6.1](04-technology-deep-dive.md) 结论的技术栈翻译）。
 
 ### B.5 运行时
 
@@ -212,7 +214,7 @@
 
 ### C.2 技术栈"入场底线"：哪些层必须复用、哪些层自研
 
-**必须复用成熟开源（自研=浪费）**：
+**优先评估复用的能力（选型判断，须经过实际接入验证）**：
 
 | 层 | 复用什么 | 理由 |
 |---|---|---|
@@ -220,7 +222,7 @@
 | SBOM 生成/格式 | Syft/CycloneDX/SPDX/PURL（[01](01-domain-ontology.md) 已证标准化完成） | 已 ECMA 标准化，零差异化 |
 | 漏洞匹配 | Grype 式生态 matcher + GrypeDB 模式（预加工 SQLite 离线库） | 匹配算法商品化；离线库模式天然解决 air-gapped |
 | 公共漏洞数据 | NVD+OSV/GHSA 聚合，商业 API（VulnDB 类）补 non-CVE | 横向建库是千万级/年投入，寡头格局已定 |
-| 静态分析底座 | OpenGrep/Semgrep CE（tree-sitter→generic AST 路线）、CodeQL、Joern（C/C++）、govulncheck（Go） | 引擎开源充足，[04](04-technology-deep-dive.md) 已证无算法壁垒 |
+| 静态分析底座 | OpenGrep/Semgrep CE（tree-sitter→generic AST 路线）、CodeQL、Joern（C/C++）、govulncheck（Go） | 存在可复用底座；CodeQL CLI 有独立授权条件，不能归为无条件开源复用，详见 [08](08-open-source-ecosystem.md) |
 | 运行时探针 | Tracee/Falco 事件流；不自建 eBPF | 底座统一，差异化在语义层 |
 | 修复 PR 机制 | Renovate（可自托管、可定制） | 机制商品化 |
 | 存储 | PostgreSQL + 对象存储（+ 搜索/OLAP） | [04](04-technology-deep-dive.md)+[06](06-product-forms-and-tech-stacks.md) 双证：图数据库是叙事 |

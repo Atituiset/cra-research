@@ -27,7 +27,7 @@
 | 读者 | 建议路线 |
 |---|---|
 | 负责人 / 产品经理 | 主线 → [竞争格局](research/03-competitive-landscape.md) → [产品形态与技术栈](research/06-product-forms-and-tech-stacks.md) |
-| 研发 / 架构师 | 主线 → [技术深挖](research/04-technology-deep-dive.md) → [原始 PoC 与局限](../poc/README.md) → [运行说明](development.md) |
+| 研发 / 架构师 | 主线 → [开源生态与集成选型](research/08-open-source-ecosystem.md) → [技术深挖](research/04-technology-deep-dive.md) → [原始 PoC 与局限](../poc/README.md) → [运行说明](development.md) |
 | 产品安全 / 合规 | 主线 → [CRA 法规研究](research/02-cra-regulation.md) → [合一评估中的判定与报告纠错](design/repository-unification-assessment.md) → [证据样例](../demo/cra_workbench.md) |
 | 初次接触 SCA/CRA 的同事 | 先读 [领域知识体系](research/01-domain-ontology.md) 的 §1，再按需查 SBOM、VEX、Reachability 等概念，随后回到主线 |
 
@@ -41,6 +41,7 @@
 | 可达性、可利用性、证据图怎么做？ | [04 技术深挖](research/04-technology-deep-dive.md) |
 | CRA 与欧盟其他合规体系什么关系？ | [05 欧盟合规全景](research/05-eu-compliance-landscape.md) |
 | 哪些层复用工具，哪些自己开发？ | [06 产品形态与技术栈](research/06-product-forms-and-tech-stacks.md) |
+| 有哪些开源项目可接入评估引擎，哪些已在本仓库验证？ | [08 开源生态与集成选型](research/08-open-source-ecosystem.md) |
 | Snyk、Endor、Black Duck、Sonatype、JFrog 的细节与来源？ | [07 厂商深挖索引](research/07-vendor-deep-dive/README.md) |
 | 两份研究有哪些冲突、如何统一？ | [合一评估](design/repository-unification-assessment.md) |
 | 现有原型如何运行、输出意味着什么？ | [演示说明](../demo/README.md) |
@@ -51,7 +52,7 @@
 |---|---|---|
 | `chat-history.md`、`design/assessment-engine-alignment.md` | 目标架构讨论与差距评估 | 理解当前方向和下一轮验证；不是实现完成说明 |
 | `design/unified-workbench.md`、`product/journeys.md` | 当前实施与流程 | 判断实现状态时优先看这里 |
-| `research/00–07` | 研究结论和证据基础 | 解释原因；留意文内日期、事实/推断/假设标记 |
+| `research/00–08` | 研究结论和证据基础 | 解释原因；留意文内日期、事实/推断/假设标记 |
 | `design/repository-unification-assessment.md` | 合并时的决策依据 | 评估中的“计划”需对照当前实施状态 |
 | `design/minimal-mvp-design.md`、`design/vex-agent-architecture.md` | 合并前的工程方案与后续设计参考 | 不直接作为当前任务清单 |
 | [第二份研究归档](archive/cra-research-2/README.md) | 原报告、来源与模拟演示 | 有需要时回溯；其中的旧 MVP 和旧演示口径不覆盖当前方案 |
