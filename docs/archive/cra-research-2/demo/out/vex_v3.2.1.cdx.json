@@ -1,0 +1,60 @@
+{
+  "bomRef": "snap-bc2dde45fdc5",
+  "spec": "CycloneDX-1.7 vulnerabilities[] (demo)",
+  "product": "Acme IoT Gateway",
+  "release": "3.2.1",
+  "analysis": [
+    {
+      "cve": "CVE-2021-44228",
+      "status": "affected",
+      "justification": null,
+      "detail": "版本区间命中 + call path 可达（经 HTTP /api/ingest） + KEV 在野利用",
+      "refs": [
+        {
+          "source": "internal-evidence",
+          "id": "snap-9d12525eaa70"
+        }
+      ],
+      "timestamp": "2026-09-22T10:00:00+08:00"
+    },
+    {
+      "cve": "CVE-2021-45046",
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "detail": "外部入口集无任何路径抵达漏洞函数",
+      "refs": [
+        {
+          "source": "internal-evidence",
+          "id": "snap-0b19d3dfdc57"
+        }
+      ],
+      "timestamp": "2026-09-22T10:00:00+08:00"
+    },
+    {
+      "cve": "CVE-2021-4034",
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_present",
+      "detail": "Debian bullseye 已 backport 修复于 0.105-33+deb11u1，镜像版本一致 → 缺陷代码不在构建物",
+      "refs": [
+        {
+          "source": "internal-evidence",
+          "id": "snap-112203d2b247"
+        }
+      ],
+      "timestamp": "2026-09-22T10:00:00+08:00"
+    },
+    {
+      "cve": "CVE-2026-42424",
+      "status": "under_investigation",
+      "justification": null,
+      "detail": "等待 L2 reachability 分析（SLA 24h）",
+      "refs": [
+        {
+          "source": "internal-evidence",
+          "id": "snap-92047b266cb1"
+        }
+      ],
+      "timestamp": "2026-09-22T10:00:00+08:00"
+    }
+  ]
+}

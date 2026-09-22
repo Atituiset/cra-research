@@ -11,3 +11,11 @@ __pycache__/
 
 # 系统文件
 .DS_Store
+
+# Unified workbench local state and generated review bundles
+/var/
+/demo/out/
+/demo/out-*/
+*.egg-info/
+.venv/
+.ipynb_checkpoints/

@@ -1,5 +1,7 @@
 # 最小可交付 MVP 工程设计文档
 
+> 合并实施更新（2026-09-22）：当前范围与实现状态以 [统一工作台设计](unified-workbench.md) 为准。本文保留为原始工程方案；SQLite 本地契约验证、轻量事件流程等合并取舍已由新设计说明。
+
 > 2026-09-21 | 读者：研发团队（拿去即可开工）
 >
 > 上游依据：一句话定位与判定逻辑见 [00-final-report](../research/00-final-report.md) §1.0/§1.1/§1.2/§7.6/§7.7；Phase 1 定义与成功指标见 §14.2；战略问答见 §15。Agent 编排见 [vex-agent-architecture.md](vex-agent-architecture.md)。PoC 资产见 [poc/README.md](../../poc/README.md) 与 [poc/BUILD-LOG.md](../../poc/BUILD-LOG.md)。技术栈入场底线见 [06 报告](../research/06-product-forms-and-tech-stacks.md) §C.2；闭环 Gap Analysis（本 MVP 的差异化靶心）见 [03 报告](../research/03-competitive-landscape.md) §6。

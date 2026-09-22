@@ -54,6 +54,16 @@ def main():
                              {k: v for k, v in pub_dict.items() if k != "keyid"})
 
     conn = connect(args.db) if args.db else connect()
+    # Validate before touching any existing export. A failed signature must never
+    # produce a deliverable that looks like a successful evidence pack.
+    preflight = conn.execute(
+        "SELECT a.envelope_json FROM conclusions c JOIN attestations a "
+        "ON a.sha256 = c.attestation_sha256 WHERE c.product=? AND c.version=?",
+        (args.product, args.version)).fetchall()
+    for row in preflight:
+        result = verify_envelope(json.loads(row['envelope_json']), pub_dict)
+        if result is not True:
+            raise ValueError(f"Evidence export blocked: {result}")
     outdir = os.path.join(args.outroot, f"evidence-pack-{args.product}-{args.version}")
     if os.path.exists(outdir):
         shutil.rmtree(outdir)

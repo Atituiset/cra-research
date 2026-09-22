@@ -1,6 +1,6 @@
 # VEX 判定平台 Agent 架构设计
 
-> 2026-09-20。基于两项已有资产：① 本仓库研究（[00-final-report](../research/00-final-report.md) §7.6/§7.7 判定逻辑与数据流、[04 报告](../research/04-technology-deep-dive.md) §3"LLM 编排 + 确定性引擎出证据 + 人工签核"）；② `/home/atituiset/Projects/review-skills` 的"全 Skill、分阶段子 Agent 编排"架构（五阶段、Session 文件交接、Semantic Query 出事实 / 规则 Skill 推理）。
+> 2026-09-20。基于两项已有资产：① 本仓库研究（[00-final-report](../research/00-final-report.md) §7.6/§7.7 判定逻辑与数据流、[04 报告](../research/04-technology-deep-dive.md) §3"LLM 编排 + 确定性引擎出证据 + 人工签核"）；② 外部参考项目 `review-skills`（未包含在本仓库中，不是运行依赖）的"全 Skill、分阶段子 Agent 编排"架构（五阶段、Session 文件交接、Semantic Query 出事实 / 规则 Skill 推理）。
 >
 > 核心论点：**review-skills 架构与 VEX 判定管道几乎同构**——最难的编排协议与证据契约已经存在，缺的只是换一套领域规则、补四块 CRA 专用组件。
 

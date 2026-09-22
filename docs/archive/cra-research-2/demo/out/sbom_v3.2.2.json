@@ -1,0 +1,41 @@
+{
+  "format": "CycloneDX-1.7 (demo subset)",
+  "product": "Acme IoT Gateway",
+  "release": "3.2.2",
+  "components": [
+    {
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core",
+      "version": "2.17.1",
+      "scope": "direct",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    {
+      "purl": "pkg:maven/org.eclipse.jetty/jetty-server",
+      "version": "9.4.44.v20210927",
+      "scope": "direct",
+      "licenses": [
+        "Apache-2.0"
+      ]
+    },
+    {
+      "purl": "pkg:maven/com.acme/telemetry-sdk",
+      "version": "1.4.2",
+      "scope": "direct",
+      "licenses": [
+        "MIT"
+      ]
+    },
+    {
+      "purl": "pkg:deb/debian/policykit-1",
+      "version": "0.105-33+deb11u1",
+      "scope": "transitive",
+      "licenses": [
+        "GPL-2.0"
+      ]
+    }
+  ],
+  "snapshot_id": "snap-33447edbd338",
+  "generated_at": "2026-09-22T10:00:00+08:00"
+}

@@ -1,0 +1,51 @@
+{
+  "incident_id": "INC-2026-0922-001",
+  "trigger": "KEV ∩ 产品命中 ∩ actively_exploited → Art.14",
+  "cve": "CVE-2021-44228",
+  "t0": "2026-09-22T10:00:00+08:00",
+  "frozen_sbom": {
+    "release": "3.2.1",
+    "snapshot": "snap-f07fc15cbc73"
+  },
+  "deadlines": {
+    "early_warning_24h": "2026-09-23T10:00:00+08:00",
+    "formal_72h": "2026-09-25T10:00:00+08:00",
+    "final_14d": "2026-10-06T10:00:00+08:00"
+  },
+  "reports": {
+    "24h_early_warning": {
+      "produced_at": "2026-09-22T16:00:00+08:00",
+      "hours_left": 18.0,
+      "fields": {
+        "reporting_entity": "Acme Devices GmbH (EU)",
+        "product": "Acme IoT Gateway 3.2.1",
+        "vulnerability": "CVE-2021-44228 (CVSS 10.0, KEV)",
+        "discovery": "内部 SCA 关联 KEV 新增条目（情报快照 snap-386da88c38db）",
+        "malicious_use": "是 — 已在野利用（KEV）",
+        "initial_impact": "远程代码执行；网关管理面经 /api/ingest 可达（L2 证据 snap-6b53a678e631）",
+        "mitigation": "紧急缓解：禁用 JNDI（log4j2.formatMsgNoLookups=true）+ 出网白名单；正式修复升级中",
+        "contacts": "security@acme.example / PSIRT"
+      }
+    },
+    "72h_formal": {
+      "produced_at": null,
+      "fields": {
+        "root_cause": "依赖组件缺陷（第三方库）",
+        "exploitation": "网络可达；无需认证（/api/ingest）",
+        "affected_products": [
+          "Acme IoT Gateway 3.2.1"
+        ],
+        "affected_component": "log4j-core 2.14.0 (purl 匹配)",
+        "fix_status": "升级 PR acme/gateway#4721 → 3.2.2（复扫 snap-4cb376a69180）",
+        "cross_border": "面向 EU 多成员国销售 — 需同步成员国 CSIRT（SRP 扇出）"
+      }
+    },
+    "final_14d": {
+      "produced_at": null,
+      "fields": {
+        "status": "待纠正措施完成后 14 天内提交",
+        "sbom_after_fix": "3.2.2 / snap-4cb376a69180"
+      }
+    }
+  }
+}

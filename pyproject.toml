@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cra-workbench"
+version = "0.1.0"
+description = "Product release vulnerability evidence workbench"
+requires-python = ">=3.11"
+dependencies = ["cryptography>=43,<51"]
+
+[project.optional-dependencies]
+demo = ["matplotlib>=3.8,<4", "nbformat>=5.10,<6"]
+
+[project.scripts]
+cra = "cra.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

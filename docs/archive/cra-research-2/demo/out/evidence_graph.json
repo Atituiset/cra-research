@@ -1,0 +1,269 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "ntype": "Release",
+      "label": "Acme IoT Gateway\nv3.2.1",
+      "id": "3.2.1"
+    },
+    {
+      "ntype": "SBOMSnapshot",
+      "label": "SBOM 3.2.1\nsnap-f07fc15cbc73",
+      "id": "snap-f07fc15cbc73"
+    },
+    {
+      "ntype": "Component",
+      "label": "log4j-core\n2.14.0",
+      "id": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.0"
+    },
+    {
+      "ntype": "Component",
+      "label": "jetty-server\n9.4.44.v20210927",
+      "id": "pkg:maven/org.eclipse.jetty/jetty-server@9.4.44.v20210927"
+    },
+    {
+      "ntype": "Component",
+      "label": "telemetry-sdk\n1.4.2",
+      "id": "pkg:maven/com.acme/telemetry-sdk@1.4.2"
+    },
+    {
+      "ntype": "Component",
+      "label": "policykit-1\n0.105-33+deb11u1",
+      "id": "pkg:deb/debian/policykit-1@0.105-33+deb11u1"
+    },
+    {
+      "ntype": "Vulnerability",
+      "label": "CVE-2021-44228",
+      "id": "CVE-2021-44228"
+    },
+    {
+      "ntype": "ReachabilityRun",
+      "label": "L2 A1\n可达",
+      "id": "snap-6b53a678e631"
+    },
+    {
+      "ntype": "ExploitSignal",
+      "label": "KEV CVE-2021-44228",
+      "id": "KEV:CVE-2021-44228"
+    },
+    {
+      "ntype": "Vulnerability",
+      "label": "CVE-2021-45046",
+      "id": "CVE-2021-45046"
+    },
+    {
+      "ntype": "ReachabilityRun",
+      "label": "L2 A2\n不可达",
+      "id": "snap-4d5a3b9156bc"
+    },
+    {
+      "ntype": "Vulnerability",
+      "label": "CVE-2021-4034",
+      "id": "CVE-2021-4034"
+    },
+    {
+      "ntype": "ExploitSignal",
+      "label": "KEV CVE-2021-4034",
+      "id": "KEV:CVE-2021-4034"
+    },
+    {
+      "ntype": "Vulnerability",
+      "label": "CVE-2026-42424",
+      "id": "CVE-2026-42424"
+    },
+    {
+      "ntype": "Remediation",
+      "label": "PR acme/gateway#4721\n2.14.0→2.17.1",
+      "id": "PR:acme/gateway#4721"
+    },
+    {
+      "ntype": "Verification",
+      "label": "复扫通过\nsnap-4cb376a69180",
+      "id": "snap-4cb376a69180"
+    },
+    {
+      "ntype": "Judgment",
+      "label": "VEX 2021-44228\nfixed",
+      "id": "snap-659b48bed5ac"
+    },
+    {
+      "ntype": "Judgment",
+      "label": "VEX 2021-45046\nnot_affected",
+      "id": "snap-0b19d3dfdc57"
+    },
+    {
+      "ntype": "Judgment",
+      "label": "VEX 2021-4034\nnot_affected",
+      "id": "snap-112203d2b247"
+    },
+    {
+      "ntype": "Ref",
+      "label": "Debian tracker\nCVE-2021-4034",
+      "id": "https://security-tracker.debian.org/tracker/CVE-2021-4034"
+    },
+    {
+      "ntype": "Judgment",
+      "label": "VEX 2026-42424\nunder_investigation",
+      "id": "snap-92047b266cb1"
+    },
+    {
+      "ntype": "Incident",
+      "label": "INC-001\n24h/72h/14d",
+      "id": "INC-2026-0922-001"
+    },
+    {
+      "ntype": "Report",
+      "label": "24h early warning\n[已产出]",
+      "id": "RPT:24h_early_warning"
+    },
+    {
+      "ntype": "Report",
+      "label": "72h formal\n[预填]",
+      "id": "RPT:72h_formal"
+    },
+    {
+      "ntype": "Report",
+      "label": "final 14d\n[预填]",
+      "id": "RPT:final_14d"
+    }
+  ],
+  "edges": [
+    {
+      "rel": "in_release",
+      "source": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.0",
+      "target": "3.2.1"
+    },
+    {
+      "rel": "in_release",
+      "source": "pkg:maven/org.eclipse.jetty/jetty-server@9.4.44.v20210927",
+      "target": "3.2.1"
+    },
+    {
+      "rel": "in_release",
+      "source": "pkg:maven/com.acme/telemetry-sdk@1.4.2",
+      "target": "3.2.1"
+    },
+    {
+      "rel": "in_release",
+      "source": "pkg:deb/debian/policykit-1@0.105-33+deb11u1",
+      "target": "3.2.1"
+    },
+    {
+      "rel": "analyzes",
+      "source": "snap-6b53a678e631",
+      "target": "CVE-2021-44228"
+    },
+    {
+      "rel": "in_kev",
+      "source": "KEV:CVE-2021-44228",
+      "target": "CVE-2021-44228"
+    },
+    {
+      "rel": "analyzes",
+      "source": "snap-4d5a3b9156bc",
+      "target": "CVE-2021-45046"
+    },
+    {
+      "rel": "in_kev",
+      "source": "KEV:CVE-2021-4034",
+      "target": "CVE-2021-4034"
+    },
+    {
+      "rel": "fixes",
+      "source": "PR:acme/gateway#4721",
+      "target": "CVE-2021-44228"
+    },
+    {
+      "rel": "verified_by",
+      "source": "PR:acme/gateway#4721",
+      "target": "snap-4cb376a69180"
+    },
+    {
+      "rel": "supports",
+      "source": "snap-4cb376a69180",
+      "target": "snap-659b48bed5ac"
+    },
+    {
+      "rel": "judges",
+      "source": "snap-659b48bed5ac",
+      "target": "CVE-2021-44228"
+    },
+    {
+      "rel": "for_release",
+      "source": "snap-659b48bed5ac",
+      "target": "3.2.1"
+    },
+    {
+      "rel": "evidence_from",
+      "source": "snap-659b48bed5ac",
+      "target": "snap-4cb376a69180"
+    },
+    {
+      "rel": "judges",
+      "source": "snap-0b19d3dfdc57",
+      "target": "CVE-2021-45046"
+    },
+    {
+      "rel": "for_release",
+      "source": "snap-0b19d3dfdc57",
+      "target": "3.2.1"
+    },
+    {
+      "rel": "evidence_from",
+      "source": "snap-0b19d3dfdc57",
+      "target": "snap-4d5a3b9156bc"
+    },
+    {
+      "rel": "judges",
+      "source": "snap-112203d2b247",
+      "target": "CVE-2021-4034"
+    },
+    {
+      "rel": "for_release",
+      "source": "snap-112203d2b247",
+      "target": "3.2.1"
+    },
+    {
+      "rel": "evidence_from",
+      "source": "snap-112203d2b247",
+      "target": "https://security-tracker.debian.org/tracker/CVE-2021-4034"
+    },
+    {
+      "rel": "judges",
+      "source": "snap-92047b266cb1",
+      "target": "CVE-2026-42424"
+    },
+    {
+      "rel": "for_release",
+      "source": "snap-92047b266cb1",
+      "target": "3.2.1"
+    },
+    {
+      "rel": "triggered_by",
+      "source": "INC-2026-0922-001",
+      "target": "CVE-2021-44228"
+    },
+    {
+      "rel": "frozen_sbom",
+      "source": "INC-2026-0922-001",
+      "target": "snap-f07fc15cbc73"
+    },
+    {
+      "rel": "produces",
+      "source": "INC-2026-0922-001",
+      "target": "RPT:24h_early_warning"
+    },
+    {
+      "rel": "produces",
+      "source": "INC-2026-0922-001",
+      "target": "RPT:72h_formal"
+    },
+    {
+      "rel": "produces",
+      "source": "INC-2026-0922-001",
+      "target": "RPT:final_14d"
+    }
+  ]
+}
