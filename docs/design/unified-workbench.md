@@ -2,7 +2,7 @@
 
 [返回阅读指南](../README.md) · [用户旅程](../product/journeys.md) · [查看真实数据演示](../../demo/cra_workbench.ipynb)
 
-2026-09-22。本文是两个仓库合并后的唯一实施入口；旧 minimal-mvp-design 与 B report/08 保留研究价值，发生范围冲突时以本文为准。
+初版 2026-09-22；方向说明更新 2026-09-23。本文记录两个仓库合并后的**现有工作台实现**。目标架构已在 [架构对齐评估](assessment-engine-alignment.md) 中调整为通用漏洞评估引擎；本文不代表该引擎已经实现。旧 minimal-mvp-design 与 B report/08 保留为历史设计参考。
 
 ## 共享核心
 
@@ -40,4 +40,4 @@
 
 尚未完成自动触发、真实多源持续同步、AnalysisRun 范围模型的完整规范化、SBOM 标准摄取服务、线上身份审批、标准 VEX 重新签发、PostgreSQL、原始日志完整打包。当前使用 legacy adapter 保存原始 predicate，避免丢失来源，但不把它当成最终领域 schema。
 
-下一阶段优先顺序：标准化 AnalysisRun 和数据源快照 → 完整原始证据归档 → 自动重估与关联 → 正式 VEX 序列化/签发 → 认证及 PG 试点部署。扩展 Java、Agent、多租户须由试点需求推动。
+下一轮按 [架构对齐评估 §5](assessment-engine-alignment.md) 验证 Localization → Claim/VA-IR → 证据缺口与 Pass 调度 → Decision/Consumer → 依赖失效重估。调度协议是核心验证的一部分，模型驱动的 Agent 选择仍待实验；正式签发、认证、PG 部署及更多语言按后续交付需要推进。

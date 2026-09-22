@@ -1,8 +1,10 @@
 # 统一演示：读取真实证据的工作台
 
-**GitHub 页面直接阅读：[cra_workbench.ipynb](cra_workbench.ipynb)**。已包含执行输出，无需启动 Jupyter。预览为静态内容；本地重新执行可刷新真实证据汇总。
+**GitHub 在线阅读：[图解阅读版](cra_workbench.md)**。包含九张图和全部文字输出，无需启动 Jupyter，也不依赖 Notebook 预览服务。需要执行代码时使用 [cra_workbench.ipynb](cra_workbench.ipynb)。
 
-在仓库根目录安装 `python3 -m pip install -e '.[demo]'`，然后运行 `python3 demo/build_notebook.py` 重建 notebook。它复用共享核心，使用临时数据库，不依赖 `demo/out/`，也不会保存个人目录到展示输出。生成后的 notebook 随仓库提交；HTML 工作台仍按下述方式本地生成。
+若 Notebook 页面一直加载并出现 `MathJax: Invalid option "autoload"`，可先通过阅读版查看同一份内容。仓库未配置该 MathJax 选项；当前尚未确认远端预览失败的根因。
+
+在仓库根目录安装 `python3 -m pip install -e '.[demo]'`，然后运行 `python3 demo/build_notebook.py` 同时重建 Notebook、Markdown 阅读版和图表。它复用共享核心，使用临时数据库，不依赖 `demo/out/`，也不会保存个人目录到展示输出。生成后的 notebook 随仓库提交；HTML 工作台仍按下述方式本地生成。
 
 演示结合 [架构讨论](../docs/chat-history.md)，主线调整为“评估引擎 → Localization → Evidence/Claim → 动态 Pass 调度 → 失效重估 → 消费端”。以 C 样例 CVE-2022-37434 展示组件/CVE 到符号的桥接，Go 图表与 CRA 报告时钟作为附录保留。
 

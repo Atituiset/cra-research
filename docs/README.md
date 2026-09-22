@@ -1,8 +1,8 @@
 # 文档阅读指南
 
-[返回仓库首页](../README.md) · [查看已执行演示](../demo/cra_workbench.ipynb)
+[返回仓库首页](../README.md) · [查看已执行演示](../demo/cra_workbench.md)
 
-本仓库研究的是：如何以产品发布物为对象，把漏洞关联、分析、判定、修复和报告连接起来，并保留每一步的证据。文档解释为什么这样做、该做什么；notebook 展示目前已经跑通的部分。
+本仓库研究以证据驱动的通用漏洞评估引擎，CRA 是首个业务场景。文档说明目标与实现差距；notebook 同时展示历史实测回放、设计投影和脚本推演，三者明确区分。
 
 最新方向讨论见 [架构聊天记录](chat-history.md) 与 [对照评估：漏洞评估引擎](design/assessment-engine-alignment.md)。其中将通用 Assessment Engine 放在核心、CRA/VEX 放在消费端；这份评估区分了目标架构与现有工作台实现，不代表新引擎已经落地。
 
@@ -14,11 +14,11 @@
 
 | 顺序 | 阅读入口 | 先读哪些内容 | 看完应能回答 |
 |---|---|---|---|
-| 1 | [研究总报告](research/00-final-report.md) | §1 Executive Summary、§5 核心问题、§6 产品定位 | 为什么要做，解决谁的什么问题？ |
-| 2 | [用户旅程](product/journeys.md) | 全文 | 使用者怎样完成一次漏洞处置？ |
-| 3 | [统一实施设计](design/unified-workbench.md) | 全文，尤其“完成与待续” | 当前采用什么模型，哪些已经实现？ |
-| 4 | [已执行 notebook](../demo/cra_workbench.ipynb) | 从数据导入看到内部应答包 | 上述设计目前有哪些真实证据支持？ |
-| 5 | [两份研究合一评估](design/repository-unification-assessment.md) | §3 决策、§4 纠错、§6 验收 | 为什么这样取舍，下一步要验证什么？ |
+| 1 | [架构对齐评估](design/assessment-engine-alignment.md) | §1–3、§5 | 目标是什么，现有实现缺什么？ |
+| 2 | [图解阅读版](../demo/cra_workbench.md) | §01–07；实测附录按需读 | Localization、Claim、调度和重估如何衔接？ |
+| 3 | [工作台实施文档](design/unified-workbench.md) | 全文，尤其“完成与待续” | 当前代码到底实现了哪些部分？ |
+| 4 | [研究总报告](research/00-final-report.md) | §1、§5、§6 | CRA 业务入口与产品动机来自哪里？ |
+| 5 | [用户旅程](product/journeys.md) | 全文 | 已有工作台怎样支持用户操作？ |
 
 总报告是研究结论，其中的路线图和产品愿景不等于已实现功能。**当前范围和实现状态以统一实施设计为准。**
 
@@ -27,8 +27,8 @@
 | 读者 | 建议路线 |
 |---|---|
 | 负责人 / 产品经理 | 主线 → [竞争格局](research/03-competitive-landscape.md) → [产品形态与技术栈](research/06-product-forms-and-tech-stacks.md) |
-| 研发 / 架构师 | 主线 → [技术深挖](research/04-technology-deep-dive.md) → [原始 PoC 与局限](../poc/README.md) → [运行说明](../README.md) |
-| 产品安全 / 合规 | 主线 → [CRA 法规研究](research/02-cra-regulation.md) → [合一评估中的判定与报告纠错](design/repository-unification-assessment.md) → [证据样例](../demo/cra_workbench.ipynb) |
+| 研发 / 架构师 | 主线 → [技术深挖](research/04-technology-deep-dive.md) → [原始 PoC 与局限](../poc/README.md) → [运行说明](development.md) |
+| 产品安全 / 合规 | 主线 → [CRA 法规研究](research/02-cra-regulation.md) → [合一评估中的判定与报告纠错](design/repository-unification-assessment.md) → [证据样例](../demo/cra_workbench.md) |
 | 初次接触 SCA/CRA 的同事 | 先读 [领域知识体系](research/01-domain-ontology.md) 的 §1，再按需查 SBOM、VEX、Reachability 等概念，随后回到主线 |
 
 ## 按问题查资料
@@ -49,6 +49,7 @@
 
 | 文档组 | 定位 | 阅读方式 |
 |---|---|---|
+| `chat-history.md`、`design/assessment-engine-alignment.md` | 目标架构讨论与差距评估 | 理解当前方向和下一轮验证；不是实现完成说明 |
 | `design/unified-workbench.md`、`product/journeys.md` | 当前实施与流程 | 判断实现状态时优先看这里 |
 | `research/00–07` | 研究结论和证据基础 | 解释原因；留意文内日期、事实/推断/假设标记 |
 | `design/repository-unification-assessment.md` | 合并时的决策依据 | 评估中的“计划”需对照当前实施状态 |

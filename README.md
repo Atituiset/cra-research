@@ -1,55 +1,65 @@
-# CRA / SCA 漏洞全生命周期研究
+# Vulnerability Assessment Engine · CRA / SCA 研究
 
-本项目研究如何围绕欧盟《网络韧性法案》（Cyber Resilience Act，CRA），将软件成分分析（SCA）扩展为产品级漏洞管理能力：从识别软件组件、关联漏洞，到判断影响、修复验证、生成报告，持续保留可追溯的证据。
+本项目研究一套**以证据驱动的漏洞评估引擎**：从 SCA 发现的组件与漏洞出发，定位到具体代码，收集可达性及运行上下文证据，形成可解释的判断，并在输入变化后重新评估。**CRA 是首个业务场景；VEX、CSAF、CI/CD 等是评估结果的消费端。**
 
-仓库包含**领域与法规研究、竞品分析、产品与技术设计，以及可运行原型**，用于团队讨论产品方向、评估技术可行性和推进实现。
+仓库包含领域与法规研究、竞品分析、目标架构，以及可运行的证据工作台原型。当前阶段是**架构验证与 PoC**，完整评估引擎尚未实现。
 
-[研究总报告](docs/research/00-final-report.md) · [在线演示](demo/cra_workbench.ipynb) · [当前实施设计](docs/design/unified-workbench.md) · [本地运行](docs/development.md)
+[目标架构与差距](docs/design/assessment-engine-alignment.md) · [图解阅读版](demo/cra_workbench.md) · [已有实现](docs/design/unified-workbench.md) · [专题研究](docs/README.md) · [本地运行](docs/development.md)
 
-## 我们要解决什么问题
+## 核心问题
 
-扫描器能告诉我们“某个组件关联了哪些漏洞”。产品安全团队还需要回答：
+对某个产品发布物、组件、漏洞和运行上下文，我们需要连续回答：
 
-- 哪些已发布的产品版本受影响？
-- 漏洞代码是否存在、是否可达，判定依据是什么？
-- 谁复核了这个判断？情报或产品变化后是否需要重估？
-- 修复是否进入实际发布物，并经过验证？
-- 面向客户、审计或报告流程，能否还原当时的判断与处理过程？
+- 漏洞影响哪个版本，具体对应哪段代码？
+- 应用能否到达该代码，利用前提是否成立？
+- 哪些证据支持或反驳这个判断，还有哪些未知项？
+- 下一步应运行什么分析，什么时候需要停止或人工复核？
+- 修复经过什么验证？源码、情报或配置变化后，哪些判断需要重算？
 
-本项目以**产品发布物**为主线，把这些问题连接起来：
+核心链路是：
 
 ```text
-产品 / 版本 / 发布物
-        ↓
-组件清单与 SBOM → 漏洞关联 → 可达性与上下文分析
-                                   ↓
-                             判定与人工复核
-                                   ↓
-                              处置与修复验证
-                                   ↓
-                           事件报告与客户应答
+SCA / 漏洞关联 → Assessment Target
+                       ↓
+              Localization（定位到代码）
+                       ↓
+            Reachability / Exploitability
+                       ↓
+              Evidence → Claim → Decision
+                       ↓
+            VEX / CRA / CSAF / CI 等消费端
 
-贯穿全程：证据来源、对象快照、判定历史和签名记录
+控制侧：证据缺口 → Agent / Pass Manager → 工具执行 → 新证据
+反馈环：修复与验证 / 持续监控 → 输入变化 → Claim 失效 → 重新评估
 ```
 
-## 当前方向
+## 目标架构
 
-以产品发布物为账本，复用现有扫描和分析工具，重点建设判定、复核、重估和证据追溯能力。VEX 是判定的交换载体，证据与历史保存在内部模型中；分析工具、CLI 和展示层共用这套模型。
+![事实层、评估核心、消费端与 Agent 控制侧的目标架构](demo/figures/01.png)
 
-首版采用本地单实例原型验证上述流程。无调用路径的结果需要结合分析范围复核；旧版本的历史判断不能被新版本修复覆盖；事件报告需记录适用依据和知悉时间。
+*目标设计图，不表示各层已经实现。*
 
-详细论证见 [研究总报告](docs/research/00-final-report.md)，具体实现取舍见 [当前实施设计](docs/design/unified-workbench.md)。
+| 层次 | 职责 |
+|---|---|
+| Fact Providers | SCA、静态分析、Runtime、情报等提供带来源和适用范围的证据；CodeGraph 是程序事实表示 |
+| Assessment Core | 用 VA-IR（漏洞评估中间表示）组织 Evidence、Claim、Decision 与依赖；保留反证、未知项及历史 |
+| Agent / Pass Manager | 根据当前证据缺口选择分析能力；执行器约束前置条件、权限、预算和停止行为 |
+| Consumers | 将明确的决策修订投影为 VEX、CRA 工作流、CSAF、CI 门禁等 |
+
+**Localization 连接供应链与代码分析；结构可达不等于可利用。** `unknown`、`needs_review`、`stale` 分别表达分析不确定性、复核流程和有效性，不能混成一个状态。
+
+设计来源见 [架构讨论记录](docs/chat-history.md)，与现有代码的逐项对照见 [架构对齐评估](docs/design/assessment-engine-alignment.md)。
 
 ## 推荐阅读顺序
 
-第一次了解项目，按下面顺序阅读即可；文档和 notebook 均可在 GitHub 页面查看。
-
-| 顺序 | 内容 | 回答的问题 |
+| 顺序 | 内容 | 阅读目的 |
 |---|---|---|
-| 1 | [研究总报告](docs/research/00-final-report.md)，先读 §1、§5、§6 | 为什么做，产品定位是什么？ |
-| 2 | [用户旅程](docs/product/journeys.md) | 用户如何完成一次漏洞处置？ |
-| 3 | [当前实施设计](docs/design/unified-workbench.md) | 系统如何组织，已经实现哪些部分？ |
-| 4 | [已执行的 Jupyter 演示](demo/cra_workbench.ipynb) | 目标评估引擎如何组织，真实样例支持到哪一步？ |
+| 1 | [架构对齐评估](docs/design/assessment-engine-alignment.md) | 理解目标、现有差距和下一轮验证重点 |
+| 2 | [图解阅读版](demo/cra_workbench.md) | 跟随 C 样例看 Localization、Claim、Pass 推演和失效传播 |
+| 3 | [已有工作台实现](docs/design/unified-workbench.md) | 明确当前代码真正具备的能力与限制 |
+| 4 | [研究总报告](docs/research/00-final-report.md)，先读 §1、§5、§6 | 回看 CRA 业务入口、产品动机与研究依据 |
+
+图解阅读版从 Notebook 的已保存输出自动生成，包含全部九张图和文字结果，通过普通 Markdown 页面阅读，避免依赖 Notebook 预览服务。[可执行 Notebook](demo/cra_workbench.ipynb) 仍保留供下载和本地运行。**历史实测回放、只读设计投影、预设脚本推演**分别标注；预设的 Pass 步骤不代表 Agent 已运行。Go 调用网络、修复结果与 CRA 时钟保留在附录。
 
 ## 专题研究
 
@@ -65,19 +75,26 @@
 
 按角色阅读、来源追溯及历史材料说明见 [完整阅读指南](docs/README.md)。
 
-最新 [架构讨论](docs/chat-history.md) 将通用漏洞评估引擎置于核心、CRA/VEX 置于消费端。Notebook 已按此组织，分别标注已有实测、VA-IR 教学投影和动态编排设计推演；具体代码差距见 [架构对照评估](docs/design/assessment-engine-alignment.md)。
+## 当前进展
 
-## 已经做到哪一步
+| 类别 | 已有内容 | 边界 |
+|---|---|---|
+| 原始 PoC | Go/C 扫描与分析样例、人工漏洞定位映射、签名证据 | 小样例验证；C 定位依赖策展 |
+| 可运行原型 | 证据包导入、发布物身份、复核记录、历史、显式重估、修复复核、事件台账与内部导出 | 单实例本地工作台；重估尚不自动重跑分析 |
+| Notebook 教学 | 三层架构、VA-IR/Claim 投影、Pass 选择与失效传播示例 | 只读投影与脚本推演，不是生产评估核心 |
+| 尚未实现 | 独立 Claim/Decision Engine、动态 Agent 调度、持续失效重算、完整 Consumer 适配 | 不能将图解或保存输出视为实现完成 |
 
-目前是**可运行的研究原型**。统一演示导入两个 Go/C 历史样例，包含 **2 个发布物、78 条判定和 154 条签名记录**，导入与导出时重新校验文件 hash 和签名。
+统一回放包含 **2 个发布物、78 条判定候选、154 条历史签名记录**，导入与导出重新验签；当前有 **21 项测试**。这些数字描述样例与工程校验范围，不代表生产分析精度。当前输出为内部复核包，新判定尚未正式签发为标准 VEX。
 
-| 状态 | 内容 |
-|---|---|
-| 已实现 | 证据包导入、发布物身份、判定复核、历史保留、显式重估、人工修复复核、事件时钟、外部回执记录、内部应答包导出 |
-| 可查看 | [Jupyter 演示](demo/cra_workbench.ipynb)，已保存执行输出，无需安装环境 |
-| 下一步 | 分析结果模型规范化、完整原始证据归档、持续情报关联与自动重估、正式 VEX 签发、认证与数据库部署 |
+## 下一轮优先验证
 
-这些样例验证了工程链路，不代表生产环境的分析精度。当前导出为内部复核包，尚不具备完整生产审批与正式报送能力。实现边界见 [当前设计](docs/design/unified-workbench.md)，实验条件见 [PoC 记录](poc/README.md)。
+1. **Localization**：将现有 CVE→文件/符号映射提取为独立能力，绑定来源与程序基线。
+2. **Claim / VA-IR**：表达支持证据、反证、未知项、适用范围和依赖。
+3. **证据缺口调度**：定义 Pass 契约，先建立可回放基线，再验证 Agent 的动态选择。
+4. **Decision / Adapter**：以策略消费 Claim；替换 VEX、CRA 或 CI 消费端无需改写分析核心。
+5. **失效与重估**：输入变化沿依赖传播，重算相关结果并保留历史修订。
+
+具体切片与验收见 [架构对齐评估 §5](docs/design/assessment-engine-alignment.md)。认证、数据库部署和正式签发仍是后续交付工作；当前优先验证上述核心假设。
 
 ## 仓库结构
 
@@ -92,4 +109,4 @@
 | [tests/](tests/) | 核心行为验证 |
 | [docs/archive/](docs/archive/cra-research-2/README.md) | 第二份研究的历史归档 |
 
-需要运行或修改代码，请看 [开发与运行指南](docs/development.md)。两份研究的合并依据见 [综合评估](docs/design/repository-unification-assessment.md)；当前实现范围以统一实施设计为准。
+需要运行或修改代码，请看 [开发与运行指南](docs/development.md)。两份研究的合并依据见 [综合评估](docs/design/repository-unification-assessment.md)；目标方向见架构对齐评估，当前代码能力以工作台实施文档为准。

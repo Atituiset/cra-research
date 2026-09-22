@@ -192,6 +192,26 @@ figure('reporting'),
 ]
 
 
+def write_reading_version(notebook):
+    """Publish saved outputs through ordinary Markdown, without a notebook renderer."""
+    parts = ["> 自动生成自同目录 Notebook；请修改 `build_notebook.py` 后重建。\n"
+             "> [下载或查看可执行 Notebook](cra_workbench.ipynb) · [重建说明](README.md)\n"]
+    figure_index = 0
+    for cell in notebook['cells']:
+        if cell['cell_type'] == 'markdown':
+            parts.append(''.join(cell['source']))
+            continue
+        for output in cell.get('outputs', []):
+            if output['output_type'] == 'stream':
+                parts.append('```text\n' + ''.join(output['text']).rstrip() + '\n```')
+            elif 'image/png' in output.get('data', {}):
+                figure_index += 1
+                parts.append(f'![评估引擎图解 {figure_index}](figures/{figure_index:02d}.png)')
+    destination = ROOT / 'demo/cra_workbench.md'
+    destination.write_text('\n\n'.join(parts).rstrip() + '\n', encoding='utf-8')
+    print(destination.relative_to(ROOT))
+
+
 def main():
     import matplotlib
     matplotlib.use('Agg')
@@ -240,6 +260,7 @@ def main():
     destination = ROOT / 'demo/cra_workbench.ipynb'
     destination.write_text(json.dumps(notebook, ensure_ascii=False, indent=1) + '\n')
     print(destination.relative_to(ROOT))
+    write_reading_version(notebook)
 
 
 if __name__ == '__main__':
